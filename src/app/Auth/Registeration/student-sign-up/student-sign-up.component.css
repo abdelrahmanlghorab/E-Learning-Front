@@ -33,15 +33,15 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(to right, #4b5dfb, #4285f4);
+    background: linear-gradient(45deg, #007bff, #00ccff);
     border: none;
     padding: 10px 15px; 
     font-size: 16px; 
 }
 
 .btn-primary:hover {
-    background: linear-gradient(to right, #3a4dc3, #3572d2);
-    transform: scale(1.05); 
+    background: linear-gradient(45deg, #0056b3, #00b2d6);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
