@@ -1,11 +1,11 @@
 section.container > div {
-    width: 80%;
+    width: 70%;
     border-radius: 10px;
     background-color: white;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
-  
+
   label {
     font-size: 22px;
   }
@@ -20,6 +20,10 @@ section.container > div {
     font-size: 22px;
     font-weight: 700;
     transition: 0.3s;
+  }
+  button:hover {
+    transform: scale(1.05); 
+
   }
   
   h3 {

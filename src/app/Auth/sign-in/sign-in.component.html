@@ -7,13 +7,16 @@
         </h6>
       </div>
   
-      <form class="form-floating" action="" method="">
+      <form class="form-floating" >
         <div class="row mt-5">
           <div class="col">
             <div class="form-group">
               <label for="studentEmail">عنوان البريد الإلكتروني</label>
-              <input type="email" name="studentEmail" id="studentEmail" class="form-control"
-                placeholder="البريد الإلكتروني" aria-label="عنوان البريد الإلكتروني" required>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" name="studentEmail" id="studentEmail" class="form-control"
+                       placeholder="البريد الإلكتروني" aria-label="عنوان البريد الإلكتروني" required>
+              </div>
             </div>
           </div>
         </div>
@@ -22,8 +25,14 @@
           <div class="col">
             <div class="form-group">
               <label for="password">كلمة السر</label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="كلمة السر"
-                aria-label="كلمة السر" required>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input [type]="passwordFieldType" name="password" id="password" class="form-control"
+                       placeholder="كلمة السر" aria-label="كلمة السر" required>
+                <span class="input-group-text" (click)="togglePasswordVisibility()" style="cursor: pointer;">
+                  <i [class]="eyeIcon"></i>
+                </span>
+              </div>
             </div>
           </div>
         </div>

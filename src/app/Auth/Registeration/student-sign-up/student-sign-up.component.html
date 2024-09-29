@@ -1,1 +1,53 @@
-<p>student-sign-up works!</p>
+<div class="container mt-5" dir="rtl">
+    <div class="form-container">
+      <h2 class="mb-6 font-24-bold text-center">انشئ حساب طالب الآن</h2>
+      <p class="text-center">ادخل بياناتك بشكل صحيح للحصول على أفضل تجربة داخل الموقع</p>
+  
+      <form  #registerForm="">
+        <div class="row mb-3">
+          <label for="firstName" class="form-label">الاسم <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-solid fa-user"></i></span>
+            <input type="text" id="firstName" class="form-control" placeholder="الاسم مطلوب" ngModel name="firstName" required>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="email" class="form-label">عنوان البريد الإلكتروني <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" ngModel name="email" required>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input [type]="passwordFieldType" id="password" class="form-control" placeholder="كلمة المرور مطلوبة" ngModel name="password" required>
+            <span class="input-group-text" (click)="togglePasswordVisibility()" style="cursor: pointer;">
+              <i [class]="eyeIcon"></i>
+            </span>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">تأكيد كلمة السر <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input [type]="confirmPasswordFieldType" id="confirmPassword" class="form-control" placeholder="أدخل تأكيد كلمة السر" ngModel name="confirmPassword" required>
+            <span class="input-group-text" (click)="toggleConfirmPasswordVisibility()" style="cursor: pointer;">
+              <i [class]="confirmEyeIcon"></i>
+            </span>
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-primary rounded-5 custom-button w-100">إنشاء حساب</button>
+      </form>
+  
+      <div class="text-center mt-3">
+        <p>يوجد لديك حساب بالفعل؟ <a href="#">ادخل إلى حسابك الآن</a></p>
+      </div>
+    </div>
+  </div>
+  
