@@ -1,0 +1,84 @@
+.card {
+
+    padding: .4em;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 250px;
+    height: 354px;
+    /* background: rgba(217, 217, 217, 0.58); */
+    background: rgba(218, 216, 216, 0.58);
+    border: 1px solid rgb(231, 229, 229);
+    box-shadow: 5px 12px 21px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+
+  .card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  
+  .card-image {
+    background-color: rgb(236, 236, 236);
+    width: 150px;
+    height: 170px;
+    border-radius: 6px 6px 0 0;
+  }
+  .cont{
+    width: 200px;
+    height: 150px;
+  }
+
+  .card-image:hover {
+    transform: scale(0.98);
+  }
+  
+  .category {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: rgb(63, 121, 230);
+    padding: 10px 7px 0;
+  }
+  
+  .category:hover {
+    cursor: pointer;
+  }
+  
+  .heading {
+    font-weight: 600;
+    color: rgb(88, 87, 87);
+    padding: 7px;
+  }
+  
+  .heading:hover {
+    cursor: pointer;
+  }
+  
+  .author {
+    color: gray;
+    font-weight: 400;
+    font-size: 11px;
+    padding-top: 20px;
+  }
+  
+  .name {
+    font-weight: 600;
+  }
+  
+  .name:hover {
+    cursor: pointer;
+  }
