@@ -1,17 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-student-sign-up',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './student-sign-up.component.html',
-  styleUrl: './student-sign-up.component.css'
+  styleUrls: ['./student-sign-up.component.css']
 })
-export class StudentSignUPComponent {
+export class StudentSignUPComponent implements OnInit {
+  registerForm: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye'; 
   confirmEyeIcon: string = 'fas fa-eye'; 
+
+  constructor(private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]], 
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [
+        Validators.required, 
+        Validators.minLength(6),
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*') 
+      ]],
+      confirmPassword: ['', Validators.required]
+    }, { validators: this.passwordMatchValidator });
+  }
+
+  ngOnInit(): void {}
+
+  passwordMatchValidator(formGroup: FormGroup) {
+    return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
+      ? null : { passwordMismatch: true };
+  }
 
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
@@ -21,5 +45,15 @@ export class StudentSignUPComponent {
   toggleConfirmPasswordVisibility() {
     this.confirmPasswordFieldType = this.confirmPasswordFieldType === 'password' ? 'text' : 'password';
     this.confirmEyeIcon = this.confirmEyeIcon === 'fas fa-eye' ? 'fas fa-eye-slash' : 'fas fa-eye';
+  }
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      console.log('Form Submitted', this.registerForm.value);
+    }
+  }
+
+  get f() {
+    return this.registerForm.controls;
   }
 }
