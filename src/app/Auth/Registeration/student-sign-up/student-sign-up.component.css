@@ -22,6 +22,11 @@ body {
     border-radius: 0;
 }
 
+.student-form input.form-control:hover {
+    box-shadow: none;
+    border-color: #007bff;
+}
+
 .student-form input.form-control:focus {
     box-shadow: none;
     border-color: #007bff;
