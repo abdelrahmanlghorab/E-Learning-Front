@@ -137,6 +137,10 @@ body {
     background-color: #121212;
     color: #f8f9fa;
   }
+  body.dark-mode .hero {
+    background-color: #121212;
+    color: #f8f9fa;
+  }
   
   body.dark-mode .navbar {
     background-color: #333;
