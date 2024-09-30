@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-student-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './student-sign-up.component.html',
   styleUrls: ['./student-sign-up.component.css']
 })
@@ -14,17 +15,17 @@ export class StudentSignUPComponent implements OnInit {
   registerForm: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
-  eyeIcon: string = 'fas fa-eye'; 
-  confirmEyeIcon: string = 'fas fa-eye'; 
+  eyeIcon: string = 'fas fa-eye';
+  confirmEyeIcon: string = 'fas fa-eye';
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]], 
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
-        Validators.required, 
+        Validators.required,
         Validators.minLength(8),
-        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*') 
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*')
       ]],
       confirmPassword: ['', Validators.required],
       nationalId: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
@@ -32,7 +33,7 @@ export class StudentSignUPComponent implements OnInit {
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
       profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
-      
+
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -57,7 +58,7 @@ export class StudentSignUPComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log("Form Submitted", this.registerForm.value);
     } else {
-      this.registerForm.markAllAsTouched(); 
+      this.registerForm.markAllAsTouched();
     }
   }
 
