@@ -14,16 +14,25 @@ section.container > div {
     font-size: 20px;
     padding: 15px;
   }
-  
-  button {
-    height: 60px !important;
-    font-size: 22px;
-    font-weight: 700;
-    transition: 0.3s;
-  }
-  button:hover {
-    transform: scale(1.05); 
 
+  button {
+    padding: 0.4rem 1rem;
+    color: var(--bg);
+    background: linear-gradient(
+        90deg,
+        var(--wave1, #007bff ),
+        var(--wave2,#00ccff ) 51%,
+        var(--wave1,  rgb(0 107 179))
+      )
+      var(--x, 0) / 200%;
+    scale: 1;
+    transition: 0.4s;
+  }
+  
+  
+  button:hover {
+    scale: 0.995;
+    --x: 100%;
   }
   
   h3 {

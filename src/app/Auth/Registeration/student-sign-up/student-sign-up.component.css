@@ -32,18 +32,25 @@ body {
     border-color: #007bff;
 }
 
-.btn-primary {
-    background: linear-gradient(to right, #4b5dfb, #4285f4);
-    border: none;
-    padding: 10px 15px; 
-    font-size: 16px; 
-}
-
-.btn-primary:hover {
-    background: linear-gradient(to right, #3a4dc3, #3572d2);
-    transform: scale(1.05); 
-}
-
+.main-btn {
+    padding: 0.4rem 1rem;
+    color: var(--bg);
+    background: linear-gradient(
+        90deg,
+        var(--wave1, #007bff ),
+        var(--wave2,#00ccff ) 51%,
+        var(--wave1,  rgb(0 107 179))
+      )
+      var(--x, 0) / 200%;
+    scale: 1;
+    transition: 0.4s;
+  }
+  
+  
+  .main-btn:hover {
+    scale: 0.995;
+    --x: 100%;
+  }
 h2 {
     color: #f5a623;
     font-weight: bold;
