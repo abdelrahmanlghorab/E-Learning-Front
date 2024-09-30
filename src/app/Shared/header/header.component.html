@@ -1,49 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="direction:rtl;">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#">
-        <img src="image.png" alt="eduNex-light" style="width: 80px;">
-      </a>
-
-      <!-- Navbar Toggle Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Navbar Links -->
+<nav class=" handel  navbar navbar-expand-lg navbar-light" style="direction:rtl; height: 70px;">
+    <div class="container-fluid d-flex justify-content-round ">
+      <div>
+        <a class="navbar-brand"  routerLink="">
+          <img src="favicon.ico" alt="Ana Kafuo" width="90px"   height="">
+        </a>
+      </div>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">الرئيسية</a>
+            <a class="nav-link  fw-bold" href="#">الرئيسية</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">الكورسات</a>
+            <a class="nav-link fw-bold" routerLink="test">الكورسات</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">المدرسين</a>
+            <a class="nav-link fw-bold" href="#">المدرسين</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">الأختبارات </a>
+            <a class="nav-link fw-bold" href="#">الأختبارات </a>
           </li>
         </ul>
+      </div>
 
-        <!-- Right Section -->
         <div class="d-flex align-items-center mx-auto">
-          <!-- Theme Toggle -->
           <div class="theme-toggle">
             <input class="toggle-checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()">
             <i class="fa-solid fa-sun" id="theme-icon"></i>
           </div>
 
-          <!-- Login Dropdown -->
-          <div class="dropdown disk">
+          <div class="dropdown disk mx-4">
             <i class="fa-regular fa-circle-user mx-1"></i>
-            <a href="#" class="nav-link" id="login" aria-expanded="false">تسجيل الدخول</a>
+            <a routerLink="/signin" class="nav-link " id="login" aria-expanded="false">تسجيل الدخول</a>
           </div>
-
-          <!-- New Student Button -->
-          <button class="custom-button">طالب جديد</button>
+          <a routerLink="/studentSignup" class="custom-button text-decoration-none">طالب جديد</a>
         </div>
-      </div>
+      
     </div>
   </nav>

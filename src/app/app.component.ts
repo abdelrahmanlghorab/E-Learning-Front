@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { SignInComponent } from "./Auth/sign-in/sign-in.component";
 import { StudentSignUPComponent } from "./Auth/Registeration/student-sign-up/student-sign-up.component";
 import { TeacherSignUPComponent } from "./Auth/Registeration/teacher-sign-up/teacher-sign-up.component";
@@ -9,13 +9,13 @@ import { AboutUsComponent } from './LandingPage/about-us/about-us.component';
 import { MostResentCoursesComponent } from './LandingPage/most-resent-courses/most-resent-courses.component';
 import { HeaderComponent } from "./Shared/header/header.component";
 import { FooterComponent } from "./Shared/footer/footer.component";
+import { HomeComponent } from "./home/home.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent],
 
-  imports: [RouterOutlet, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet,RouterLink, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

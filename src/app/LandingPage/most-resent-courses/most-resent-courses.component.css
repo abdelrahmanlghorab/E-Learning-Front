@@ -133,7 +133,7 @@ section .section-title {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   padding-block: 0.5rem;
   padding-inline: 1.25rem;
-  background-color: rgb(0 107 179);
+    background: linear-gradient(45deg, #007bff, #00ccff);
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@ section .section-title {
   font-weight: bold;
   border: 3px solid #ffffff4d;
   outline: none;
-  overflow: hidden;
+  overflow: hidden; 
   font-size: 15px;
 }
 
