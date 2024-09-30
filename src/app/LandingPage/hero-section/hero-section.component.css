@@ -1,4 +1,3 @@
-
 .hero {
   min-height: calc(85dvh);
 }
@@ -11,15 +10,11 @@
       var(--wave1, #007bff ),
       var(--wave2,#00ccff ) 51%,
       var(--wave1,  rgb(0 107 179))
-      var(--wave1, #007bff ),
-      var(--wave2,#00ccff ) 51%,
-      var(--wave1,  rgb(0 107 179))
     )
     var(--x, 0) / 200%;
   scale: 1;
   transition: 0.4s;
 }
-
 
 
 .main-btn:hover {
@@ -57,17 +52,8 @@ button span:first-child {
 button span svg {
   position: absolute;
   top: 45%;
-  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: whitesmoke;
-  border-radius:50%;
-  color: linear-gradient(
-      90deg,
-      var(--wave1, #007bff ),
-      var(--wave2,#00ccff ) 51%,
-      var(--wave1,  rgb(0 107 179))
-    ) !important;
   background-color: whitesmoke;
   border-radius:50%;
   color: linear-gradient(
