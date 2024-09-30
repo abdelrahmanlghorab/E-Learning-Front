@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link  fw-bold" href="#">الرئيسية</a>
+            <a class="nav-link fw-bold" href="#">الرئيسية</a>
           </li>
           <li class="nav-item">
             <a class="nav-link fw-bold" routerLink="test">الكورسات</a>
@@ -22,17 +22,17 @@
         </ul>
       </div>
 
-        <div class="d-flex align-items-center mx-auto">
-          <div class="theme-toggle">
+        <div class="d-flex align-items-center mx-auto" >
+          <div class="theme-toggle" >
             <input class="toggle-checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()">
             <i class="fa-solid fa-sun" id="theme-icon"></i>
           </div>
 
-          <div class="dropdown disk mx-4">
-            <i class="fa-regular fa-circle-user mx-1"></i>
-            <a routerLink="/signin" class="nav-link " id="login" aria-expanded="false">تسجيل الدخول</a>
+          <div class="dropdown disk mx-4 " style="font-size: medium;">
+            <i class="fa-regular fa-circle-user mx-1 fa-xl"></i>
+            <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false">تسجيل الدخول</a>
           </div>
-          <a routerLink="/studentSignup" class="custom-button text-decoration-none">طالب جديد</a>
+          <a style="font-size: small; " routerLink="/studentSignup" class="custom-button text-decoration-none ">طالب جديد</a>
         </div>
       
     </div>

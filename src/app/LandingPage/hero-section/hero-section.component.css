@@ -5,13 +5,7 @@
 .main-btn {
   padding: 0.4rem 1rem;
   color: var(--bg);
-  background: linear-gradient(
-      90deg,
-      var(--wave1, #007bff ),
-      var(--wave2,#00ccff ) 51%,
-      var(--wave1,  rgb(0 107 179))
-    )
-    var(--x, 0) / 200%;
+  background: linear-gradient(45deg, #02448b, #00ccff) !important;
   scale: 1;
   transition: 0.4s;
 }
@@ -64,9 +58,9 @@ button span svg {
     ) !important;
 }
 
+
 .image {
   position: relative;
-  /* width: 90%; */
   width: 100%;
   transform: scaleX(-1);
 }

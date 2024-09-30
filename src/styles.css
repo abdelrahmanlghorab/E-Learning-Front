@@ -24,6 +24,32 @@ body {
     margin-right: 25px;
     transition: color 0.3s ease;
   }
+  .theme-light {
+    --secondary: rgb(24, 24, , 27);
+  
+    --border: rgba(63, 63, 70, 0.12);
+    --border2: rgb(244, 244, 255);
+  
+    --active: rgba(0, 0, 0, 0.04);
+  
+    --btn: linear-gradient(120deg, #2D388A, #00AEEF);
+  
+    --wave1: #2D388A;
+    --wave2: #00AEEF;
+  
+    --wave2Shadow: #00AEEF22;
+  
+    --title: rgb(244, 244, 255);
+    --subtitle: rgb(161, 161, 170);
+  
+    --bgHeader: rgb(39, 39, 42);
+    --bg: #FBFBFB;
+  
+    --icon-hover: #d4d4d8;
+  
+    --loading: #f5f5f5;
+    --checkbox: #ccccccba;
+  }
 
   .navbar-nav .nav-link:hover {
     color: #007bff;
@@ -34,10 +60,9 @@ body {
     border-bottom: 3px solid #007bff;
   }
 
-  /* Button Customization */
   .custom-button {
     padding: 10px 20px;
-    background: linear-gradient(45deg, #007bff, #00ccff);
+    background: linear-gradient(45deg, #02448b, #00ccff);
     border: none;
     border-radius: 30px;
     color: white;
