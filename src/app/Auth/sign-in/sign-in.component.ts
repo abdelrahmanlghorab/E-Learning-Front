@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
@@ -19,8 +20,8 @@ export class SignInComponent {
 
   constructor(private fb: FormBuilder ,private router: Router     ) {
     this.signInForm = this.fb.group({
-      studentEmail: ['', [Validators.required, Validators.email]],  
-      password: ['', [Validators.required, Validators.minLength(6)]] 
+      studentEmail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -33,7 +34,7 @@ export class SignInComponent {
     if (this.signInForm.valid) {
       console.log('Form Submitted', this.signInForm.value);
     } else {
-      this.signInForm.markAllAsTouched(); 
+      this.signInForm.markAllAsTouched();
     }
   }
 
