@@ -84,7 +84,8 @@ input:checked + .slider:before {
 }
 
 @media (min-width: 769px) {
-    .handel{
-        border-collapse: collapse;
-    }
+  .handel {
+    border-collapse: collapse;
+  }
 }
+
