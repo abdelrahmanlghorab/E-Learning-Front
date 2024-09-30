@@ -10,14 +10,18 @@ import { MostResentCoursesComponent } from './LandingPage/most-resent-courses/mo
 import { HeaderComponent } from "./Shared/header/header.component";
 import { FooterComponent } from "./Shared/footer/footer.component";
 import { HomeComponent } from "./home/home.component";
+import { ForgetPasswordComponent } from "./Auth/forget-password/forget-password.component";
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
 
-  imports: [RouterOutlet,RouterLink, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent],
+  imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent],
+
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'ana-kafou';
