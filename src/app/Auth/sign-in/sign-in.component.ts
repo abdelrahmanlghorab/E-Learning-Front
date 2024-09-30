@@ -18,7 +18,7 @@ export class SignInComponent {
   passwordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder ,private router: Router , private authservice: AuthService    ) {
+  constructor(private fb: FormBuilder ,private router: Router) {
     this.signInForm = this.fb.group({
       studentEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
