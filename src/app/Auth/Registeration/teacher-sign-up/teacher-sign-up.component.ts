@@ -36,13 +36,11 @@ export class TeacherSignUPComponent implements OnInit {
     }, { validator: this.passwordMatchValidator });
   }
 
-  // Custom Validator to check if passwords match
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('confirmPassword')?.value 
       ? null : { passwordMismatch: true };
   }
 
-  // Getter for easier access to form controls in HTML
   get f() { return this.registerForm.controls; }
 
   togglePasswordVisibility() {
@@ -59,7 +57,7 @@ export class TeacherSignUPComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log("Form Submitted", this.registerForm.value);
     } else {
-      console.log("Form is invalid");
+      this.registerForm.markAllAsTouched(); 
     }
   }
 }

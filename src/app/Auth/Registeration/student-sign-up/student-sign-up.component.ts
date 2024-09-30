@@ -26,7 +26,13 @@ export class StudentSignUPComponent implements OnInit {
         Validators.minLength(6),
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*') 
       ]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      nationalId: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
+      gender: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
+      profilePicture: ['', Validators.required]
+      
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -49,7 +55,9 @@ export class StudentSignUPComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log('Form Submitted', this.registerForm.value);
+      console.log("Form Submitted", this.registerForm.value);
+    } else {
+      this.registerForm.markAllAsTouched(); 
     }
   }
 
