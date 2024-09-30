@@ -6,19 +6,20 @@ import { TeacherSignUPComponent } from "./Auth/Registeration/teacher-sign-up/tea
 import { ForgetPasswordComponent } from "./Auth/forget-password/forget-password.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AdminComponent } from "./Dashboard/admin/admin.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
-    SignInComponent, 
-    ReactiveFormsModule, 
+    RouterOutlet,
+    SignInComponent,
+    ReactiveFormsModule,
     CommonModule,
-    StudentSignUPComponent, 
-    TeacherSignUPComponent, 
-    ForgetPasswordComponent
-  ],
+    StudentSignUPComponent,
+    TeacherSignUPComponent,
+    ForgetPasswordComponent,
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
