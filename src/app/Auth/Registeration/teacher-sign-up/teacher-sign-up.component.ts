@@ -32,7 +32,7 @@ export class TeacherSignUPComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required]
+      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")]
     }, { validator: this.passwordMatchValidator });
   }
 
