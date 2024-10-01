@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-student-sign-up',
@@ -18,21 +19,22 @@ export class StudentSignUPComponent implements OnInit {
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder ,private authservices: AuthService) {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
         Validators.minLength(8),
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*')
       ]],
-      confirmPassword: ['', Validators.required],
-      nationalId: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
+      password_confirmation: ['', Validators.required],
+      national_id: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
+      image: ['', Validators.required]
+        //  Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
 
     }, { validators: this.passwordMatchValidator });
   }
@@ -40,7 +42,7 @@ export class StudentSignUPComponent implements OnInit {
   ngOnInit(): void {}
 
   passwordMatchValidator(formGroup: FormGroup) {
-    return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
+    return formGroup.get('password')?.value === formGroup.get('password_confirmation')?.value
       ? null : { passwordMismatch: true };
   }
 
@@ -57,6 +59,14 @@ export class StudentSignUPComponent implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       console.log("Form Submitted", this.registerForm.value);
+      this.authservices.register(this.registerForm.value).subscribe(
+        (response) => {
+          console.log('Registration successful', response);
+        },
+        (error) => {
+          console.error('Registration failed', error);
+        }
+      );
     } else {
       this.registerForm.markAllAsTouched();
     }

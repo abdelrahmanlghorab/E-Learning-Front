@@ -19,7 +19,7 @@ import { AdminComponent } from "./Dashboard/admin/admin.component";
   selector: 'app-root',
   standalone: true,
 
-  imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent],
+  imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent, AdminComponent],
 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

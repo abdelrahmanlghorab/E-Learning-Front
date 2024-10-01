@@ -18,9 +18,9 @@ export class SignInComponent {
   passwordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder ,private router: Router     ) {
+  constructor(private fb: FormBuilder ,private router: Router ,private authservices: AuthService) {
     this.signInForm = this.fb.group({
-      studentEmail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -33,10 +33,20 @@ export class SignInComponent {
   onSubmit() {
     if (this.signInForm.valid) {
       console.log('Form Submitted', this.signInForm.value);
+      this.authservices.login(this.signInForm.value).subscribe(
+        (response) => {
+          console.log('Login successful', response);
+          this.router.navigate(['/student-dashboard']);
+        },
+        (error) => {
+          console.error('Login failed', error);
+        }
+      );
     } else {
       this.signInForm.markAllAsTouched();
     }
   }
+  
 
   get formControls() {
     return this.signInForm.controls;
