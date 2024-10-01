@@ -7,14 +7,14 @@
       </h6>
     </div>
 
-    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="signInForm"  (ngSubmit)="onSubmit()">
       <div class="row mt-5">
         <div class="col">
           <div class="form-group">
             <label for="studentEmail">عنوان البريد الإلكتروني</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              <input type="email" formControlName="studentEmail" id="studentEmail" class="form-control"
+              <input type="email" [(ngModel)]="loginObj.email" name="email" formControlName="studentEmail" id="studentEmail" class="form-control"
                      placeholder="البريد الإلكتروني" aria-label="عنوان البريد الإلكتروني" required>
             </div>
             <div *ngIf="formControls['studentEmail'].touched && formControls['studentEmail'].invalid" class="text-danger">
@@ -31,7 +31,7 @@
             <label for="password">كلمة السر</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-lock"></i></span>
-              <input [type]="passwordFieldType" formControlName="password" id="password" class="form-control"
+              <input [type]="passwordFieldType" [(ngModel)]="loginObj.password" name="password" formControlName="password" id="password" class="form-control"
                      placeholder="كلمة السر" aria-label="كلمة السر" required>
               <span class="input-group-text" (click)="togglePasswordVisibility()" style="cursor: pointer;">
                 <i [class]="eyeIcon"></i>
@@ -48,7 +48,7 @@
       </div>
 
       <div class="d-grid gap-3 text-center my-4">
-        <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" type="submit" >تسجيل الدخول  </button>
+        <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" (click)="onLogin()" type="submit" >تسجيل الدخول  </button>
         <p>لا يوجد لديك حساب؟
           <a routerLink="/studentSignup" class="text-second text-decoration-none" style="color: orange;">انشئ حسابك الآن</a>
         </p>
