@@ -2,7 +2,15 @@
   <div class="flex filter-container gap-2 flex-wrap">
 <div class="card-container">
   <div class="d-flex flex-wrap gap-3">
-<app-card></app-card>
+    @if(courses){
+      @for(course of courses;track $index){
+        <app-card [course]="course"></app-card>
+      }
+    }@else {
+      <div class="d-flex justify-content-center align-items-center w-100">
+        <h1>No Courses Found</h1>
+      </div>
+    }
 </div>
 </div>
 </div>
