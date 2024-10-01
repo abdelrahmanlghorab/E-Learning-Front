@@ -114,13 +114,17 @@
                     <span class="input-group-text"><i class="fas fa-image"></i></span>
                     <input type="file" id="profilePicture" class="form-control" formControlName="profilePicture">
                 </div>
+                <div *ngIf="f['profilePicture'].invalid && (f['profilePicture'].dirty || f['profilePicture'].touched)" class="text-danger">
+                    <small *ngIf="f['profilePicture'].errors?.['required']">الصورة مطلوبة.</small>
+                    <small *ngIf="f['profilePicture'].errors?.['pattern']">الرجاء تحميل صورة صالحة (PNG, JPG, JPEG).</small>
+                </div>
             </div>
 
             <button type="submit" class="btn main-btn rounded-5 custom-button w-100" >إنشاء حساب</button>
         </form>
 
         <div class="text-center mt-3">
-            <p>يوجد لديك حساب بالفعل؟ <a href="#">ادخل إلى حسابك الآن</a></p>
+            <p>يوجد لديك حساب بالفعل؟ <a routerLink="/signin">ادخل إلى حسابك الآن</a></p>
         </div>
     </div>
 </div>

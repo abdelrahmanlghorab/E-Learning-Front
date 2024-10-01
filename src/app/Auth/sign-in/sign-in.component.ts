@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class SignInComponent {
   passwordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder ,private router: Router) {
     this.signInForm = this.fb.group({
       studentEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]

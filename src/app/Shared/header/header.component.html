@@ -23,17 +23,19 @@
       </div>
 
         <div class="d-flex align-items-center mx-auto" >
-          <div class="theme-toggle" >
-            <input class="toggle-checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()">
-            <i class="fa-solid fa-sun" id="theme-icon"></i>
-          </div>
+          <label class="switch">
 
-          <div class="dropdown disk mx-4 " style="font-size: medium;">
-            <i class="fa-regular fa-circle-user mx-1 fa-xl"></i>
-            <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false">تسجيل الدخول</a>
+          <div class="theme-toggle">
+            <input class="checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()">
+                <span class="slider"></span>
           </div>
-          <a style="font-size: small; " routerLink="/studentSignup" class="custom-button text-decoration-none ">طالب جديد</a>
+          </label>
+          <div class="dropdown disk mx-4">
+            <i class="fa-regular fa-circle-user mx-1"></i>
+            <a routerLink="/signin" class="nav-link " id="login" aria-expanded="false">تسجيل الدخول</a>
+          </div>
+          <a style="font-size: small; " routerLink="/studentSignup" class="main-btn text-decoration-none ">طالب جديد</a>
         </div>
-      
+
     </div>
   </nav>

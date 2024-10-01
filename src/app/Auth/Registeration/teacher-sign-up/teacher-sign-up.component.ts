@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 @Component({
-  selector: 'app-teacher-sign-up',  
+  selector: 'app-teacher-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule] ,
+  imports: [ReactiveFormsModule,CommonModule,RouterLink] ,
   templateUrl: './teacher-sign-up.component.html',
   styleUrls: ['./teacher-sign-up.component.css']
 })
@@ -13,8 +14,8 @@ export class TeacherSignUPComponent implements OnInit {
   registerForm!: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
-  eyeIcon: string = 'fas fa-eye'; 
-  confirmEyeIcon: string = 'fas fa-eye'; 
+  eyeIcon: string = 'fas fa-eye';
+  confirmEyeIcon: string = 'fas fa-eye';
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,8 +24,8 @@ export class TeacherSignUPComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zء-ي]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
-        Validators.required, 
-        Validators.minLength(6), 
+        Validators.required,
+        Validators.minLength(6),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/)
       ]],
       confirmPassword: ['', Validators.required],
@@ -32,12 +33,12 @@ export class TeacherSignUPComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required]
+      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")]
     }, { validator: this.passwordMatchValidator });
   }
 
   passwordMatchValidator(form: FormGroup) {
-    return form.get('password')?.value === form.get('confirmPassword')?.value 
+    return form.get('password')?.value === form.get('confirmPassword')?.value
       ? null : { passwordMismatch: true };
   }
 
@@ -57,7 +58,7 @@ export class TeacherSignUPComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log("Form Submitted", this.registerForm.value);
     } else {
-      this.registerForm.markAllAsTouched(); 
+      this.registerForm.markAllAsTouched();
     }
   }
 }
