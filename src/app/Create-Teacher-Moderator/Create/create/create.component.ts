@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-student-sign-up',
+  selector: 'app-create',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './student-sign-up.component.html',
-  styleUrls: ['./student-sign-up.component.css']
+  imports: [CommonModule, ReactiveFormsModule,RouterLink],
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.css'
 })
-export class StudentSignUPComponent implements OnInit {
-  registerForm: FormGroup;
+export class CreateComponent  implements OnInit {
+  createForm: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
   constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
+    this.createForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
@@ -37,7 +37,8 @@ export class StudentSignUPComponent implements OnInit {
     }, { validators: this.passwordMatchValidator });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
       ? null : { passwordMismatch: true };
@@ -54,14 +55,14 @@ export class StudentSignUPComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      console.log("Form Submitted", this.registerForm.value);
+    if (this.createForm.valid) {
+      console.log("تم إنشاء بنجاح", this.createForm.value);
     } else {
-      this.registerForm.markAllAsTouched();
+      this.createForm.markAllAsTouched();
     }
   }
-
   get f() {
-    return this.registerForm.controls;
+    return this.createForm.controls;
   }
+
 }

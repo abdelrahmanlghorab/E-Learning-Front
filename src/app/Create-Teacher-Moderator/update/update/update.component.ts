@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
 @Component({
-  selector: 'app-student-sign-up',
+  selector: 'app-update',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './student-sign-up.component.html',
-  styleUrls: ['./student-sign-up.component.css']
+  imports: [CommonModule, ReactiveFormsModule,RouterLink],
+  templateUrl: './update.component.html',
+  styleUrl: './update.component.css'
 })
-export class StudentSignUPComponent implements OnInit {
-  registerForm: FormGroup;
+export class UpdateComponent {
+  updateForm: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
   constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
+    this.updateForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
@@ -32,12 +31,12 @@ export class StudentSignUPComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
+      profilePicture: ['', Validators.required]
 
     }, { validators: this.passwordMatchValidator });
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
       ? null : { passwordMismatch: true };
@@ -54,14 +53,17 @@ export class StudentSignUPComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      console.log("Form Submitted", this.registerForm.value);
+    if (this.updateForm.valid) {
+      alert("تم التعديل بنجاح ")
+      console.log( this.updateForm.value);
     } else {
-      this.registerForm.markAllAsTouched();
+      alert('من فضلك ادخل البيانات ');
+      console.log( this.updateForm);
+      // this.updateForm.markAllAsTouched();
     }
   }
-
   get f() {
-    return this.registerForm.controls;
+    return this.updateForm.controls;
   }
+
 }

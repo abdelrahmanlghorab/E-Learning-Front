@@ -4,6 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/student-sign-up.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
+import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create.component';
+import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
+import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +28,21 @@ export const routes: Routes = [
     path: 'forgetPassword',
     component: ForgetPasswordComponent,
     title: 'Forget Password',
+  },
+  {
+    path: 'createorganizer',
+    component: CreateComponent,
+    title: 'Create Organizer',
+  },
+  {
+    path: 'updateorganizer',
+    component: UpdateComponent,
+    title: 'Update Organizer',
+  }, 
+  {
+    path: 'allorganizer',
+    component: IndexComponent,
+    title: 'All Organizer',
   },
   {
     path: '**',
