@@ -9,6 +9,9 @@ import { CourseDetailComponent } from './Course/course-detail/course-detail.comp
 import { CourseCreateComponent } from './Course/course-create/course-create.component';
 import { CourseUpdateComponent } from './Course/course-update/course-update.component';
 import { CourseViewComponent } from './Course/course-view/course-view.component';
+import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create.component';
+import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
+import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +58,21 @@ export const routes: Routes = [
     path: 'admin/courses',
     component: CourseViewComponent,
     title: 'Courses',
+  },
+  {
+    path: 'createorganizer',
+    component: CreateComponent,
+    title: 'Create Organizer',
+  },
+  {
+    path: 'updateorganizer',
+    component: UpdateComponent,
+    title: 'Update Organizer',
+  },
+  {
+    path: 'allorganizer',
+    component: IndexComponent,
+    title: 'All Organizer',
   },
   {
     path: '**',
