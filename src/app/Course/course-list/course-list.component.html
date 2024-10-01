@@ -1,7 +1,8 @@
-<div class="d-flex align-items-start parent container gap-4">
-  <div class="flex filter-container gap-2 flex-wrap">
+<div class="w-100 d-flex align-items-start parent gap-3">
 <div class="card-container">
-  <div class="d-flex flex-wrap gap-3">
+      <h1 class="m-5 font-24-bold text-center">أحدث الكورسات </h1>
+
+  <div class="d-flex flex-wrap justify-content-center  gap-3">
     @if(courses){
       @for(course of courses;track $index){
         <app-card [course]="course"></app-card>
@@ -14,4 +15,4 @@
 </div>
 </div>
 </div>
-</div>
+

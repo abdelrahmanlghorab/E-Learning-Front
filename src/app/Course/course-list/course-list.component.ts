@@ -16,7 +16,6 @@ export class CourseListComponent {
   ngOnInit() {
     this.courseService.getAllCourses().subscribe((data: any) => {
       this.courses = data;
-      console.log(this.courses);
     });
   }
 }
