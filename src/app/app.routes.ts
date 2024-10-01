@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/student-sign-up.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
+import { CourseListComponent } from './Course/course-list/course-list.component';
+import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +27,16 @@ export const routes: Routes = [
     path: 'forgetPassword',
     component: ForgetPasswordComponent,
     title: 'Forget Password',
+  },
+  {
+    path: 'courses',
+    component: CourseListComponent,
+    title: 'Our Courses',
+  },
+  {
+    path: 'course/:id',
+    component: CourseDetailComponent,
+    title: 'Course Detail',
   },
   {
     path: '**',
