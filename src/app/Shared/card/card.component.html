@@ -1,1 +1,35 @@
-<p>card works!</p>
+<a [routerLink]="['/course', course.id]" class="card-link">
+  <div class="card example-card h-100" (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
+    <img [src]="course.thumbnail" alt="Sample Image" class="thumbnail card-img">
+
+    <div class="label">
+      <p>{{ course.title }}</p>
+    </div>
+    <div class="header-icon-container">
+      <a [routerLink]="['/course', course.id]">
+        <i class="material-icons header-icon"></i>
+      </a>
+    </div>
+    <div class="top-bottom-container">
+      <div class="top flex flex-column gap-2 profile">
+        <img class="rounded-picture" src="9829626.jpg" alt="Profile Picture">
+        <span class="name">Ahmed Mohamed</span>
+      </div>
+      <div class="bottom w-100 ">
+        <h6 class="description">{{ course.title }}</h6>
+        <div class="flex justify-content-between">
+      <div class="row">
+            <div class="flex gap-1 col-6">
+              <img src="boy.5g.svg" class="ms-4" alt="boy">
+              <span class="category">Entry Level</span>
+            </div>
+            <div class="flex gap-2 col-6 text-end">
+              <img src="money.svg" class="me-2" alt="MoneyBadge">
+              <span class="price ">$100</span>
+            </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

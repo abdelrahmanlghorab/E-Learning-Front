@@ -7,6 +7,7 @@ import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.
 import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create.component';
 import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
+import { CourseListComponent } from './Course/course-list/course-list.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,11 @@ export const routes: Routes = [
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+  },
+  {
+    path: 'courses',
+    component: CourseListComponent,
+    title: 'Our Courses',
   },
   {
     path: '**',
