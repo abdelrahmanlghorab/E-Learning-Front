@@ -1,27 +1,28 @@
 svg {
     margin-bottom: -6vw;
   }
-  
+
   footer {
     background-color: #2d2d2d;
     min-height: 5rem;
+    
   }
-  
+
   .social-icons button .mat-icon {
     color: white;
   }
-  
+
   .social-icons button:hover .mat-icon {
     opacity: 1;
   }
-  
+
   ul {
     display: flex;
     list-style: none;
     gap: 0.95rem;
     padding: 0;
   }
-  
+
   .item a {
     text-decoration: none;
     width: 3rem;
@@ -36,7 +37,7 @@ svg {
     border: 3px solid var(--bg);
     overflow: hidden;
   }
-  
+
   .item a::before {
     content: "";
     position: absolute;
@@ -49,23 +50,23 @@ svg {
     transition: scale 0.5s ease;
     border-radius: 30%;
   }
-  
+
   .item:hover a::before {
     scale: 1 1;
   }
-  
+
   .icon {
     font-size: 2rem;
     color: var(--bgHeader);
     transition: 0.75s ease;
     z-index: 2;
   }
-  
+
   .item a:hover .icon {
     color: #fff;
     transform: rotate(360deg);
   }
-  
+
   .item:nth-child(1) {
     --bg-color: #0077b5;
   }
@@ -78,7 +79,7 @@ svg {
   .item:nth-child(4) {
     --bg-color: #ff0000;
   }
-  
+
   @media (max-width: 990px) {
     .footer-content {
       flex-direction: column;
@@ -99,7 +100,7 @@ svg {
     border-color: var(--bgHeader) !important;
     transition: 0.3s;
   }
-  
+
   /* Change the border width */
   ::ng-deep
     .mdc-text-field--outlined:not(.mdc-text-field--disabled)
@@ -115,7 +116,7 @@ svg {
     .mdc-notched-outline__trailing {
     border-width: 1.5px !important;
   }
-  
+
   /* Change the border focused color */
   ::ng-deep
     .mdc-text-field--outlined:not(
@@ -134,7 +135,7 @@ svg {
     .mdc-notched-outline__trailing {
     border-color: var(--wave2) !important;
   }
-  
+
   /* Change the border hover color */
   ::ng-deep
     .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
@@ -156,7 +157,7 @@ svg {
     .mdc-notched-outline__trailing {
     border-color: var(--wave2) !important;
   }
-  
+
   ::ng-deep .mat-mdc-dialog-surface,
   ::ng-deep .mat-mdc-menu-panel,
   ::ng-deep .mat-mdc-select-panel.ng-trigger,
@@ -165,54 +166,54 @@ svg {
     box-shadow: var(--border) 0px 0px 0px 1px !important;
     border-radius: 10px !important;
   }
-  
+
   ::ng-deep .cdk-overlay-pane {
     margin-top: 0.65rem !important;
   }
-  
+
   ::ng-deep .cdk-overlay-pane {
     direction: rtl !important;
   }
-  
+
   ::ng-deep .mdc-snackbar__surface,
   ::ng-deep .mat-mdc-snack-bar-label {
     background-color: brown !important;
     border-radius: 10px !important;
   }
-  
+
   ::ng-deep .snackbar-success .mdc-snackbar__surface,
   ::ng-deep .snackbar-success .mat-mdc-snack-bar-label {
     background-color: green !important;
   }
-  
+
   ::ng-deep .mat-mdc-snack-bar-actions .mdc-button__label,
   ::ng-deep .mat-mdc-snack-bar-label {
     color: white !important;
   }
-  
+
   ::ng-deep
     .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
     .mdc-list-item__primary-text,
   ::ng-deep .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after {
     color: #4bb543 !important;
   }
-  
+
   ::ng-deep mat-label {
     color: var(--bgHeader) !important;
   }
-  
+
   ::ng-depp mat-error {
     color: red !important;
   }
-  
+
   ::ng-deep .mat-mdc-card {
     border-radius: 10px !important;
   }
-  
+
   ::ng-deep .mat-datepicker-toggle {
     color: var(--bgHeader) !important;
   }
-  
+
   /* ::ng-deep .mat-mdc-row:hover {
     background-color: var(--active) !important;
     transition: 0.3s;
