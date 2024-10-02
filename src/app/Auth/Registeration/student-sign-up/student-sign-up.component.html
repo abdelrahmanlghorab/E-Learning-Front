@@ -3,7 +3,7 @@
       <h2 class="mb-6 font-24-bold text-center">انشئ حساب طالب الآن</h2>
       <p class="text-center">ادخل بياناتك بشكل صحيح للحصول على أفضل تجربة داخل الموقع</p>
   
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="row mb-3">
           <label for="name" class="form-label">الاسم <span class="text-danger">*</span></label>
           <div class="input-group">
@@ -108,12 +108,12 @@
       </div>
 
       <div class="mb-3">
-        <label for="image" class="form-label">
+        <label for="image" class="form-label" >
           تحميل صورة <span class="text-danger">*</span>
         </label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-image"></i></span>
-          <input type="file" id="image" class="form-control" formControlName="image">
+          <input type="file" id="image" formControlName="image" class="form-control" (change)="onFileChange($event)" />
         </div>
         <div *ngIf="f['image'].invalid && (f['image'].dirty || f['image'].touched)" class="text-danger">
           <small *ngIf="f['image'].errors?.['required']">الصورة مطلوبة.</small>

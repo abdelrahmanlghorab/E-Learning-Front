@@ -56,23 +56,52 @@ export class StudentSignUPComponent implements OnInit {
     this.confirmEyeIcon = this.confirmEyeIcon === 'fas fa-eye' ? 'fas fa-eye-slash' : 'fas fa-eye';
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      console.log("Form Submitted", this.registerForm.value);
-      this.authservices.register(this.registerForm.value).subscribe(
-        (response) => {
-          console.log('Registration successful', response);
-        },
-        (error) => {
-          console.error('Registration failed', error);
-        }
-      );
-    } else {
-      this.registerForm.markAllAsTouched();
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.registerForm.patchValue({
+        image: file
+      });
     }
   }
+
+onSubmit() {
+  if (this.registerForm.valid) {
+    const formData = new FormData();
+
+    formData.append('name', this.registerForm.get('name')?.value);
+    formData.append('email', this.registerForm.get('email')?.value);
+    formData.append('password', this.registerForm.get('password')?.value);
+    formData.append('password_confirmation', this.registerForm.get('password_confirmation')?.value);
+    formData.append('national_id', this.registerForm.get('national_id')?.value);
+    formData.append('gender', this.registerForm.get('gender')?.value);
+    formData.append('address', this.registerForm.get('address')?.value);
+    formData.append('phone', this.registerForm.get('phone')?.value);
+
+    const imageFile = this.registerForm.get('image')?.value as File;
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+
+    console.log("Form Submitted", this.registerForm.value);
+
+    this.authservices.register(formData).subscribe(
+      (response) => {
+        console.log('Registration successful', response);
+      },
+      (error) => {
+        console.error('Registration failed', error);
+      }
+    );
+  } else {
+    this.registerForm.markAllAsTouched();
+  }
+}
+
 
   get f() {
     return this.registerForm.controls;
   }
+
+
 }
