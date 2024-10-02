@@ -6,6 +6,9 @@ import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/stu
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { CourseListComponent } from './Course/course-list/course-list.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
+import { CourseCreateComponent } from './Course/course-create/course-create.component';
+import { CourseUpdateComponent } from './Course/course-update/course-update.component';
+import { CourseViewComponent } from './Course/course-view/course-view.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +40,21 @@ export const routes: Routes = [
     path: 'course/:id',
     component: CourseDetailComponent,
     title: 'Course Detail',
+  },
+  {
+    path: 'coursecreate',
+    component: CourseCreateComponent,
+    title: 'Create Course',
+  },
+  {
+    path: 'courseupdate/:id',
+    component: CourseUpdateComponent,
+    title: 'Update Course',
+  },
+  {
+    path: 'admin/courses',
+    component: CourseViewComponent,
+    title: 'Courses',
   },
   {
     path: '**',
