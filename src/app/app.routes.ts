@@ -8,6 +8,7 @@ import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create
 import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 import { CourseListComponent } from './Course/course-list/course-list.component';
+import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,11 @@ export const routes: Routes = [
     path: 'courses',
     component: CourseListComponent,
     title: 'Our Courses',
+  },
+  {
+    path: 'course/:id',
+    component: CourseDetailComponent,
+    title: 'Course Detail',
   },
   {
     path: '**',

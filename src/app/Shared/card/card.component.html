@@ -1,10 +1,6 @@
 <a [routerLink]="['/course', course.id]" class="card-link">
   <div class="card example-card h-100" (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
     <img [src]="course.thumbnail" alt="Sample Image" class="thumbnail card-img">
-
-    <div class="label">
-      <p>{{ course.title }}</p>
-    </div>
     <div class="header-icon-container">
       <a [routerLink]="['/course', course.id]">
         <i class="material-icons header-icon"></i>
