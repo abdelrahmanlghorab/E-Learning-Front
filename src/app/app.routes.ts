@@ -9,6 +9,7 @@ import { CourseDetailComponent } from './Course/course-detail/course-detail.comp
 import { CourseCreateComponent } from './Course/course-create/course-create.component';
 import { CourseUpdateComponent } from './Course/course-update/course-update.component';
 import { CourseViewComponent } from './Course/course-view/course-view.component';
+import { AdminComponent } from './Dashboard/admin/admin.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,11 @@ export const routes: Routes = [
     path: 'courseupdate/:id',
     component: CourseUpdateComponent,
     title: 'Update Course',
+  },
+  {
+    path:'admin',
+    component: AdminComponent,
+    title: 'Admin',
   },
   {
     path: 'admin/courses',
