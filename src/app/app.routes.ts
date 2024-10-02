@@ -65,7 +65,7 @@ export const routes: Routes = [
     title: 'Create Organizer',
   },
   {
-    path: 'updateorganizer',
+    path: 'updateorganizer/:id',
     component: UpdateComponent,
     title: 'Update Organizer',
   },
