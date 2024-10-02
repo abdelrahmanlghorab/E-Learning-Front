@@ -1,0 +1,11 @@
+.title
+{
+
+  height: 7rem;
+  background-color:#f5a623;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}

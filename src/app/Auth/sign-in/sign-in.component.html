@@ -11,15 +11,15 @@
       <div class="row mt-5">
         <div class="col">
           <div class="form-group">
-            <label for="studentEmail">عنوان البريد الإلكتروني</label>
+            <label for="email">عنوان البريد الإلكتروني</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              <input type="email" formControlName="studentEmail" id="studentEmail" class="form-control"
+              <input type="email" formControlName="email" id="email" class="form-control"
                      placeholder="البريد الإلكتروني" aria-label="عنوان البريد الإلكتروني" required>
             </div>
-            <div *ngIf="formControls['studentEmail'].touched && formControls['studentEmail'].invalid" class="text-danger">
-              <small *ngIf="formControls['studentEmail'].errors?.['required']">البريد الإلكتروني مطلوب.</small>
-              <small *ngIf="formControls['studentEmail'].errors?.['email']">البريد الإلكتروني غير صحيح.</small>
+            <div *ngIf="formControls['email'].touched && formControls['email'].invalid" class="text-danger">
+              <small *ngIf="formControls['email'].errors?.['required']">البريد الإلكتروني مطلوب.</small>
+              <small *ngIf="formControls['email'].errors?.['email']">البريد الإلكتروني غير صحيح.</small>
             </div>
           </div>
         </div>
