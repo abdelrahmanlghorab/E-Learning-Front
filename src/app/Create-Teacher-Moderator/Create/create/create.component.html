@@ -2,16 +2,16 @@
     <div class="form-container">
       <h2 class="mb-6 font-24-bold text-center">إنشاء معلم أو مدير الآن</h2>
       <hr>
-      <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="createForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="row mb-3">
           <label for="firstName" class="form-label">الاسم <span class="text-danger">*</span></label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-solid fa-user"></i></span>
-            <input type="text" id="firstName" class="form-control" placeholder="الاسم مطلوب" formControlName="firstName">
+            <input type="text" id="firstName" class="form-control" placeholder="الاسم مطلوب" formControlName="name">
           </div>
-          <div *ngIf="f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)" class="text-danger">
-            <small *ngIf="f['firstName'].errors?.['required']">الاسم مطلوب.</small>
-            <small *ngIf="f['firstName'].errors?.['pattern']">الاسم يجب أن يحتوي على أحرف فقط.</small>
+          <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger">
+            <small *ngIf="f['name'].errors?.['required']">الاسم مطلوب.</small>
+            <small *ngIf="f['name'].errors?.['pattern']">الاسم يجب أن يحتوي على أحرف فقط.</small>
           </div>
         </div>
         <div class="mb-3">
@@ -46,12 +46,12 @@
           <label for="confirmPassword" class="form-label">تأكيد كلمة السر <span class="text-danger">*</span></label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
-            <input [type]="confirmPasswordFieldType" id="confirmPassword" class="form-control" placeholder="أدخل تأكيد كلمة السر" formControlName="confirmPassword">
+            <input [type]="confirmPasswordFieldType" id="confirmPassword" class="form-control" placeholder="أدخل تأكيد كلمة السر" formControlName="password_confirmation">
             <span class="input-group-text" (click)="toggleConfirmPasswordVisibility()" style="cursor: pointer;">
               <i [class]="confirmEyeIcon"></i>
             </span>
           </div>
-          <div *ngIf="createForm.errors?.['passwordMismatch'] && (f['confirmPassword'].dirty || f['confirmPassword'].touched)" class="text-danger">
+          <div *ngIf="createForm.errors?.['passwordMismatch'] && (f['password_confirmation'].dirty || f['password_confirmation'].touched)" class="text-danger">
             <small>كلمات المرور غير متطابقة.</small>
           </div>
         </div>
@@ -59,11 +59,11 @@
           <label for="nationalId" class="form-label">الرقم القومى <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-              <input type="text" id="nationalId" class="form-control" placeholder="أدخل الرقم القومى" formControlName="nationalId">
+              <input type="text" id="nationalId" class="form-control" placeholder="أدخل الرقم القومى" formControlName="national_id">
           </div>
-          <div *ngIf="f['nationalId'].invalid && (f['nationalId'].dirty || f['nationalId'].touched)" class="text-danger">
-              <small *ngIf="f['nationalId'].errors?.['required']">الرقم القومي مطلوب.</small>
-              <small *ngIf="f['nationalId'].errors?.['pattern']">الرقم القومي غير صحيح.</small>
+          <div *ngIf="f['national_id'].invalid && (f['national_id'].dirty || f['national_id'].touched)" class="text-danger">
+              <small *ngIf="f['national_id'].errors?.['required']">الرقم القومي مطلوب.</small>
+              <small *ngIf="f['national_id'].errors?.['pattern']">الرقم القومي غير صحيح.</small>
           </div>
       </div>
 
@@ -73,12 +73,26 @@
               <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
               <select id="gender" class="form-select" formControlName="gender">
                   <option value="" disabled selected>اختر النوع</option>
-                  <option value="male">ذكر</option>
-                  <option value="female">أنثى</option>
+                  <option value="Male">ذكر</option>
+                  <option value="Female">أنثى</option>
               </select>
           </div>
           <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger">
               <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
+          </div>
+      </div>
+      <div class="mb-3">
+          <label for="gender" class="form-label">معلم او مدير  <span class="text-danger">*</span></label>
+          <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+              <select id="role_id" class="form-select" formControlName="role_id">
+                  <option value="" disabled selected>اختر دور</option>
+                  <option value="Teacher">معلم</option>
+                  <option value="Moderator">مدير</option>
+              </select>
+          </div>
+          <div *ngIf="f['role_id'].invalid && (f['role_id'].dirty || f['role_id'].touched)" class="text-danger">
+              <small *ngIf="f['role_id'].errors?.['required']">النوع مطلوب.</small>
           </div>
       </div>
 
@@ -111,16 +125,14 @@
         </label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-image"></i></span>
-          <input type="file" id="profilePicture" class="form-control" formControlName="profilePicture">
+          <input type="file" id="image" formControlName="image" class="form-control" (change)="onFileChange($event)" />
         </div>
-        <div *ngIf="f['profilePicture'].invalid && (f['profilePicture'].dirty || f['profilePicture'].touched)" class="text-danger">
-          <small *ngIf="f['profilePicture'].errors?.['required']">الصورة مطلوبة.</small>
-          <small *ngIf="f['profilePicture'].errors?.['pattern']">الرجاء تحميل صورة صالحة (PNG, JPG, JPEG).</small>
+        <div *ngIf="f['image'].invalid && (f['image'].dirty || f['image'].touched)" class="text-danger">
+          <small *ngIf="f['image'].errors?.['required']">الصورة مطلوبة.</small>
+          <small *ngIf="f['image'].errors?.['pattern']">الرجاء تحميل صورة صالحة (PNG, JPG, JPEG).</small>
       </div>
       </div>
-      
 
-  
         <button type="submit" class="btn main-btn rounded-5 custom-button w-100" >فرقع </button>
       </form>
   

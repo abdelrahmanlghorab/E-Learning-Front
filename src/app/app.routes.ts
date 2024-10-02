@@ -9,6 +9,7 @@ import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 import { CourseListComponent } from './Course/course-list/course-list.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
+import { TrashedComponent } from './Create-Teacher-Moderator/trashed/trashed/trashed.component';
 
 export const routes: Routes = [
   {
@@ -37,7 +38,7 @@ export const routes: Routes = [
     title: 'Create Organizer',
   },
   {
-    path: 'updateorganizer',
+    path: 'updateorganizer/:id',
     component: UpdateComponent,
     title: 'Update Organizer',
   }, 
@@ -55,6 +56,11 @@ export const routes: Routes = [
     path: 'course/:id',
     component: CourseDetailComponent,
     title: 'Course Detail',
+  },
+  {
+    path: 'trashorganizer',
+    component: TrashedComponent,
+    title:'Trashed organizer',
   },
   {
     path: '**',
