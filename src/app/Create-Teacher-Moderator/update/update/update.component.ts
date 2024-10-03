@@ -41,8 +41,8 @@ export class UpdateComponent {
       gender: ['', Validators.required],
       address : [''],
       phone : [''],
-      image: ['', Validators.required],
-      role_id: ['2']
+      // image: ['', Validators.required],
+      role_id: ['']
     });
 
 
@@ -122,42 +122,58 @@ onFileChange(event: any) {
   //     console.log('Form Invalid:', this.updateForm);
   //   }
   // }
+    // onSubmit() {
+    //   if (this.updateForm.invalid) {
+    //     console.log('Form is invalid');
+    //     return;
+    //   }
+
+    //   const formData = new FormData();
+
+    //   // Append all form fields to FormData
+    //   Object.keys(this.updateForm.controls).forEach(key => {
+    //     if (key !== 'image') {  // Handle image separately
+    //       formData.append(key, this.updateForm.get(key)?.value);
+    //     }
+    //   });
+
+    //   // Handle file upload separately
+    //   if (this.updateForm.get('image')?.value) {
+    //     formData.append('image', this.updateForm.get('image')?.value);
+    //   }
+
+    //   console.log('FormData content:');
+    //   formData.forEach((value, key) => {
+    //     console.log(key, value);
+    //   });
+
+    //   // Call the update organizer API with the form data
+    //   this.Organizerservece.updateorganizer(this.id, formData).subscribe(
+    //     (response: any) => {
+    //       console.log('Organizer updated successfully', response);
+    //     },
+    //     (error: any) => {
+    //       console.error('Error updating organizer', error);
+    //     }
+    //   );
+    // }
     onSubmit() {
       if (this.updateForm.invalid) {
         console.log('Form is invalid');
         return;
       }
-
-      const formData = new FormData();
-
-      // Append all form fields to FormData
-      Object.keys(this.updateForm.controls).forEach(key => {
-        if (key !== 'image') {  // Handle image separately
-          formData.append(key, this.updateForm.get(key)?.value);
-        }
-      });
-
-      // Handle file upload separately
-      if (this.updateForm.get('image')?.value) {
-        formData.append('image', this.updateForm.get('image')?.value);
-      }
-
-      console.log('FormData content:');
-      formData.forEach((value, key) => {
-        console.log(key, value);
-      });
-
-      // Call the update organizer API with the form data
-      this.Organizerservece.updateorganizer(this.id, this.updateForm).subscribe(
+      this.Organizerservece.updateorganizer(this.id,this.updateForm.value).subscribe(
         (response: any) => {
           console.log('Organizer updated successfully', response);
+          alert('Organizer updated successfully!');
         },
         (error: any) => {
           console.error('Error updating organizer', error);
+          alert('Error updating organizer.');
         }
       );
     }
-  
+    
   
   
 

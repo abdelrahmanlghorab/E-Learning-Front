@@ -54,7 +54,20 @@
               <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
           </div>
       </div>
-
+      <div class="mb-3">
+        <label for="gender" class="form-label">معلم او مدير  <span class="text-danger">*</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+            <select id="role_id" class="form-select" formControlName="role_id">
+                <option value="" disabled selected>اختر دور</option>
+                <option value="Teacher">معلم</option>
+                <option value="Moderator">مدير</option>
+            </select>
+        </div>
+        <div *ngIf="f['role_id'].invalid && (f['role_id'].dirty || f['role_id'].touched)" class="text-danger">
+            <small *ngIf="f['role_id'].errors?.['required']">النوع مطلوب.</small>
+        </div>
+    </div>
       <div class="mb-3">
           <label for="address"  class="form-label">العنوان التفصيلي <span class="text-danger">*</span></label>
           <div class="input-group">
