@@ -14,6 +14,8 @@ import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 import { AdminComponent } from './Dashboard/admin/admin.component';
 import { UserManagmentComponent } from './Dashboard/admin/user-managment/user-managment.component';
+import { PaymentComponent } from './Payment/payment/payment.component';
+import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +72,11 @@ export const routes: Routes = [
     path: 'admin/user-managment',
     component: UserManagmentComponent,
     title: 'User Managment',
+  },
+  {
+    path: 'admin/payment',
+    component: PaymentMangementComponent,
+    title: 'Payments',
   },
   {
     path: 'createorganizer',
