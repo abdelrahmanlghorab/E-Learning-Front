@@ -5,6 +5,13 @@ section.container > div {
     padding: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
+  custom-select .mat-form-field-flex {
+  background-color: #007bff; /* Blue background for the select field */
+  color: white; /* White text color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px; /* Padding inside the field */
+}
+
 
   label {
     font-size: 22px;

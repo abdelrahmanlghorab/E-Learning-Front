@@ -40,7 +40,6 @@ export class StudentSignUPComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password')?.value === formGroup.get('password_confirmation')?.value
       ? null : { passwordMismatch: true };
