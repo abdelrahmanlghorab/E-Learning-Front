@@ -20,7 +20,7 @@ export class StudentSignUPComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
@@ -65,4 +65,16 @@ export class StudentSignUPComponent implements OnInit {
   get f() {
     return this.registerForm.controls;
   }
+  registerObj:any = {
+    'name': '',
+    'email': '',
+    'password': '',
+    'password_confirmation': '',
+    'national_id': '',
+    'gender': '',
+    'address': '',
+    'phone': '',
+    'image': '',
+    'role_id':""
+  };
 }

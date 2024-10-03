@@ -3,8 +3,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/Auth/auth.service';
 
 
 @Component({
@@ -47,16 +47,17 @@ export class SignInComponent {
     'email': '',
     'password': ''
   }
-
-  http = inject(HttpClient);
-
-
-  onLogin() {
-    this.http.post('http://127.0.0.1:8000/api/login', this.loginObj).subscribe((res: any) => {
+  authServices = inject(AuthService)
+  
+  Login() {
+    this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
-        debugger;
         alert('Login successful')
-        this.router.navigateByUrl("");
+        console.log(res.data);
+        localStorage.setItem('Token', res.token);
+        localStorage.setItem('data', JSON.stringify(res.data));
+        this.router.navigateByUrl("tests");
+
       } else {
         alert(res.message)
       }

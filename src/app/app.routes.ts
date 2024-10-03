@@ -6,6 +6,8 @@ import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/stu
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { CourseListComponent } from './Course/course-list/course-list.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
+import { TestListComponent } from './Test/test-list/test-list.component';
+import { authGuard } from './Guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -22,6 +24,12 @@ export const routes: Routes = [
     path: 'studentSignup',
     component: StudentSignUPComponent,
     title: 'Student Sign Up',
+  },
+  {
+    path: 'tests',
+    component: TestListComponent,
+    title: 'All Tests',
+    canActivate: [authGuard]
   },
   {
     path: 'forgetPassword',
