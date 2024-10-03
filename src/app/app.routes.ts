@@ -13,6 +13,7 @@ import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create
 import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
 import { AdminComponent } from './Dashboard/admin/admin.component';
+import { UserManagmentComponent } from './Dashboard/admin/user-managment/user-managment.component';
 
 export const routes: Routes = [
   {
@@ -66,6 +67,11 @@ export const routes: Routes = [
     title: 'Courses',
   },
   {
+    path: 'admin/user-managment',
+    component: UserManagmentComponent,
+    title: 'User Managment',
+  },
+  {
     path: 'createorganizer',
     component: CreateComponent,
     title: 'Create Organizer',
@@ -85,4 +91,5 @@ export const routes: Routes = [
     component: NotFoundComponent,
     title: 'Error',
   }
+ 
 ];
