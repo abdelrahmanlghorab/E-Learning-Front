@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class CoursesService {
-  url = 'http://localhost:8000/api/playlists';
+  url = 'http://localhost:8000/api/courses';
   constructor(private http: HttpClient) { }
   getAllCourses() {
     return this.http.get(this.url);

@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { CoursePlaylistService } from '../../services/course-playlist.service';
 
 @Component({
   selector: 'app-course-create',
@@ -16,18 +17,20 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
   styleUrls: ['./course-create.component.css']
 })
 export class CourseCreateComponent implements OnInit {
-  courseForm!: FormGroup; 
+  courseForm!: FormGroup;
   courses: any;
   title=signal("");
   description=signal("");
+  thumbnail=signal("");
   constructor(
     private fb: FormBuilder,
     private coursesService: CoursesService
+    ,private playList: CoursePlaylistService
   ) { }
 
   ngOnInit(): void {
 
-    this.coursesService.getAllCourses().subscribe(courseData =>{
+    this.playList.getAllPlayLists().subscribe(courseData =>{
       this.courses = courseData;
       console.log(this.courses);
     });
@@ -40,19 +43,21 @@ export class CourseCreateComponent implements OnInit {
       instructor_id: ['', Validators.required],
       courseSelected: ['', Validators.required],
       playlist_id: ['', Validators.required]
+      ,thumbnail:['']
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
       if (isFree) {
-        this.courseForm.get('price')?.disable(); 
+        this.courseForm.get('price')?.disable();
         this.courseForm.get('price')?.setValue(0);
       } else {
-        this.courseForm.get('price')?.enable(); 
+        this.courseForm.get('price')?.enable();
       }
     });
   }
 
   createCourse() {
+    console.log(this.courseForm.value);
     if (this.courseForm.valid) {
       this.coursesService.createCourse(this.courseForm.value).subscribe(
         (response) => {
@@ -71,6 +76,12 @@ export class CourseCreateComponent implements OnInit {
       if(course.id === id){
         this.title.set(course.title);
         this.description.set(course.description);
+        this.thumbnail.set(course.thumbnail);
+        this.courseForm.patchValue({
+          title: this.title(),
+          description: this.description(),
+          thumbnail:this.thumbnail(),
+        });
         console.log('Course', this.title());
         break;
       };

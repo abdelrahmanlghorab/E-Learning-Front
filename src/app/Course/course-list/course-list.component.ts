@@ -12,10 +12,10 @@ import { CoursePlaylistService } from '../../services/course-playlist.service';
 })
 export class CourseListComponent {
   courses:any;
-  constructor(private playListService: CoursePlaylistService) {
+  constructor(private playListService: CoursePlaylistService, private CoursesService: CoursesService) {
   }
   ngOnInit() {
-    this.playListService.getAllPlayLists().subscribe((data: any) => {
+    this.CoursesService.getAllCourses().subscribe((data: any) => {
       this.courses = data;
     });
   }
