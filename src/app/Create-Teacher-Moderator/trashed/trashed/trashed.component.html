@@ -1,7 +1,5 @@
-<button routerLink="/createorganizer"> اضافة معلم او مدير</button>
 <section class="intro mt-5" >
     <div class="bg-image h-100" >
-
       <div class="mask d-flex align-items-center h-100">
         <div class="container">
           <div class="row justify-content-center">
@@ -20,7 +18,7 @@
                           <th scope="col">رقم التليفون</th>
                           <th scope="col">صورة</th>
                           <th scope="col">وظيفة</th>
-                          <th scope="col">-----</th>
+                          <th scope="col">-------</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -37,14 +35,10 @@
                             <img [src]="item.image" alt="Image" width="100" height="100">
                           </td>
                           <td>
-                            <button (click)="deleteItem(item)" class="mt-4 btn btn-danger">
-                              <i class="fas fa-trash"></i>
-                            </button>
-                            <button (click)="navigateToUpdate(item.id)" class=" me-3 mt-4 btn btn-primary">
-                              <i class="fas fa-edit "></i> 
+                            <button (click)="restoreItem(item)" class="btn btn-link" title="Restore">
+                              <i class="fas fa-undo"></i>
                             </button>
                           </td>
-                         
                          </tr>
                        }
                       </tbody>

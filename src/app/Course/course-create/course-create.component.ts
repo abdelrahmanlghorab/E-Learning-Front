@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
   styleUrls: ['./course-create.component.css']
 })
 export class CourseCreateComponent implements OnInit {
-  courseForm!: FormGroup; // Define the form group
+  courseForm!: FormGroup; 
   courses: any;
   title=signal("");
   description=signal("");
@@ -32,7 +32,6 @@ export class CourseCreateComponent implements OnInit {
       console.log(this.courses);
     });
 
-    // Initialize the form with form controls and validations
     this.courseForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
@@ -43,18 +42,16 @@ export class CourseCreateComponent implements OnInit {
       playlist_id: ['', Validators.required]
     });
 
-    // Toggle price field based on whether the course is free
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
       if (isFree) {
-        this.courseForm.get('price')?.disable(); // Disable price input if free
+        this.courseForm.get('price')?.disable(); 
         this.courseForm.get('price')?.setValue(0);
       } else {
-        this.courseForm.get('price')?.enable(); // Enable price input if not free
+        this.courseForm.get('price')?.enable(); 
       }
     });
   }
 
-  // Method to submit the form data
   createCourse() {
     if (this.courseForm.valid) {
       this.coursesService.createCourse(this.courseForm.value).subscribe(

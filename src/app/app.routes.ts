@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './Auth/sign-in/sign-in.component';
 import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/student-sign-up.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
+
 import { CourseListComponent } from './Course/course-list/course-list.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
 import { TestListComponent } from './Test/test-list/test-list.component';
@@ -18,6 +19,7 @@ import { AdminComponent } from './Dashboard/admin/admin.component';
 import { UserManagmentComponent } from './Dashboard/admin/user-managment/user-managment.component';
 import { PaymentComponent } from './Payment/payment/payment.component';
 import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
+import { TrashedComponent } from './Create-Teacher-Moderator/trashed/trashed/trashed.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +47,21 @@ export const routes: Routes = [
     path: 'forgetPassword',
     component: ForgetPasswordComponent,
     title: 'Forget Password',
+  },
+  {
+    path: 'createorganizer',
+    component: CreateComponent,
+    title: 'Create Organizer',
+  },
+  {
+    path: 'updateorganizer/:id',
+    component: UpdateComponent,
+    title: 'Update Organizer',
+  }, 
+  {
+    path: 'allorganizer',
+    component: IndexComponent,
+    title: 'All Organizer',
   },
   {
     path: 'courses',
@@ -100,6 +117,11 @@ export const routes: Routes = [
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+  },
+  {
+    path: 'trashorganizer',
+    component: TrashedComponent,
+    title:'Trashed organizer',
   },
   {
     path: '**',
