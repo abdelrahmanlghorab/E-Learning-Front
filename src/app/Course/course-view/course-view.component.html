@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" dir="rtl">
     <div class="row">
         <div class=" col-md-12 mx-auto ">
             <div class="panel">
@@ -13,26 +13,23 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Action</th>
+                                <th>تعديل</th>
+                                <th>إزالة</th>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Is Free</th>
-                                <th>Instructor</th>
-                                <th>playlist_id</th>
-                                <th>View</th>
+                                <th>اسم الكورس</th>
+                                <th>الوصف</th>
+                                <th>السعر</th>
+                                <th>مجانى</th>
+                                <th>اسم المعلم</th>
+                                <th>رابط الكورس</th>
+                                <th>تفاصيل الكورس</th>
                             </tr>
                         </thead>
                         <tbody>
                            @for (course of courses; track course.id) { 
                             <tr>
-                                <td>
-                                    <ul class="action-list">
-                                        <li><button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary mx-2"><i class="fa fa-pencil-alt"></i></button></li>
-                                        <li><button class="btn btn-danger" (click)="removeCourse(course.id)"><i class="fa fa-times"></i></button></li>
-                                    </ul>
-                                </td>
+                                <td><button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary mx-2"><i class="fa fa-pencil-alt"></i></button></td>
+                                <td><button class="btn btn-danger" (click)="removeCourse(course.id)"><i class="fa fa-times"></i></button></td>
                                 <td>{{course.id}}</td>
                                 <td>{{course.title}}</td>
                                 <td>{{course.description}}</td>
