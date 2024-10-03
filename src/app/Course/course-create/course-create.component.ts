@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 import { CoursePlaylistService } from '../../services/course-playlist.service';
+import { GetTeacherService } from '../../services/get-teacher.service';
 
 @Component({
   selector: 'app-course-create',
@@ -19,13 +20,18 @@ import { CoursePlaylistService } from '../../services/course-playlist.service';
 export class CourseCreateComponent implements OnInit {
   courseForm!: FormGroup;
   courses: any;
+  instructors: any;
   title=signal("");
   description=signal("");
   thumbnail=signal("");
+  instructor_id=signal("");
+  playlistId=signal("");
+  instructor_name=signal("");
   constructor(
     private fb: FormBuilder,
     private coursesService: CoursesService
-    ,private playList: CoursePlaylistService
+    ,private playList: CoursePlaylistService,
+    private teachersService:GetTeacherService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +39,12 @@ export class CourseCreateComponent implements OnInit {
     this.playList.getAllPlayLists().subscribe(courseData =>{
       this.courses = courseData;
       console.log(this.courses);
+    });
+    this.teachersService.getAllTeachers().subscribe(teacherData => {
+      this.instructors = teacherData;
+      this.instructors = this.instructors.data;
+      console.log(this.instructors.data)
+
     });
 
     this.courseForm = this.fb.group({
@@ -42,8 +54,10 @@ export class CourseCreateComponent implements OnInit {
       is_free: [false],
       instructor_id: ['', Validators.required],
       courseSelected: ['', Validators.required],
+      instructorSelected: ['', Validators.required],
       playlist_id: ['', Validators.required]
-      ,thumbnail:['']
+      ,thumbnail:[''],
+      instructor_name:['']
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
@@ -71,7 +85,7 @@ export class CourseCreateComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
-  settitle(id: any){
+  setValue(id: any){
     for(let course of this.courses){
       if(course.id === id){
         this.title.set(course.title);
@@ -86,5 +100,6 @@ export class CourseCreateComponent implements OnInit {
         break;
       };
     }
+    
   }
 }

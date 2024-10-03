@@ -8,9 +8,9 @@
             <div class="col">
               <div class="form-group" style="width: 100%; height: 10%;">
                 <mat-form-field class="custom-select" style="width: 100%;">
-                  <mat-label>ALl Courses</mat-label>
+                  <mat-label>All Courses</mat-label>
                   <mat-select formControlName="courseSelected" name="courses"
-                    (ngModelChange)="settitle(courseForm.get('courseSelected')?.value)">
+                    (ngModelChange)="setValue(courseForm.get('courseSelected')?.value)">
                     @for (course of courses; track course.id) {
                     <mat-option id="description"  class="form-control bg-light text-dark" [value]="course.id">{{course.title}}</mat-option>
                     }
@@ -77,6 +77,15 @@
           <div class="col">
             <div class="form-group">
               <label for="instructor_id">معرف المعلم</label>
+              <mat-form-field class="custom-select" style="width: 100%;">
+                <mat-label>All Teachers</mat-label>
+                <mat-select formControlName="instructorSelected" name="teachers">
+                  @for (instructor of instructors; track instructor.id) {
+                  <mat-option id="description" class="form-control bg-light text-dark"
+                    value={{instructor.id}}>{{instructor.name}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
               <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                 <input formControlName="instructor_id" type="text" id="instructor_id" class="form-control"
