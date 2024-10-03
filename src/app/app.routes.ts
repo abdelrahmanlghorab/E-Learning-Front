@@ -6,12 +6,18 @@ import { StudentSignUPComponent } from './Auth/Registeration/student-sign-up/stu
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { CourseListComponent } from './Course/course-list/course-list.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
+import { TestListComponent } from './Test/test-list/test-list.component';
+import { authGuard } from './Guard/auth.guard';
 import { CourseCreateComponent } from './Course/course-create/course-create.component';
 import { CourseUpdateComponent } from './Course/course-update/course-update.component';
 import { CourseViewComponent } from './Course/course-view/course-view.component';
 import { CreateComponent } from './Create-Teacher-Moderator/Create/create/create.component';
 import { UpdateComponent } from './Create-Teacher-Moderator/update/update/update.component';
 import { IndexComponent } from './Create-Teacher-Moderator/index/index/index.component';
+import { AdminComponent } from './Dashboard/admin/admin.component';
+import { UserManagmentComponent } from './Dashboard/admin/user-managment/user-managment.component';
+import { PaymentComponent } from './Payment/payment/payment.component';
+import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +34,12 @@ export const routes: Routes = [
     path: 'studentSignup',
     component: StudentSignUPComponent,
     title: 'Student Sign Up',
+  },
+  {
+    path: 'tests',
+    component: TestListComponent,
+    title: 'All Tests',
+    canActivate: [authGuard]
   },
   {
     path: 'forgetPassword',
@@ -55,9 +67,24 @@ export const routes: Routes = [
     title: 'Update Course',
   },
   {
+    path:'admin',
+    component: AdminComponent,
+    title: 'Admin',
+  },
+  {
     path: 'admin/courses',
     component: CourseViewComponent,
     title: 'Courses',
+  },
+  {
+    path: 'admin/user-managment',
+    component: UserManagmentComponent,
+    title: 'User Managment',
+  },
+  {
+    path: 'admin/payment',
+    component: PaymentMangementComponent,
+    title: 'Payments',
   },
   {
     path: 'createorganizer',
@@ -79,4 +106,5 @@ export const routes: Routes = [
     component: NotFoundComponent,
     title: 'Error',
   }
+ 
 ];
