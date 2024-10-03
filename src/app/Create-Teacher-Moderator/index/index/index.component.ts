@@ -1,12 +1,13 @@
+
 import { FormBuilder } from '@angular/forms';
 import { CreateOrganizerService } from './../../../services/create-organizer.service';
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
@@ -27,6 +28,8 @@ constructor(private fb: FormBuilder,private router : Router,private Organizerser
         next: (response) => {
           console.log('Item deleted:', response);
           this.items = this.items.filter(i => i !== item);
+          this.router.navigateByUrl('/trashorganizer');
+
         },
         error: (error) => {
           console.error('Error deleting item:', error);

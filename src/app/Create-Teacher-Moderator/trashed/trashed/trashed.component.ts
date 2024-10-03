@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trashed',
@@ -12,7 +13,7 @@ import { CreateOrganizerService } from '../../../services/create-organizer.servi
 export class TrashedComponent {
   organizer: any;
   items: any[] = []
-  constructor(private fb: FormBuilder,private Organizerservece : CreateOrganizerService){}
+  constructor(private fb: FormBuilder, private router : Router,private Organizerservece : CreateOrganizerService){}
 
 ngOnInit(){
   this.Organizerservece.getAllTrashedOrganizer().subscribe((data: any) => {
@@ -31,5 +32,7 @@ ngOnInit(){
         }
       );
     }
+    this.router.navigateByUrl('/allorganizer');
+
   }
 }

@@ -1,0 +1,47 @@
+<div class="main">
+    <div class="row">
+        <div class=" col-md-12 mx-auto ">
+            <div class="panel">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>National_Id</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           @for (user of users; track user.id) { 
+                            <tr>
+                                <td>
+                                    <ul class="action-list">
+                                        <li><button class="btn btn-danger" (click)="removeUser(user.id)"><i class="fa fa-times"></i></button></li>
+                                    </ul>
+                                </td>
+                                <td>{{user.id}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.national_id}}</td>
+                                <td>{{user.gender}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>{{user.address}}</td>
+                                <td>{{user.image}}</td>
+                                <!-- <td><button routerLink="//{{user.id}}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></button></td> -->
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    

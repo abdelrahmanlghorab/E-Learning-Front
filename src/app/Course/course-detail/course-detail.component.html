@@ -1,23 +1,58 @@
 <div class="title">
-<h1 class="text-center mt-2 text-light"
->{{course[0].title}}</h1>
+  <h1 class="text-center mt-2 text-light">{{course[0].title}}</h1>
 </div>
-<div class="col-12 container">
+<div class=" col-10 mx-auto">
+  <div class="row">
 
-        <div class="row">
-          <div class="container col-10">
-          <div class="card m-5 rounded-pill ">
-            <img src="{{course[0].thumbnail}}" class="card-img p-5 rounded-pill  img-thumbnail img-fluid" style="height:450px;" alt="...">
+    <div class=" col-2" >
+      <div class="row">
+          <div class="card col-12 ">
+            <div class="card-body  text-center d-block">
+              <h5 class="card-title">Now <span class="fs-2 fw-semibold mb-3">Free </span> <span class="fs-6 text-secondary opacity-50">instead of
+                  500</span></h5>
+              <a href="#" class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">Enroll Now</a>
+
+              <hr>
+              <p class="card-text">Video: {{course[0].videos.length}}</p>
+                <div class="row d-block">
+                  <span>
+                    <i class="fa-solid fa-film"></i>
+
+                  </span>
+                  <span class="text-secondary opacity-50">Recorded Videos</span>
+                </div>
+                <div class="row d-block">
+                  <span>
+                      <i class="fa-solid fa-video"></i>
+                  </span>
+                  <span class="text-secondary opacity-50">Pracitcal Videos</span>
+                </div>
+
+            </div>
+
           </div>
-        </div>
-  <div class="card col-2 h-50">
-    <div class="card-body text-center d-block">
-      <h5 class="card-title">{{course[0].title}}</h5>
-      <hr>
-      <p class="card-text">Video: {{course[0].videos.length}}</p>
-      <a href="#" class="btn col-10 flex-wrap text-center btn-primary">التفا��يل</a>
+        <div class="card col-12 mt-2 " style="height: 400px;">
+          <div class="card-body row text-center d-block">
+            <h5 class="card-title">{{course[0].title}}</h5>
+            <hr>
+            <p class="card-text row">Video: {{course[0].videos.length}}</p>
+            <a href="#" class="btn col-10 flex-wrap text-center btn-primary">التفا��يل</a>
 
-     </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
     </div>
+    <div class="container col-10">
+      <div class="card  ">
+        <img src="{{course[0].thumbnail}}" class="card-img p-5  img-thumbnail img-fluid" style="height:450px;"
+          alt="...">
+      </div>
+    </div>
+
   </div>
 </div>

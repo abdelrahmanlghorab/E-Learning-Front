@@ -92,7 +92,7 @@ export class CreateComponent  implements OnInit {
     } else {
       this.createForm.markAllAsTouched();
     }
-    // this.router.navigateByUrl('/allorganizer');
+    this.router.navigateByUrl('/allorganizer');
   }
 
   get f() {
