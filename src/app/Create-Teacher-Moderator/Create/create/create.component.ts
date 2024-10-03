@@ -32,7 +32,7 @@ export class CreateComponent  implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
+      // profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
 
     }, { validators: this.passwordMatchValidator });
   }
