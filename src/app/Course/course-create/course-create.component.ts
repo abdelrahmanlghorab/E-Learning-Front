@@ -56,6 +56,7 @@ export class CourseCreateComponent implements OnInit {
 
   // Method to submit the form data
   createCourse() {
+    console.log(this.courseForm.value);
     if (this.courseForm.valid) {
       this.coursesService.createCourse(this.courseForm.value).subscribe(
         (response) => {
@@ -74,6 +75,10 @@ export class CourseCreateComponent implements OnInit {
       if(course.id === id){
         this.title.set(course.title);
         this.description.set(course.description);
+        this.courseForm.patchValue({
+          title: this.title(),
+          description: this.description(),
+        });
         console.log('Course', this.title());
         break;
       };
