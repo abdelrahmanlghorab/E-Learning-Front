@@ -83,6 +83,9 @@
           <small *ngIf="f['image'].errors?.['required']">الصورة مطلوبة.</small>
           <small *ngIf="f['image'].errors?.['pattern']">الرجاء تحميل صورة صالحة (PNG, JPG, JPEG).</small>
       </div>
+      <div *ngIf="currentImageUrl">
+        <img [src]="currentImageUrl" alt="Current Image" class="img-fluid" />
+      </div>
       </div>
       
 

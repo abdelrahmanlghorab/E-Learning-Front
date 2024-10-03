@@ -7,7 +7,10 @@ import { Injectable } from '@angular/core';
 export class CreateOrganizerService {
 
     url='http://127.0.0.1:8000/api/organizar';
-  constructor(private http: HttpClient) { }
+
+    HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  
+    constructor(private http: HttpClient) { }
   getAllorganizer() {
     return this.http.get(this.url);
   }
@@ -19,8 +22,8 @@ export class CreateOrganizerService {
   }
   updateorganizer(id: number, data: FormData) {
     console.log(data);
-    const headers = new HttpHeaders(); 
-    return this.http.put(`${this.url}/${id}`, data, { headers });
+    return this.http.put(`${this.url}/${id}`, data, { headers:this.HttpHeaders });
+    
   }
   deleteorganizer(id:number) {
     return this.http.delete(`${this.url}/${id}`);
