@@ -77,6 +77,11 @@ input:checked+.slider:before {
 /* Media Queries */
 
 /* For small devices (phones, 320px and up) */
+.nav-item :hover{
+    color: #007bff;
+}
+
+
 @media (max-width: 576px) {
   .main-btn {
     padding: 0.3rem 0.8rem;

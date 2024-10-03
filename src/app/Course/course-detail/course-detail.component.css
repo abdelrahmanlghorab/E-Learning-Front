@@ -1,0 +1,21 @@
+.title
+{
+
+  height: 7rem;
+  background: linear-gradient(
+      90deg,
+      var(--wave1, #007bff),
+      var(--wave2, #00ccff) 51%,
+      var(--wave1, rgb(0 107 179))
+    );
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  /* opacity: 50%; */
+}
+.btn-outline-warning:hover{
+  color: #ffffff;
+
+}

@@ -21,7 +21,7 @@ export class SignInComponent {
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signInForm = this.fb.group({
-      studentEmail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -33,11 +33,11 @@ export class SignInComponent {
 
   onSubmit() {
     if (this.signInForm.valid) {
-      console.log('Form Submitted', this.signInForm.value);
     } else {
       this.signInForm.markAllAsTouched();
     }
   }
+
 
   get formControls() {
     return this.signInForm.controls;
@@ -48,7 +48,7 @@ export class SignInComponent {
     'password': ''
   }
   authServices = inject(AuthService)
-  
+
   Login() {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {

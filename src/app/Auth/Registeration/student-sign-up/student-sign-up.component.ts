@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-student-sign-up',
@@ -18,7 +19,7 @@ export class StudentSignUPComponent implements OnInit {
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder ,private authservices: AuthService) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -27,20 +28,20 @@ export class StudentSignUPComponent implements OnInit {
         Validators.minLength(8),
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*')
       ]],
-      confirmPassword: ['', Validators.required],
-      nationalId: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
+      password_confirmation: ['', Validators.required],
+      national_id: ['', [Validators.required, Validators.pattern(/^[0-9]{14}$/)]],
       gender: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      profilePicture: ['', Validators.required, Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
+      image: ['', Validators.required]
+        //  Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
 
     }, { validators: this.passwordMatchValidator });
   }
 
   ngOnInit(): void {}
-
   passwordMatchValidator(formGroup: FormGroup) {
-    return formGroup.get('password')?.value === formGroup.get('confirmPassword')?.value
+    return formGroup.get('password')?.value === formGroup.get('password_confirmation')?.value
       ? null : { passwordMismatch: true };
   }
 
@@ -54,27 +55,52 @@ export class StudentSignUPComponent implements OnInit {
     this.confirmEyeIcon = this.confirmEyeIcon === 'fas fa-eye' ? 'fas fa-eye-slash' : 'fas fa-eye';
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      console.log("Form Submitted", this.registerForm.value);
-    } else {
-      this.registerForm.markAllAsTouched();
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.registerForm.patchValue({
+        image: file
+      });
     }
   }
+
+onSubmit() {
+  if (this.registerForm.valid) {
+    const formData = new FormData();
+
+    formData.append('name', this.registerForm.get('name')?.value);
+    formData.append('email', this.registerForm.get('email')?.value);
+    formData.append('password', this.registerForm.get('password')?.value);
+    formData.append('password_confirmation', this.registerForm.get('password_confirmation')?.value);
+    formData.append('national_id', this.registerForm.get('national_id')?.value);
+    formData.append('gender', this.registerForm.get('gender')?.value);
+    formData.append('address', this.registerForm.get('address')?.value);
+    formData.append('phone', this.registerForm.get('phone')?.value);
+
+    const imageFile = this.registerForm.get('image')?.value as File;
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+
+    console.log("Form Submitted", this.registerForm.value);
+
+    this.authservices.register(formData).subscribe(
+      (response) => {
+        console.log('Registration successful', response);
+      },
+      (error) => {
+        console.error('Registration failed', error);
+      }
+    );
+  } else {
+    this.registerForm.markAllAsTouched();
+  }
+}
+
 
   get f() {
     return this.registerForm.controls;
   }
-  registerObj:any = {
-    'name': '',
-    'email': '',
-    'password': '',
-    'password_confirmation': '',
-    'national_id': '',
-    'gender': '',
-    'address': '',
-    'phone': '',
-    'image': '',
-    'role_id':""
-  };
+
+
 }
