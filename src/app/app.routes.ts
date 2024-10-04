@@ -124,9 +124,13 @@ export const routes: Routes = [
     title:'Trashed organizer',
   },
   {
+    path: 'payment',
+    component: PaymentComponent,
+    title: 'Payment',
+  },
+  {
     path: '**',
     component: NotFoundComponent,
     title: 'Error',
   }
- 
 ];
