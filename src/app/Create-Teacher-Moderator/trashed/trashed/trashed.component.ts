@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-trashed',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './trashed.component.html',
   styleUrl: './trashed.component.css'
 })

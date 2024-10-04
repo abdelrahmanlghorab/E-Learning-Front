@@ -122,6 +122,10 @@ export const routes: Routes = [
     path: 'trashorganizer',
     component: TrashedComponent,
     title:'Trashed organizer',
+  },{
+    path: 'payment',
+    component: PaymentComponent,
+    title:'payment',
   },
   {
     path: '**',
