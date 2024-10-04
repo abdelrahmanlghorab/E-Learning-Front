@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { CoursePlaylistService } from '../../services/course-playlist.service';
+import { GetTeacherService } from '../../services/get-teacher.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -12,15 +14,22 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
 export class CourseDetailComponent {
   course: any;
   id:any;
+  teacher: any;
 
-  constructor(private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService) {
   }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.courseService.getCourse(this.id).subscribe((data: any) => {
-      this.course = data;
-      console.log(this.course);
+    this.course = data
+    console.log(this.course);
+    this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
+      this.teacher = data.data[0]
+      console.log(this.teacher);
+    })
     });
+
   }
+
 
 }

@@ -1,42 +1,42 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { loadStripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
+import { HttpClient } from '@angular/common/http';
+import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PaymentService {
-  private stripe: any;
-  elements!: StripeElements;
-  cardElement!: StripeCardElement;
+  private apiUrl = 'http://localhost:8000/api';
+  private stripePromise = loadStripe('pk_test_51Q4p29HHlb6JyFN5NOmqDxMMfS65GHSLV8I9JDI7B8V74zIIeQRgyPJjC9qFP4iefByjoM70ZYw6zDHQSz8TX3UP000aCFgAl8');
 
-  constructor(private http: HttpClient) {
-    this.loadStripe();
+  constructor(private http: HttpClient) {}
+
+  createPaymentIntent(courseId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/create-payment-intent`, { course_id: courseId });
   }
 
-  private async loadStripe() {
-    this.stripe = await loadStripe('pk_test_51Q3lwBP6OeMy4sSaxyrUwJKwyhETTSOjZB8Lo8DKzQX8wuf3DOsFKnfeJ8Qz2nH8A4kJt79Z4BrW7jpet2g2u0zv000YlJbkm1'); // Replace with your Stripe publishable key
-  }
-  public getStripeInstance() {
-    return this.stripe; 
-  }
-  createPaymentIntent(amount: number) {
-    return this.http.post('http://127.0.0.1:8000/api/make-payment', { amount });
-  }
-  storePayment(courseId: number, amount: number) {
-    return this.http.post('http://127.0.0.1:8000/api/store-payment', {
-      user_id: 1, 
-      course_id: courseId,
-      amount
-    });
-  }
-  async handlePayment(clientSecret: string, cardElement: StripeCardElement) {
-    const { paymentIntent, error } = await this.stripe.confirmCardPayment(clientSecret, {
+  async confirmPayment(clientSecret: string, cardElement: StripeCardElement,stripe?: Stripe) {
+    if (!stripe) {
+      throw new Error('Stripe.js has not loaded yet.');
+    }
+
+    const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: cardElement
-      }
+        card: cardElement,
+      },
     });
+
     return { paymentIntent, error };
+  }
+  storePaymentIntent(paymentIntent: any,course_id:number): Observable<any> {
+   const coniframtion={
+    status:paymentIntent.status,
+    amount:paymentIntent.amount,
+    user_id:1,
+    course_id:course_id,
+    };
+    return this.http.post(`${this.apiUrl}/store-payment`, coniframtion);
   }
 }

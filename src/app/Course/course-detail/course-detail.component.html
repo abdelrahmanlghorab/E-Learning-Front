@@ -1,58 +1,70 @@
 <div class="title">
-  <h1 class="text-center mt-2 text-light">{{course[0].title}}</h1>
+  <h1 class="text-center mt-2 text-light">{{course.title}}</h1>
 </div>
 <div class=" col-10 mx-auto">
   <div class="row">
-
-    <div class=" col-2" >
+    <div class=" col-2">
       <div class="row">
-          <div class="card col-12 ">
-            <div class="card-body  text-center d-block">
-              <h5 class="card-title">Now <span class="fs-2 fw-semibold mb-3">Free </span> <span class="fs-6 text-secondary opacity-50">instead of
-                  500</span></h5>
-              <a href="#" class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">Enroll Now</a>
-
-              <hr>
-              <p class="card-text">Video: {{course[0].videos.length}}</p>
-                <div class="row d-block">
-                  <span>
-                    <i class="fa-solid fa-film"></i>
-
-                  </span>
-                  <span class="text-secondary opacity-50">Recorded Videos</span>
-                </div>
-                <div class="row d-block">
-                  <span>
-                      <i class="fa-solid fa-video"></i>
-                  </span>
-                  <span class="text-secondary opacity-50">Pracitcal Videos</span>
-                </div>
-
+        <div class="card col-12 ">
+          <div class="card-body  text-center d-block">
+            <h5 class="card-title">Now <span class="fs-2 fw-semibold mb-3">Free </span> <span
+                class="fs-6 text-secondary opacity-50">instead of
+                <span class="lineThrow">500</span></span></h5>
+            <a href="#" class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">Enroll Now</a>
+            <hr>
+            <!-- <p class="card-text">Video: {{course[0].length}}</p> -->
+            <div class="row d-block">
+              <span>
+                <i class="fa-solid fa-film"></i>
+              </span>
+              <span class="text-secondary opacity-50">Recorded Videos</span>
             </div>
-
+            <div class="row d-block">
+              <span>
+                <i class="fa-solid fa-video"></i>
+              </span>
+              <span class="text-secondary opacity-50">Pracitcal Videos</span>
+            </div>
+            <div class="row d-block">
+              <span>
+                <i class="fa-solid fa-certificate"></i>
+              </span>
+              <span class="text-secondary opacity-50">Completion Certificate</span>
+            </div>
           </div>
+        </div>
         <div class="card col-12 mt-2 " style="height: 400px;">
           <div class="card-body row text-center d-block">
-            <h5 class="card-title">{{course[0].title}}</h5>
+            <h5 class="card-title">{{course.title}}</h5>
             <hr>
-            <p class="card-text row">Video: {{course[0].videos.length}}</p>
+            <!-- <p class="card-text row">Video: {{course[0].videos.length}}</p> -->
             <a href="#" class="btn col-10 flex-wrap text-center btn-primary">التفا��يل</a>
-
           </div>
-
         </div>
-
-
-
       </div>
-
     </div>
     <div class="container col-10">
       <div class="card  ">
-        <img src="{{course[0].thumbnail}}" class="card-img p-5  img-thumbnail img-fluid" style="height:450px;"
+        <img src="{{course.thumbnail}}" class="card-img p-5  img-fluid img-fluid" style="height:450px;"
           alt="...">
       </div>
+      <div class="card mt-3" dir="ltr">
+        <div class="row g-0">
+          <div class="col-md-2 text-center">
+            <img src="{{teacher.image}}"
+              class=" col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning  m-3" alt="{{teacher.name}} image">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">MR.{{teacher.name}}</h3>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content.
+                This content is a little bit longer IT MUST BE A DESCRIPTION FOR TEACHER.</p>
+              <p class="card-text"><small class="text-muted">Last updated: {{teacher.updated_at}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
