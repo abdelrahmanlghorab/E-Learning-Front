@@ -18,6 +18,8 @@ import { AdminComponent } from './Dashboard/admin/admin.component';
 import { UserManagmentComponent } from './Dashboard/admin/user-managment/user-managment.component';
 import { PaymentComponent } from './Payment/payment/payment.component';
 import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
+import { TestCreateComponent } from './Test/test-create/test-create.component';
+import { TestUpdateComponent } from './Test/test-update/test-update.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +41,18 @@ export const routes: Routes = [
     path: 'tests',
     component: TestListComponent,
     title: 'All Tests',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'test-create',
+    component: TestCreateComponent,
+    title: 'Create Tests',
+    canActivate: [authGuard]
+  },
+  {
+    path: 'test/:id/update',
+    component: TestUpdateComponent,
+    title: 'Update Tests',
     canActivate: [authGuard]
   },
   {
@@ -67,7 +81,7 @@ export const routes: Routes = [
     title: 'Update Course',
   },
   {
-    path:'admin',
+    path: 'admin',
     component: AdminComponent,
     title: 'Admin',
   },
@@ -106,5 +120,5 @@ export const routes: Routes = [
     component: NotFoundComponent,
     title: 'Error',
   }
- 
+
 ];
