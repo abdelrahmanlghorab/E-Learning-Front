@@ -29,7 +29,7 @@ export class PaymentComponent implements OnInit {
     }
   }
   pay() {
-    const courseId = 1;
+    const courseId = 2;
     this.paymentService.createPaymentIntent(courseId).subscribe({
       next: async (response: any) => {
         const clientSecret = response.clientSecret;
@@ -38,6 +38,13 @@ export class PaymentComponent implements OnInit {
         if (error) {
           this.message = error.message;
         } else if (paymentIntent?.status === 'succeeded') {
+          console.log(paymentIntent);
+          this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
+            next: () => {
+              this.message = 'Payment successful!';
+            },
+            error: () => this.message = 'Failed to store payment intent.'
+          });
           this.message = 'Payment successful!';
         } else {
           this.message = 'Payment failed, please try again.';

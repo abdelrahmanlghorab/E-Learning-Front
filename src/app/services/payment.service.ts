@@ -29,4 +29,13 @@ export class PaymentService {
 
     return { paymentIntent, error };
   }
+  storePaymentIntent(paymentIntent: any,course_id:number): Observable<any> {
+   const coniframtion={
+    status:paymentIntent.status,
+    amount:paymentIntent.amount,
+    user_id:1,
+    course_id:course_id,
+    };
+    return this.http.post(`${this.apiUrl}/store-payment`, coniframtion);
+  }
 }
