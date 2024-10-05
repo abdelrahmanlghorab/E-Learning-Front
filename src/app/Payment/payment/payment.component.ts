@@ -14,6 +14,7 @@ export class PaymentComponent implements OnInit {
   private cardElement!: StripeCardElement;
   private elements!: StripeElements;
   message: string | undefined = '';
+  error:string | undefined = '';
   id:any;
 
   constructor(private paymentService: PaymentService, router: Router, private activatedRoute: ActivatedRoute) {}
@@ -29,10 +30,12 @@ export class PaymentComponent implements OnInit {
       this.cardElement = this.elements.create('card');
       this.cardElement.mount('#card-element');
     } else {
-      this.message = 'Failed to initialize Stripe. Please refresh the page.';
+      this.error = 'Failed to initialize Stripe. Please refresh the page.';
     }
   }
   pay() {
+    this.error = '';
+    this.message = '';
     const courseId = this.id;
     console.log(courseId);
     this.paymentService.createPaymentIntent(courseId).subscribe({
@@ -41,21 +44,21 @@ export class PaymentComponent implements OnInit {
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
 
         if (error) {
-          this.message = error.message;
+          this.error = error.message;
         } else if (paymentIntent?.status === 'succeeded') {
           console.log(paymentIntent);
           this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
             next: () => {
               this.message = 'Payment successful!';
             },
-            error: () => this.message = 'Failed to store payment intent.'
+            error: () => this.error = 'Failed to store payment intent.'
           });
           this.message = 'Payment successful!';
         } else {
-          this.message = 'Payment failed, please try again.';
+          this.error = 'Payment failed, please try again.';
         }
       },
-      error: () => this.message = 'Failed to create payment intent.'
+      error: () => this.error = 'Failed to create payment intent.'
     });
   }
 }
