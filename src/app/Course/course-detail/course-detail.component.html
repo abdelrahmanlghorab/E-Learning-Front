@@ -21,8 +21,7 @@
               <span class="fs-2 fw-semibold mb-3">${{ course.price }}</span>
             </h5>
             }
-            <a
-              href="#"
+            <a [routerLink]="['/payment', course.id]" routerLinkActive="router-link-active"
               class="btn col-10 flex-wrap text-center btn-outline-warning fs-5"
               >Enroll Now</a
             >
