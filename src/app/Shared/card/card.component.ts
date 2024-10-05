@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { GetTeacherService } from '../../services/get-teacher.service';
 
 @Component({
   selector: 'app-card',
@@ -11,6 +12,21 @@ import { RouterLink } from '@angular/router';
 export class CardComponent {
 
   @Input() course!: any;
+  teacher!: any;
+  teacherName!: any;
+  teacherImage: any;
+
+  constructor(private teacherService:GetTeacherService) { }
+
+
+  ngOnInit(){
+  this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
+         this.teacher = data.data
+         this.teacherName=this.teacher[0].name;
+        this.teacherImage = this.teacher[0].image;
+         console.log(this.teacherName , "teacher name ");
+       });
+      }
   handleMouseMove(event: MouseEvent) {
     const card = (event.target as HTMLElement).closest('.example-card') as HTMLElement;
     if (card) {
@@ -31,6 +47,7 @@ export class CardComponent {
       card.style.boxShadow = ''
     }
   }
+
 }
 
 
