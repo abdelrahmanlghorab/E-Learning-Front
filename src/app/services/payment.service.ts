@@ -13,6 +13,9 @@ export class PaymentService {
 
   constructor(private http: HttpClient) {}
 
+  getPayments() {
+    return this.http.get(`${this.apiUrl}/payments`);
+  }
   createPaymentIntent(courseId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/create-payment-intent`, { course_id: courseId });
   }
