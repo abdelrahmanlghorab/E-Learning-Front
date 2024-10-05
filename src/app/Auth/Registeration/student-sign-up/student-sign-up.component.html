@@ -26,7 +26,11 @@
             <small *ngIf="f['email'].errors?.['required']">البريد الإلكتروني مطلوب.</small>
             <small *ngIf="f['email'].errors?.['email']">البريد الإلكتروني غير صالح.</small>
           </div>
+          <div *ngIf="f['email'].errors?.['unique']" class="text-danger">
+            {{ f['email'].errors?.['unique'] }}
+          </div>
         </div>
+        
   
         <div class="mb-3">
           <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span></label>
@@ -67,7 +71,11 @@
               <small *ngIf="f['national_id'].errors?.['required']">الرقم القومي مطلوب.</small>
               <small *ngIf="f['national_id'].errors?.['pattern']">الرقم القومي غير صحيح.</small>
           </div>
-      </div>
+          <div *ngIf="f['national_id'].errors?.['unique']" class="text-danger">
+            {{ f['national_id'].errors?.['unique'] }}
+          </div>
+        </div>
+        
 
       <div class="mb-3">
           <label for="gender" class="form-label">النوع <span class="text-danger">*</span></label>

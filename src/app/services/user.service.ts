@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  url = 'http://localhost:8000/api/organizar';
+  url = 'http://localhost:8000/api/';
   constructor(private http: HttpClient) { }
   getAllCourses() {
     return this.http.get(this.url);
