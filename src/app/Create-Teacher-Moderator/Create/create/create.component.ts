@@ -78,21 +78,23 @@ export class CreateComponent  implements OnInit {
       formData.append('address', this.createForm.get('address')?.value);
       formData.append('phone', this.createForm.get('phone')?.value);
 
-      const imageFile = this.createForm.get('image')?.value as File; 
+      const imageFile = this.createForm.get('image')?.value as File;
       if (imageFile) {
         formData.append('image', imageFile);
       }
       this.CreateOrganizer.createorganizer(formData).subscribe((response) => {
         console.log('Organizer created successfully', response);
+        console.log("تم إنشاء بنجاح", this.createForm.value);
+        this.router.navigateByUrl('/allorganizer');
+
+
       }, (error) => {
         console.error('Error creating organizer', error);
       });
 
-      console.log("تم إنشاء بنجاح", this.createForm.value);
     } else {
       this.createForm.markAllAsTouched();
     }
-    this.router.navigateByUrl('/allorganizer');
   }
 
   get f() {

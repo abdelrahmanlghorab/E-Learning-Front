@@ -13,10 +13,11 @@ import { GetTeacherService } from '../../services/get-teacher.service';
 })
 export class CourseDetailComponent {
   course: any;
+  courseVideos: any;
   id:any;
   teacher: any;
 
-  constructor(private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService) {
+  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService) {
   }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -27,6 +28,7 @@ export class CourseDetailComponent {
       this.teacher = data.data[0]
       console.log(this.teacher);
     })
+    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>console.log((this.courseVideos=data[0].videos)))
     });
 
   }
