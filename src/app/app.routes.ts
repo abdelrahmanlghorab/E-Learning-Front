@@ -94,6 +94,11 @@ export const routes: Routes = [
     title: 'All Organizer',
   },
   {
+    path: 'payment',
+    component: PaymentComponent,
+    title: 'Payment',
+  },
+  {
     path: '**',
     component: NotFoundComponent,
     title: 'Error',
