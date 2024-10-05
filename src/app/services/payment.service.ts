@@ -6,12 +6,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PaymentService {
   private apiUrl = 'http://localhost:8000/api';
   private stripePromise = loadStripe('pk_test_51Q4p29HHlb6JyFN5NOmqDxMMfS65GHSLV8I9JDI7B8V74zIIeQRgyPJjC9qFP4iefByjoM70ZYw6zDHQSz8TX3UP000aCFgAl8');
 
   constructor(private http: HttpClient) {}
 
+  getPayments() {
+    return this.http.get(`${this.apiUrl}/payments`);
+  }
   createPaymentIntent(courseId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/create-payment-intent`, { course_id: courseId });
   }

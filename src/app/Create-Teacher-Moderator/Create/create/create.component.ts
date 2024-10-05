@@ -18,6 +18,8 @@ export class CreateComponent  implements OnInit {
   confirmPasswordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
+  submitted :boolean = false;
+
 
   constructor(private fb: FormBuilder ,private router :Router , private CreateOrganizer : CreateOrganizerService) {
     this.createForm = this.fb.group({
@@ -65,6 +67,7 @@ export class CreateComponent  implements OnInit {
     }
   }
   onSubmit() {
+    this.submitted = true;
     if (this.createForm.valid) {
       const formData = new FormData();
 

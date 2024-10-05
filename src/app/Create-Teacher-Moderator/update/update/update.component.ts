@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
 @Component({
   selector: 'app-update',
@@ -33,7 +33,7 @@ export class UpdateComponent {
   selectedFile: File | null = null;
   currentImageUrl: string = '';
 
-  constructor(private fb: FormBuilder , private Organizerservece : CreateOrganizerService , private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder , private Organizerservece : CreateOrganizerService ,private router :Router , private route: ActivatedRoute) {
     this.updateForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -95,6 +95,7 @@ onFileChange(event: any) {
         (response: any) => {
           console.log('Organizer updated successfully', response);
           alert('Organizer updated successfully!');
+          this.router.navigateByUrl('/allorganizer');
         },
         (error: any) => {
           console.error('Error updating organizer', error);
