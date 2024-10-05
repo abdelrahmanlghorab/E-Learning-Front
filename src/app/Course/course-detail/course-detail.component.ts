@@ -28,7 +28,7 @@ export class CourseDetailComponent {
       this.teacher = data.data[0]
       console.log(this.teacher);
     })
-    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>console.log((this.courseVideos=data[0].videos)))
+    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(this.courseVideos=data[0].videos))
     });
 
   }

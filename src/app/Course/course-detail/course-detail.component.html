@@ -1,18 +1,32 @@
 <div class="title">
-  <h1 class="text-center mt-2 text-light">{{course.title}}</h1>
+  <h1 class="text-center mt-2 text-light">{{ course.title }}</h1>
 </div>
-<div class=" col-10 mx-auto">
+<div class="col-10 mx-auto">
   <div class="row">
-    <div class=" col-2">
+    <div class="col-2">
       <div class="row">
-        <div class="card col-12 ">
-          <div class="card-body  text-center d-block">
-            <h5 class="card-title">Now <span class="fs-2 fw-semibold mb-3">Free </span> <span
-                class="fs-6 text-secondary opacity-50">instead of
-                <span class="lineThrow">500</span></span></h5>
-            <a href="#" class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">Enroll Now</a>
-            <hr>
-            <!-- <p class="card-text">Video: {{course[0].length}}</p> -->
+        <div class="card col-12">
+          <div class="card-body text-center d-block">
+            @if(course.is_free){
+            <h5 class="card-title">
+              Now <span class="fs-2 fw-semibold mb-3">Free </span>
+              <span class="fs-6 text-secondary opacity-50"
+                >instead of
+                <span class="lineThrow">$500</span></span
+              >
+            </h5>
+            }
+            @else{
+            <h5 class="card-title">
+              <span class="fs-2 fw-semibold mb-3">${{ course.price }}</span>
+            </h5>
+            }
+            <a
+              href="#"
+              class="btn col-10 flex-wrap text-center btn-outline-warning fs-5"
+              >Enroll Now</a
+            >
+            <hr />
             <div class="row d-block">
               <span>
                 <i class="fa-solid fa-film"></i>
@@ -29,83 +43,121 @@
               <span>
                 <i class="fa-solid fa-certificate"></i>
               </span>
-              <span class="text-secondary opacity-50">Completion Certificate</span>
+              <span class="text-secondary opacity-50"
+                >Completion Certificate</span
+              >
             </div>
           </div>
         </div>
-        <div class="card col-12 mt-2 " style="height: 400px;">
+        <div class="card col-12 mt-2" style="height: 400px">
           <div class="card-body row text-center d-block">
-            <h5 class="card-title">{{course.title}}</h5>
-            <hr>
-            <!-- <p class="card-text row">Video: {{course[0].videos.length}}</p> -->
-            <a href="#" class="btn col-10 flex-wrap text-center btn-primary">التفا��يل</a>
+            <h5 class="card-title">Video: {{ courseVideos.length }}</h5>
+            <hr />
+            <a href="#" class="btn col-10 flex-wrap text-center btn-outline-primary"
+              >Details</a
+            >
           </div>
         </div>
       </div>
     </div>
     <div class="container col-10">
-      <div class="card  ">
-        <img src="{{course.thumbnail}}" class="card-img p-5  img-fluid img-fluid" style="height:450px;" alt="...">
+      <div class="card">
+        <img
+          src="{{ course.thumbnail }}"
+          class="card-img p-5 img-fluid img-fluid"
+          style="height: 450px"
+          alt="..."
+        />
       </div>
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
           <div class="col-md-2 text-center">
-            <img src="{{teacher.image}}"
-              class=" col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning  m-3"
-              alt="{{teacher.name}} image">
+            <img
+              src="{{ teacher.image }}"
+              class="col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning m-3"
+              alt="{{ teacher.name }} image"
+            />
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h3 class="card-title">Mr.{{teacher.name}}</h3>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content.
-                This content is a little bit longer IT MUST BE A DESCRIPTION FOR TEACHER.</p>
-              <p class="card-text"><small class="text-muted">Last updated:</small></p>
+              <h3 class="card-title">Mr.{{ teacher.name }}</h3>
+              <p class="card-text">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer IT MUST BE A DESCRIPTION FOR TEACHER.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated:</small>
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-
       <div class="container col-10 mt-3 w-100" dir="ltr">
         <div class="card">
-          <h2 class="card-header d-flex justify-content-between align-items-center">
+          <h2
+            class="card-header d-flex justify-content-between align-items-center"
+          >
             <div>
               <i class="fa-solid fa-list-alt"></i>
               Course Outline
             </div>
-            <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{course.created_at}}</span>
+            <span class="ms-auto fs-6 text-secondary fw-lighter"
+              >Created At: {{ course.created_at }}</span
+            >
           </h2>
-          <div class="accordion" style="max-height: 44rem; overflow-y: auto; " id="accordionExample">
-            @if(courseVideos){
-            @for(video of courseVideos; track $index){
+          <div
+            class="accordion"
+            style="max-height: 44rem; overflow-y: auto"
+            id="accordionExample"
+          >
+            @if(courseVideos){ @for(video of courseVideos; track $index){
             <div class="accordion mt-2 p-2" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-heading-{{$index}}">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    [attr.data-bs-target]="'#panelsStayOpen-collapse-' + $index" aria-expanded="false"
-                    [attr.aria-controls]="'panelsStayOpen-collapse-' + $index">
-                    {{video.title}}
+                <h2
+                  class="accordion-header"
+                  id="panelsStayOpen-heading-{{ $index }}"
+                >
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#panelsStayOpen-collapse-' + $index"
+                    aria-expanded="false"
+                    [attr.aria-controls]="'panelsStayOpen-collapse-' + $index"
+                  >
+                    {{ video.title }}
                   </button>
                 </h2>
-                <div id="panelsStayOpen-collapse-{{$index}}" class="accordion-collapse collapse"
-                  [attr.aria-labelledby]="'panelsStayOpen-heading-' + $index">
+                <div
+                  id="panelsStayOpen-collapse-{{ $index }}"
+                  class="accordion-collapse collapse"
+                  [attr.aria-labelledby]="'panelsStayOpen-heading-' + $index"
+                >
                   <div class="accordion-body">
-                    <strong>This is the accordion body for item {{$index}}.</strong>
-                    {{video.description}}
-                    <code><a href="https://www.youtube.com/watch?v={{video.video_id}}" target="_blank" style="text-decoration: none; color:fuchsia;">Go to Session</a></code>
+                    <strong
+                      >This is the accordion body for item {{ $index }}.</strong
+                    >
+                    {{ video.description }}
+                    <code
+                      ><a
+                        href="https://www.youtube.com/watch?v={{
+                          video.video_id
+                        }}"
+                        target="_blank"
+                        style="text-decoration: none; color: fuchsia"
+                        >Go to Session</a
+                      ></code
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            }
-            }
-
-
+            } }
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
+</div>
