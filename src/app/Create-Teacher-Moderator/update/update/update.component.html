@@ -78,6 +78,23 @@
         <small *ngIf="f['role_id'].errors?.['required']">النوع مطلوب.</small>
       </div>
     </div>
+    <div *ngIf="updateForm.get('role_id')?.value === 'Teacher'">
+      <div class="mb-3">
+        <label for="title" class="form-label">عنوان<span class="text-danger">*</span></label>
+        <input type="text" id="title" class="form-control" placeholder="أدخل عنوان" formControlName="title">
+        <div *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)" class="text-danger">
+          <small *ngIf="f['title'].errors?.['required']">العنوان مطلوب.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">الوصف<span class="text-danger">*</span></label>
+        <textarea id="description" class="form-control" placeholder="أدخل الوصف" formControlName="description"></textarea>
+        <div *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)" class="text-danger">
+          <small *ngIf="f['description'].errors?.['required']">الوصف مطلوب.</small>
+        </div>
+      </div>
+    </div>
 
     <div class="mb-3">
       <label for="address" class="form-label">العنوان التفصيلي <span class="text-danger">*</span></label>
