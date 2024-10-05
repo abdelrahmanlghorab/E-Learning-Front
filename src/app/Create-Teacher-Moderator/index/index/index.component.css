@@ -30,3 +30,37 @@ thead {
   top: 0;
   position: sticky;
 }
+.main-btn {
+  padding: 0.4rem 1rem;
+  color: #ffff;
+  background: linear-gradient(
+      90deg,
+      var(--wave1, #007bff ),
+      var(--wave2,#00ccff ) 51%,
+      var(--wave1,  rgb(0 107 179))
+    )
+    var(--x, 0) / 200%;
+  scale: 1;
+  transition: 0.4s;
+  width: 150px !important;
+}
+
+
+.main-btn:hover {
+  scale: 0.995;
+  --x: 100%;
+}
+h2 {
+  color: #f5a623;
+  font-weight: bold;
+}
+
+a {
+  color: #f5a623;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+

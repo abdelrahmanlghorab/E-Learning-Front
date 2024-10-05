@@ -4,20 +4,21 @@
         <h3 class="text-second mb-4" style="color: orange; font-weight: 700;">إضافة دورة تعليمية جديدة</h3>
       </div>
       <form [formGroup]="courseForm" (ngSubmit)="createCourse()">
-        <!-- Title Field -->
           <div class="row mt-3">
             <div class="col">
               <div class="form-group" style="width: 100%; height: 10%;">
                 <mat-form-field class="custom-select" style="width: 100%;">
-                  <mat-label>ALl Courses</mat-label>
-                  <mat-select formControlName="courseSelected" name="courses"
-                    (ngModelChange)="settitle(courseForm.get('courseSelected')?.value)">
+                  <mat-label>All Courses</mat-label>
+                  <mat-select formControlName="playlist_id" name="courses"
+                    (ngModelChange)="setCourseValue(courseForm.get('playlist_id')?.value)">
                     @for (course of courses; track course.id) {
                     <mat-option id="description"  class="form-control bg-light text-dark" [value]="course.id">{{course.title}}</mat-option>
                     }
                   </mat-select>
                 </mat-form-field>
-                <p> Selected Course: {{title()}}</p>
+                <div *ngIf="courseForm.get('playlist_id')?.invalid && courseForm.get('playlist_id')?.touched || submitted" class="invalid-feedback">
+                  معرف قائمة التشغيل مطلوب.
+                </div>
               </div>
             </div>
           </div>
@@ -30,14 +31,13 @@
                 <input formControlName="title" type="text" id="title" class="form-control" [value]="title()"
                        placeholder="ادخل عنوان الدورة" [class.is-invalid]="courseForm.get('title')?.invalid && courseForm.get('title')?.touched">
               </div>
-              <div *ngIf="courseForm.get('title')?.invalid && courseForm.get('title')?.touched" class="invalid-feedback">
+              <div *ngIf="courseForm.get('title')?.invalid && courseForm.get('title')?.touched || submitted" class="invalid-feedback">
                 عنوان الدورة مطلوب ويجب أن يكون أكثر من 3 أحرف.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Description Field -->
         <div class="row mt-3">
           <div class="col">
             <div class="form-group">
@@ -47,20 +47,18 @@
                 <input formControlName="description" id="description" class="form-control" [value]="description()"
                        placeholder="ادخل تفاصيل الدورة" [class.is-invalid]="courseForm.get('description')?.invalid && courseForm.get('description')?.touched">
               </div>
-              <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched" class="invalid-feedback">
+              <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched || submitted" class="invalid-feedback">
                 تفاصيل الدورة مطلوبة ويجب أن تكون أكثر من 10 أحرف.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Is Free Checkbox -->
         <div class="form-check mt-3">
           <input formControlName="is_free" type="checkbox" class="form-check-input" id="isFree">
           <label class="form-check-label" for="isFree">الدورة مجانية</label>
         </div>
 
-        <!-- Price Field -->
         <div class="row mt-3" *ngIf="!courseForm.get('is_free')?.value">
           <div class="col">
             <div class="form-group">
@@ -70,31 +68,38 @@
                 <input formControlName="price" type="number" id="price" class="form-control"
                        placeholder="أدخل السعر" [class.is-invalid]="courseForm.get('price')?.invalid && courseForm.get('price')?.touched">
               </div>
-              <div *ngIf="courseForm.get('price')?.invalid && courseForm.get('price')?.touched" class="invalid-feedback">
+              <div *ngIf="courseForm.get('price')?.invalid && courseForm.get('price')?.touched || submitted" class="invalid-feedback">
                 يرجى إدخال سعر صالح للدورة.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Instructor ID -->
         <div class="row mt-3">
           <div class="col">
             <div class="form-group">
               <label for="instructor_id">معرف المعلم</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                <input formControlName="instructor_id" type="text" id="instructor_id" class="form-control"
-                       placeholder="أدخل معرف المعلم" [class.is-invalid]="courseForm.get('instructor_id')?.invalid && courseForm.get('instructor_id')?.touched">
-              </div>
-              <div *ngIf="courseForm.get('instructor_id')?.invalid && courseForm.get('instructor_id')?.touched" class="invalid-feedback">
+              <mat-form-field class="custom-select" style="width: 100%;">
+                <mat-label>All Teachers</mat-label>
+                <mat-select formControlName="instructor_id" name="teachers"  (ngModelChange)="setInstructorValue(courseForm.get('instructor_id')?.value)" >
+                  @for (instructor of instructors; track instructor.id) {
+                  <mat-option id="description" class="form-control bg-light text-dark"
+                    value={{instructor.id}}>{{instructor.name}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+                <div *ngIf="courseForm.get('instructor_id')?.invalid && courseForm.get('instructor_id')?.touched || submitted" class="invalid-feedback">
                 معرف المعلم مطلوب.
               </div>
+              <!-- <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input formControlName="instructor_id" type="text" id="instructor_id" class="form-control" [value]="instructor_id()"
+                       placeholder="أدخل معرف المعلم" [class.is-invalid]="courseForm.get('instructor_id')?.invalid && courseForm.get('instructor_id')?.touched">
+              </div>-->
             </div>
           </div>
         </div>
-
-        <!-- Playlist ID -->
+<!--
         <div class="row mt-3">
           <div class="col">
             <div class="form-group">
@@ -104,16 +109,11 @@
                 <input formControlName="playlist_id" type="text" id="playlist_id" class="form-control"
                        placeholder="أدخل معرف قائمة التشغيل" [class.is-invalid]="courseForm.get('playlist_id')?.invalid && courseForm.get('playlist_id')?.touched">
               </div>
-              <div *ngIf="courseForm.get('playlist_id')?.invalid && courseForm.get('playlist_id')?.touched" class="invalid-feedback">
-                معرف قائمة التشغيل مطلوب.
-              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Submit Button -->
+        </div> -->
         <div class="d-grid gap-3 text-center my-4">
-          <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" type="submit" [disabled]="courseForm.invalid">إضافة الدورة</button>
+          <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" type="submit" >إضافة الدورة</button>
         </div>
       </form>
     </div>

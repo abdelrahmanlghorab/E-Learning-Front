@@ -1,48 +1,6 @@
-<div class="container credit-card-form" dir="rtl">
-    <div class="card">
-        <h3 class="text-center mb-4">إتمام عملية الدفع</h3>
-        <div class="credit-card-icons  mb-3 d-flex  gap-5">
-            <p>نقبل</p>
-            <div class="form-check me-3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" width="50">
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" width="50">
-                </label>
-            </div>  
-        </div>        
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">اسم صاحب الكارت</label>
-                <input type="text" class="form-control" id="name" placeholder="اسم صاحب الكارت">
-            </div>
-            <div class="mb-3">
-                <label for="card-number" class="form-label">رقم الكارت</label>
-                <input type="text" class="form-control" id="card-number" placeholder="xxxx-xxxx-xxxx-xxxx">
-            </div>
-            <div class="mb-3">
-                <label for="cvv" class="form-label">رمز الأمان</label>
-                <input type="password" class="form-control" id="cvv" placeholder="CVV">
-            </div>
-            <div class="row">
-                <p class="form-label">تاريخ انتهاء الصلاحية</p>
-                <div class="col-md-6 mb-3">
-                    <label for="year" class="form-label">السنة</label>
-                    <input type="text" class="form-control" id="year" placeholder="YY">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="month" class="form-label">الشهر</label>
-                    <input type="text" class="form-control" id="month" placeholder="MM">
-                </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <button type="submit" class="btn main-btn">ادفع</button>
-            </div>
-        </form>
-    </div>
-</div>
+<h2>Pay for Course</h2>
+<div id="card-element"></div>
+<button (click)="pay()">Pay</button>
+@if(message){
+    <p>{{ message }}</p>
+}

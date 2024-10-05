@@ -16,13 +16,12 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from "./Dashboard/admin/admin.component";
 import { CourseCreateComponent } from "./Course/course-create/course-create.component";
 import { ScrollToTopComponent } from "./Shared/scroll-to-top/scroll-to-top.component";
-import { PaymentComponent } from "./Payment/payment/payment.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
 
-  imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent, AdminComponent, CourseCreateComponent, ScrollToTopComponent, PaymentComponent],
+  imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent, AdminComponent, CourseCreateComponent, ScrollToTopComponent],
 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

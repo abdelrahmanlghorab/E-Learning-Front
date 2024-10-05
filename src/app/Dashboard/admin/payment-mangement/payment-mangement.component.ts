@@ -13,10 +13,10 @@ export class PaymentMangementComponent {
 constructor(private paymentService: PaymentService) {}
 ngOnInit(): void {
   this.paymentService.getPayments().subscribe(
-    (response) => {
+    (response:any) => {
       this.payments = response;
     },
-    (error) => {
+    (error:any) => {
       console.error('Error fetching payments', error);
     }
   );

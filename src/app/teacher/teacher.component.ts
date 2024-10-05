@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { GetTeacherService } from '../../services/get-teacher.service';
+import { GetTeacherService } from '../services/get-teacher.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-our-teacher',
+  selector: 'app-teacher',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './our-teacher.component.html',
-  styleUrl: './our-teacher.component.css'
+  templateUrl: './teacher.component.html',
+  styleUrl: './teacher.component.css'
 })
-export class OurTeacherComponent {
+export class TeacherComponent {
   teachers :any;
 
   constructor(private teacher : GetTeacherService){
     this.teacher.getAllTeachers().subscribe(data => {
       console.log((data as any).data);
-      this.teachers = (data as any).data.slice(0, 4);
+      this.teachers = (data as any).data;
     }); 
   }
 
