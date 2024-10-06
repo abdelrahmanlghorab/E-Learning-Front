@@ -23,6 +23,8 @@ import { TrashedComponent } from './Create-Teacher-Moderator/trashed/trashed/tra
 import { TeacherComponent } from './teacher/teacher.component';
 import { TestCreateComponent } from './Test/test-create/test-create.component';
 import { TestUpdateComponent } from './Test/test-update/test-update.component';
+import { ProfileViewComponent } from './Dashboard/student/student-profile-view/student-profile-view.component';
+import { ProfileEditComponent } from './Dashboard/student/student-profile-edit/student-profile-edit.component';
 
 export const routes: Routes = [
   {
@@ -147,6 +149,16 @@ export const routes: Routes = [
     path: 'teachers',
     component: TeacherComponent,
     title: 'teachers',
+  },
+  {
+    path:'profile',
+    component: ProfileViewComponent,
+    title: 'Profile View',
+  },
+  {
+    path:'edit-profile',
+    component: ProfileEditComponent,
+    title: 'Edit Profile',
   },
   {
     path: '**',
