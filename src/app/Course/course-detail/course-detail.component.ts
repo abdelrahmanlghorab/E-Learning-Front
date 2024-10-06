@@ -3,6 +3,7 @@ import { CoursesService } from '../../services/courses.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router , RouterLink} from '@angular/router';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { EnrollmentService } from '../../services/enrollment.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -16,21 +17,22 @@ export class CourseDetailComponent {
   courseVideos: any;
   id:any;
   teacher: any;
-
-  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService) {
+  enrollment:boolean=false;
+  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService,private enrollmentService:EnrollmentService) {
   }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.courseService.getCourse(this.id).subscribe((data: any) => {
     this.course = data
-    console.log(this.course);
     this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
       this.teacher = data.data[0]
-      console.log(this.teacher);
     })
-    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(this.courseVideos=data[0].videos))
+    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(this.courseVideos=data[0].videos));
+    this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
+      this.enrollment = data.enrolled;
+      console.log(this.enrollment);
+      });
     });
-
   }
 
 }
