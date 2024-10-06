@@ -3,7 +3,7 @@
     <h2 class="mb-6 font-24-bold text-center">إنشاء معلم أو مدير الآن</h2>
     <hr>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-      <div class="row mb-3">
+      <div class="row mb-2">
         <label for="firstName" class="form-label">الاسم <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-solid fa-user"></i></span>
@@ -14,7 +14,7 @@
           <small *ngIf="f['name'].errors?.['pattern']">الاسم يجب أن يحتوي على أحرف فقط.</small>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="email" class="form-label">عنوان البريد الإلكتروني <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="confirmPassword" class="form-label">تأكيد كلمة السر <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -61,7 +61,7 @@
           <small>كلمات المرور غير متطابقة.</small>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="nationalId" class="form-label">الرقم القومى <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-id-card"></i></span>
@@ -75,7 +75,7 @@
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="gender" class="form-label">النوع <span class="text-danger">*</span></label>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
@@ -89,10 +89,10 @@
           <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-2">
         <label for="gender" class="form-label">معلم او مدير <span class="text-danger">*</span></label>
         <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+          <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
           <select id="role_id" class="form-select" formControlName="role_id">
             <option value="" disabled selected>اختر دور</option>
             <option value="Teacher">معلم</option>
@@ -104,25 +104,25 @@
         </div>
       </div>
       <div *ngIf="createForm.get('role_id')?.value === 'Teacher'">
-        <div class="mb-3">
-          <label for="title" class="form-label">العنوان الوظيفي <span class="text-danger">*</span></label>
+        <div class="mb-2">
+          <label for="title" class="form-label">المسمى الوظيفي <span class="text-danger">*</span></label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
-            <input type="text" id="title" class="form-control" placeholder="أدخل العنوان الوظيفي" formControlName="title">
+            <input type="text" id="title" class="form-control" placeholder="أدخل المسمى" formControlName="title">
           </div>
           <div *ngIf="f['title'].invalid && (f['title'].dirty && f['title'].touched || submitted)" class="text-danger">
-            <small *ngIf="f['title'].errors?.['required']"> الوصف</small>
+            <small *ngIf="f['title'].errors?.['required']"> مطلوب للمعلم</small>
           </div>
         </div>
       
         <div class="mb-3">
-          <label for="description" class="form-label">الوصف الوظيفي <span class="text-danger">*</span></label>
+          <label for="description" class="form-label">نبذة للمعلم<span class="text-danger">*</span></label>
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-align-left"></i></span>
-            <textarea id="description" class="form-control" placeholder="أدخل الوصف الوظيفي" formControlName="description"></textarea>
+            <textarea id="description" class="form-control" placeholder="أدخل نبذة عن المعلم " formControlName="description"></textarea>
           </div>
           <div *ngIf="f['description'].invalid && (f['description'].dirty && f['description'].touched || submitted)" class="text-danger">
-            <small *ngIf="f['description'].errors?.['required']">الوصف مطلوب.</small>
+            <small *ngIf="f['description'].errors?.['required']" >  الوصف مطلوب للمعلم</small>
           </div>
         </div>
       </div>
