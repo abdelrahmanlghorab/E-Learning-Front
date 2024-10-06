@@ -53,7 +53,10 @@ section .section-title {
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-
+img{
+  width: 300px !important;
+  height: 250px;
+}
 .mainflip {
     -webkit-transition: 1s;
     -webkit-transform-style: preserve-3d;
@@ -68,7 +71,6 @@ section .section-title {
 
 .frontside {
     position: relative;
-
     z-index: 2;
     margin-bottom: 30px;
 }
@@ -126,7 +128,6 @@ section .section-title {
     height: 320px;
     border-radius: 50%;
 }
-/* From Uiverse.io by adeladel522 */
 .button {
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -210,7 +211,7 @@ section .section-title {
     font-size: 15px;
   }
   .cont{
-    margin-top: 120px;
+    margin-top: 100px;
   }
 
   button.learn-more {

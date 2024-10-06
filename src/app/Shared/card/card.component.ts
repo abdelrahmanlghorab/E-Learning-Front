@@ -26,6 +26,7 @@ export class CardComponent {
         this.teacherImage = this.teacher[0].image;
 
          console.log(this.course);
+         console.log(this.teacherName , "teacher name ");
        });
       }
   handleMouseMove(event: MouseEvent) {
