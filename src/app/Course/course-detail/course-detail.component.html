@@ -139,6 +139,7 @@
                       >This is the accordion body for item {{ $index }}.</strong
                     >
                     {{ video.description }}
+                    @if(enrollment==true){
                     <code
                       ><a
                         href="https://www.youtube.com/watch?v={{
@@ -149,6 +150,7 @@
                         >Go to Session</a
                       ></code
                     >
+                  }
                   </div>
                 </div>
               </div>
