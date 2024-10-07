@@ -1,0 +1,51 @@
+<div class="main" dir="rtl">
+    <div class="row">
+        <div class=" col-md-12 mx-auto ">
+            <div class="panel">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>إزالة</th>
+                                <th>#</th>
+                                <th>اسم الطالب</th>
+                                <th>البريد الالكترونى</th>
+                                <th>الرقم القومى</th>
+                                <th>النوع</th>
+                                <th>رقم التليفون</th>
+                                <th>العنوان</th>
+                                <th>صورة الطالب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           @for (user of users; track user.id) { 
+                            <tr>
+                                <td>
+                                    <ul class="action-list">
+                                        <button (click)="restoreUser(user.id)" class="btn btn-link" title="Restore">
+                                            <i class="fas fa-undo"></i>
+                                          </button>                          
+                                    </ul>
+                                </td>
+                                <td>{{user.id}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.national_id}}</td>
+                                <td>{{user.gender}}</td>
+                                <td>{{user.phone}}</td>
+                                <td>{{user.address}}</td>
+                                <td>
+                                    <img [src]="user.image" alt="Image" width="100" height="100">
+                                </td>
+                                <!-- <td><button routerLink="//{{user.id}}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></button></td> -->
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    

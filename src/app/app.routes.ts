@@ -27,6 +27,7 @@ import { TestUpdateComponent } from './Test/test-update/test-update.component';
 import { TestManagementComponent } from './Test/test-management/test-management.component';
 import { ProfileViewComponent } from './Dashboard/student/student-profile-view/student-profile-view.component';
 import { ProfileEditComponent } from './Dashboard/student/student-profile-edit/student-profile-edit.component';
+import { RestoreUserComponent } from './Dashboard/admin/user-management/restore-user/restore-user.component';
 
 export const routes: Routes = [
   {
@@ -171,6 +172,11 @@ export const routes: Routes = [
     path:'edit-profile',
     component: ProfileEditComponent,
     title: 'Edit Profile',
+  },
+  {
+    path:'admin/restoreuser',
+    component: RestoreUserComponent,
+    title: 'Restore User',
   },
   {
     path: '**',

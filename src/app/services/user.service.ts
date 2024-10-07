@@ -24,8 +24,10 @@ export class UserService {
   removeStudent(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-
+  getAllTrashedStudent() {
+    return this.http.get(`${this.url}-trashed`);
+  }
   restoreStudent(id: number) {
-    return this.http.put(`${this.url}/restore/${id}`, {});  
+    return this.http.post(`http://localhost:8000/api/student/${id}/restore`, {});  
   }
 }

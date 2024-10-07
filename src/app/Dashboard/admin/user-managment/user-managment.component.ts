@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserManagmentComponent {
   users: any;  
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getAllStudent().subscribe(
@@ -35,6 +35,8 @@ export class UserManagmentComponent {
       (response) => {
         alert('User deleted successfully');
         this.users = this.users.filter((user: any) => user.id !== id);
+        this.router.navigate(['/admin/restoreuser']);
+
       },
       (error) => {
         alert('Error deleting user');
@@ -43,15 +45,5 @@ export class UserManagmentComponent {
     );
   }
 
-  restoreUser(id: number) {
-    this.userService.restoreStudent(id).subscribe(
-      (response) => {
-        alert('User restored successfully');
-      },
-      (error) => {
-        alert('Error restoring user');
-        console.error('Error restoring user:', error);
-      }
-    );
-  }
+  
 }
