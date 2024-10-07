@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router , RouterLink} from '@angular/router';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
@@ -28,10 +28,9 @@ export class CourseDetailComponent {
       this.teacher = data.data[0]
       console.log(this.teacher);
     })
-    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>console.log((this.courseVideos=data[0].videos)))
+    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(this.courseVideos=data[0].videos))
     });
 
   }
-
 
 }

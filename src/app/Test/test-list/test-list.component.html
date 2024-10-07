@@ -1,1 +1,35 @@
-<p>test-list works!</p>
+<div class="container mt-5">
+    <div class="card  text-center text-white" style="border-radius: 20px  ;">
+        <div class="card-title  bg-dark" style="border-radius: 20px 20px 0 0 ;">
+            <h3>الامتحانات</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>title</td>
+                        <td>Description</td>
+                        <td>is_free</td>
+                        <td colspan="2">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(item of testList ; track $index){
+                    <tr>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.is_free}}</td>
+                        <td><a class="btn btn-primary" routerLink="/test/{{item.id}}/update">Edit</a></td>
+                        <td><a class="btn btn-danger" (click)="onDelete(item.id)" >Delete</a></td>
+                    </tr>
+                    }
+
+                </tbody>
+            
+            </table>
+            <div class="card-footer text-end">
+                <a class="btn btn-success" href="/test-create">Add New Test</a>
+            </div>
+        </div>
+    </div>
+</div>
