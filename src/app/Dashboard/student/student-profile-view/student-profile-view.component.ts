@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Router, RouterLink } from '@angular/router';
+import { CoursesService } from '../../../services/courses.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -14,7 +15,7 @@ export class ProfileViewComponent {
   user: any;
   user_courses:any;
   user_data=JSON.parse(localStorage.getItem('data')!)
-  constructor(private userService: UserService,private router: Router) {
+  constructor(private coursesService: CoursesService,private userService: UserService,private router: Router) {
   }
   ngOnInit(): void {
     this.userService.getUser(Number(this.user_data.id)).subscribe(
@@ -24,7 +25,7 @@ export class ProfileViewComponent {
         // console.log(this.user);
       }
     );
-    this.userService.getCourse(Number(this.user_data.id)).subscribe(
+    this.coursesService.getCourse(Number(this.user_data.id)).subscribe(
       (data: any) => {
         console.log(data);
         this.user_courses = data.data;
