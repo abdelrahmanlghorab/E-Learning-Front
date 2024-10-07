@@ -10,7 +10,7 @@
                         <td>title</td>
                         <td>Description</td>
                         <td>is_free</td>
-                        <td colspan="2">Action</td>
+                        <td colspan="3">Action</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,12 +20,13 @@
                         <td>{{item.description}}</td>
                         <td>{{item.is_free}}</td>
                         <td><a class="btn btn-primary" routerLink="/test/{{item.id}}/update">Edit</a></td>
-                        <td><a class="btn btn-danger" (click)="onDelete(item.id)" >Delete</a></td>
+                        <td><a class="btn btn-danger" (click)="onDelete(item.id)">Delete</a></td>
+                        <td><a class="btn btn-info" routerLink="/test/{{item.id}}">Show</a></td>
                     </tr>
                     }
 
                 </tbody>
-            
+
             </table>
             <div class="card-footer text-end">
                 <a class="btn btn-success" href="/test-create">Add New Test</a>

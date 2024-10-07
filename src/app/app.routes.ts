@@ -24,6 +24,7 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 import { TestCreateComponent } from './Test/test-create/test-create.component';
 import { TestUpdateComponent } from './Test/test-update/test-update.component';
+import { TestManagementComponent } from './Test/test-management/test-management.component';
 import { ProfileViewComponent } from './Dashboard/student/student-profile-view/student-profile-view.component';
 import { ProfileEditComponent } from './Dashboard/student/student-profile-edit/student-profile-edit.component';
 
@@ -59,6 +60,11 @@ export const routes: Routes = [
     path: 'test/:id/update',
     component: TestUpdateComponent,
     title: 'Update Tests',
+    canActivate: [authGuard]
+  }, {
+    path: 'test/:id',
+    component: TestManagementComponent,
+    title: 'Exam',
     canActivate: [authGuard]
   },
   {
