@@ -32,7 +32,7 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home Page ',
+    title: 'Ana Kafuo ',
   },
   {
     path: 'signin',
