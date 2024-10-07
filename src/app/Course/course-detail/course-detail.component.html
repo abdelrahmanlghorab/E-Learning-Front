@@ -19,12 +19,22 @@
               <span class="fs-2 fw-semibold mb-3">${{ coursePrice }}</span>
             </h5>
             }
+                @if(enrollment==false){
             <a
               [routerLink]="['/payment', courseID]"
               routerLinkActive="router-link-active"
               class="btn col-10 flex-wrap text-center btn-outline-warning fs-5"
               >Enroll Now</a
             >
+                }@else {
+                  <button
+                    class="btn col-10 flex-wrap text-center btn-outline-success fs-5"
+                    disabled
+                  >
+                    Enrolled Successfulley
+                  </button>
+
+                }
             <hr />
             <div class="row d-block">
               <span>
