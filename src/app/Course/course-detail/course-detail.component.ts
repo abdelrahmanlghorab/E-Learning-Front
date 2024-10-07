@@ -3,34 +3,60 @@ import { CoursesService } from '../../services/courses.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router , RouterLink} from '@angular/router';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { EnrollmentService } from '../../services/enrollment.service';
+import { TruncatePipe } from '../../Pipes/truncate.pipe';
+import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TruncatePipe, CustomDatePipe],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
 export class CourseDetailComponent {
   course: any;
+  courseID:any;
+  courseTitle: string="Course";
+  courseImage: string="Course Image";
+  courseDescription: string="Descriptions of the Course";
+  courseInstructor: string="Instructor";
+  coursePrice:any;
+  courseCreation: string="Creation of the Course";
   courseVideos: any;
+  courseVideosNum: any;
+  teacherImage: string="";
   id:any;
+  truncate= new TruncatePipe();
   teacher: any;
-
-  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService) {
+  enrollment:boolean=false;
+  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService,private enrollmentService:EnrollmentService) {
   }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.courseService.getCourse(this.id).subscribe((data: any) => {
     this.course = data
-    console.log(this.course);
-    this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
-      this.teacher = data.data[0]
-      console.log(this.teacher);
-    })
-    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(this.courseVideos=data[0].videos))
-    });
+    this.courseID=data.id;
+    this.courseCreation = new CustomDatePipe().transform(this.course.created_at);
+    this.courseTitle = this.course.title;
+    this.courseImage = this.course.thumbnail;
+    this.courseDescription = new TruncatePipe().transform(this.course.description,750) ;
 
+    this.coursePrice = this.course.price;
+    this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
+    this.teacher = data.teacher[0]
+    this.courseInstructor = this.teacher.name;
+    this.teacherImage = this.teacher.image;
+    })
+    this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) =>(
+      this.courseVideos=data[0].videos,
+      this.courseVideosNum = data[0].videos.length
+    ));
+    this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
+      this.enrollment = data.enrolled;
+      console.log(this.enrollment);
+      });
+    });
   }
 
 }

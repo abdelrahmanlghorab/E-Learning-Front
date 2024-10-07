@@ -85,8 +85,10 @@ position: absolute;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
+  opacity: 0.75;
+  margin-top: -1px;
 }
 .category {
   opacity: 0.75;

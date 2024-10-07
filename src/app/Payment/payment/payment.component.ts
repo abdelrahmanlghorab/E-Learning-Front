@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
       this.cardElement = this.elements.create('card');
       this.cardElement.mount('#card-element');
     } else {
-      this.error = 'Failed to initialize Stripe. Please refresh the page.';
+      this.error = 'خطأ في عملية الدفع';
     }
   }
   pay() {
@@ -44,21 +44,21 @@ export class PaymentComponent implements OnInit {
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
 
         if (error) {
-          this.error = error.message;
+          this.error = "خطأ في عملية الدفع";
         } else if (paymentIntent?.status === 'succeeded') {
           console.log(paymentIntent);
           this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
             next: () => {
-              this.message = 'Payment successful!';
+              this.message = 'تم الدفع بنجاح';
             },
-            error: () => this.error = 'Failed to store payment intent.'
+            error: () => this.error = 'خطأ في عملية الدفع'
           });
-          this.message = 'Payment successful!';
+          this.message = 'تم الدفع بنجاح';
         } else {
-          this.error = 'Payment failed, please try again.';
+          this.error = 'فشل في عملية الدفع';
         }
       },
-      error: () => this.error = 'Failed to create payment intent.'
+      error: () => this.error = 'خطأ في عملية الدفع'
     });
   }
 }

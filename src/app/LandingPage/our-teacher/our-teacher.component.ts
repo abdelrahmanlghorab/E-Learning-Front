@@ -14,7 +14,6 @@ export class OurTeacherComponent {
 
   constructor(private teacher : GetTeacherService){
     this.teacher.getAllTeachers().subscribe(data => {
-      console.log((data as any).data);
       this.teachers = (data as any).data.slice(0, 4);
     }); 
   }

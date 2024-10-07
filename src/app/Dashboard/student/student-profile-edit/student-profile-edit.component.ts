@@ -4,14 +4,16 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
+import { UserService } from '../../../services/user.service';
+
 @Component({
-  selector: 'app-update',
+  selector: 'app-profile-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './update.component.html',
-  styleUrl: './update.component.css',
+  imports: [CommonModule, ReactiveFormsModule, RouterLink], 
+  templateUrl: './student-profile-edit.component.html',
+  styleUrls: ['./student-profile-edit.component.css']
 })
-export class UpdateComponent {
+export class ProfileEditComponent implements OnInit {
   updateForm: FormGroup;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
@@ -25,7 +27,6 @@ export class UpdateComponent {
     gender: '',
     address: '',
     phone: '',
-    role_id: '',
     image: '',
   };
 
@@ -35,7 +36,7 @@ export class UpdateComponent {
 
   constructor(
     private fb: FormBuilder,
-    private Organizerservece: CreateOrganizerService,
+    private userService:UserService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -49,16 +50,12 @@ export class UpdateComponent {
       gender: [''],
       address: [''],
       phone: [''],
-      role_id: [''],
-      title: [''],
-      description: [''],
     });
-    this.toggleFields();
 
   }
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') || '';
-    this.Organizerservece.getorganizer(Number(this.id)).subscribe(
+    this.id = JSON.parse(localStorage.getItem('data')!).id;
+    this.userService.getUser(Number(this.id)).subscribe(
       (data: any) => {
         this.updateForm.patchValue({
           name: data.data.name,
@@ -67,19 +64,7 @@ export class UpdateComponent {
           gender: data.data.gender,
           address: data.data.address,
           phone: data.data.phone,
-          role_id: data.data.role_id,
-          title: data.data.title,
-          description: data.data.description ,
         });
-        if (this.updateForm.value.role_id == 2) {
-          this.updateForm.patchValue({
-            role_id: 'Teacher',
-          });
-        } else {
-          this.updateForm.patchValue({
-            role_id: 'Moderator',
-          });
-        }
 
         this.currentImageUrl = data.data.image;
         console.log(this.updateForm.value);
@@ -96,41 +81,24 @@ export class UpdateComponent {
       });
     }
   }
-  toggleFields(): void {
-    const role = this.updateForm.get('role_id')?.value;
-    if (role === 'Teacher') {
-      this.updateForm.get('title')?.setValidators([Validators.required]);
-      this.updateForm.get('description')?.setValidators([Validators.required]);
-    } else {
-      this.updateForm.get('title')?.clearValidators();
-      this.updateForm.get('description')?.clearValidators();
-      this.updateForm.get('title')?.reset();
-      this.updateForm.get('description')?.reset();
-    }
-    this.updateForm.get('title')?.updateValueAndValidity();
-    this.updateForm.get('description')?.updateValueAndValidity();
-  }
-  onRoleChange() {
-    this.toggleFields();
-  }
 
   onSubmit() {
     if (this.updateForm.invalid) {
       console.log('Form is invalid');
       return;
     }
-    this.Organizerservece.updateorganizer(
+    this.userService.updateUser(
       this.id,
       this.updateForm.value
     ).subscribe(
       (response: any) => {
-        console.log('Organizer updated successfully', response);
-        alert('Organizer updated successfully!');
-        this.router.navigateByUrl('/allorganizer');
+        console.log('Profile updated successfully', response);
+        alert('Profile updated successfully!');
+        this.router.navigateByUrl('/profile');
       },
       (error: any) => {
-        console.error('Error updating organizer', error);
-        alert('Error updating organizer.');
+        console.error('Error updating profile', error);
+        alert('Error updating profile.');
       }
     );
   }

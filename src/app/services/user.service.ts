@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  url = 'http://localhost:8000/api/';
+  url = 'http://localhost:8000/api/students';  
   constructor(private http: HttpClient) { }
   getAllCourses() {
     return this.http.get(this.url);
@@ -16,6 +16,16 @@ export class UserService {
   }
   deleteCourse(id:number) {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getUser(id: number) {
+    return this.http.get(this.url + '/' + id);
+
+}
+  updateUser(id: number, data: any) {
+    return this.http.put(this.url + '/' + id, data);
+  }
+  getUsers() {
+    return this.http.get(this.url);
   }
 
 }

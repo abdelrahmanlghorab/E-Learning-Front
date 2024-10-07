@@ -19,8 +19,9 @@
               <span class="category">Entry Level</span>
             </div>
             <div class="flex gap-2 mb-3 me-3  position-absolute bottom-0 end-0">
-              <img src="money.svg" class="me-2" alt="MoneyBadge">
-              <span class="price ">$100</span>
+              <img src="money.svg" class="ms-2"  alt="MoneyBadge">
+              <span class="price me-3"> {{ course.price == 0 ? 'مجاني' : '$ ' + course.price }}
+              </span>
             </div>
       </div>
       </div>

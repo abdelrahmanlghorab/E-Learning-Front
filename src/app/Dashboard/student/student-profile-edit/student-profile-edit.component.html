@@ -1,6 +1,6 @@
 <div class="container mt-3 my-3" dir="rtl"></div>
 <div class="form-container">
-  <h2 class="mb-6 font-24-bold text-center">تعديل معلم أو مدير </h2>
+  <h2 class="mb-6 font-24-bold text-center">تعديل طالب</h2>
   <hr>
 
   <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
@@ -59,43 +59,7 @@
         <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
       </div>
     </div>
-    <div class="mb-3">
-      <label for="gender" class="form-label">معلم او مدير <span class="text-danger">*</span></label>
-      <div class="input-group">
-        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-        <select id="role_id" class="form-select" formControlName="role_id">
-
-          @if(updateForm.value.role_id == "Moderator"){
-          <option value="Teacher">معلم</option>
-          <option selected  value="Moderator">مدير</option>
-          }@else{
-            <option selected value="Teacher">معلم</option>
-            <option   value="Moderator">مدير</option>
-          }
-        </select>
-      </div>
-      <div *ngIf="f['role_id'].invalid && (f['role_id'].dirty || f['role_id'].touched)" class="text-danger">
-        <small *ngIf="f['role_id'].errors?.['required']">النوع مطلوب.</small>
-      </div>
-    </div>
-    <div *ngIf="updateForm.get('role_id')?.value === 'Teacher'">
-      <div class="mb-3">
-        <label for="title" class="form-label">عنوان<span class="text-danger">*</span></label>
-        <input type="text" id="title" class="form-control" placeholder="أدخل عنوان" formControlName="title">
-        <div *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)" class="text-danger">
-          <small *ngIf="f['title'].errors?.['required']">العنوان مطلوب.</small>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="description" class="form-label">الوصف<span class="text-danger">*</span></label>
-        <textarea id="description" class="form-control" placeholder="أدخل الوصف" formControlName="description"></textarea>
-        <div *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)" class="text-danger">
-          <small *ngIf="f['description'].errors?.['required']">الوصف مطلوب.</small>
-        </div>
-      </div>
-    </div>
-
+  
     <div class="mb-3">
       <label for="address" class="form-label">العنوان التفصيلي <span class="text-danger">*</span></label>
       <div class="input-group">
@@ -139,8 +103,8 @@
 
     <div class="d-flex">
       <button type="submit" class="btn main-btn rounded-5 ms-5 custom-button w-100">أضافة </button>
-      <button routerLink="/allorganizer" class="btn main-btn rounded-5 me-5 custom-button w-100">ارجع </button>
-    </div>  </form>
+    </div>  
+  </form>
 
 
 </div>
