@@ -85,23 +85,24 @@
         </div>
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
-          <div class="col-md-2 text-center">
+          <div class="col-md-2 d-flex justify-content-center align-items-center text-center">
             <img
-              [src]="teacherImage"
+              [src]="instructorImage"
               class="col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning m-3"
               alt="{{ courseInstructor }} image"
             />
           </div>
-          <div class="col-md-8">
+          <div class="col">
             <div class="card-body">
-              <h3 class="card-title">Mr.{{ courseInstructor }}</h3>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer IT MUST BE A DESCRIPTION FOR TEACHER.
+              <span class="card-title me-auto fs-3">Mr.{{ courseInstructor }}</span>
+              <p class="card-text text-secondary  col-10">
+                {{instructorTitle}}
               </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated:</small>
+              <p class="card-text text-secondary ms-4 col-10">
+              {{instructorDescription}}
+              </p>
+              <p class="card-text text-end ">
+                <small class="text-muted text-secondary text-lighter opacity-50 ">E-mail: {{instructourEmail}} </small>
               </p>
             </div>
           </div>
@@ -151,21 +152,28 @@
                   [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id"
                 >
                   <div class="accordion-body">
-                    {{ truncate.transform(this.video.description, 200) }}
                     @if(enrollment==true){
-                    <code
+                      {{ truncate.transform(this.video.description, 200) }}
+                      <div class="d-flex align-items-center text-start mt-2">
+                    <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
+
+                    <code class="ms-2 text-start  text-secondary"
                       ><a
                         href="https://www.youtube.com/watch?v={{
                           video.video_id
                         }}"
                         target="_blank"
-                        style="text-decoration: none; color: fuchsia"
+                        style="text-decoration: none; color:green"
                         >Go to Session</a
                       >
                     </code>
+                    </div>
                     }@else {
-                    <code> Your not Permitted to See this Session </code>
+                      <div>
+                      <span class="badge text-bg-danger">Restricted</span>
 
+                    <code class="opacity-50"> Not Available unless: You are a Student </code>
+                        </div>
                     }
                   </div>
                 </div>

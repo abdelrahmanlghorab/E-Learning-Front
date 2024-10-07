@@ -15,6 +15,14 @@
   margin-bottom: 5%;
   /* opacity: 50%; */
 }
+.icon{
+  background-color: linear-gradient(
+      90deg,
+      var(--wave1, #007bff),
+      var(--wave2, #00ccff) 51%,
+      var(--wave1, rgb(0 107 179))
+    ) !important;
+}
 .btn-outline-warning:hover{
   color: #ffffff;
 

@@ -20,11 +20,12 @@ export class MostResentCoursesComponent {
     this.course.getAllCourses().subscribe(data => {
       this.courses = data as any[];
       this.courses = this.courses.slice(0, 3);
-    
+
       this.courses.forEach((course: any) => {
+        console.log(course.instructor_id);
         this.teacherService.getTeacher(course.instructor_id).subscribe((teacherData: any) => {
-          course.teacherName = teacherData.data[0].name;
-          course.teacherImage = teacherData.data[0].image;
+          course.teacherName = teacherData.teacher[0].name;
+          course.teacherImage = teacherData.teacher[0].image;                    
         });
       });
     });
@@ -32,7 +33,5 @@ export class MostResentCoursesComponent {
   }
 
 
-  ngOnInit(){
-   
-        }
+  ngOnInit(){}
 }
