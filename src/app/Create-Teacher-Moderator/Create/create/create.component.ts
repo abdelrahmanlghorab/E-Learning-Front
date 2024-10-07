@@ -37,11 +37,26 @@ export class CreateComponent  implements OnInit {
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
       image: ['', Validators.required],
+      title: [''],
+      description: [''] 
 
     }, { validators: this.passwordMatchValidator });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createForm.get('role_id')?.valueChanges.subscribe(role => {
+      if (role === 'Teacher') {
+        this.createForm.get('title')?.setValidators([Validators.required]);
+        this.createForm.get('description')?.setValidators([Validators.required]);
+      } else {
+        this.createForm.get('title')?.clearValidators();
+        this.createForm.get('description')?.clearValidators();
+      }
+      this.createForm.get('title')?.updateValueAndValidity();
+      this.createForm.get('description')?.updateValueAndValidity();
+    });
+  
+  }
 
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password')?.value === formGroup.get('password_confirmation')?.value
@@ -80,6 +95,8 @@ export class CreateComponent  implements OnInit {
       formData.append('role_id', this.createForm.get('role_id')?.value);
       formData.append('address', this.createForm.get('address')?.value);
       formData.append('phone', this.createForm.get('phone')?.value);
+      formData.append('title', this.createForm.get('title')?.value);
+      formData.append('description', this.createForm.get('description')?.value);
 
       const imageFile = this.createForm.get('image')?.value as File;
       if (imageFile) {
