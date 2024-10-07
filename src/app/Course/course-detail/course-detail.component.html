@@ -61,11 +61,6 @@
           <div class="card-body row text-center d-block">
             <h5 class="card-title">Video: {{ courseVideosNum }}</h5>
             <hr />
-            <a
-              href="#"
-              class="btn col-10 flex-wrap text-center btn-outline-primary"
-              >Details</a
-            >
           </div>
         </div>
       </div>
@@ -168,14 +163,15 @@
                     <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
 
                     <code class="ms-2 text-start  text-secondary"
-                      ><a
-                        href="https://www.youtube.com/watch?v={{
-                          video.video_id
-                        }}"
+                      >
+                      <!-- <a
+                        href="https://www.youtube.com/watch?v={{ video.video_id}}"
                         target="_blank"
                         style="text-decoration: none; color:green"
                         >Go to Session</a
-                      >
+                      > -->
+                      <a [routerLink]="['/course-session', id,video.id]"
+                        style="text-decoration: none; color:green">Go to Session</a>
                     </code>
                     </div>
                     }@else {

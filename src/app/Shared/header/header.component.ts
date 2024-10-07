@@ -24,9 +24,10 @@ export class HeaderComponent {
   constructor(private router: Router) {
 
   }
+  
   login = localStorage.getItem('Token');
   userData = localStorage.getItem('data');
-  
+
 
   onLogout() {
     localStorage.removeItem('Token');

@@ -27,6 +27,7 @@ import { TestUpdateComponent } from './Test/test-update/test-update.component';
 import { TestManagementComponent } from './Test/test-management/test-management.component';
 import { ProfileViewComponent } from './Dashboard/student/student-profile-view/student-profile-view.component';
 import { ProfileEditComponent } from './Dashboard/student/student-profile-edit/student-profile-edit.component';
+import { CourseSessionComponent } from './Course/course-session/course-session.component';
 
 export const routes: Routes = [
   {
@@ -92,10 +93,16 @@ export const routes: Routes = [
     component: CourseListComponent,
     title: 'Our Courses',
   },
+
   {
     path: 'course/:id',
     component: CourseDetailComponent,
     title: 'Course Detail',
+  },
+  {
+    path: 'course-session/:id/:videoId',
+    component: CourseSessionComponent,
+    title: 'Course Session',
   },
   {
     path: 'coursecreate',
