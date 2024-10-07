@@ -3,7 +3,7 @@
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-5">
       <div class="card rounded-bottom smooth-shadow-sm">
         <div
-          class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4" style="height: 150px; align-content: center;" >
+          class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4"  >
           <div class="d-flex align-items-center">
             <div
               class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10"
@@ -32,14 +32,16 @@
     </div>
   </div>
   <div class="py-6">
-    <h3 class="mb-4">الدورات المسجل بها</h3>
     <div class="row">
+      @for(user_course of user_courses; track user_course.id){
       <div class="col-lg-4 col-12">
         <!-- card -->
+         @for(teacher of user_teacher ; track teacher.id){
+          @if(teacher.id == user_course.instructor_id){
         <div class="card mb-5 rounded-3">
           <div>
             <img
-              src="https://i.ytimg.com/vi/hlnrL88Lyzc/hqdefault.jpg"
+              [src]="user_course.thumbnail"
               alt="Image"
               class="img-fluid rounded-top"
             />
@@ -47,7 +49,7 @@
           <!-- avatar -->
           <div class="avatar avatar-xl mt-n7 ms-4 d-f self mx-3">
             <img
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              [src]="teacher.image"
               alt="Image"
               class="rounded-circle border-4 border-white-color-40"
             />
@@ -55,18 +57,23 @@
           <!-- card body -->
           <div class="card-body">
             <!-- Title -->
-            <h4 class="mb-1">Mr. Omar</h4>
-            <p>English</p>
+            <h4 class="mb-1">Mr {{teacher.name}}</h4>
+            <br>
+            <p>{{user_course.title}}</p>
             <div>
               <!-- Dropdown -->
               <div class="d-flex justify-content-between align-items-center">
-                <a href="#!" class="btn main-btn">تفاصيل الكورس</a>
+                <a [routerLink]="'/course/'+user_course.id" class="btn main-btn">تفاصيل الكورس</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      }
+      }
+      </div> 
+    }
     </div>
+ 
   </div>
   <div class="py-6">
     <h3 class="mb-4">الاختبارات المجتازة</h3>

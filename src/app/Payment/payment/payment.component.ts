@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   error:string | undefined = '';
   id:any;
 
-  constructor(private paymentService: PaymentService, router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -54,6 +54,7 @@ export class PaymentComponent implements OnInit {
             error: () => this.error = 'خطأ في عملية الدفع'
           });
           this.message = 'تم الدفع بنجاح';
+          this.router.navigate(['/course', courseId]);
         } else {
           this.error = 'فشل في عملية الدفع';
         }
