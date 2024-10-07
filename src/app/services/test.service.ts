@@ -8,7 +8,9 @@ export class TestService {
 
 
   url = 'http://localhost:8000/api/tests';
-  constructor(private http : HttpClient) { }
+  Url = 'http://localhost:8000/api/user-answers';
+  urlScore = 'http://localhost:8000/api/scores';
+  constructor(private http: HttpClient) { }
   allTests() {
     return this.http.get(this.url);
   }
@@ -18,9 +20,16 @@ export class TestService {
   getTest(id: number) {
     return this.http.get(`${this.url}/${id}`);
   }
-  updateTest(id:number, data: any) {
+  updateTest(id: number, data: any) {
     return this.http.put(`${this.url}/${id}`, data);
   }
-  deleteTest(id:number) {
+  deleteTest(id: number) {
     return this.http.delete(`${this.url}/${id}`);
-  }}
+  }
+  CreateuserAnswer(data: any) {
+    return this.http.post(this.Url, data);
+  }
+  storeTestScore(data: any) {
+    return this.http.post(this.urlScore, data);
+  }
+}

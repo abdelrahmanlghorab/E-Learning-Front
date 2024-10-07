@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 export class TestUpdateComponent {
   test!: any;
-  
   testId!: any;
   updateForm: FormGroup;
   constructor(private fb: FormBuilder, private testService: TestService, private router: Router, private route: ActivatedRoute) {

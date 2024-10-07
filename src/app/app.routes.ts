@@ -20,6 +20,7 @@ import { PaymentComponent } from './Payment/payment/payment.component';
 import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
 import { TestCreateComponent } from './Test/test-create/test-create.component';
 import { TestUpdateComponent } from './Test/test-update/test-update.component';
+import { TestManagementComponent } from './Test/test-management/test-management.component';
 
 export const routes: Routes = [
   {
@@ -53,6 +54,11 @@ export const routes: Routes = [
     path: 'test/:id/update',
     component: TestUpdateComponent,
     title: 'Update Tests',
+    canActivate: [authGuard]
+  }, {
+    path: 'test/:id',
+    component: TestManagementComponent,
+    title: 'Exam',
     canActivate: [authGuard]
   },
   {
