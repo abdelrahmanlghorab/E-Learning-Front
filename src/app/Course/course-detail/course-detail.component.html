@@ -144,51 +144,58 @@
             <h5 class="card-title" dir="ltr">{{ courseVideosNum }} Sessions</h5>
             <hr />
             <h3 class="text-start text-warning">Feedbacks</h3>
+            <div class="card-body row text-center d-block" style="margin-top: -15px;">
+              <div class="container col-12  w-100" dir="rtl">
+                <form [formGroup]="form" (ngSubmit)="click()" class="comment-form w-100">
+                  <div class="form-group ">
+                    <label for="inputName" class="form-label fs-5">اترك تعليق</label>
+                    <textarea id="inputName" class=" form-control" formControlName="inputName" rows="4"
+                      placeholder="Write your comment here..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-outline-primary ">اضافه تعليق</button>
+                </form>
+              </div>
+            </div>
 
-            <div class="col-12 mt-3 d-flex " dir="ltr" tyle="width: 400px">
+            <div class="col-12 mt-3  " dir="ltr" tyle="width: 400px">
               @for (comment of comments; track comment.id) {
-              <div class="card mb-3 shadow-sm">
-                <div class="card-body">
-                  <div class="  mb-2">
-                    <div class=" row">
-                      <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image" width="10px"
-                        class="rounded-circle col me-1" alt="hh" />
-                      <div class="col">
-                        <div class="row">
-                          <small class="mcol ">{{ comment.user.name }}</small>
-                          <small class="text-muted col ">{{ comment.created_at | date }}</small>
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="card mb-3 col-10 shadow-sm">
+                      <div class="card-body">
+                        <div class="  mb-2">
+                          <div class=" row">
+                            <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image" width="1px"
+                              class="rounded-circle col " alt="hh" />
+                            <div class="col">
+                              <div class="row mt-3">
+                                <small class=" ">{{ comment.user.name }}</small>
+                                <small class="text-muted  ">{{ comment.created_at | date }}</small>
+                              </div>
+                            </div>
+
+                          </div>
                         </div>
+                        <p class=" ms-5 ">{{ comment.body }}</p>
                       </div>
 
                     </div>
+                    <div style="width: 50px;" class="my-auto col text-end">
+                      <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
+                          class="fa-solid fa-trash"></i></button>
+                    </div>
                   </div>
-                  <p class="mb-0 ms-5 row">{{ comment.body }}</p>
+                  <hr>
                 </div>
-
               </div>
-              <div style="width: 50px;" class="my-auto text-end">
-                <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
-                  class="fa-solid fa-trash"></i></button>
-              </div>
-              <hr>
               }
             </div>
           </div>
-                    <div class="card-body row mt-5 text-center d-block">
-          <div class="container col-10 mt-3 w-100" dir="rtl">
-            <form [formGroup]="form" (ngSubmit)="click()" class="comment-form w-100">
-              <div class="form-group ">
-                <label for="inputName" class="form-label fs-5">اترك تعليق</label>
-                <textarea id="inputName" class=" form-control" formControlName="inputName" rows="4"
-                  placeholder="Write your comment here..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-outline-primary ">اضافه تعليق</button>
-            </form>
-          </div>
+          
         </div>
       </div>
     </div>
-</div>
 
 
 

@@ -20,24 +20,27 @@
     </div>
     <div class="collapse navbar-collapse mx-auto" id="navbarsExample03">
       <ul class="navbar-nav mx-auto mb-2 mb-sm-0">
+        @if(role_id === 1 || role_id === 4){
         <li class="nav-item">
-          @if(role_id === 1){
-            <a class="nav-link fw-bold" routerLink="admin">الرئيسية</a>
-
-          }@else{
-
-            <a class="nav-link fw-bold" routerLink="">الرئيسية</a>
-          }
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bold" routerLink="courses">الكورسات</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bold" routerLink="teachers">المدرسين</a>
+            <a class="nav-link fw-bold" routerLink="admin">الرئيسية</a>          
         </li>
         <li class="nav-item">
           <a class="nav-link fw-bold" routerLink="tests">الأختبارات </a>
         </li>
+      }@else {
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="admin">الرئيسية</a>          
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold" routerLink="courses">الكورسات</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold" routerLink="teachers">المدرسين</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold" routerLink="tests">الأختبارات </a>
+      </li>
+      }
       </ul>
     </div>
     <div class="dropdown disk mx-4 gap-2 d-lg-flex d-none">

@@ -1,61 +1,55 @@
-<!-- <nav class="navbar">
-    <div class="navbar-left">
-      <p><img src="Logo.jpeg" alt="User Avatar" class="user-avatar"> المتحكم
-        <i class="fas fa-bell notification-icon mx-3"></i></p>
-    </div>
-    <div class="navbar-center ju">
-      <p class="fw-bold">مرحبا بكم في  منصة أنا كفو التعليمية</p>
-    </div>
-    <div class="navbar-right"></div>
-  </nav> -->
 
 <div class="main-container">
   <div class="content-area" style="margin-right: 15%;">
     <div class="col-12 offset-1" dir="rtl">
-      <div class="row mt-5 gap-3 p-3">
-        <div class="col-lg-3 col-5">
-          <div class="small-box bg-info">
-            <div class="inner">
-              <!-- <h3>100</h3> -->
-              <h4>الطلاب</h4>
+      @if (role_id === 1) {
+        <div class="row mt-5 gap-3 p-3">
+          <div class="col-lg-3 col-5">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <!-- <h3>100</h3> -->
+                <h4>الطلاب</h4>
+              </div>
+              <div class="icon">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <a routerLink="/admin/user-managment" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
             </div>
-            <div class="icon">
-              <i class="fa-solid fa-user"></i>
-            </div>
-            <a routerLink="/admin/user-managment" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
-            ></a>
           </div>
-        </div>
-        <div class="col-lg-3 col-5">
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <!-- <h3>20</h3> -->
-              <h4>المعلمين</h4>
+          <div class="col-lg-3 col-5">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <!-- <h3>20</h3> -->
+                <h4>المعلمين</h4>
+              </div>
+              <div class="icon">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <a routerLink="/allorganizer" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
             </div>
-            <div class="icon">
-              <i class="fa-solid fa-user"></i>
-            </div>
-            <a routerLink="/allorganizer" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
-            ></a>
           </div>
-        </div>
-        <div class="col-lg-3 col-5">
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <!-- <h3>10</h3> -->
-              <h4>الكورسات المباشرة</h4>
+          <div class="col-lg-3 col-5">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <!-- <h3>5</h3>  -->
+                <h4>المدفوعات</h4>
+              </div>
+              <div class="icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <a routerLink="/admin/payment" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
             </div>
-            <div class="icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <a href="" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
-            ></a>
           </div>
-        </div>
-      </div>
+        </div>`
+      }
+     
+
       <div class="row mt-5 gap-3 p-3">
         <div class="col-lg-3 col-6">
           <div routerLink="/admin/courses" class="small-box bg-danger">
@@ -85,16 +79,17 @@
             ></a>
           </div>
         </div>
+       
         <div class="col-lg-3 col-6">
           <div class="small-box bg-danger">
             <div class="inner">
-              <!-- <h3>5</h3>  -->
-              <h4>المدفوعات</h4>
+              <!-- <h3>10</h3> -->
+              <h4>الكورسات المباشرة</h4>
             </div>
             <div class="icon">
-              <i class="fas fa-dollar-sign"></i>
+              <i class="fas fa-video"></i>
             </div>
-            <a routerLink="/admin/payment" class="small-box-footer">
+            <a href="" class="small-box-footer">
               More info <i class="fas fa-arrow-circle-right"></i
             ></a>
           </div>
@@ -102,6 +97,9 @@
       </div>
     </div>
   </div>
+
+
+
 
   <div
     class="sidebar"
@@ -195,8 +193,6 @@
         </li>
       </ul>
     </div>
-    <div class="sidebar-footer">
-      <i class="fas fa-sign-out-alt logout-icon"></i>
-    </div>
+  
   </div>
 </div>
