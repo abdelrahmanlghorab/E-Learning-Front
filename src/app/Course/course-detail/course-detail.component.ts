@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router , RouterLink} from '@angular/router';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
@@ -6,17 +6,23 @@ import { GetTeacherService } from '../../services/get-teacher.service';
 import { EnrollmentService } from '../../services/enrollment.service';
 import { TruncatePipe } from '../../Pipes/truncate.pipe';
 import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommentsService } from '../../services/comments.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [RouterLink, TruncatePipe, CustomDatePipe],
+  imports: [RouterLink, TruncatePipe, CustomDatePipe , ReactiveFormsModule , CommonModule],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
 export class CourseDetailComponent {
+  @Input() courseId!: number;  
+  commentForm!: FormGroup;
+  comments: any[] = [];  
+  body:any ='';
   id: any;
-
   course: any;
   courseID:any;
   courseTitle: string="Course";
@@ -27,6 +33,11 @@ export class CourseDetailComponent {
   courseVideos: any;
   courseVideosNum: any;
 
+  form = new FormGroup({
+    inputName: new FormControl(''),
+    // other form controls
+  });
+
   teacher: any;
   courseInstructor: string = "Instructor";
   instructorTitle: string = "title";
@@ -35,7 +46,16 @@ export class CourseDetailComponent {
   instructourEmail: string="email";
   truncate= new TruncatePipe();
   enrollment:boolean=false;
-  constructor(private playList:CoursePlaylistService,private courseService: CoursesService, public router: Router, private activatedRoute: ActivatedRoute,private teacherService: GetTeacherService,private enrollmentService:EnrollmentService) {
+  constructor(private playList:CoursePlaylistService,
+    private courseService: CoursesService,
+     public router: Router,
+      private activatedRoute: ActivatedRoute,
+      private teacherService: GetTeacherService,
+      private enrollmentService:EnrollmentService,
+      private fb: FormBuilder,
+      private commentService: CommentsService
+    ) {
+
   }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -63,9 +83,50 @@ export class CourseDetailComponent {
     ));
     this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
       this.enrollment = data.enrolled;
-      console.log(this.enrollment);
+      console.log(this.enrollment ,'fdmfmdfnde');
       });
     });
+    // this.commentForm = this.fb.group({
+    //   body: ['', [Validators.required, Validators.minLength(3)]]
+  // });
+  this.commentService.getComments(this.id).subscribe(
+    (data) => {
+      this.comments = data;
+      console.log(data, 'Comments');
+      
+    },
+    (error) => {
+      console.error('Error fetching comments:', error);
+    }
+  );
   }
+    click(): void {
+      const control = this.form.get('inputName');
+console.log(control?.value);
+      const CommentData:any={
+         body:control?.value
+      }
+      this.commentService.addComment(this.id,CommentData).subscribe(
+        (CommentData) => {
+          console.log('Comment posted successfully:', CommentData);
+          this.comments.push(CommentData);
+          this.commentForm.reset();  
+        },
+        (error) => {
+          console.error('Error posting comment:', error);
+        }
+      );
+    }
+
+    deleteComment(commentId: number) {
+      this.commentService.deleteComment(commentId).subscribe({
+        next: (response) => {
+          this.comments = this.comments.filter(comment => comment.id !== commentId);
+        },
+        error: (error) => {
+          console.error('Error deleting comment:', error);
+        }
+      });
+    }
 
 }
