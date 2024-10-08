@@ -45,6 +45,8 @@ export class TestCreateComponent {
       }
 
       formData.append('excel_file', this.CreateForm.get('excel_file')?.value);
+      console.log(formData);
+      
       this.testService.createTest(formData).subscribe(
         (response) => {
           console.log('Create successful', response);

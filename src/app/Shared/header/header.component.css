@@ -71,6 +71,9 @@ input:checked+.slider:before {
 .nav-item :hover {
   color: #007bff;
 }
+.dropdown-toggle::after {
+  display: none;
+}
 @media screen and (max-width: 576px) {
   .sm-navbar{
     /* margin-left: 0 !important; */
@@ -78,5 +81,6 @@ input:checked+.slider:before {
     justify-content: space-between ;
     width: 100%;
   }
+  
   
 }

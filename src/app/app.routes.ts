@@ -27,6 +27,9 @@ import { TestUpdateComponent } from './Test/test-update/test-update.component';
 import { TestManagementComponent } from './Test/test-management/test-management.component';
 import { ProfileViewComponent } from './Dashboard/student/student-profile-view/student-profile-view.component';
 import { ProfileEditComponent } from './Dashboard/student/student-profile-edit/student-profile-edit.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { isAdminGuard } from './Guard/is-admin.guard';
+import { isModeratorGuard } from './Guard/is-moderator.guard';
 
 export const routes: Routes = [
   {
@@ -48,19 +51,18 @@ export const routes: Routes = [
     path: 'tests',
     component: TestListComponent,
     title: 'All Tests',
-    canActivate: [authGuard]
   },
   {
     path: 'test-create',
     component: TestCreateComponent,
     title: 'Create Tests',
-    canActivate: [authGuard]
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'test/:id/update',
     component: TestUpdateComponent,
     title: 'Update Tests',
-    canActivate: [authGuard]
+    canActivate: [isAdminGuard, authGuard]
   }, {
     path: 'test/:id',
     component: TestManagementComponent,
@@ -76,101 +78,121 @@ export const routes: Routes = [
     path: 'createorganizer',
     component: CreateComponent,
     title: 'Create Organizer',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'updateorganizer/:id',
     component: UpdateComponent,
     title: 'Update Organizer',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'courses',
     component: CourseListComponent,
     title: 'Our Courses',
+    canActivate: [authGuard]
   },
   {
     path: 'course/:id',
     component: CourseDetailComponent,
     title: 'Course Detail',
+    canActivate: [authGuard]
   },
   {
     path: 'coursecreate',
     component: CourseCreateComponent,
     title: 'Create Course',
+    canActivate: [isModeratorGuard, authGuard]
+
   },
   {
     path: 'courseupdate/:id',
     component: CourseUpdateComponent,
     title: 'Update Course',
+    canActivate: [isModeratorGuard, authGuard]
+
   },
   {
     path: 'admin',
     component: AdminComponent,
     title: 'Admin',
+    canActivate: [isModeratorGuard, authGuard]
   },
   {
     path: 'admin/courses',
     component: CourseViewComponent,
     title: 'Courses',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'admin/user-managment',
     component: UserManagmentComponent,
     title: 'User Managment',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'admin/payment',
     component: PaymentMangementComponent,
     title: 'Payments',
+    canActivate: [isAdminGuard, authGuard]
+
   },
-  {
-    path: 'createorganizer',
-    component: CreateComponent,
-    title: 'Create Organizer',
-  },
-  {
-    path: 'updateorganizer/:id',
-    component: UpdateComponent,
-    title: 'Update Organizer',
-  },
-  {
-    path: 'allorganizer',
-    component: IndexComponent,
-    title: 'All Organizer',
-  },
+  
+  
   {
     path: 'trashorganizer',
     component: TrashedComponent,
-    title:'Trashed organizer',
+    title: 'Trashed organizer',
+    canActivate: [isAdminGuard, authGuard]
+
   },
   {
     path: 'payment/:id',
     component: PaymentComponent,
     title: 'Payment',
+    canActivate: [authGuard]
   },
   {
     path: 'teachers',
     component: TeacherComponent,
     title: 'teachers',
+    canActivate: [authGuard]
   },
   {
     path: 'teacherprofile/:id',
     component: TeacherProfileComponent,
     title: 'teacherProfile',
+    canActivate: [authGuard]
   },
   {
-    path:'profile',
+    path: 'profile',
     component: ProfileViewComponent,
     title: 'Profile View',
+    canActivate: [authGuard]
   },
   {
-    path:'edit-profile',
+    path: 'edit-profile',
     component: ProfileEditComponent,
     title: 'Edit Profile',
+    canActivate: [authGuard]
+  },
+
+  {
+    path: 'unauthorized',
+    component: UnauthorizedComponent,
+    title: 'unAuthorized',
+    canActivate: [authGuard]
   },
   {
     path: '**',
