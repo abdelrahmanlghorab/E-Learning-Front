@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { TruncatePipe } from '../../Pipes/truncate.pipe';
 
 @Component({
   selector: 'app-most-resent-courses',
@@ -16,6 +17,8 @@ export class MostResentCoursesComponent {
   teacherName!: any;
   teacherImage: any;
   teach:any;
+  truncate= new TruncatePipe();
+
   constructor(private course : CoursesService ,private teacherService:GetTeacherService ,private router : Router){
     this.course.getAllCourses().subscribe(data => {
       this.courses = data as any[];
