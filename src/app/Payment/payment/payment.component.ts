@@ -50,11 +50,12 @@ export class PaymentComponent implements OnInit {
           this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
             next: () => {
               this.message = 'تم الدفع بنجاح';
+              this.router.navigate(['/course', courseId]);
+
             },
             error: () => this.error = 'خطأ في عملية الدفع'
           });
           this.message = 'تم الدفع بنجاح';
-          this.router.navigate(['/course', courseId]);
         } else {
           this.error = 'فشل في عملية الدفع';
         }

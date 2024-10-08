@@ -63,7 +63,7 @@ export class CourseDetailComponent {
     ));
     this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
       this.enrollment = data.enrolled;
-      console.log(this.enrollment);
+      console.log(this.enrollment,'eeeee');
       });
     });
   }

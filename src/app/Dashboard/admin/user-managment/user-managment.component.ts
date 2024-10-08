@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -10,32 +10,40 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './user-managment.component.css'
 })
 export class UserManagmentComponent {
-  users: any;
-constructor(private UserServices: UserService) {}
-ngOnInit(): void {
-  this.UserServices.getAllCourses().subscribe(
-    (response) => {
-      this.users = response;
-    },
-    (error) => {
-      console.error('Error fetching Users', error);
-    }
-  );
-}
-removeUser(id: number) {
-  const issure =confirm('Are you sure you want to delete this User?');
-  if (!issure) {
-    return;
-  }
-  this.UserServices.deleteCourse(id).subscribe(
-    (response) => {
-      alert('User deleted successfully');
-      this.users = this.users.filter((users: any) => users.id !== id);
-    },
-    (error) => {
-      alert('Error deleting User');
-    }
-  );
-}
+  users: any;  
+  constructor(private userService: UserService, private router: Router) { }
 
+  ngOnInit(): void {
+    this.userService.getAllStudent().subscribe(
+      (response) => {
+        this.users = response;
+        console.log(this.users,"users");
+      },
+      (error) => {
+        console.error('Error fetching Users', error);
+      }
+    );
+  }
+
+  removeUser(id: number) {
+    const confirmDelete = confirm('Are you sure you want to delete this user?');
+    if (!confirmDelete) {
+      return;
+    }
+
+    this.userService.removeStudent(id).subscribe(
+      (response) => {
+        alert('User deleted successfully');
+        this.users = this.users.filter((user: any) => user.id !== id);
+        this.router.navigate(['/admin/restoreuser']);
+
+      },
+      (error) => {
+        alert('Error deleting user');
+        console.error('Error deleting user:', error);
+      }
+    );
+  }
+
+  
 }

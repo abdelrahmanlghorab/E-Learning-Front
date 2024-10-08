@@ -8,24 +8,26 @@ export class UserService {
 
   url = 'http://localhost:8000/api/students';  
   constructor(private http: HttpClient) { }
-  getAllCourses() {
+
+  getAllStudent() {
     return this.http.get(this.url);
   }
-  getCourse(id: number) {
-    return this.http.get(`${this.url}/${id}`);
-  }
-  deleteCourse(id:number) {
-    return this.http.delete(`${this.url}/${id}`);
-  }
+
   getUser(id: number) {
     return this.http.get(this.url + '/' + id);
+  }
 
-}
   updateUser(id: number, data: any) {
     return this.http.put(this.url + '/' + id, data);
   }
-  getUsers() {
-    return this.http.get(this.url);
-  }
 
+  removeStudent(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+  getAllTrashedStudent() {
+    return this.http.get(`${this.url}-trashed`);
+  }
+  restoreStudent(id: number) {
+    return this.http.post(`http://localhost:8000/api/student/${id}/restore`, {});  
+  }
 }

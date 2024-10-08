@@ -24,7 +24,9 @@
                             <tr>
                                 <td>
                                     <ul class="action-list">
-                                        <li><button class="btn btn-danger" (click)="removeUser(user.id)"><i class="fa fa-times"></i></button></li>
+                                        <button (click)="restoreUser(user.id)" class="btn btn-link" title="Restore">
+                                            <i class="fas fa-undo"></i>
+                                          </button>                          
                                     </ul>
                                 </td>
                                 <td>{{user.id}}</td>
