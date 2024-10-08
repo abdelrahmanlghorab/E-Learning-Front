@@ -1,14 +1,14 @@
 <div class="form-container">
     <h2 class="text-center">اشتري الدورة</h2>
-    
+
     <!-- Payment Card Input -->
     <div id="card-element" class="form-control mb-3" style="height: 2.5rem;"></div>
-  
+
     <!-- Payment Button -->
-    <button class="main-btn btn-block" (click)="pay()" style="width: 100%;">
+    <button class="main-btn btn-block"  (click)="pay()" style="width: 100%;">
       اشتري
     </button>
-    
+
     @if(message)
     {<div class="alert alert-success mt-3" role="alert">
       {{ message }}
@@ -20,4 +20,3 @@
         </div>
     }
   </div>
-  

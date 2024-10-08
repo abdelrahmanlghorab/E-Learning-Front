@@ -4,25 +4,27 @@
             <div class="panel">
                 <div class="panel-body table-responsive">
                     <table class="table">
-                        <thead>
+                        <thead class="thead">
                             <tr>
                                 <th>#</th>
-                                <th>userName</th>
-                                <th>courseName</th>
-                                <th>Amount</th>
-                                <th>paymentDate</th>
+                                <th>اسم الطالب</th>
+                                <th>اسم الكورس</th>
+                                <th>الكمية</th>
+                                <th>تاريخ الدفع</th>
                             </tr>
                         </thead>
                         <tbody>
-                           @for (payment of payments; track payment.id) { 
+                            @for (payment of payments; track payment.id) {
+
                             <tr>
-                                <td>{{payment.id}}</td>
-                                <td>{{payment.user_id}}</td>
-                                <td>{{payment.course_id}}</td>
-                                <td>{{payment.amount}}</td>
-                                <td>{{payment.payment_date}}</td>
+                                <td>{{ payment.id }}</td>
+                                <td>{{payment.user.name }}</td>
+                                <td>{{payment.course.title }}</td>
+                                <td>{{payment.amount/100 }}</td>
+                                <td>{{payment.payment_date }}</td>
                             </tr>
                         }
+
                         </tbody>
                     </table>
                 </div>

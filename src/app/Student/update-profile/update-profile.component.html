@@ -1,9 +1,9 @@
-<div class="container mt-3 my-3" dir="rtl">
+<!-- <div class="container mt-3 my-3" dir="rtl">
     <div class="form-container">
       <h2 class="mb-6 font-24-bold text-center">انشئ حساب طالب الآن</h2>
       <p class="text-center">ادخل بياناتك بشكل صحيح للحصول على أفضل تجربة داخل الموقع</p>
   
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <form  (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="row mb-3">
           <label for="name" class="form-label">الاسم <span class="text-danger">*</span></label>
           <div class="input-group">
@@ -30,7 +30,6 @@
             {{ f['email'].errors?.['unique'] }}
           </div>
         </div>
-        
   
         <div class="mb-3">
           <label for="password" class="form-label">كلمة السر <span class="text-danger">*</span></label>
@@ -57,87 +56,78 @@
               <i [class]="confirmEyeIcon"></i>
             </span>
           </div>
-          <div *ngIf="registerForm.errors?.['passwordMismatch'] && (f['password_confirmation'].dirty || f['password_confirmation'].touched)" class="text-danger">
+          <div *ngIf="updateForm.errors?.['passwordMismatch'] && (f['password_confirmation'].dirty || f['password_confirmation'].touched)" class="text-danger">
             <small>كلمات المرور غير متطابقة.</small>
           </div>
         </div>
+  
         <div class="mb-3">
           <label for="national_id" class="form-label">الرقم القومى <span class="text-danger">*</span></label>
           <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-              <input type="text" id="national_id" class="form-control" placeholder="أدخل الرقم القومى" formControlName="national_id">
+            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+            <input type="text" id="national_id" class="form-control" placeholder="أدخل الرقم القومى" formControlName="national_id">
           </div>
           <div *ngIf="f['national_id'].invalid && (f['national_id'].dirty || f['national_id'].touched)" class="text-danger">
-              <small *ngIf="f['national_id'].errors?.['required']">الرقم القومي مطلوب.</small>
-              <small *ngIf="f['national_id'].errors?.['pattern']">الرقم القومي غير صحيح.</small>
+            <small *ngIf="f['national_id'].errors?.['required']">الرقم القومي مطلوب.</small>
+            <small *ngIf="f['national_id'].errors?.['pattern']">الرقم القومي غير صحيح.</small>
           </div>
           <div *ngIf="f['national_id'].errors?.['unique']" class="text-danger">
             {{ f['national_id'].errors?.['unique'] }}
           </div>
         </div>
-        
-
-      <div class="mb-3">
-        <label for="gender" class="form-label">النوع <span class="text-danger">*</span></label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
-          <select id="gender" class="form-select" name="gender" formControlName="gender">
-            <option value="" disabled selected>اختر النوع</option>
-            <option value="Male">ذكر</option>
-            <option value="Female">أنثى</option>
-          </select>
+  
+        <div class="mb-3">
+          <label for="gender" class="form-label">النوع <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+            <select id="gender" class="form-select" name="gender" formControlName="gender">
+              <option value="" disabled selected>اختر النوع</option>
+              <option value="Male">ذكر</option>
+              <option value="Female">أنثى</option>
+            </select>
+          </div>
+          <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger">
+            <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
+          </div>
         </div>
-        <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger">
-          <small *ngIf="f['gender'].errors?.['required']">النوع مطلوب.</small>
+  
+        <div class="mb-3">
+          <label for="address" class="form-label">العنوان التفصيلي <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+            <input type="text" id="address" class="form-control" placeholder="أدخل العنوان التفصيلي" formControlName="address">
+          </div>
+          <div *ngIf="f['address'].invalid && (f['address'].dirty || f['address'].touched)" class="text-danger">
+            <small *ngIf="f['address'].errors?.['required']">العنوان مطلوب.</small>
+          </div>
         </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="address" class="form-label">العنوان التفصيلي <span class="text-danger">*</span></label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-          <input type="text" id="address" class="form-control" name="address" placeholder="أدخل العنوان التفصيلي"
-            formControlName="address">
+  
+        <div class="mb-3">
+          <label for="phone" class="form-label">رقم التليفون <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            <input type="text" id="phone" class="form-control" placeholder="أدخل رقم التليفون" formControlName="phone">
+          </div>
+          <div *ngIf="f['phone'].invalid && (f['phone'].dirty || f['phone'].touched)" class="text-danger">
+            <small *ngIf="f['phone'].errors?.['required']">رقم التليفون مطلوب.</small>
+            <small *ngIf="f['phone'].errors?.['pattern']">رقم التليفون غير صحيح.</small>
+          </div>
         </div>
-        <div *ngIf="f['address'].invalid && (f['address'].dirty || f['address'].touched)" class="text-danger">
-          <small *ngIf="f['address'].errors?.['required']">العنوان مطلوب.</small>
+  
+        <div class="mb-3">
+          <label for="image" class="form-label">تحميل صورة <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-image"></i></span>
+            <input type="file" id="image" formControlName="image" class="form-control" (change)="onFileChange($event)" />
+          </div>
+          <div *ngIf="f['image'].invalid && (f['image'].dirty || f['image'].touched)" class="text-danger">
+            <small *ngIf="f['image'].errors?.['required']">الصورة مطلوبة.</small>
+            <small *ngIf="f['image'].errors?.['invalidImageType']">نوع الملف يجب أن يكون صورة.</small>
+          </div>
         </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="phone" class="form-label">رقم التليفون <span class="text-danger">*</span></label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-phone"></i></span>
-          <input type="text" id="phone" name="phone" class="form-control" placeholder="أدخل رقم التليفون"
-            formControlName="phone">
-        </div>
-        <div *ngIf="f['phone'].invalid && (f['phone'].dirty || f['phone'].touched)" class="text-danger">
-          <small *ngIf="f['phone'].errors?.['required']">رقم التليفون مطلوب.</small>
-          <small *ngIf="f['phone'].errors?.['pattern']">رقم التليفون غير صحيح.</small>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="image" class="form-label">
-          تحميل صورة <span class="text-danger">*</span>
-        </label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="fas fa-image"></i></span>
-          <input type="file" id="image" formControlName="image" class="form-control" (change)="onFileChange($event)" />
-        </div>
-        <div *ngIf="f['image'].invalid && (f['image'].dirty || f['image'].touched)" class="text-danger">
-          <small *ngIf="f['image'].errors?.['required']">الصورة مطلوبة.</small>
-          <small *ngIf="f['image'].errors?.['pattern']">الرجاء تحميل صورة صالحة (PNG, JPG, JPEG).</small>
-        </div>
-      </div>
-
-
-
-      <button type="submit" class="btn main-btn rounded-5 custom-button w-100">إنشاء حساب</button>
-    </form>
-
-    <div class="text-center mt-3">
-      <p>يوجد لديك حساب بالفعل؟ <a routerLink="/signin">ادخل إلى حسابك الآن</a></p>
+  
+        <button class="btn btn-main-color w-100 mt-3" [disabled]="updateForm.invalid" type="submit">تسجيل الآن</button>
+      </form>
     </div>
   </div>
-</div>
+   -->
