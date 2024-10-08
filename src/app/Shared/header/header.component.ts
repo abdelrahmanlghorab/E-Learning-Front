@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent {
   name!: string;
   image!: string;
   role_id!: any;
-
+  isloggedIn: boolean = false;
 
   ngOnInit() {
     this.data = localStorage.getItem('data');
@@ -23,6 +24,9 @@ export class HeaderComponent {
       this.image = this.data.image;
       this.role_id = this.data.role_id; 
     }
+    this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isloggedIn = isLoggedIn;
+    });
   }
   toggleTheme() {
     const body = document.body;
@@ -36,8 +40,7 @@ export class HeaderComponent {
       themeIcon?.classList.replace('fa-moon', 'fa-sun');
     }
   }
-  constructor(private router: Router) {
-
+  constructor(private router: Router,private authservices: AuthService) {
   }
 
   login = localStorage.getItem('Token');
@@ -47,7 +50,7 @@ export class HeaderComponent {
   onLogout() {
     localStorage.removeItem('Token');
     localStorage.removeItem('data');
-    this.login = null;
+    this.authservices.setLoggedIn(false);
     this.router.navigateByUrl("signin");
   }
 
