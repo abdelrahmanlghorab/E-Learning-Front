@@ -3,38 +3,121 @@
 </div>
 <div class="col-10 mx-auto">
   <div class="row">
-    <div class="col-2">
+    <div class="container col-12 col-md-9 col-lg-10">
+      <div class="card">
+        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px" alt="..." />
+      </div>
+      <div class="card mt-3" dir="ltr">
+        <div class="row g-0">
+          <div class="col">
+            <div class="card-body">
+              <h3 class="card-title ms-2">Course Description</h3>
+              <p class="card-text ms-5 text-secondary col-11">
+                {{courseDescription}}
+              </p>
+              <p class="card-text text-end text-secondary text-lighter">
+                <small class="text-muted opacity-50">Last updated: {{courseCreation}} </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3" dir="ltr">
+        <div class="row g-0">
+          <div class="col-md-2 d-flex justify-content-center align-items-center text-center">
+            <img class="teacherimg" [src]="instructorImage"
+              class="col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning m-3"
+              alt="{{ courseInstructor }} image" />
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <span class="card-title me-auto fs-3">Mr.{{ courseInstructor }}</span>
+              <p class="card-text text-secondary col-10">
+                {{instructorTitle}}
+              </p>
+              <p class="card-text text-secondary ms-4 col-10">
+                {{instructorDescription}}
+              </p>
+              <p class="card-text text-end">
+                <small class="text-muted text-secondary text-lighter opacity-50 ">E-mail: {{instructourEmail}} </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container col-10 mt-3 w-100" dir="ltr">
+        <div class="card">
+          <h2 class="card-header d-flex justify-content-between align-items-center">
+            <div>
+              <i class="fa-solid fa-list-alt"></i>
+              Course Outline
+            </div>
+            <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{ courseCreation }}</span>
+          </h2>
+          <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
+            @if(courseVideos) {
+            @for(video of courseVideos; track video.id) {
+            <div class="accordion mt-2 p-2" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading-{{ video.id }}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
+                    [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
+                    {{ video.title }}
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
+                  [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
+                  <div class="accordion-body">
+                    @if(enrollment==true) {
+                    {{ truncate.transform(this.video.description, 200) }}
+                    <div class="d-flex align-items-center text-start mt-2">
+                      <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
+                      <code class="ms-2 text-start text-secondary">
+                                  <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:green">Go to Session</a>
+                                </code>
+                    </div>
+                    } @else {
+                    <div>
+                      <span class="badge text-bg-danger">Restricted</span>
+                      <code class="opacity-50"> Not Available unless: You are a Student </code>
+                    </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+            } }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 col-lg-2">
       <div class="row">
         <div class="card col-12">
           <div class="card-body text-center d-block">
-            @if(coursePrice == 0){
+            @if(coursePrice == 0) {
             <h5 class="card-title">
               Now <span class="fs-2 fw-semibold mb-3">Free </span>
-              <span class="fs-6 text-secondary opacity-50"
-                >instead of <span class="lineThrow">$500</span></span
-              >
+              <span class="fs-6 text-secondary opacity-50">instead of
+                <span class="lineThrow">$500</span>
+              </span>
             </h5>
-            } @else{
+            } @else {
             <h5 class="card-title">
               <span class="fs-2 fw-semibold mb-3">${{ coursePrice }}</span>
             </h5>
             }
-                @if(enrollment==false){
-            <a
-              [routerLink]="['/payment', courseID]"
-              routerLinkActive="router-link-active"
-              class="btn col-10 flex-wrap text-center btn-outline-warning fs-5"
-              >Enroll Now</a
-            >
-                }@else {
-                  <button
-                    class="btn col-10 flex-wrap text-center btn-outline-success fs-5"
-                    disabled
-                  >
-                    Enrolled Successfulley
-                  </button>
-
-                }
+            @if(enrollment==false) {
+            <a [routerLink]="['/payment', courseID]" routerLinkActive="router-link-active"
+              class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">
+              Enroll Now
+            </a>
+            } @else {
+            <button class="btn col-10 flex-wrap text-center btn-outline-success fs-5" disabled>
+              Enrolled Successfully
+            </button>
+            }
             <hr />
             <div class="row d-block">
               <span>
@@ -46,14 +129,13 @@
               <span>
                 <i class="fa-solid fa-video"></i>
               </span>
-              <span class="text-secondary opacity-50">Pracitcal Videos</span>
+              <span class="text-secondary opacity-50">Practical Videos</span>
             </div>
             <div class="row d-block">
               <span>
                 <i class="fa-solid fa-certificate"></i>
               </span>
-              <span class="text-secondary opacity-50">Completion Certificate</span
-              >
+              <span class="text-secondary opacity-50">Completion Certificate</span>
             </div>
           </div>
         </div>
@@ -61,138 +143,10 @@
           <div class="card-body row text-center d-block">
             <h5 class="card-title">Video: {{ courseVideosNum }}</h5>
             <hr />
-            <a
-              href="#"
-              class="btn col-10 flex-wrap text-center btn-outline-primary"
-              >Details</a
-            >
           </div>
         </div>
       </div>
     </div>
-    <div class="container col-10">
-      <div class="card">
-        <img
-          [src]="courseImage"
-          class="card-img p-5 img-fluid img-fluid"
-          style="height: 450px"
-          alt="..."/>
-      </div>
-        <div class="card mt-3" dir="ltr">
-          <div class="row g-0">
-            <div class="col">
-              <div class="card-body">
-                <h3 class="card-title ms-2">Course Description</h3>
-                <p class="card-text ms-5 text-secondary col-11">
-                  {{courseDescription}}
-                </p>
-                <p class="card-text text-end text-secondary text-lighter">
-                  <small class="text-muted opacity-50">Last updated: {{courseCreation}} </small>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="card mt-3" dir="ltr">
-        <div class="row g-0">
-          <div class="col-md-2 d-flex justify-content-center align-items-center text-center">
-            <img
-              [src]="instructorImage"
-              class="col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning m-3"
-              alt="{{ courseInstructor }} image"
-            />
-          </div>
-          <div class="col">
-            <div class="card-body">
-              <span class="card-title me-auto fs-3">Mr.{{ courseInstructor }}</span>
-              <p class="card-text text-secondary  col-10">
-                {{instructorTitle}}
-              </p>
-              <p class="card-text text-secondary ms-4 col-10">
-              {{instructorDescription}}
-              </p>
-              <p class="card-text text-end ">
-                <small class="text-muted text-secondary text-lighter opacity-50 ">E-mail: {{instructourEmail}} </small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="container col-10 mt-3 w-100" dir="ltr">
-        <div class="card">
-          <h2
-            class="card-header d-flex justify-content-between align-items-center"
-          >
-            <div>
-              <i class="fa-solid fa-list-alt"></i>
-              Course Outline
-            </div>
-            <span class="ms-auto fs-6 text-secondary fw-lighter"
-              >Created At: {{ courseCreation }}</span
-            >
-          </h2>
-          <div
-            class="accordion"
-            style="max-height: 44rem; overflow-y: auto"
-            id="accordionExample"
-          >
-            @if(courseVideos){ @for(video of courseVideos; track video.id){
-            <div class="accordion mt-2 p-2" id="accordionPanelsStayOpenExample">
-              <div class="accordion-item">
-                <h2
-                  class="accordion-header"
-                  id="panelsStayOpen-heading-{{ video.id }}"
-                >
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    [attr.data-bs-target]="
-                      '#panelsStayOpen-collapse-' + video.id
-                    "
-                    aria-expanded="false"
-                    [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
-                    {{ video.title }}
-                  </button>
-                </h2>
-                <div
-                  id="panelsStayOpen-collapse-{{ video.id }}"
-                  class="accordion-collapse collapse"
-                  [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id"
-                >
-                  <div class="accordion-body">
-                    @if(enrollment==true){
-                      {{ truncate.transform(this.video.description, 200) }}
-                      <div class="d-flex align-items-center text-start mt-2">
-                    <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
-
-                    <code class="ms-2 text-start  text-secondary"
-                      ><a
-                        href="https://www.youtube.com/watch?v={{
-                          video.video_id
-                        }}"
-                        target="_blank"
-                        style="text-decoration: none; color:green"
-                        >Go to Session</a
-                      >
-                    </code>
-                    </div>
-                    }@else {
-                      <div>
-                      <span class="badge text-bg-danger">Restricted</span>
-
-                    <code class="opacity-50"> Not Available unless: You are a Student </code>
-                        </div>
-                    }
-                  </div>
-                </div>
-              </div>
-            </div>
-            } }
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

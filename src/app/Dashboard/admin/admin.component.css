@@ -118,10 +118,10 @@
 }
 
 .sidebar {
-  direction: ltr !important;
+  /* direction: ltr !important; */
   width: 250px;
   background: linear-gradient(135deg, rgb(13, 36, 71), #4d91d1);
-  height: 100vh;
+  height: 92vh;
   color: #fff;
   transition: width 0.3s ease;
   position: sticky;

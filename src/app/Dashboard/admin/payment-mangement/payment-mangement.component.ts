@@ -10,15 +10,19 @@ import { PaymentService } from '../../../services/payment.service';
 })
 export class PaymentMangementComponent {
   payments: any;
+  users:any;
+  courses:any;
 constructor(private paymentService: PaymentService) {}
 ngOnInit(): void {
   this.paymentService.getPayments().subscribe(
     (response:any) => {
-      this.payments = response;
+      this.payments = response.payments;
+     console.log(this.payments)
     },
     (error:any) => {
       console.error('Error fetching payments', error);
     }
   );
 }
+
 }

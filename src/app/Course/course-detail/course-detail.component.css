@@ -1,32 +1,83 @@
-.title
-{
-
+.title {
   height: 7rem;
-  background: linear-gradient(
-      90deg,
-      var(--wave1, #007bff),
-      var(--wave2, #00ccff) 51%,
-      var(--wave1, rgb(0 107 179))
-    );
+  background: linear-gradient(90deg, var(--wave1, #007bff), var(--wave2, #00ccff) 51%, var(--wave1, rgb(0 107 179)));
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5%;
-  /* opacity: 50%; */
 }
-.icon{
-  background-color: linear-gradient(
-      90deg,
-      var(--wave1, #007bff),
-      var(--wave2, #00ccff) 51%,
-      var(--wave1, rgb(0 107 179))
-    ) !important;
-}
-.btn-outline-warning:hover{
-  color: #ffffff;
 
+.icon {
+  background-color: linear-gradient(90deg, var(--wave1, #007bff), var(--wave2, #00ccff) 51%, var(--wave1, rgb(0 107 179))) !important;
 }
-.lineThrow{
+
+.btn-outline-warning:hover {
+  color: #ffffff;
+}
+
+.lineThrow {
   text-decoration: line-through;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 576px) {
+  .card-body {
+    padding: 1rem;
+  }
+.teacherimg
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  .title {
+    height: auto;
+    margin-bottom: 10%;
+  }
+
+  .btn {
+    font-size: 1rem;
+    width: 100%;
+  }
+}
+
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .card-body {
+    padding: 2rem;
+  }
+
+  .teacherimg {
+    width: 360px;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+}
+
+.accordion-item {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .accordion-button {
+    font-size: 0.9rem;
+  }
 }
