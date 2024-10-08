@@ -7,7 +7,14 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.loggedIn.asObservable();
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient) {
+    const token = localStorage.getItem('Token');
+    if (token) {
+      this.loggedIn.next(true);
+    }else{
+      this.loggedIn.next(false);
+    }
+  }
     onLogin(obj:any){
       return this.http.post("http://127.0.0.1:8000/api/login",obj)
     }
