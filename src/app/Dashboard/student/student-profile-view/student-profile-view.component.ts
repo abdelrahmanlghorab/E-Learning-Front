@@ -14,10 +14,10 @@ import { GetTeacherService } from '../../../services/get-teacher.service';
 })
 export class ProfileViewComponent {
   user: any;
-  user_courses:any;
-  user_teacher:any;
-  user_data=JSON.parse(localStorage.getItem('data')!)
-  constructor(private userService: UserService,private router: Router,private paymentService: PaymentService,private getAllTeachers:GetTeacherService) {
+  user_courses: any;
+  user_teacher: any;
+  user_data = JSON.parse(localStorage.getItem('data')!)
+  constructor(private userService: UserService, private router: Router, private paymentService: PaymentService, private getAllTeachers: GetTeacherService) {
     this.user = {};
   }
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class ProfileViewComponent {
     this.paymentService.getPayment().subscribe(
       (data: any) => {
         console.log(data);
-        this.user_courses = data;
+        this.user_courses = data.courses;
         console.log(this.user_courses);
       }
     );
@@ -44,7 +44,3 @@ export class ProfileViewComponent {
     );
   }
 }
-
-
-
-
