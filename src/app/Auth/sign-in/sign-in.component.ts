@@ -53,11 +53,10 @@ export class SignInComponent {
   Login() {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
-        alert('Login successful')
         console.log(res.data);
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
-        this.router.navigateByUrl("tests");
+        this.router.navigateByUrl("profile");
 
       } else {
         alert(res.message)

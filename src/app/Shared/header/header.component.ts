@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  
   toggleTheme() {
     const body = document.body;
     const themeIcon = document.getElementById('theme-icon');
@@ -32,6 +33,7 @@ export class HeaderComponent {
   onLogout() {
     localStorage.removeItem('Token');
     localStorage.removeItem('data');
+    this.login = null;
     this.router.navigateByUrl("signin");
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class StudentSignUPComponent implements OnInit {
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder ,private authservices: AuthService) {
+  constructor(private fb: FormBuilder ,private authservices: AuthService,private router:Router) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -87,6 +87,8 @@ onSubmit() {
     this.authservices.register(formData).subscribe(
       (response) => {
         console.log('Registration successful', response);
+        this.registerForm.reset();
+        this.router.navigate(['/signin']);
       },
       (error) => {
         console.error('Registration failed', error);
