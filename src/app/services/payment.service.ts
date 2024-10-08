@@ -44,7 +44,7 @@ export class PaymentService {
     };
     return this.http.post(`${this.apiUrl}/store-payment`, coniframtion);
   }
-  getPayment(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/user-payments/${id}`);
+  getPayment(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user-payments`);
   }
 }
