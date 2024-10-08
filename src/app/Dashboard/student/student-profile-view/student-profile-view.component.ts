@@ -28,7 +28,7 @@ export class ProfileViewComponent {
         // console.log(this.user);
       }
     );
-    this.paymentService.getPayment(Number(this.user_data.id)).subscribe(
+    this.paymentService.getPayment().subscribe(
       (data: any) => {
         console.log(data);
         this.user_courses = data.courses;
