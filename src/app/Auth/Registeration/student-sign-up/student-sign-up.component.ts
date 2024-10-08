@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { HeaderComponent } from '../../../Shared/header/header.component';
 
 @Component({
   selector: 'app-student-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink ,HeaderComponent],
   templateUrl: './student-sign-up.component.html',
   styleUrls: ['./student-sign-up.component.css']
 })
