@@ -1,41 +1,96 @@
-<nav class=" handel  navbar navbar-expand-lg navbar-light" style="direction:rtl; height: 70px;">
-    <div class="container-fluid d-flex justify-content-round ">
-      <div>
-        <a class="navbar-brand"  routerLink="">
-          <img src="favicon.ico" alt="Ana Kafuo" width="90px"   height="">
-        </a>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link fw-bold" routerLink="">الرئيسية</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold" routerLink="courses">الكورسات</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold" href="#">المدرسين</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold" href="#">الأختبارات </a>
-          </li>
-        </ul>
-      </div>
-
-        <div class="d-flex align-items-center mx-auto" >
-          <label class="switch">
-
-          <div class="theme-toggle">
-            <input class="checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()">
-                <span class="slider"></span>
-          </div>
-          </label>
-          <div class="dropdown disk mx-4">
-            <i class="fa-regular fa-circle-user mx-1"></i>
-            <a routerLink="/signin" class="nav-link " id="login" aria-expanded="false">تسجيل الدخول</a>
-          </div>
-          <a style="font-size: small; " routerLink="/studentSignup" class="main-btn text-decoration-none ">طالب جديد</a>
-        </div>
-
+<nav
+  class="navbar navbar-expand-sm navbar-light d-flex"
+  aria-label="Third navbar example"
+  dir="rtl"
+>
+  <div class="container-fluid d-flex justify-content-between">
+    <div class="sm-navbar">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarsExample03"
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <img src="favicon.ico" alt="Ana Kafuo" width="60px" height="" />
     </div>
-  </nav>
+    <div class="collapse navbar-collapse mx-auto" id="navbarsExample03">
+      <ul class="navbar-nav mx-auto mb-2 mb-sm-0">
+        <li class="nav-item">
+          @if(role_id === 1){
+            <a class="nav-link fw-bold" routerLink="admin">الرئيسية</a>
+
+          }@else{
+
+            <a class="nav-link fw-bold" routerLink="">الرئيسية</a>
+          }
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="courses">الكورسات</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="teachers">المدرسين</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="tests">الأختبارات </a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown disk mx-4 gap-2 d-lg-flex d-none">
+      <label class="switch">
+
+        <div class="theme-toggle">
+          <input
+            class="checkbox"
+            type="checkbox"
+            id="theme-switch"
+            #themeSwitch
+            (click)="toggleTheme()"
+          />
+          <span class="slider"></span>
+        </div>
+      </label>
+          @if(!isloggedIn) {
+      <i class="fa-regular fa-circle-user mx-1"></i>
+      <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false"
+        >تسجيل الدخول</a
+      >
+      <a
+        style="font-size: small"
+        routerLink="/studentSignup"
+        class="main-btn text-decoration-none"
+        >طالب جديد</a
+      >
+          }
+          @else {
+            <div class="dropdown me-5">
+              <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="avatar-sm">
+                  @if(image == "http://127.0.0.1:8000/images/users"){
+                    <img src="default.png" alt="..." width="50px" height="50x" class="avatar-img rounded-circle" />
+
+                  }@else{
+                    <img [src]="image" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
+                  }
+                  <span class="profile-username">
+                    <span class="op-7">Hi,</span>
+                    <span class="fw-bold">{{name}}</span>
+                  </span>
+                </div>
+              </div>
+              <ul class="dropdown-menu text-center " style="width: 200px; ">
+                <li><a class="dropdown-item" routerLink="/profile" class="btn  btn-info fw-bold text-white mt-2 w-75 mx-auto  rounded-5 ">View
+                    Profile </a></li>
+                <hr>
+                <li> <a (click)="onLogout()" class="dropdown-item fw-bold fs-5"> <i class=" ms-3 fa fa-sign-out"></i>Logout</a>
+                </li>
+              </ul>
+            </div>
+          }
+    </div>
+  </div>
+</nav>

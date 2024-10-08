@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="container mt-5">
         <h4 class="text-center text-warning">تعرف علي</h4>
@@ -5,59 +6,22 @@
     </div>
     <div class="container mt-5">
         <div class="row">
-        <div class="col-md-3 col-sm-8 ">
-            <div class="card ">
+            @for (item of teachers; track item.id) { 
+        <div [routerLink]="['/teacherprofile', item.id]" class="col-md-6 col-lg-3 col-xm-12  mb-5  position-relative ">
+            <div class="card  mx-auto ">
                 <div class="card-image  ">
-                    <img class="mx-auto" src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R162579454&ga=GA1.1.1281593177.1723302490&semt=ais_hybrid" width="155px" height="175px" alt="not">
+                    <img class="mx-auto" [src]="item.image" width="155px" height="175px" alt="not">
                 </div>
                 <div class="cont">
-                    <div class="category fs-5  mt-3"> الأسم </div>
-                <div class="heading"> وصف عن المعلم 
-                    <div class="author"> By <span class="name">Abi</span> 4 days ago</div>
+                    <div class="category fs-5  mt-3"> {{item.name}} </div>
+                <div class="heading"> {{item.title}}  
                 </div>
+                <div class="author position-absolute bottom-0 start-0 mb-3 ms-3 fw-bold"> {{item.phone}}</div>
+                <div class="author position-absolute bottom-0 end-0 mb-3 me-3 fw-bold "> {{item.address}}</div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-8">
-            <div class="card ">
-                <div class="card-image  ">
-                    <img class="mx-auto" src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R162579454&ga=GA1.1.1281593177.1723302490&semt=ais_hybrid" width="155px" height="175px" alt="not">
-                </div>
-                <div class="cont">
-                    <div class="category fs-5  mt-3"> الأسم </div>
-                <div class="heading"> وصف عن المعلم 
-                    <div class="author"> By <span class="name">Abi</span> 4 days ago</div>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-8">
-            <div class="card ">
-                <div class="card-image  ">
-                    <img class="mx-auto" src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R162579454&ga=GA1.1.1281593177.1723302490&semt=ais_hybrid" width="155px" height="175px" alt="not">
-                </div>
-                <div class="cont">
-                    <div class="category fs-5  mt-3"> الأسم </div>
-                <div class="heading"> وصف عن المعلم 
-                    <div class="author"> By <span class="name">Abi</span> 4 days ago</div>
-                </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-3 col-sm-8">
-            <div class="card ">
-                <div class="card-image  ">
-                    <img class="mx-auto" src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R162579454&ga=GA1.1.1281593177.1723302490&semt=ais_hybrid" width="155px" height="175px" alt="not">
-                </div>
-                <div class="cont">
-                    <div class="category fs-5  mt-3"> الأسم </div>
-                <div class="heading"> وصف عن المعلم 
-                    <div class="author"> By <span class="name">Abi</span> 4 days ago</div>
-                </div>
-                </div>
-            </div>
-        </div>
+    }
        
     </div>
     </div>

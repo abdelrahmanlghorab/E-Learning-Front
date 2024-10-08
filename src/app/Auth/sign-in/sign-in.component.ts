@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/Auth/auth.service';
+import { HeaderComponent } from '../../Shared/header/header.component';
 
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink ,HeaderComponent],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
@@ -18,7 +20,7 @@ export class SignInComponent {
   passwordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder ,private router: Router ,private authservices: AuthService) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -32,23 +34,43 @@ export class SignInComponent {
 
   onSubmit() {
     if (this.signInForm.valid) {
-      console.log('Form Submitted', this.signInForm.value);
-      this.authservices.login(this.signInForm.value).subscribe(
-        (response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['/student-dashboard']);
-        },
-        (error) => {
-          console.error('Login failed', error);
-        }
-      );
     } else {
       this.signInForm.markAllAsTouched();
     }
   }
-  
+
 
   get formControls() {
     return this.signInForm.controls;
   }
+
+  loginObj: any = {
+    'email': '',
+    'password': ''
+  }
+
+  authServices = inject(AuthService)
+
+  Login() {
+    this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
+      if (res.result) {
+        // alert('Login successful')
+        localStorage.setItem('Token', res.token);
+        localStorage.setItem('data', JSON.stringify(res.data));
+        this.authServices.setLoggedIn(true);
+        // console.log(typeof(res.data.role_id));
+        if (res.data.role_id == 1 || res.data.role_id == 4 ) {
+          this.router.navigateByUrl("admin");
+        }else{
+          this.router.navigateByUrl("");
+        }
+
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+
 }
+
+

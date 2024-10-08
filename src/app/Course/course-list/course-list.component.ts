@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CardComponent } from "../../Shared/card/card.component";
 import { CoursesService } from '../../services/courses.service';
+import { CoursePlaylistService } from '../../services/course-playlist.service';
+import { GetTeacherService } from '../../services/get-teacher.service';
 
 @Component({
   selector: 'app-course-list',
@@ -11,11 +13,14 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class CourseListComponent {
   courses:any;
-  constructor(private courseService: CoursesService) {
+  teacher: any;
+
+  constructor(private playListService: CoursePlaylistService, private CoursesService: CoursesService) {
   }
   ngOnInit() {
-    this.courseService.getAllCourses().subscribe((data: any) => {
-      this.courses = data;
+    this.CoursesService.getAllCourses().subscribe((data: any) => {
+        console.log(this.courses = data);
     });
+
   }
 }

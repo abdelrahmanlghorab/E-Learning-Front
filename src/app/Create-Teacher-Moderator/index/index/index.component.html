@@ -1,44 +1,58 @@
-<section class="intro mt-5" >
-    <div class="bg-image h-100" >
-      <div class="mask d-flex align-items-center h-100">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body p-0">
-                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 500px">
-                    <table class="table table-striped mb-0 " >
-                      <thead style="background-color: #002d72;">
-                        <tr>
-                          <th scope="col">الاسم </th>
-                          <th scope="col">البريد الإلكتروني </th>
-                          <th scope="col">الرقم القومى </th>
-                          <th scope="col">النوع</th>
-                          <th scope="col">العنوان</th>
-                          <th scope="col">رقم التليفون</th>
-                          <th scope="col">صورة</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                       <tr>
-                        <td>محمدابراهيم </td>
-                        <td>Mohamed&#64;giamlcom</td>
-                        <td>30203301402336 </td>
-                        <td>ذكر </td>
-                        <td>مصر</td>
-                        <td>01016659385</td>
-                        <td>
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjclDv0e9IVQdcKL5CgI8DITEgglEavaKqww&s" alt="Mohamed" class="img-fluid " style="width: 60px; height: 80px;">
-                        </td>
-                       </tr>
-                      </tbody>
+  <div class="main" dir="rtl">
+    <div class="row">
+        <div class=" col-md-12 mx-auto ">
+            <div class="panel">
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead class="main-btn">
+                            <tr>
+                              <th scope="col">الاسم </th>
+                              <th scope="col">البريد الإلكتروني </th>
+                              <th scope="col">الرقم القومى </th>
+                              <th scope="col">النوع</th>
+                              <th scope="col">العنوان</th>
+                              <th scope="col">رقم التليفون</th>
+                              <th scope="col">صورة</th>
+                              <th scope="col">وظيفة</th>
+                              <th scope="col">إزالة</th>
+                              <th scope="col">تعديل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @for (item of organizer; track item.id) {
+                            <tr>
+                                
+                              <td>{{item.name}}</td>
+                              <td>{{item.email}}</td>
+                              <td>{{item.national_id}} </td>
+                              <td>{{item.gender === 'Male' ? 'ذكر' : 'أنثى' }}</td>
+                              <td>{{ item.address ? item.address : 'لا يوجد عنوان' }}</td>
+                              <td>{{item.phone ? item.phone:'لا يوجد رقم '}}</td>
+                              <td>{{item.role_id === 2 ? 'معلم ' : 'مدير'}}</td>
+                              <td>
+                                <img [src]="item.image" alt="Image" width="100" height="100">
+                              </td>
+                              <td>
+                                <button (click)="deleteItem(item)" class="mt-4 btn btn-danger">
+                                  <i class="fas fa-trash"></i>
+                                </button>
+                              </td>
+                              <td>
+                                <button (click)="navigateToUpdate(item.id)" class=" me-3 mt-4 btn btn-primary">
+                                  <i class="fas fa-edit "></i>
+                                </button>
+                              </td>
+                            </tr>
+                        }
+                        </tbody>
                     </table>
-                  </div>
+                    <div class="d-flex justify-content-between mt-3">
+                      <button type="submit" routerLink="/createorganizer" class="btn main-btn rounded-5 ms-5 custom-button w-50">أضافة </button>
+                      <button routerLink="/trashorganizer" class="btn main-btn rounded-5 me-5 custom-button w-50">المحذوفات </button>
+                    </div>   
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</div>    
+

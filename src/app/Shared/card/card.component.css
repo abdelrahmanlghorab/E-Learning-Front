@@ -1,6 +1,6 @@
 .example-card {
   width: 325px;
-  height: 405px;
+  height: 470px;
   border-radius: 10px;
   box-shadow:rgba(63, 63, 70, 0.12) 0px 0px 0px 1px;
   background-color:#FBFBFB;
@@ -85,8 +85,10 @@ position: absolute;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
+  opacity: 0.75;
+  margin-top: -1px;
 }
 .category {
   opacity: 0.75;
@@ -100,4 +102,5 @@ position: absolute;
 
 a {
   all: unset;
+  
 }

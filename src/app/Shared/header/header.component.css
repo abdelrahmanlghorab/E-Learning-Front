@@ -1,14 +1,10 @@
-/* Default styles for larger screens (desktop) */
 .main-btn {
   padding: 0.4rem 1rem;
   color: white;
-  background: linear-gradient(
-      90deg,
+  background: linear-gradient(90deg,
       var(--wave1, #007bff),
       var(--wave2, #00ccff) 51%,
-      var(--wave1, rgb(0 107 179))
-    )
-    var(--x, 0) / 200%;
+      var(--wave1, rgb(0 107 179))) var(--x, 0) / 200%;
   scale: 1;
   transition: 0.4s;
   border-radius: 7.5em;
@@ -18,11 +14,6 @@
 .main-btn:hover {
   scale: 0.995;
   --x: 100%;
-}
-
-.lh-base {
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 .switch {
@@ -67,103 +58,29 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #303136;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
   background: #303136;
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
 
-/* Media Queries */
-
-/* For small devices (phones, 320px and up) */
-.nav-item :hover{
-    color: #007bff;
+.nav-item :hover {
+  color: #007bff;
 }
-
-
-@media (max-width: 576px) {
-  .main-btn {
-    padding: 0.3rem 0.8rem;
-    font-size: 0.85em;
-  }
-
-  .form-container {
-    padding: 15px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  .btn-primary {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .switch {
-    --width-of-switch: 2.8em;
-    --height-of-switch: 1.6em;
-    --size-of-icon: 1.2em;
-  }
+.dropdown-toggle::after {
+  display: none;
 }
-
-/* For medium devices (tablets, 577px to 768px) */
-@media (min-width: 577px) and (max-width: 768px) {
-  .main-btn {
-    padding: 0.35rem 0.9rem;
-    font-size: 0.9em;
+@media screen and (max-width: 576px) {
+  .sm-navbar{
+    /* margin-left: 0 !important; */
+    display: flex;
+    justify-content: space-between ;
+    width: 100%;
   }
-
-  .form-container {
-    padding: 25px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  .btn-primary {
-    font-size: 15px;
-  }
-
-  .switch {
-    --width-of-switch: 3.2em;
-    --height-of-switch: 1.8em;
-    --size-of-icon: 1.3em;
-  }
-}
-
-/* For larger devices (desktops, 769px and up) */
-@media (min-width: 769px) {
-  .handel {
-    border-collapse: collapse;
-  }
-
-  .main-btn {
-    padding: 0.4rem 1rem;
-    font-size: 1em;
-  }
-
-  .form-container {
-    padding: 30px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  .btn-primary {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .switch {
-    --width-of-switch: 3.5em;
-    --height-of-switch: 2em;
-    --size-of-icon: 1.4em;
-  }
+  
+  
 }
