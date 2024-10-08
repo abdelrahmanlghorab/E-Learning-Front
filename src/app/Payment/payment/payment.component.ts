@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit {
     this.paymentService.createPaymentIntent(courseId).subscribe({
       next: async (response: any) => {
         const clientSecret = response.clientSecret;
+        console.log(clientSecret);
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
 
         if (error) {
@@ -50,11 +51,12 @@ export class PaymentComponent implements OnInit {
           this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
             next: () => {
               this.message = 'تم الدفع بنجاح';
+              this.router.navigate(['/course', courseId]);
+
             },
             error: () => this.error = 'خطأ في عملية الدفع'
           });
           this.message = 'تم الدفع بنجاح';
-          this.router.navigate(['/course', courseId]);
         } else {
           this.error = 'فشل في عملية الدفع';
         }

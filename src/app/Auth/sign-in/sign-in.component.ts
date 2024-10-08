@@ -5,12 +5,13 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/Auth/auth.service';
+import { HeaderComponent } from '../../Shared/header/header.component';
 
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink ,HeaderComponent],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
@@ -53,11 +54,16 @@ export class SignInComponent {
   Login() {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
-        alert('Login successful')
-        console.log(res.data);
+        // alert('Login successful')
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
-        this.router.navigateByUrl("tests");
+        this.authServices.setLoggedIn(true);
+        // console.log(typeof(res.data.role_id));
+        if (res.data.role_id == 1 || res.data.role_id == 4 ) {
+          this.router.navigateByUrl("admin");
+        }else{
+          this.router.navigateByUrl("");
+        }
 
       } else {
         alert(res.message)

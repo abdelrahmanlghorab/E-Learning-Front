@@ -21,16 +21,22 @@
     <div class="collapse navbar-collapse mx-auto" id="navbarsExample03">
       <ul class="navbar-nav mx-auto mb-2 mb-sm-0">
         <li class="nav-item">
-          <a class="nav-link fw-bold" routerLink="">الرئيسية</a>
+          @if(role_id === 1){
+            <a class="nav-link fw-bold" routerLink="admin">الرئيسية</a>
+
+          }@else{
+
+            <a class="nav-link fw-bold" routerLink="">الرئيسية</a>
+          }
         </li>
         <li class="nav-item">
           <a class="nav-link fw-bold" routerLink="courses">الكورسات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-bold" href="#">المدرسين</a>
+          <a class="nav-link fw-bold" routerLink="teachers">المدرسين</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-bold" href="#">الأختبارات </a>
+          <a class="nav-link fw-bold" routerLink="tests">الأختبارات </a>
         </li>
       </ul>
     </div>
@@ -48,7 +54,7 @@
           <span class="slider"></span>
         </div>
       </label>
-          @if(!login){
+          @if(!isloggedIn) {
       <i class="fa-regular fa-circle-user mx-1"></i>
       <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false"
         >تسجيل الدخول</a
@@ -64,10 +70,15 @@
             <div class="dropdown me-5">
               <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="avatar-sm">
-                  <img src="default.png" alt="..." width="50px" height="50x" class="avatar-img rounded-circle" />
+                  @if(image == "http://127.0.0.1:8000/images/users"){
+                    <img src="default.png" alt="..." width="50px" height="50x" class="avatar-img rounded-circle" />
+
+                  }@else{
+                    <img [src]="image" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
+                  }
                   <span class="profile-username">
                     <span class="op-7">Hi,</span>
-                    <span class="fw-bold"></span>
+                    <span class="fw-bold">{{name}}</span>
                   </span>
                 </div>
               </div>
