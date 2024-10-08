@@ -3,7 +3,6 @@ import { UserService } from '../../../services/user.service';
 import { Router, RouterLink } from '@angular/router';
 import { PaymentService } from '../../../services/payment.service';
 import { GetTeacherService } from '../../../services/get-teacher.service';
-import { CoursesService } from '../../../services/courses.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -29,16 +28,16 @@ export class ProfileViewComponent {
         // console.log(this.user);
       }
     );
-    this.paymentService.getPayment(Number(this.user_data.id)).subscribe(
+    this.paymentService.getPayment().subscribe(
       (data: any) => {
         console.log(data);
-        this.user_courses = data.courses;
+        this.user_courses = data;
         console.log(this.user_courses);
       }
     );
     this.getAllTeachers.getAllTeachers().subscribe(
       (data: any) => {
-        console.log(data[0]);
+        console.log(data);
         this.user_teacher = data.data;
         console.log(this.user_teacher);
       }

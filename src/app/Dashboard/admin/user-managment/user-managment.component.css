@@ -107,3 +107,21 @@
     background-color: #000;
     box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
+.main-btn {
+    padding: 0.4rem 1rem;
+    color: white;
+    background: linear-gradient(
+        90deg,
+        var(--wave1, #007bff ),
+        var(--wave2,#00ccff ) 51%,
+        var(--wave1,  rgb(0 107 179))
+      )
+      var(--x, 0) / 200%;
+    scale: 1;
+    transition: 0.4s;
+  }
+
+  .main-btn:hover {
+    scale: 0.995;
+    --x: 100%;
+  }

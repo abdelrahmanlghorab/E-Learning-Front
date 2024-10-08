@@ -1,36 +1,39 @@
-<div class="container mt-5">
-    <div class="card  text-center text-white" style="border-radius: 20px  ;">
-        <div class="card-title  bg-dark" style="border-radius: 20px 20px 0 0 ;">
-            <h3>الامتحانات</h3>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <td>title</td>
-                        <td>Description</td>
-                        <td>is_free</td>
-                        <td colspan="3">Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(item of testList ; track $index){
-                    <tr>
-                        <td>{{item.title}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.is_free}}</td>
-                        <td><a class="btn btn-primary" routerLink="/test/{{item.id}}/update">Edit</a></td>
-                        <td><a class="btn btn-danger" (click)="onDelete(item.id)">Delete</a></td>
-                        <td><a class="btn btn-info" routerLink="/test/{{item.id}}">Show</a></td>
-                    </tr>
-                    }
-
-                </tbody>
-
-            </table>
-            <div class="card-footer text-end">
-                <a class="btn btn-success" href="/test-create">Add New Test</a>
+<div class="main" dir="rtl">
+    <div class="row">
+        <div class=" col-md-12 mx-auto ">
+            <div class="panel">
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead class="main-btn">
+                            <tr>
+                                <th>رقم الاختبار</th>
+                                <th>عنوان الاختبار</th>
+                                <th>وصف الاختبار</th>
+                                <th>مجانى !</th>
+                                <th>تعديل</th>
+                                <th>إزالة</th>
+                                <th>عرض</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(item of testList ; track $index){
+                            <tr>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.title}}</td>
+                                    <td>{{item.description}}</td>
+                                    <td>{{item.is_free}}</td>
+                                    <td><a class="btn btn-primary" routerLink="/test/{{item.id}}/update"><i class="fas fa-edit "></i></a></td>
+                                    <td><a class="btn btn-danger" (click)="onDelete(item.id)"><i class="fas fa-trash"></i></a></td>
+                                    <td><a class="btn btn-info" routerLink="/test/{{item.id}}"><i class="fa-solid fa-eye"></i></a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>   
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" routerLink="/test-create" class="btn main-btn rounded-5 ms-5 custom-button w-50">أضافة </button>
+                    </div>   
+                </div>
             </div>
         </div>
     </div>
-</div>
+</div>    
