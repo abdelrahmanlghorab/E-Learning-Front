@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SignInComponent } from "./Auth/sign-in/sign-in.component";
 import { StudentSignUPComponent } from "./Auth/Registeration/student-sign-up/student-sign-up.component";
@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from "./Dashboard/admin/admin.component";
 import { CourseCreateComponent } from "./Course/course-create/course-create.component";
 import { ScrollToTopComponent } from "./Shared/scroll-to-top/scroll-to-top.component";
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +29,18 @@ import { ScrollToTopComponent } from "./Shared/scroll-to-top/scroll-to-top.compo
 })
 export class AppComponent {
   title = 'ana-kafou';
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  ngOnInit() {
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id
+    }
+  }
+
+
 }

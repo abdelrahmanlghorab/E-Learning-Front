@@ -3,7 +3,7 @@
 </div>
 <div class="col-10 mx-auto">
   <div class="row">
-    <div class="container col-12 col-md-9 col-lg-10">
+    <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
         <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px" alt="..." />
       </div>
@@ -92,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-3 col-lg-2">
+    <div class="col-12 col-md-3 col-lg-3">
       <div class="row">
         <div class="card col-12">
           <div class="card-body text-center d-block">
@@ -139,14 +139,60 @@
             </div>
           </div>
         </div>
-        <div class="card col-12 mt-2" style="height: 400px">
+        <div class="card col-12 mt-2" style="height: 400px ; width: 400px;">
           <div class="card-body row text-center d-block">
-            <h5 class="card-title">Video: {{ courseVideosNum }}</h5>
+            <h5 class="card-title" dir="ltr">{{ courseVideosNum }} Sessions</h5>
             <hr />
+            <h3 class="text-start text-warning">Feedbacks</h3>
+
+            <div class="col-12 mt-3 d-flex " dir="ltr" tyle="width: 400px">
+              @for (comment of comments; track comment.id) {
+              <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                  <div class="  mb-2">
+                    <div class=" row">
+                      <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image" width="10px"
+                        class="rounded-circle col me-1" alt="hh" />
+                      <div class="col">
+                        <div class="row">
+                          <small class="mcol ">{{ comment.user.name }}</small>
+                          <small class="text-muted col ">{{ comment.created_at | date }}</small>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <p class="mb-0 ms-5 row">{{ comment.body }}</p>
+                </div>
+
+              </div>
+              <div style="width: 50px;" class="my-auto text-end">
+                <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
+                  class="fa-solid fa-trash"></i></button>
+              </div>
+              <hr>
+              }
+            </div>
+          </div>
+                    <div class="card-body row mt-5 text-center d-block">
+          <div class="container col-10 mt-3 w-100" dir="rtl">
+            <form [formGroup]="form" (ngSubmit)="click()" class="comment-form w-100">
+              <div class="form-group ">
+                <label for="inputName" class="form-label fs-5">اترك تعليق</label>
+                <textarea id="inputName" class=" form-control" formControlName="inputName" rows="4"
+                  placeholder="Write your comment here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline-primary ">اضافه تعليق</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
+</div>
+
+
+
+
 
   </div>
 </div>
