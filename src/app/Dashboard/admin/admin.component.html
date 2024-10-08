@@ -7,15 +7,13 @@
           <div class="col-lg-3 col-5">
             <div class="small-box bg-info">
               <div class="inner">
-                <!-- <h3>100</h3> -->
                 <h4>الطلاب</h4>
               </div>
               <div class="icon">
                 <i class="fa-solid fa-user"></i>
               </div>
-              <a routerLink="/admin/user-managment" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
+              <a routerLink="/admin/user-managment" class="small-box-footer ">
+                تفاصيل  أكثر  <i class="fas fa-arrow-circle-right "></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-5">
@@ -28,7 +26,7 @@
                 <i class="fa-solid fa-user"></i>
               </div>
               <a routerLink="/allorganizer" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i
+                تفاصيل  أكثر  <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -42,7 +40,7 @@
                 <i class="fas fa-dollar-sign"></i>
               </div>
               <a routerLink="/admin/payment" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i
+                تفاصيل  أكثر   <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -51,6 +49,7 @@
      
 
       <div class="row mt-5 gap-3 p-3">
+       @if(role_id === 1){
         <div class="col-lg-3 col-6">
           <div routerLink="/admin/courses" class="small-box bg-danger">
             <div class="inner">
@@ -61,10 +60,26 @@
               <i class="fas fa-play-circle"></i>
             </div>
             <a routerLink="/admin/courses" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
+              تفاصيل  أكثر  <i class="fas fa-arrow-circle-right"></i
             ></a>
           </div>
         </div>
+       }@else if(role_id === 4) {
+        <div class="col-lg-3 col-6">
+          <div routerLink="/courses" class="small-box bg-danger">
+            <div class="inner">
+              <!-- <h3>10</h3>  -->
+              <h4>الكورسات المسجله</h4>
+            </div>
+            <div class="icon">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <a routerLink="/courses" class="small-box-footer">
+              تفاصيل  أكثر  <i class="fas fa-arrow-circle-right"></i
+            ></a>
+          </div>
+        </div>
+       }
         <div class="col-lg-3 col-6">
           <div class="small-box bg-danger">
             <div class="inner">
@@ -75,7 +90,7 @@
               <i class="fas fa-check"></i>
             </div>
             <a routerLink="/tests" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
+              تفاصيل  أكثر   <i class="fas fa-arrow-circle-right"></i
             ></a>
           </div>
         </div>
@@ -90,7 +105,7 @@
               <i class="fas fa-video"></i>
             </div>
             <a href="" class="small-box-footer">
-              More info <i class="fas fa-arrow-circle-right"></i
+              تفاصيل  أكثر   <i class="fas fa-arrow-circle-right"></i
             ></a>
           </div>
         </div>

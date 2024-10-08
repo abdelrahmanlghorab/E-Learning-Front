@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, rgb(13, 36, 71), #4d91d1);
+  background: linear-gradient(135deg, rgb(22, 91, 194), #4d91d1);
   padding: 10px 20px;
   color: white;
 }
@@ -50,7 +50,7 @@
 
 .small-box {
   position: relative;
-  background: linear-gradient(135deg, rgb(13, 36, 71), #4d91d1);
+  background: linear-gradient(135deg, rgb(22, 74, 153), #3d7cb8);
   color: #fff;
   border-radius: 10px;
   overflow: hidden;

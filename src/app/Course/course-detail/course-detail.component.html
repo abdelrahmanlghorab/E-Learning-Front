@@ -5,7 +5,7 @@
   <div class="row">
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
-        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px" alt="..." />
+        <img [src]="courseImage"  class="card-img p-5 img-fluid" style="height: 450px ; max-width:100% ;" alt="..." />
       </div>
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
@@ -181,10 +181,12 @@
                       </div>
 
                     </div>
-                    <div style="width: 50px;" class="my-auto col text-end">
-                      <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
-                          class="fa-solid fa-trash"></i></button>
-                    </div>
+                    @if(role_id === 4){
+                      <div style="width: 50px;" class="my-auto col text-end">
+                        <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
+                            class="fa-solid fa-trash"></i></button>
+                      </div>
+                    }
                   </div>
                   <hr>
                 </div>

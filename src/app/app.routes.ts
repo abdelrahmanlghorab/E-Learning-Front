@@ -53,6 +53,7 @@ export const routes: Routes = [
     path: 'tests',
     component: TestListComponent,
     title: 'All Tests',
+    canActivate: [authGuard]
   },
   {
     path: 'test-create',
