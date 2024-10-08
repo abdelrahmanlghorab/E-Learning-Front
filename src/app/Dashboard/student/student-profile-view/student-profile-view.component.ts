@@ -31,7 +31,7 @@ export class ProfileViewComponent {
     this.paymentService.getPayment().subscribe(
       (data: any) => {
         console.log(data);
-        this.user_courses = data.courses;
+        this.user_courses = data;
         console.log(this.user_courses);
       }
     );
