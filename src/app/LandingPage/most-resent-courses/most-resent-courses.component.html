@@ -23,7 +23,7 @@
                       <div class="card">
                         <div class="position-relative card-body text-center mt-4">
                           <h4 class="card-title fs-3 fw-bold mt-3">نبذة</h4>
-                          <p class="card-text fs-6">{{item.description}}</p>
+                          <p class="card-text fs-6">{{truncate.transform(this.item.description, 650)}}</p>
                           <div [routerLink]="['/course', item.id]" class="cont mb-3 position-absolute bottom-0 start-50 translate-middle-x">
                             <button class="learn-more"> التفاصيل </button>
                           </div>

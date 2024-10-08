@@ -37,14 +37,10 @@ export class ProfileViewComponent {
     );
     this.getAllTeachers.getAllTeachers().subscribe(
       (data: any) => {
-        console.log(data[0]);
+        console.log(data);
         this.user_teacher = data.data;
         console.log(this.user_teacher);
       }
     );
   }
 }
-
-
-
-

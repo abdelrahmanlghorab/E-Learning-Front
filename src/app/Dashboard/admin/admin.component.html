@@ -111,26 +111,29 @@
     </div>
     <div class="sidebar-wrapper accordion" id="sidebarAccordion" dir="rtl">
       <ul class="nav">
-        <li class="side-item">
-          <a
-            href="#collapseTeachers"
-            class="nav-link"
-            data-bs-toggle="collapse"
-            aria-expanded="false"
-            aria-controls="collapseTeachers"
-          >
-            <p><i class="fas fa-user ms-2"></i>المعلمين</p>
-          </a>
-          <div
-            id="collapseTeachers"
-            class="collapse"
-            data-bs-parent="#sidebarAccordion"
-          >
-            <ul class="nav-collapse">
-              <li><a routerLink="/createorganizer"> - أضافة معلم</a></li>
-            </ul>
-          </div>
-        </li>
+        @if (role_id === 1) {
+          <li class="side-item">
+            <a
+              href="#collapseTeachers"
+              class="nav-link"
+              data-bs-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="collapseTeachers"
+            >
+              <p><i class="fas fa-user ms-2"></i>المعلمين</p>
+            </a>
+            <div
+              id="collapseTeachers"
+              class="collapse"
+              data-bs-parent="#sidebarAccordion"
+            >
+              <ul class="nav-collapse">
+                <li><a routerLink="/createorganizer"> - أضافة معلم</a></li>
+              </ul>
+            </div>
+          </li>
+        }
+   
         <li class="side-item">
           <a
             href="#collapseExams"
@@ -194,5 +197,6 @@
       </ul>
     </div>
   
+ 
   </div>
 </div>

@@ -58,13 +58,13 @@ export const routes: Routes = [
     path: 'test-create',
     component: TestCreateComponent,
     title: 'Create Tests',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
   },
   {
     path: 'test/:id/update',
     component: TestUpdateComponent,
     title: 'Update Tests',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
   }, {
     path: 'test/:id',
     component: TestManagementComponent,
@@ -153,21 +153,25 @@ export const routes: Routes = [
     path: 'admin/payment',
     component: PaymentMangementComponent,
     title: 'Payments',
+        canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'createorganizer',
     component: CreateComponent,
     title: 'Create Organizer',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'updateorganizer/:id',
     component: UpdateComponent,
     title: 'Update Organizer',
+        canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'trashorganizer',
@@ -195,7 +199,7 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileViewComponent,
     title: 'Profile View',
     canActivate: [authGuard]
@@ -217,6 +221,7 @@ export const routes: Routes = [
     path:'admin/restoreuser',
     component: RestoreUserComponent,
     title: 'Restore User',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: '**',

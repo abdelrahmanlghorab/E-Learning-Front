@@ -55,14 +55,16 @@
 img {
   max-width: 40%;
 }
+.commentImage{
+  width: 100%;
+  height: 12%;
+}
 
 @media only screen and (max-width: 576px) {
   .card-body {
     padding: 1rem;
   }
-.teacherimg
-
-  img {
+.teacherimg {
     height: auto;
     width: 100%;
   }
