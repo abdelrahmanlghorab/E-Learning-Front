@@ -55,10 +55,14 @@ export class SignInComponent {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
         alert('Login successful')
-        console.log(res.data);
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
-        this.router.navigateByUrl("tests");
+        // console.log(typeof(res.data.role_id));
+        if (res.data.role_id == 1 || res.data.role_id == 4 ) {
+          this.router.navigateByUrl("admin");
+        }else{
+          this.router.navigateByUrl("");
+        }
 
       } else {
         alert(res.message)

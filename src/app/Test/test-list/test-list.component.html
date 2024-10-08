@@ -1,8 +1,10 @@
+@if(role_id === 1){
 <div class="container mt-5">
     <div class="card  text-center text-white" style="border-radius: 20px  ;">
         <div class="card-title  bg-dark" style="border-radius: 20px 20px 0 0 ;">
             <h3>الامتحانات</h3>
         </div>
+
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
@@ -34,3 +36,29 @@
         </div>
     </div>
 </div>
+}@else{
+<div class="container-fluid">
+    <div class="row">
+        @for(i of testList ; track $index){
+        <div class="col-lg-3 col-6 mt-5 ">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>{{i.title}}<sup style="font-size: 20px"></sup></h3>
+                    <p>{{i.description}}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a routerLink="/test/{{i.id}}" class="small-box-footer"> <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+
+        }
+    </div>
+</div>
+
+
+
+}
