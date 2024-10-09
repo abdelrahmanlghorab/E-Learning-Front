@@ -191,6 +191,24 @@ body.dark-mode .dropdown-menu a {
 body.dark-mode .dropdown-menu a:hover {
   background-color: #222;
 }
+body.dark-mode .pro-tip-card{
+  background-color: #333;
+  color: #f8f9fa;
+}
+body.dark-mode .main-btn {
+  background: linear-gradient(45deg, #ff6f00, #ffcc00);
+}
+
+body.dark-mode .main-btn:hover {
+  background: linear-gradient(45deg, #e65c00, #ffab00);
+}
+body.dark-mode .scroll-top {
+  background: linear-gradient(45deg, #e65c00, #ffab00);
+  box-shadow: inset 0 0 0 2px #ffab00 ;
+}
+body.dark.mode .text-purple{
+  color: #ffab00 ;
+}
 
 /* Media Queries for Responsive Adjustments */
 
