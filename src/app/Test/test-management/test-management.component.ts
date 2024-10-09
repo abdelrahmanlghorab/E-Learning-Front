@@ -13,6 +13,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./test-management.component.css'] 
 })
 export class TestManagementComponent {
+    data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  id!:any;
+  isloggedIn: boolean = false;
+
+
   test: any[] = [];
   questions: any[] = [];
   questionsAnswers: { question_id: string; answer_id: number }[] = []; 
@@ -36,6 +44,15 @@ export class TestManagementComponent {
   testService = inject(TestService);
 
   ngOnInit() {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id; 
+      this.id = this.data.id;
+    }
+  
     this.testId = this.route.snapshot.paramMap.get('id');
     this.testService.getTest(this.testId).subscribe((res: any) => {
       this.test = res.test;

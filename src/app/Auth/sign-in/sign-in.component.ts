@@ -54,11 +54,8 @@ export class SignInComponent {
   Login() {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
-        // alert('Login successful')
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
-        this.authServices.setLoggedIn(true);
-        // console.log(typeof(res.data.role_id));
         if (res.data.role_id == 1 || res.data.role_id == 4 ) {
           this.router.navigateByUrl("admin");
         }else{

@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   url = 'http://localhost:8000/api/students';  
+  URL = 'http://localhost:8000/api/user-score';  
   constructor(private http: HttpClient) { }
 
   getAllStudent() {
@@ -29,5 +30,8 @@ export class UserService {
   }
   restoreStudent(id: number) {
     return this.http.post(`http://localhost:8000/api/student/${id}/restore`, {});  
+  }
+  getUserScore(id: number) {
+    return this.http.get(`${this.URL}/${id}`);
   }
 }

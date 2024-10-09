@@ -14,6 +14,7 @@ export class HeaderComponent {
   name!: string;
   image!: string;
   role_id!: any;
+  id!:any;
   isloggedIn: boolean = false;
 
   ngOnInit() {
@@ -23,10 +24,9 @@ export class HeaderComponent {
       this.name = this.data.name;
       this.image = this.data.image;
       this.role_id = this.data.role_id; 
+      this.id = this.data.id;
     }
-    this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
-      this.isloggedIn = isLoggedIn;
-    });
+  
   }
   toggleTheme() {
     const body = document.body;
@@ -50,7 +50,6 @@ export class HeaderComponent {
   onLogout() {
     localStorage.removeItem('Token');
     localStorage.removeItem('data');
-    this.authservices.setLoggedIn(false);
     this.router.navigateByUrl("signin");
   }
 
