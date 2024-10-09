@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 import { HeaderComponent } from '../../../Shared/header/header.component';
+import { AuthService } from '../../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-student-sign-up',
@@ -85,7 +85,7 @@ onSubmit() {
 
     console.log("Form Submitted", this.registerForm.value);
 
-    this.authservices.register(formData).subscribe(
+    this.authservices.onRegister(formData).subscribe(
       (response) => {
         console.log('Registration successful', response);
         this.registerForm.reset();

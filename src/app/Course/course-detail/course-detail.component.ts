@@ -18,11 +18,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './course-detail.component.css'
 })
 export class CourseDetailComponent {
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  id!:any;
+  isloggedIn: boolean = false;
+
   @Input() courseId!: number;
   commentForm!: FormGroup;
   comments: any[] = [];
   body:any ='';
-  id: any;
   course: any;
   courseID:any;
   courseTitle: string="Course";
@@ -58,6 +64,15 @@ export class CourseDetailComponent {
 
   }
   ngOnInit() {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id; 
+      this.id = this.data.id;
+    }
+
     this.id = this.activatedRoute.snapshot.params['id'];
     this.courseService.getCourse(this.id).subscribe((data: any) => {
 

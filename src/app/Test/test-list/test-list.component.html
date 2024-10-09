@@ -1,4 +1,4 @@
-@if(role_id === 1){
+@if(role_id === 1 ||role_id === 4){
 <div class="container mt-5">
     <div class="card  text-center text-white" style="border-radius: 20px  ;">
         <div class="card-title  bg-dark" style="border-radius: 20px 20px 0 0 ;">
@@ -26,7 +26,6 @@
                         <td><a class="btn btn-info" routerLink="/test/{{item.id}}">Show</a></td>
                     </tr>
                     }
-
                 </tbody>
 
             </table>

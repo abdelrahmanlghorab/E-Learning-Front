@@ -14,6 +14,7 @@ export class HeaderComponent {
   name!: string;
   image!: string;
   role_id!: any;
+  id!:any;
   isloggedIn: boolean = false;
 
   ngOnInit() {
@@ -41,8 +42,9 @@ export class HeaderComponent {
       if (this.data) {
         this.data = this.data;
         this.name = this.data.name;
+        this.id= this.data.id;
         console.log(this.data);
-        console.log(this.name);
+        console.log(this.id);
 
         this.image = this.data.image;
         this.role_id = this.data.role_id;

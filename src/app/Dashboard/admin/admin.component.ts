@@ -8,19 +8,20 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-  constructor(private router: Router) {
-    if (!this.login) {
-      this.router.navigateByUrl("signin");
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+
+
+  ngOnInit() {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id; 
     }
   }
-  
-  login = localStorage.getItem('Token');
-  userData = localStorage.getItem('data');
 
-
-  onLogout() {
-    localStorage.removeItem('Token');
-    localStorage.removeItem('data');
-    this.router.navigateByUrl("signin");
-  }
 }
