@@ -1,3 +1,15 @@
+@import 'ngx-toastr/toastr';
+
+.toast-container .ngx-toastr {
+  border-radius: 20px;
+  width: 450px;
+  font-weight: bold;
+  font-size: larger;
+
+
+}
+
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8f9fa;

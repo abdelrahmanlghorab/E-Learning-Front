@@ -6,7 +6,10 @@
         أدخل علي حسابك بادخال البريد الإلكتروني وكلمة المرور المسجل بهم من قبل
       </h6>
     </div>
+        @if (message) {
+          <small >{{message}}</small>
 
+        }
     <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
       <div class="row mt-5">
         <div class="col">

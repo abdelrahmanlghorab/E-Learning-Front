@@ -1,70 +1,104 @@
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Exam</h2>
-
-    <form [formGroup]="testForm" (ngSubmit)="onSubmit()" >
-        <div class="row">
-            <!-- Loop over questions -->
-            @for(question of questions; track $index) {
-            <div class="col-md-12 mb-4">
-                <div class="card shadow border-0" style="border-radius:20px  ">
-                    <div class="card-header bg-info text-white fw-bold"
-                        style="border-radius:20px 20px 0 0 ;font-weight: bold;">
-                        <h5 class="mb-0">{{ $index + 1 }}. {{ question.question_text }}</h5>
-                        <input type="hidden" name="question_id" formControlName="question_id"
-                            [value]="question.question_id" >
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <!-- Loop over answers -->
-                            <div class="form-check mx-auto ">
-                                @if (role_id === 3) {
-
-                                    <input class="form-check-input" type="radio" (change)="getAnswer($event)"  name="{{$index}}" id="{{question.answers1.is_correct}}" value="{{question.answers1.id }}" required>
-                                }
-                                <label class="form-check-label">
-                                    {{question.answers1.answer_text }}
-                                </label>
-                            </div>
-                            <div class="form-check mx-auto ">
-                                @if (role_id === 3) {
-                                    <input class="form-check-input" type="radio"  (change)="getAnswer($event)" name="{{$index}}" value="{{question.answers2.id }}" required>
-
-                                }
-                                <label class="form-check-label">
-                                    {{question.answers2.answer_text }}
-                                </label>
-                            </div>
-                            <div class="form-check mx-auto ">
-                                @if (role_id === 3 ) {
-
-                                    <input class="form-check-input" type="radio" (change)="getAnswer($event)" name="{{$index}}"  value="{{question.answers3.id }}" required>
-                                }
-                                <label class="form-check-label">
-                                    {{question.answers3.answer_text }}
-                                </label>
-                            </div>
-                            <div class="form-check mx-auto ">
-                                @if (role_id === 3) {
-
-                                    <input class="form-check-input" type="radio"  (change)="getAnswer($event)" name="{{$index}}" value="{{question.answers4.id }}" required>
-                                }
-                                <label class="form-check-label">
-                                    {{question.answers4.answer_text }}
-                                </label>
-                            </div>
-
-
-                        </div>
-                    </div>
+    <h2 class="mb-4 text-center text-primary fw-bold">Exam</h2>
+  
+    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+tttttt        @for(question of questions; track $index) {
+        <div class="col-md-12 mb-4">
+          <div class="card shadow-lg border-0 transition-card" style="border-radius: 10px; background-color: #f8f9fa;">
+            <div class="card-header text-white fw-bold" 
+                 style="border-radius: 10px 10px 0 0; background-color: #007bff; padding: 1.2rem;">
+              <h5 class="mb-0">
+                <span class="badge bg-light text-primary" style="font-size: 1rem;">{{ $index + 1 }}</span> 
+                {{ question.question_text }}
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-check p-3 shadow-sm rounded transition-answer" style="background-color: #e9ecef;" (click)="getAnswer($event)">
+                    @if (role_id === 3) {
+                      <input
+                        class="form-check-input custom-radio"
+                        type="radio"
+                        (change)="getAnswer($event)"
+                        name="{{$index}}"
+                        id="option1_{{ $index }}"
+                        value="{{question.answers1.id }}"
+                        required
+                      />
+                    }
+                    <label class="form-check-label" for="option1_{{ $index }}" style="font-size: 1rem;">
+                      {{question.answers1.answer_text }}
+                    </label>
+                  </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                  <div class="form-check p-3 shadow-sm rounded transition-answer" style="background-color: #e9ecef;" (click)="getAnswer($event)">
+                    @if (role_id === 3) {
+                      <input
+                        class="form-check-input custom-radio"
+                        type="radio"
+                        (change)="getAnswer($event)"
+                        name="{{$index}}"
+                        id="option2_{{ $index }}"
+                        value="{{question.answers2.id }}"
+                        required
+                      />
+                    }
+                    <label class="form-check-label" for="option2_{{ $index }}" style="font-size: 1rem;">
+                      {{question.answers2.answer_text }}
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="form-check p-3 shadow-sm rounded transition-answer" style="background-color: #e9ecef;" (click)="getAnswer($event)">
+                    @if (role_id === 3) {
+                      <input
+                        class="form-check-input custom-radio"
+                        type="radio"
+                        (change)="getAnswer($event)"
+                        name="{{$index}}"
+                        id="option3_{{ $index }}"
+                        value="{{question.answers3.id }}"
+                        required
+                      />
+                    }
+                    <label class="form-check-label" for="option3_{{ $index }}" style="font-size: 1rem;">
+                      {{question.answers3.answer_text }}
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="form-check p-3 shadow-sm rounded transition-answer" style="background-color: #e9ecef;" (click)="getAnswer($event)">
+                    @if (role_id === 3) {
+                      <input
+                        class="form-check-input custom-radio"
+                        type="radio"
+                        (change)="getAnswer($event)"
+                        name="{{$index}}"
+                        id="option4_{{ $index }}"
+                        value="{{question.answers4.id }}"
+                        required
+                      />
+                    }
+                    <label class="form-check-label" for="option4_{{ $index }}" style="font-size: 1rem;">
+                      {{question.answers4.answer_text }}
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
-            }
+          </div>
         </div>
-        @if (role_id === 3 ) {
-            <div class="text-center mt-5">
-                <button type="submit" (click)="getResults()" class="btn btn-lg btn-info shadow-sm px-5">Submit Exam</button>
-            </div>
         }
-      
+      </div>
+      @if (role_id === 3) {
+        <div class="text-center mt-5">
+          <button type="submit" (click)="getResults()" class="btn btn-lg btn-success shadow-sm px-5 transition-btn" style="font-size: 1.1rem;">
+            Submit Exam
+          </button>
+        </div>
+      }
     </form>
 </div>
