@@ -24,6 +24,7 @@ import { UserService } from './services/user.service';
 
   imports: [RouterOutlet, RouterLink, CommonModule, ReactiveFormsModule, SignInComponent, StudentSignUPComponent, TeacherSignUPComponent, ForgetPasswordComponent, OurTeacherComponent, AboutUsComponent, MostResentCoursesComponent, HeroSectionComponent, HeaderComponent, FooterComponent, HomeComponent, AdminComponent, CourseCreateComponent, ScrollToTopComponent],
 
+
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
