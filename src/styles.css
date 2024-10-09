@@ -1,11 +1,10 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8f9fa;
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar */
 .navbar {
   background-color: white;
   padding: 0.8rem 1.5rem;
@@ -16,7 +15,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Navbar Links */
 .navbar-nav .nav-link {
   color: #333;
   font-size: 16px;
@@ -34,7 +32,6 @@ body {
   border-bottom: 3px solid #007bff;
 }
 
-/* Custom Button */
 .custom-button {
   padding: 10px 20px;
   background: linear-gradient(45deg, #02448b, #00ccff);
@@ -53,7 +50,6 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Disk Icon */
 .disk {
   color: #333;
   font-size: 18px;
@@ -66,7 +62,6 @@ body {
   margin-right: 5px;
 }
 
-/* Theme Toggle */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -93,7 +88,7 @@ body {
 }
 
 .toggle-checkbox::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 23px;
   height: 23px;
@@ -131,8 +126,75 @@ body {
 .dropdown-menu a:hover {
   background-color: #f8f9fa;
 }
+.instructorName {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.profile-img {
+  border: 3px solid;
+  border-color: #007bffb0;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  transition: transform 0s ease;
+  text-align: center;
+}
+body .teacher-card {
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #007bff, rgb(0 107 179));
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+body.dark-mode .teacher-card {
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff8c00, #ffab00);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
 
-/* Dark Mode */
+.teacher-info h5:hover,
+.teacher-info p:hover {
+  color: #ffe066;
+}
+body.dark-mode .teacher-info h5:hover,
+.teacher-info p:hover {
+  color: #007bff;
+}
+body .stats {
+  color: #007bff !important;
+  font-weight: bold;
+  font-size: 2rem;
+}
+body.dark-mode .stats {
+  color: #ff8c00 !important;
+  font-weight: bold;
+  font-size: 2rem;
+}
+body.dark-mode .profile-img {
+  border: 3px solid;
+  border-color: #ff8c00;
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  transition: transform 0s ease;
+  text-align: center;
+}
+body.dark-mode .instructorName {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff8c00;
+  margin-bottom: 0.5rem;
+}
+
 body.dark-mode {
   background-color: #121212;
   color: #f8f9fa;
