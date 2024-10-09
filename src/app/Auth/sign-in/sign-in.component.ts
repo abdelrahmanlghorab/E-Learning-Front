@@ -55,6 +55,7 @@ export class SignInComponent {
     this.authServices.onLogin(this.loginObj).subscribe((res: any) => {
       if (res.result) {
         // alert('Login successful')
+        // this.authServices.response.next(res);
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
         this.authServices.setLoggedIn(true);

@@ -7,6 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  // public response = new BehaviorSubject<any>({});
+
   isLoggedIn$ = this.loggedIn.asObservable();
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('Token');
@@ -15,14 +17,14 @@ export class AuthService {
     } else {
       this.loggedIn.next(false);
     }
-  }    onLogin(obj:any){
-      return this.http.post("http://127.0.0.1:8000/api/login",obj)
-    }
-    onRegister(obj:any){
-      return this.http.post("http://127.0.0.1:8000/api/register",obj)
-    }
-    setLoggedIn(value: boolean) {
-      this.loggedIn.next(value);
-    }
+  } onLogin(obj: any) {
+    return this.http.post("http://127.0.0.1:8000/api/login", obj)
+  }
+  onRegister(obj: any) {
+    return this.http.post("http://127.0.0.1:8000/api/register", obj)
+  }
+  setLoggedIn(value: boolean) {
+    this.loggedIn.next(value);
+  }
 
 }

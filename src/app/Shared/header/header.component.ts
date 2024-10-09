@@ -17,15 +17,39 @@ export class HeaderComponent {
   isloggedIn: boolean = false;
 
   ngOnInit() {
-    this.data = localStorage.getItem('data');
-    if (this.data) {
-      this.data = JSON.parse(this.data);
-      this.name = this.data.name;
-      this.image = this.data.image;
-      this.role_id = this.data.role_id; 
-    }
+    // this.data = localStorage.getItem('data');
+
+    // this.authservices.response.subscribe(res=>{
+    //   if(res){
+    // this.data=res.data;
+    //   }
+
+
+    // })
+
+
+
+
+    ;
+
     this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isloggedIn = isLoggedIn;
+
+      this.data = JSON.parse(localStorage.getItem('data')!);
+      console.log(this.data);
+
+      if (this.data) {
+        this.data = this.data;
+        this.name = this.data.name;
+        console.log(this.data);
+        console.log(this.name);
+
+        this.image = this.data.image;
+        this.role_id = this.data.role_id;
+      }
+      // login = localStorage.getItem('Token');
+      // userData = localStorage.getItem('data');
+
     });
   }
   toggleTheme() {
@@ -43,8 +67,7 @@ export class HeaderComponent {
   constructor(private router: Router,private authservices: AuthService) {
   }
 
-  login = localStorage.getItem('Token');
-  userData = localStorage.getItem('data');
+
 
 
   onLogout() {
