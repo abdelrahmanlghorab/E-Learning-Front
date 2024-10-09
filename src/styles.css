@@ -133,7 +133,7 @@ body {
 }
 .profile-img {
   border: 3px solid;
-  border-color: #007bffb0;
+  border-color: #007bff;
   padding: 5px;
   width: 150px;
   height: 150px;
@@ -160,15 +160,25 @@ body.dark-mode .teacher-card {
   text-align: center;
   padding: 20px;
 }
+.title {
+  height: 7rem;
+  background: linear-gradient(90deg, var(--wave1, #007bff), var(--wave2, #00ccff) 51%, var(--wave1, rgb(0 107 179)))!important;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+body.dark-mode .title {
+  height: 7rem;
+  background:linear-gradient(45deg, #e65c00, #ffab00) !important;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
 
-.teacher-info h5:hover,
-.teacher-info p:hover {
-  color: #ffe066;
-}
-body.dark-mode .teacher-info h5:hover,
-.teacher-info p:hover {
-  color: #007bff;
-}
 body .stats {
   color: #007bff !important;
   font-weight: bold;
@@ -193,6 +203,46 @@ body.dark-mode .instructorName {
   font-weight: bold;
   color: #ff8c00;
   margin-bottom: 0.5rem;
+}
+.header-icon {
+position: absolute;
+  font-size: 54px;
+  text-shadow: 0px 0px 20px #00ccff, 0px 5px 20px #007bff;
+  color: #00ccff;
+    border-radius: 50px;
+  opacity: 0.85;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-icon:hover {
+  font-size: 74px;
+  text-shadow: 0px 0px 20px #007bff, 0px 5px 30px rgb(0 107 179);
+    border-radius: 50px;
+  /* background: rgba(0, 0, 0, 0.1); */
+  border-radius: 50px;
+  opacity: 1;
+}
+
+body.dark-mode .header-icon {
+position: absolute;
+  font-size: 54px;
+  text-shadow: 0px 0px 20px #ffab00, 0px 5px 20px #e65c00;
+  color: #e65c00;
+    background: linear-gradient(45deg, #e65c00, #ffab00);
+    border-radius: 50px;
+  opacity: 0.85;
+  transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .header-icon:hover {
+
+  font-size: 74px;
+  text-shadow: 0px 0px 20px #ffab00, 0px 5px 30px #e65c00;
+      background: linear-gradient(45deg, #ffab00, #e65c00);
+    border-radius: 50px;
+  /* background: rgba(0, 0, 0, 0.1); */
+  border-radius: 50px;
+  opacity: 1;
 }
 
 body.dark-mode {
