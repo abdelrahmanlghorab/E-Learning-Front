@@ -209,6 +209,11 @@ body.dark-mode .scroll-top {
 body.dark.mode .text-purple{
   color: #ffab00 ;
 }
+body.dark-mode .pro-tip-content {
+  background-color: #333 !important;
+  color: #f8f9fa;
+}
+
 
 /* Media Queries for Responsive Adjustments */
 
