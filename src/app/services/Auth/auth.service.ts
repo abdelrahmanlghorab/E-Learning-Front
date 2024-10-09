@@ -26,5 +26,8 @@ export class AuthService {
   setLoggedIn(value: boolean) {
     this.loggedIn.next(value);
   }
+  forrgetPassword(obj: any) {
+    return this.http.post("http://127.0.0.1:8000/api/forget-password", obj)
+  }
 
 }
