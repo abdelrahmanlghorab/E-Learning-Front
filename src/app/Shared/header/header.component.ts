@@ -27,6 +27,38 @@ export class HeaderComponent {
       this.id = this.data.id;
     }
 
+    // this.data = localStorage.getItem('data');
+
+    // this.authservices.response.subscribe(res=>{
+    //   if(res){
+    // this.data=res.data;
+    //   }
+
+
+    // })
+
+
+
+
+    ;
+
+    this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isloggedIn = isLoggedIn;
+
+      this.data = JSON.parse(localStorage.getItem('data')!);
+
+      if (this.data) {
+        this.data = this.data;
+        this.name = this.data.name;
+        this.id= this.data.id;
+        
+        this.image = this.data.image;
+        this.role_id = this.data.role_id;
+      }
+      // login = localStorage.getItem('Token');
+      // userData = localStorage.getItem('data');
+
+    });
   }
   toggleTheme() {
     const body = document.body;
@@ -43,8 +75,7 @@ export class HeaderComponent {
   constructor(private router: Router, private authservices: AuthService) {
   }
 
-  login = localStorage.getItem('Token');
-  userData = localStorage.getItem('data');
+
 
 
   onLogout() {
@@ -52,6 +83,7 @@ export class HeaderComponent {
     localStorage.removeItem('data');
     localStorage.removeItem('notifications');
 
+    this.authservices.setLoggedIn(false);
     this.router.navigateByUrl("signin");
   }
 

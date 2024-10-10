@@ -62,7 +62,9 @@ export class SignInComponent {
         this.toaster.success("Login Success")
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
-        localStorage.setItem('notifications', JSON.stringify(res.notifications));
+        localStorage.setItem('notifications', JSON.stringify(res.notifications));     
+         this.authServices.setLoggedIn(true);
+
         if (res.data.role_id == 1 || res.data.role_id == 4) {
           this.router.navigateByUrl("admin");
         } else {
@@ -84,5 +86,3 @@ export class SignInComponent {
   }
 
 }
-
-
