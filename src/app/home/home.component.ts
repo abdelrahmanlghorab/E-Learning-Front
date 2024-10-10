@@ -7,11 +7,12 @@ import { OurTeacherComponent } from '../LandingPage/our-teacher/our-teacher.comp
 import { AboutUsComponent } from '../LandingPage/about-us/about-us.component';
 import { FooterComponent } from '../Shared/footer/footer.component';
 import { QuoteSectionComponent } from "../LandingPage/quote-section/quote-section.component";
+import { ContactUsComponent } from "../LandingPage/contact-us/contact-us.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, HeaderComponent, QuoteSectionComponent, HeroSectionComponent, MostResentCoursesComponent, OurTeacherComponent, AboutUsComponent, FooterComponent, QuoteSectionComponent],
+  imports: [RouterLink, HeaderComponent, QuoteSectionComponent, HeroSectionComponent, MostResentCoursesComponent, OurTeacherComponent, AboutUsComponent, FooterComponent, QuoteSectionComponent, ContactUsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
