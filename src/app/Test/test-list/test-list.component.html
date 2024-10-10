@@ -18,12 +18,12 @@
                 <tbody>
                     @for(item of testList ; track $index){
                     <tr>
-                        <td>{{item.title}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.is_free}}</td>
-                        <td><a class="btn btn-primary" routerLink="/test/{{item.id}}/update">Edit</a></td>
-                        <td><a class="btn btn-danger" (click)="onDelete(item.id)">Delete</a></td>
-                        <td><a class="btn btn-info" routerLink="/test/{{item.id}}">Show</a></td>
+                        <td>{{item.test.title}}</td>
+                        <td>{{item.test.description}}</td>
+                        <td>{{item.test.is_free}}</td>
+                        <td><a class="btn btn-primary" routerLink="/test/{{item.test.id}}/update">Edit</a></td>
+                        <td><a class="btn btn-danger" (click)="onDelete(item.test.id)">Delete</a></td>
+                        <td><a class="btn btn-info" routerLink="/test/{{item.test.id}}">Show</a></td>
                     </tr>
                     }
                 </tbody>
@@ -42,14 +42,21 @@
         <div class="col-lg-3 col-6 mt-5 ">
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{i.title}}<sup style="font-size: 20px"></sup></h3>
-                    <p>{{i.description}}</p>
+                    <h3>{{i.test.title}}<sup style="font-size: 20px"></sup></h3>
+                    <p>{{i.test.description}}</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a routerLink="/test/{{i.id}}" class="small-box-footer"> <i
+                @if (i.score == null) {
+
+                <a routerLink="/test/{{i.test.id}}" class="small-box-footer"> <i
                         class="fas fa-arrow-circle-right"></i></a>
+                }@else{
+                <a routerLink="/test-answer/{{i.test.id}}" class="small-box-footer"> <i
+                        class="fas fa-arrow-circle-right"></i></a>
+
+                }
             </div>
         </div>
 

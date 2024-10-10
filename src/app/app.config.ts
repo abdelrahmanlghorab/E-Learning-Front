@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
       autoDismiss: true,
       timeOut: 3000,
       progressBar: true,
-      
+
 
 
     })]

@@ -20,6 +20,7 @@ export class TestManagementComponent {
   role_id!: any;
   id!: any;
   isloggedIn: boolean = false;
+  title!: string;
 
 
   test: any[] = [];
@@ -59,6 +60,8 @@ export class TestManagementComponent {
     this.testId = this.route.snapshot.paramMap.get('id');
     this.testService.getTest(this.testId).subscribe((res: any) => {
       this.test = res.test;
+      this.title = res.test.title;
+
       this.questions = res.questions;
     });
   }
@@ -129,7 +132,7 @@ export class TestManagementComponent {
     this.testService.storeTestScore(testScore).subscribe((res: any) => {
       if (res.status) {
         this.toaster.success("تم الانتهاء من الامتحان و تسجيل النتيجه بنجاح")
-        this.router.navigateByUrl("tests");
+        this.router.navigateByUrl("test-answer/" + this.testId);
       }
     });
   }

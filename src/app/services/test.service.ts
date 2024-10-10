@@ -10,6 +10,7 @@ export class TestService {
   url = 'http://localhost:8000/api/tests';
   Url = 'http://localhost:8000/api/user-answers';
   urlScore = 'http://localhost:8000/api/scores';
+  urlCorrectAnswer = 'http://localhost:8000/api/tests-answer';
   constructor(private http: HttpClient) { }
   allTests() {
     return this.http.get(this.url);
@@ -31,5 +32,8 @@ export class TestService {
   }
   storeTestScore(data: any) {
     return this.http.post(this.urlScore, data);
+  }
+  ShowCorrectTestAnswer(id: number) {
+    return this.http.get(`${this.urlCorrectAnswer}/${id}`);
   }
 }
