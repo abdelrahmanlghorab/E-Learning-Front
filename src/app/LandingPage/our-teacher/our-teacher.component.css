@@ -1,109 +1,241 @@
-.teacher-slider {
-  width: 100%;
-  height: auto;
-}
-
-.teacher-card {
-  background-color: #f7f7f7;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.teacher-card h3 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.teacher-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-.card {
-
-    padding: .4em;
-    border-radius: 6px;
-    box-sizing: border-box;
-    width: 250px;
-    height: 354px;
-    /* background: rgba(217, 217, 217, 0.58); */
-    background: rgba(238, 237, 237, 0.58);
-    border: 1px solid rgb(231, 229, 229);
-    box-shadow: 5px 15px 26px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(6px);
-    border-radius: 17px;
+  body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+  }
+ 
+  .teacherLanding-card {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
     text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
+    box-shadow: inset 0 0 0 2px #000 ;
+  }
+  
+
+  .teacherLanding-card:hover {
+    transform: translateY(-10px);
+    box-shadow: inset 0 0 0 2px #00ccff ;
+  }
+
+  .teacherLanding-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .teacherLanding-card img:hover {
+    transform: scale(1.05);
+  }
+
+  .social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .social-icons a {
+    color: #fff;
+    background-color: #4dc0b5; /* Use your website's primary color */
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    background-color: #ff8c00; /* Use your website's accent color */
+  }
+
+  .teacher-info {
+    margin-top: 15px;
+  }
+
+  .teacher-info h5 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .teacher-info p {
+    font-size: 14px;
+    color: #888;
+  }
+
+  /* Animation */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .teacherLanding-card {
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .teacher-card img {
+      height: 150px;
+    }
+
+    .teacher-info h5 {
+      font-size: 18px;
+    }
+  }
+
+  .button {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background: linear-gradient(45deg, #02448b, #00ccff);
+    border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
-    user-select: none;
-    font-weight: bolder;
-    color: black;
+    cursor: pointer;
+    color: #ffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid linear-gradient(45deg, #02448b, #00ccff);
+    outline: none;
+    overflow: hidden; 
+    font-size: 15px;
   }
-
-  .card:hover {
-    border: 1px solid rgb(7, 5, 126);
-    box-shadow: 2px 4px 6px rgb(50, 47, 231);
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button:hover {
     transform: scale(1.05);
-    background: rgba(206, 206, 206, 0.58);
+    border-color:#0575ec;
   }
   
-  .card:active {
-    transform: scale(0.95) rotateZ(1.7deg);
+  .button:hover .icon {
+    transform: translate(4px);
   }
   
-  .card-image {
-    background-color: rgb(236, 236, 236);
-    width: 150px;
-    height: 170px;
-    border-radius: 6px 6px 0 0;
+  .button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -100px;
+    }
+  
+    60% {
+      left: 100%;
+    }
+  
+    to {
+      left: 100%;
+    }
+  }
+  
+    button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 15px;
   }
   .cont{
-    width: 200px;
-    height: 150px;
+    margin-top: 100px;
   }
 
-  .card-image:hover {
-    transform: scale(0.98);
-  }
-  
-  .category {
+  button.learn-more {
+    font-weight: 600;
+    color: #2c2f33;
     text-transform: uppercase;
-    font-size: 0.7em;
-    font-weight: 600;
-    color: rgb(14, 56, 134);
-    padding: 10px 7px 0;
+    padding: 1.25em 2em;
+    background: #f6f8fa;
+    border: 2px solid #ccd6dd;
+    border-radius: 0.75em;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
   }
-  
-  .category:hover {
-    cursor: pointer;
+
+  button.learn-more::before {
+
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e9ebee;
+    border-radius: inherit;
+    -webkit-box-shadow: 0 0 0 2px #ccd6dd, 0 0.625em 0 0 #ffffff;
+    box-shadow: 0 0 0 2px #ccd6dd, 0 0.625em 0 0 #ffffff;
+    -webkit-transform: translate3d(0, 0.75em, -1em);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
   }
-  
-  .heading {
-    font-weight: 600;
-    color: rgb(88, 87, 87);
-    padding: 7px;
+
+  button.learn-more:hover {
+    background: #dce0e3;
+    -webkit-transform: translate(0, 0.25em);
+    transform: translate(0, 0.25em);
   }
-  
-  .heading:hover {
-    cursor: pointer;
+
+  button.learn-more:hover::before {
+    -webkit-box-shadow: 0 0 0 2px #ccd6dd, 0 0.5em 0 0 #ffffff;
+    box-shadow: 0 0 0 2px #ccd6dd, 0 0.5em 0 0 #ffffff;
+    -webkit-transform: translate3d(0, 0.5em, -1em);
+    transform: translate3d(0, 0.5em, -1em);
   }
-  
-  .author {
-    color: gray;
-    font-weight: 400;
-    font-size: 11px;
-    padding-top: 20px;
+
+  button.learn-more:active {
+    background: #dce0e3;
+    -webkit-transform: translate(0em, 0.75em);
+    transform: translate(0em, 0.75em);
   }
-  
-  .name {
-    font-weight: 600;
-  }
-  
-  .name:hover {
-    cursor: pointer;
-  }
+
+  button.learn-more:active::before {
+    -webkit-box-shadow: 0 0 0 2px #ccd6dd, 0 0 #ffffff;
+    box-shadow: 0 0 0 2px #ccd6dd, 0 0 #ffffff;
+    -webkit-transform: translate3d(0, 0, -1em);
+    transform: translate3d(0, 0, -1em);
+  } 
+ 
+@media screen and (max-width: 990px){
+    .product-grid{ margin-bottom: 30px; }
+}

@@ -3,7 +3,7 @@ body {
        box-sizing: border-box;
   height: 100%;
   width: 100%; 
-  background: #FFF;
+  background:rgba(0, 0, 0, 0.2);
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
