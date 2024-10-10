@@ -31,7 +31,7 @@ export class ProfileViewComponent {
       (data: any) => {
         console.log(data,'ddddddddddddddd');
         this.user.score = data[0].score;
-        this.user.test_id = data[0].test_id;     
+        this.user.test_id = data[0].test_id;
       this.testService.getTest(this.user.test_id).subscribe((test:any)=>{
         console.log(test.test.title,"kfndjnfjd");
         this.user.test_name = test.test.title;

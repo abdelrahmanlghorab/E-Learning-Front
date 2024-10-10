@@ -12,11 +12,40 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 export class TeacherProfileComponent {
   id:any;
   teacher: any;
+  api: any;
+  teacherName: any;
+  teacherImage: any;
+  teacherDescription: any;
+  teacherTitle: any;
+  teacherEmail: any;
+  teacherPhone: any;
+  teacherCourses: any;
+  coursesCount: any;
+  courseStudentCount: number=0;
+
 constructor( private getteacher :GetTeacherService , public router: Router, private activatedRoute: ActivatedRoute){
   this.id = this.activatedRoute.snapshot.params['id'];
-  this.getteacher.getTeacher(this.id).subscribe(data => {
-    this.teacher = (data as any).teacher[0];
-    console.log((data as any).teacher[0]);
+  this.getteacher.getTeacher(this.id).subscribe((data) => {
+      this.api = data,
+
+      this.teacher=this.api.teacher,
+    this.teacherName = this.teacher.name;
+    this.teacherImage = this.teacher.image;
+    this.teacherDescription = this.teacher.description;
+    this.teacherTitle = this.teacher.title;
+    this.teacherEmail = this.teacher.email;
+    this.teacherPhone = this.teacher.phone;
+    this.coursesCount = this.api.courses_count;
+
+      this.teacherCourses = this.api.courses;
+
+      for(let course of this.teacherCourses){
+        this.courseStudentCount += Number(course.Student_count);
+        console.log( this.courseStudentCount, "dddddddddddddddd");
+        }
+
+
+
   });
 }
 }

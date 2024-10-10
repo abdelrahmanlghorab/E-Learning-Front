@@ -1,54 +1,37 @@
-<section class="section about-section " id="about" >
-    <div class="container ">
-        <div class="row mx-5 mb-3 align-items-center flex-row">
-            
-            <div class="col-lg-8" >
-                <div class="about-text go-to text-center" >
-                    <h3 class="dark-color text-capitalize ">{{teacher.name}}.</h3>
-                    <h6 class="theme-color lead">معلم ف منصة أنا كفو التعليمية</h6>
-                    <p class=" mx-auto"> أنا معلم <mark>{{teacher.title}}</mark> {{teacher.description}}.</p>
-                    <div class="row about-list">
-                    <div class="col-6 my-2 fw-bold " dir="rtl" >  <span class="ms-3 text-primary fs-5"> البريد الإلكتروني: </span>  {{teacher.email}}</div>
-                    <div class="col-6  my-2 fw-bold" dir="rtl" >  <span class="ms-3 text-primary fs-5"> الرقم القومى : </span>  {{teacher.national_id}}</div>
-                    <div class="col-6 my-2 fw-bold" dir="rtl" >  <span class="ms-3 text-primary fs-5"> العنوان التفصيلي: </span>  {{teacher.address}}</div>
-                    <div class="col-6 my-2 fw-bold" dir="rtl" >  <span class="ms-3 text-primary fs-5"> رقم التليفون: </span>  {{teacher.phone}}</div>
-                    </div>
+<div class="container mt-5" dir="ltr">
+  <div class="row justify-content-center">
+    <div class="col-md-4 text-center">
+      <div class="card p-4 shadow-lg profile-card animate__animated animate__fadeInLeft ">
+        <img [src]="teacherImage" alt="Profile Image"
+          class="rounded-circle img-fluid mb-3 profile-img mx-auto">
+        <h3>Eng\{{teacherName}}</h3>
+        <p class="text-muted">{{teacherTitle}}</p>
 
-                </div>
-            </div>
-            <div class="col-lg-4" dir="ltr">
-                <div class="about-avatar">
-                    <img [src]="teacher?.image" width="400px" title="" alt="not">
-                </div>
-            </div>
-        </div>
-        <div class="counter">
-            <div class="row">
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="500" data-speed="500">8</h6>
-                        <p class="m-0px font-w-600">خبرة في التدريس</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">3</h6>
-                        <p class="m-0px font-w-600">الكورسات المسجلة</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <h6 class="count h2" data-to="850" data-speed="850">0</h6>
-                        <p class="m-0px font-w-600">الكورسات المباشرة</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="count-data text-center">
-                        <p class="count h4" data-to="190" data-speed="190">متاح</p>
-                        <p class="m-0px font-w-600">العمل الاونلاين</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p class="mb-1"><i class="bi bi-envelope"></i> {{teacherEmail}}</p>
+        <p><i class="bi bi-telephone"></i> {{teacherPhone}}</p>
+
+        <a href="https://wa.me/{{teacherPhone}}" target="_blank" class="btn main-btn custom-button btn-gradient contact-btn">
+          Contact Now
+        </a>
+      </div>
     </div>
-</section>
+
+    <div class="col-md-8">
+      <div class="card p-4 shadow-lg about-card animate__animated animate__fadeInRight">
+        <h4 class="section-title">About Me</h4>
+        <p>{{teacherDescription}}</p>
+
+        <div class="row text-center mt-4">
+          <div class="col-md-6">
+            <h5 class="animate__animated stats animate__bounce">{{coursesCount}}+</h5>
+            <p>Online Courses</p>
+          </div>
+          <div class="col-md-6">
+            <h5 class="animate__animated stats animate__bounce">{{courseStudentCount}}+</h5>
+            <p>Students Enrolled</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
