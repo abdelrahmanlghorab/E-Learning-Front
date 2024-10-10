@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-header',
@@ -27,21 +28,6 @@ export class HeaderComponent {
       this.id = this.data.id;
     }
 
-    // this.data = localStorage.getItem('data');
-
-    // this.authservices.response.subscribe(res=>{
-    //   if(res){
-    // this.data=res.data;
-    //   }
-
-
-    // })
-
-
-
-
-    ;
-
     this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isloggedIn = isLoggedIn;
 
@@ -55,8 +41,7 @@ export class HeaderComponent {
         this.image = this.data.image;
         this.role_id = this.data.role_id;
       }
-      // login = localStorage.getItem('Token');
-      // userData = localStorage.getItem('data');
+      this.userNotification()
 
     });
   }
@@ -72,10 +57,16 @@ export class HeaderComponent {
       themeIcon?.classList.replace('fa-moon', 'fa-sun');
     }
   }
-  constructor(private router: Router, private authservices: AuthService) {
+  constructor(private router: Router, private authservices: AuthService, private notificationService: NotificationsService) {
   }
 
+  userNotification(){
+    this.notificationService.getUserNotifications().subscribe((data: any) => {
+        console.log(data);
+        
+    });
 
+  }
 
 
   onLogout() {
