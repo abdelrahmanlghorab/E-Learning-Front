@@ -16,6 +16,7 @@ export class TeacherComponent {
     this.teacher.getAllTeachers().subscribe(data => {
       console.log((data as any).data);
       this.teachers = (data as any).data;
+      console.log(this.teachers);
     });
   }
 
