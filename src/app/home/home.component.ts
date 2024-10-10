@@ -11,7 +11,7 @@ import { QuoteSectionComponent } from "../LandingPage/quote-section/quote-sectio
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, HeaderComponent,QuoteSectionComponent, HeroSectionComponent, MostResentCoursesComponent, OurTeacherComponent, AboutUsComponent, FooterComponent, QuoteSectionComponent],
+  imports: [RouterLink, HeaderComponent, QuoteSectionComponent, HeroSectionComponent, MostResentCoursesComponent, OurTeacherComponent, AboutUsComponent, FooterComponent, QuoteSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
