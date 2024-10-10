@@ -270,3 +270,26 @@ body.dark-mode .dropdown-menu a:hover {
     padding: 12px 25px;
   }
 }
+/* Container for small box */
+body.dark-mode .small-box {
+  position: relative;
+  background: linear-gradient(45deg, #ff6f00, #ffcc00);
+  color: white;
+  border-radius: 15px; /* Softer rounded corners */
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Container for small box */
+.small-box {
+  position: relative;
+  background: linear-gradient(45deg, #02448b, #00ccff);
+  color: white;
+  border-radius: 15px; /* Softer rounded corners */
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}

@@ -14,7 +14,7 @@ export class HeaderComponent {
   name!: string;
   image!: string;
   role_id!: any;
-  id!:any;
+  id!: any;
   isloggedIn: boolean = false;
 
   ngOnInit() {
@@ -23,10 +23,10 @@ export class HeaderComponent {
       this.data = JSON.parse(this.data);
       this.name = this.data.name;
       this.image = this.data.image;
-      this.role_id = this.data.role_id; 
+      this.role_id = this.data.role_id;
       this.id = this.data.id;
     }
-  
+
   }
   toggleTheme() {
     const body = document.body;
@@ -40,7 +40,7 @@ export class HeaderComponent {
       themeIcon?.classList.replace('fa-moon', 'fa-sun');
     }
   }
-  constructor(private router: Router,private authservices: AuthService) {
+  constructor(private router: Router, private authservices: AuthService) {
   }
 
   login = localStorage.getItem('Token');
@@ -50,6 +50,8 @@ export class HeaderComponent {
   onLogout() {
     localStorage.removeItem('Token');
     localStorage.removeItem('data');
+    localStorage.removeItem('notifications');
+
     this.router.navigateByUrl("signin");
   }
 

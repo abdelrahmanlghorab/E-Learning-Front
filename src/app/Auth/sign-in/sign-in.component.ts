@@ -22,7 +22,7 @@ export class SignInComponent {
   message!: string;
   passwordFieldType: string = 'password';
   eyeIcon: string = 'fas fa-eye';
-  toaster=inject(ToastrService);
+  toaster = inject(ToastrService);
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signInForm = this.fb.group({
@@ -58,9 +58,11 @@ export class SignInComponent {
   Login() {
     this.authServices.onLogin(this.loginObj).subscribe({
       next: (res: any) => {
+        console.log(res)
         this.toaster.success("Login Success")
         localStorage.setItem('Token', res.token);
         localStorage.setItem('data', JSON.stringify(res.data));
+        localStorage.setItem('notifications', JSON.stringify(res.notifications));
         if (res.data.role_id == 1 || res.data.role_id == 4) {
           this.router.navigateByUrl("admin");
         } else {
