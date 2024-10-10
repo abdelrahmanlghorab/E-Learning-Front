@@ -1,95 +1,3 @@
-<!-- <div class="container" dir="rtl">
-  <div class="row align-items-center">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-5">
-      <div class="card rounded-bottom smooth-shadow-sm">
-        <div
-          class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4"  >
-          <div class="d-flex align-items-center">
-            <div
-              class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10"
-            >
-              <img
-                [src]="user.image"
-                class="avatar-xxl rounded-circle border border-2"
-                alt="Image"
-              />
-            </div>
-            <div class="lh-1">
-              <h2 class="mb-0">
-                {{user.name}}
-                <a href="#!" class="text-decoration-none"> </a>
-              </h2>
-              <p class="mb-0 d-block">{{user.email}}</p>
-            </div>
-          </div>
-          <div>
-            <a routerLink="/edit-profile" class="btn main-btn d-none d-md-block"
-              >تعديل الملف الشخصى</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-6">
-    <div class="row">
-      @for(user_course of user_courses; track user_course.id){
-      <div class="col-lg-4 col-12">
-        
-         @for(teacher of user_teacher ; track teacher.id){
-          @if(teacher.id == user_course.instructor_id){
-        <div class="card mb-5 rounded-3">
-          <div>
-            <img
-              [src]="user_course.thumbnail"
-              alt="Image"
-              class="img-fluid rounded-top"
-            />
-          </div>
-          <div class="avatar avatar-xl mt-n7 ms-4 d-f self mx-3">
-            <img
-              [src]="teacher.image"
-              alt="Image"
-              class="rounded-circle border-4 border-white-color-40"
-            />
-          </div>
-          <div class="card-body">
-            <h4 class="mb-1">Mr {{teacher.name}}</h4>
-            <br>
-            <p>{{user_course.title}}</p>
-            <div>
-
-              <div class="d-flex justify-content-between align-items-center">
-                <a [routerLink]="'/course/'+user_course.id" class="btn main-btn">تفاصيل الكورس</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
-      }
-      </div> 
-    }
-    </div>
- 
-  </div>
-  <div class="py-6">
-    <h3 class="mb-4">الاختبارات المجتازة</h3>
-    <div class="row d-flex justify-content-center mt-5">
-      <div class="col-8">
-        <div class="card mb-5 rounded-3">
-          <div
-            class="card-body d-flex justify-content-between align-items-center"
-          >
-            <h4 class="mb-1">{{user.test_name}}</h4>
-            <a href="#!" class="btn main-btn">{{user.score}}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
 <div class="container mt-5" dir="ltr">
   <div class="card pro-tip-card">
     <div class="row g-0">
@@ -158,13 +66,13 @@
             />
           </div>
           <div class="card-body">
-            <h4 class="mb-1">Mr.{{teacher.name}}</h4>
+            <h4 class="mb-1">Mr {{teacher.name}}</h4>
             <br>
             <p>{{user_course.title}}</p>
             <div>
 
               <div class="d-flex justify-content-between align-items-center">
-                <a [routerLink]="'/course/'+user_course.id" class="btn main-btn">تفاصيل الكورس</a>
+                <a [routerLink]="'/course/'+user_course.id" class="btn main-btn">Details</a>
               </div>
             </div>
           </div>

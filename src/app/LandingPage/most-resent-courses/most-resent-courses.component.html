@@ -1,6 +1,5 @@
-<div class="container mt-5">
-    <h4 class="text-center text-warning ">تعرف علي</h4>
-    <h1 class="text-center fw-bold mb-4">أحدث الكورسات </h1>
+<!-- <div class="container mt-5">
+    <h1 class="text-center fw-bold mb-4">Courses</h1>
 </div>
 <section class="pb-5">
     <div class="container">
@@ -48,4 +47,42 @@
             </svg>
           </button>      
 </section>
+ -->
 
+ <div class="container mt-5 fw-bold">
+  <h1 class="text-center fw-bold mb-4">Courses</h1>
+  </div>
+  <div class="container mt-5 ">
+  <div class="row">
+    @for (item of courses; track item.id) {
+    <div class="col-md-3 col-sm-6">
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="#" class="image">
+                    <img [src]="item.thumbnail">
+                </a>
+                <ul class="product-links">
+                    <li><a [routerLink]="['/course', item.id]" ><i class="fa-solid fa-eye"></i></a></li>
+                </ul>
+                <a [routerLink]="['/course', item.id]" class="add-to-cart">Buy Now</a>
+            </div>
+            <div class="product-content view-icon">
+                <h3 class="title fw-bold"><a href="#">{{item.title}}</a></h3>
+                <p class="card-text fs-6">{{truncate.transform(this.item.description, 110)}}</p>
+                <div class="price">{{ item.price == 0 ? 'مجاني' : '$ ' + item.price }}</div>
+            </div>
+        </div>
+    </div>
+  }
+</div>
+<button routerLink="/courses" class="button mx-auto mt-3">
+  مشاهدة الكورسات
+  <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+    <path
+      clip-rule="evenodd"
+      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+      fill-rule="evenodd"
+    ></path>
+  </svg>
+</button>     
+</div>
