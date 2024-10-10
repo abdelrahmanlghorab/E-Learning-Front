@@ -32,12 +32,18 @@ import { isAdminGuard } from './Guard/is-admin.guard';
 import { isModeratorGuard } from './Guard/is-moderator.guard';
 import { RestoreUserComponent } from './Dashboard/admin/user-management/restore-user/restore-user.component';
 import { CourseSessionComponent } from './Course/course-session/course-session.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Ana Kafuo ',
+  },
+  {
+    path: 'AdminDashboardComponent',
+    component: AdminDashboardComponent,
+    title: 'AdminDashboardComponent ',
   },
   {
     path: 'signin',
@@ -132,7 +138,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: AdminDashboardComponent,
     title: 'Admin',
     canActivate: [isModeratorGuard, authGuard]
   },

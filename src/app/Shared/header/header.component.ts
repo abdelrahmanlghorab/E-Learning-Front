@@ -37,15 +37,12 @@ export class HeaderComponent {
       this.isloggedIn = isLoggedIn;
 
       this.data = JSON.parse(localStorage.getItem('data')!);
-      console.log(this.data);
 
       if (this.data) {
         this.data = this.data;
         this.name = this.data.name;
         this.id= this.data.id;
-        console.log(this.data);
-        console.log(this.id);
-
+        
         this.image = this.data.image;
         this.role_id = this.data.role_id;
       }

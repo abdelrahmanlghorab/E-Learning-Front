@@ -7,5 +7,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { customInterceptor } from './interceptor/custom.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideRouter(routes), provideHttpClient(withInterceptors([customInterceptor])), provideAnimationsAsync()]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideRouter(routes), provideHttpClient(withInterceptors([customInterceptor])), provideAnimationsAsync(), provideAnimationsAsync()]
 };
