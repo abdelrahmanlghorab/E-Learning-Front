@@ -1,12 +1,8 @@
 @if(role_id === 1 ||role_id === 4){
-<div class="container mt-5">
+<div class="container mt-5" dir="ltr">
     <div class="card  text-center text-white" style="border-radius: 20px  ;">
-        <div class="card-title  bg-dark" style="border-radius: 20px 20px 0 0 ;">
-            <h3>الامتحانات</h3>
-        </div>
-
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-striped" style="background-color: rgb(41, 85, 167) ; ">
                 <thead>
                     <tr>
                         <td>title</td>
@@ -21,17 +17,16 @@
                         <td>{{item.test.title}}</td>
                         <td>{{item.test.description}}</td>
                         <td>{{item.test.is_free}}</td>
-                        <td><a class="btn btn-primary" routerLink="/test/{{item.test.id}}/update">Edit</a></td>
                         <td><a class="btn btn-danger" (click)="onDelete(item.test.id)">Delete</a></td>
-                        <td><a class="btn btn-info" routerLink="/test/{{item.test.id}}">Show</a></td>
+                        <td><a class="btn btn-primary" routerLink="/test/{{item.test.id}}">Show</a></td>
                     </tr>
                     }
                 </tbody>
 
-            </table>
-            <div class="card-footer text-end">
-                <a class="btn btn-success" href="/test-create">Add New Test</a>
-            </div>
+            </table>    
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" routerLink="/test-create" class="btn main-btn rounded-5 ms-5 p-2  custom-button w-25">Add New Test </button>
+              </div>
         </div>
     </div>
 </div>
