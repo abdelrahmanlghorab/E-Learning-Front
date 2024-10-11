@@ -23,14 +23,12 @@ export class ContactUsComponent {
     if (this.emailForm.valid) {
       const formData = this.emailForm.value;
       console.log(formData);
-      this.http.post('http://127.0.0.1:8000/api/subscribe', formData)
+      this.http.post('http://127.0.0.1:8000/api/send-email', formData)
         .subscribe({
           next: (response) => {
-            // Handle successful response
             alert('Subscription successful!');
           },
           error: (error) => {
-            // Handle error response
             alert('Subscription failed. Please try again.');
           }
         });
