@@ -5,17 +5,17 @@
                 <div class="panel-body table-responsive">
                     <table class="table">
                         <thead class="main-btn">
-                            <tr>   
-                                <th>#</th>
-                                <th>اسم الكورس</th>
-                                <th>الوصف</th>
-                                <th>السعر</th>
-                                <th>مجانى</th>
-                                <th>اسم المعلم</th>
-                                <th>رابط الكورس</th>
-                                <th>تفاصيل الكورس</th>
-                                <th>تعديل</th>
-                                <th>إزالة</th>
+                            <tr class="text-center">   
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Free</th>
+                                <th>Teacher</th>
+                                <th>Course</th>
+                                <th>Details</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,15 +29,15 @@
                                 <td>{{course.is_free}}</td>
                                 <td>{{course.instructor_id}}</td>
                                 <td>{{course.playlist_id}}</td>
-                                <td><button routerLink="/course/{{course.id}}" class="btn btn-sm btn-success"><i class="fa-solid fa-eye"></i></button></td>
-                                <td><button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary mx-2"><i class="fa fa-pencil-alt"></i></button></td>
-                                <td><button class="btn btn-danger" (click)="removeCourse(course.id)"><i class="fa fa-times"></i></button></td>
+                                <td><button routerLink="/course/{{course.id}}" class="btn  btn-success"><i class="fa-solid fa-eye "></i></button></td>
+                                <td><button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary "><i class="fa fa-pencil-alt"></i></button></td>
+                                <td><button class="btn btn-danger" (click)="removeCourse(course.id)"><i class="fa fa-trash"></i></button></td>
                             </tr>
                         }
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-between mt-3">
-                        <button type="submit" routerLink="/coursecreate" class="btn main-btn rounded-5 ms-5 custom-button w-50">أضافة </button>
+                        <button type="submit" routerLink="/coursecreate" class="btn main-btn rounded-5 me-auto custom-button w-25">Add Course </button>
                     </div> 
                 </div>
             </div>

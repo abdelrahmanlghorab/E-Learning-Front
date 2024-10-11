@@ -1,22 +1,15 @@
 
-.icon {
-  background-color: linear-gradient(90deg, var(--wave1, #007bff), var(--wave2, #00ccff) 51%, var(--wave1, rgb(0 107 179))) !important;
+.title {
+  margin-bottom: 2rem;
 }
 
-.btn-outline-warning:hover {
-  color: #ffffff;
+.card {
+  margin-bottom: 2rem;
 }
 
-.lineThrow {
-  text-decoration: line-through;
-}
-.comment-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.comment-form .form-group {
-  margin-bottom: 1.5rem;
+.teacherimg {
+  max-width: 100%;
+  border-radius: 50%;
 }
 
 .comment-form .form-control {
@@ -24,7 +17,6 @@
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ced4da;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .comment-form .form-control:focus {
@@ -38,67 +30,46 @@
   border-radius: 5px;
 }
 
-.comment-form label {
-  font-weight: bold;
+.comment-img {
+  width: 80px;
+  height: 80px;
 }
 
-
-img {
-  max-width: 40%;
-}
-
-
-@media only screen and (max-width: 576px) {
-  .card-body {
-    padding: 1rem;
-  }
-.teacherimg {
-    height: auto;
-    width: 100%;
-  }
-
-  .title {
-    height: auto;
-    margin-bottom: 10%;
-  }
-
-  .btn {
-    font-size: 1rem;
-    width: 100%;
-  }
-}
-
-
-@media only screen and (min-width: 577px) and (max-width: 992px) {
-  .card {
-    margin-bottom: 1.5rem;
-  }
-
-  .btn {
-    font-size: 1.2rem;
-  }
-}
-
-@media only screen and (min-width: 993px) {
-  .card-body {
-    padding: 2rem;
-  }
-
-  .teacherimg {
-    width: 360px;
-  }
-
-  .btn {
-    font-size: 1.5rem;
-  }
+.lineThrow {
+  text-decoration: line-through;
 }
 
 .accordion-item {
-  margin-bottom: 1rem;
+  margin-bottom: 0.1rem;
+  height: .5% !important;
 }
 
 @media only screen and (max-width: 576px) {
+  .teacherimg {
+    width: 100%;
+  }
+
+  .comment-img {
+    width: 60px;
+    height: 60px;
+  }
+
   .accordion-button {
     font-size: 0.9rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .teacherimg {
+    width: 80%;
+  }
+
+  .comment-img {
+    width: 70px;
+    height: 70px;
   }
 }

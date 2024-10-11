@@ -1,4 +1,4 @@
-<div class="main" dir="rtl">
+<div class="main" dir="ltr">
     <div class="row">
         <div class=" col-md-12 mx-auto ">
             <div class="panel">
@@ -6,15 +6,15 @@
                     <table class="table">
                         <thead class="main-btn">
                             <tr>
-                                <th>رقم الطالب</th>
-                                <th>اسم الطالب</th>
-                                <th>البريد الالكترونى</th>
-                                <th>الرقم القومى</th>
-                                <th>النوع</th>
-                                <th>رقم التليفون</th>
-                                <th>العنوان</th>
-                                <th>صورة الطالب</th>
-                                <th>إزالة</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>national_ID</th>
+                                <th>Gender</th>
+                                <th> Phone</th>
+                                <th>Address</th>
+                                <th>Image</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +33,7 @@
                                 </td>
                                 <td>
                                     <ul class="action-list">
-                                        <li><button class="btn btn-danger" (click)="removeUser(user.id)"><i class="fa fa-times"></i></button></li>
+                                        <li><button class="btn btn-danger" (click)="removeUser(user.id)"><i class="fa fa-trash"></i></button></li>
                                     </ul>
                                 </td>
                                 <!-- <td><button routerLink="//{{user.id}}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></button></td> -->
@@ -42,7 +42,7 @@
                         </tbody>
                     </table>   
                     <div class="d-flex justify-content-between mt-3">
-                        <button routerLink="/admin/restoreuser" class="btn main-btn rounded-5 p-2 custom-button w-50 ">المحذوفات </button>
+                        <button routerLink="/admin/restoreuser" class="btn main-btn rounded-5 bt-sm custom-button w-25 ">Trashed </button>
                     </div>   
                 </div>
             </div>

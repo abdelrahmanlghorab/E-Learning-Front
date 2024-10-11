@@ -14,12 +14,14 @@ export class TestListComponent {
   testList: any[] = [];
   data: any;
   role_id:any ;
+  score: any;
   http = inject(HttpClient);
   testServices = inject(TestService)
   constructor() {
 
   }
   ngOnInit() {
+    
     this.data = localStorage.getItem('data');
     if (this.data) {
       this.data = JSON.parse(this.data);
@@ -32,12 +34,12 @@ export class TestListComponent {
   index() {
     this.testServices.allTests().subscribe((res: any) => {
       this.testList = res.data;
+      console.log(this.testList);
     });
   }
   onDelete(id: number) {
     if (confirm('Are you sure you want to delete this test?')) {
       this.testServices.deleteTest(id).subscribe((res: any) => {
-        console.log(res);
         this.index();
       });
     }

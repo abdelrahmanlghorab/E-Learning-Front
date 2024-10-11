@@ -116,7 +116,7 @@ export class UpdateComponent {
 
   onSubmit() {
     if (this.updateForm.invalid) {
-      console.log('Form is invalid');
+      // console.log('Form is invalid');
       return;
     }
     this.Organizerservece.updateorganizer(
@@ -125,7 +125,7 @@ export class UpdateComponent {
     ).subscribe(
       (response: any) => {
         console.log('Organizer updated successfully', response);
-        alert('Organizer updated successfully!');
+        // alert('Organizer updated successfully!');
         this.router.navigateByUrl('/allorganizer');
       },
       (error: any) => {

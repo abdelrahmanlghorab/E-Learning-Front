@@ -52,8 +52,7 @@
                     </div>
                     <div *ngIf="f['excel_file'].invalid && (f['excel_file'].dirty || f['excel_file'].touched)"
                         class="text-danger">
-                        <small *ngIf="f['excel_file'].errors?.['required']">الوصف مطلوب.</small>
-                        <small *ngIf="f['excel_file'].errors?.['pattern']">يجب أن يكون الملف بصيغة.csv.</small>
+                        <small *ngIf="f['excel_file'].errors?.['required']">الملف مطلوب</small>
 
                     </div>
                 </div>

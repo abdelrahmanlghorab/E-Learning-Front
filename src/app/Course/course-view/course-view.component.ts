@@ -29,7 +29,6 @@ removeCourse(id: number) {
   }
   this.courseService.deleteCourse(id).subscribe(
     (response) => {
-      alert('Course deleted successfully');
       this.courses = this.courses.filter((course: any) => course.id !== id);
     },
     (error) => {

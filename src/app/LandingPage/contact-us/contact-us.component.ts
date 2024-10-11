@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatFormField} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
+
 @Component({
   selector: 'app-contact-us',
   standalone: true,
@@ -13,25 +14,43 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './contact-us.component.css'
 })
 export class ContactUsComponent {
-  emailForm: FormGroup;
+  subscriptionForm: FormGroup;
+  emails: string = '';
+  message: string = '';
+  submitted:boolean=false;
+
   constructor(private fb: FormBuilder, private http: HttpClient) {
-    this.emailForm = this.fb.group({
+    this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
   }
-  onSubmit() {
-    if (this.emailForm.valid) {
-      const formData = this.emailForm.value;
-      console.log(formData);
-      this.http.post('http://127.0.0.1:8000/api/send-email', formData)
-        .subscribe({
-          next: (response) => {
-            alert('Subscription successful!');
-          },
-          error: (error) => {
-            alert('Subscription failed. Please try again.');
-          }
-        });
-    }
+
+  subscribe() {
+    this.submitted = true;
+    const email = this.subscriptionForm.get('email')?.value;
+    this.http.post('http://localhost:8000/api/subscribe', { email })
+      .subscribe({
+        next: (response) => {
+          alert('Subscription successful!');
+        },
+        error: (error) => {
+          console.error('Subscription failed:', error);
+        }
+      });
+
   }
+  sendContactMessage() {
+    const contactData = {
+      email: this.emails,
+      message: this.message,
+    };
+
+    this.http.post('http://localhost:8000/api/contact', contactData)
+      .subscribe(response => {
+        console.log('Message sent successfully', response);
+      }, error => {
+        console.error('Error sending message', error);
+      });
+  }
+
 }

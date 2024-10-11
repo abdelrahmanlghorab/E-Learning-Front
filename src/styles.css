@@ -1,6 +1,18 @@
+@import 'ngx-toastr/toastr';
+
+.toast-container .ngx-toastr {
+  border-radius: 20px;
+  width: 450px;
+  font-weight: bold;
+  font-size: larger;
+
+
+}
+
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #ffff;
   color: #333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -29,7 +41,7 @@ body {
 
 .navbar-nav .nav-link.active {
   background: linear-gradient(to bottom, #e0f7fa, #fff);
-  border-bottom: 3px solid #007bff;
+  border-bottom: 3px solid rgb(0, 123, 255);
 }
 
 .custom-button {
@@ -303,8 +315,58 @@ body.dark-mode .dropdown-menu a {
 body.dark-mode .dropdown-menu a:hover {
   background-color: #222;
 }
+body.dark-mode .main-btn {
+  background: linear-gradient(45deg, #ff6f00, #ffcc00);
+}
 
-/* Media Queries for Responsive Adjustments */
+body.dark-mode .main-btn:hover {
+  background: linear-gradient(45deg, #e65c00, #ffab00);
+}
+body.dark-mode .scroll-top {
+  background: linear-gradient(45deg, #e65c00, #ffab00);
+  box-shadow: inset 0 0 0 2px #ffab00 ;
+}
+body.dark.mode .text-purple{
+  color: #ffab00 ;
+}
+body.dark.mode .view-icon{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 10px;
+  right: -50px;
+  transition: all .5s ease 0s;
+  background: linear-gradient(45deg, #e65c00, #ffab00) ;
+}
+body.dark-mode .bbb-ttt {
+  background: linear-gradient(45deg, #e65c00, #ffab00);
+  box-shadow: inset 0 0 0 2px #ffab00 ;
+}
+body.dark-mode .resent-card:hover{
+  box-shadow: inset 0 0 0 2px #ffab00 ;
+}
+body.dark-mode .card-read-more a {
+  color: #ffab00 !important;
+} 
+.badge{
+  position: absolute;
+  top: 0; 
+  right: 0;
+  z-index: 2;
+  color:#007bff;
+  background-color: #fff;
+  box-shadow: black
+}
+body.dark-mode .badge{
+  color: #ffab00;
+  background-color: #333;
+  box-shadow: white
+}
+body.dark-mode .teacherLanding-card:hover {
+  box-shadow: inset 0 0 0 2px #ffab00 ;
+}
+
 
 /* For tablets (max-width: 768px) */
 @media (max-width: 768px) {
@@ -370,5 +432,29 @@ body.dark-mode .dropdown-menu a:hover {
     padding: 12px 25px;
   }
 }
+/* Container for small box */
+body.dark-mode .small-box {
+  position: relative;
+  background: linear-gradient(45deg, #ff6f00, #ffcc00);
+  color: white;
+  border-radius: 15px; /* Softer rounded corners */
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Container for small box */
+.small-box {
+  position: relative;
+  background: linear-gradient(45deg, #02448b, #00ccff);
+  color: white;
+  border-radius: 15px; /* Softer rounded corners */
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

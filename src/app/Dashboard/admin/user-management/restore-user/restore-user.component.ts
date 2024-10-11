@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-restore-user',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './restore-user.component.html',
   styleUrl: './restore-user.component.css'
 })

@@ -36,7 +36,8 @@ export class CreateComponent  implements OnInit {
       role_id: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      image: ['', Validators.required],
+      image: ['', Validators.required ],
+
       title: [''],
       description: [''] 
 
@@ -74,18 +75,23 @@ export class CreateComponent  implements OnInit {
   }
 
   onFileChange(event: any) {
+
+    
     const file = event.target.files[0];
+    console.log(file.name);
     if (file) {
       this.createForm.patchValue({
         image: file
+        
       });
     }
   }
   onSubmit() {
     this.submitted = true;
     if (this.createForm.valid) {
+      console.log(this.createForm, "rrrrrrrrrrrrrrrrrrrrrrrr");
       const formData = new FormData();
-
+      
       formData.append('name', this.createForm.get('name')?.value);
       formData.append('email', this.createForm.get('email')?.value);
       formData.append('password', this.createForm.get('password')?.value);
@@ -97,16 +103,18 @@ export class CreateComponent  implements OnInit {
       formData.append('phone', this.createForm.get('phone')?.value);
       formData.append('title', this.createForm.get('title')?.value);
       formData.append('description', this.createForm.get('description')?.value);
-
+      
       const imageFile = this.createForm.get('image')?.value as File;
+      console.log(imageFile ,"ffffffffffffffffffffffffffffffff");
       if (imageFile) {
         formData.append('image', imageFile);
+        
       }
+      console.log(formData); 
       this.CreateOrganizer.createorganizer(formData).subscribe((response) => {
-        console.log('Organizer created successfully', response);
-        console.log("تم إنشاء بنجاح", this.createForm.value);
+        alert("response")
         this.router.navigateByUrl('/allorganizer');
-
+        
 
       }, (error) => {
         console.error('Error creating organizer', error);

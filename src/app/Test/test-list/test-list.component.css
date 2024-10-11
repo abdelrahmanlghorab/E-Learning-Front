@@ -1,14 +1,4 @@
-/* Container for small box */
-.small-box {
-    position: relative;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Beautiful gradient */
-    color: white;
-    border-radius: 15px; /* Softer rounded corners */
-    padding: 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-}
+
 
 /* Hover effect for small box */
 .small-box:hover {

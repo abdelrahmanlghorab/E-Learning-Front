@@ -41,7 +41,6 @@ export class CourseDetailComponent {
 
   form = new FormGroup({
     inputName: new FormControl(''),
-    // other form controls
   });
 
   teacher: any;
@@ -69,7 +68,7 @@ export class CourseDetailComponent {
       this.data = JSON.parse(this.data);
       this.name = this.data.name;
       this.image = this.data.image;
-      this.role_id = this.data.role_id; 
+      this.role_id = this.data.role_id;
       this.id = this.data.id;
     }
 
@@ -85,7 +84,7 @@ export class CourseDetailComponent {
     this.coursePrice = this.course.price;
 
     this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
-    this.teacher = data.teacher[0]
+    this.teacher = data.teacher
     this.courseInstructor = this.teacher.name;
     this.instructorTitle = this.teacher.title;
     this.instructorDescription = this.teacher.description;
@@ -102,9 +101,7 @@ export class CourseDetailComponent {
       console.log(this.enrollment ,'fdmfmdfnde');
       });
     });
-    // this.commentForm = this.fb.group({
-    //   body: ['', [Validators.required, Validators.minLength(3)]]
-  // });
+
   this.commentService.getComments(this.id).subscribe(
     (data) => {
       this.comments = data;
@@ -118,7 +115,6 @@ export class CourseDetailComponent {
   }
     click(): void {
       const control = this.form.get('inputName');
-console.log(control?.value);
       const CommentData:any={
          body:control?.value
       }
