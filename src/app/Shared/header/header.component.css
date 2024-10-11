@@ -90,3 +90,8 @@ body.dark-mode .nav-item :hover {
   
   
 }
+
+.position-absolute{
+  background: linear-gradient(45deg, #02448b, #00ccff);
+
+}

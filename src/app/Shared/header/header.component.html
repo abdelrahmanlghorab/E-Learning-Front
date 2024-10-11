@@ -2,10 +2,7 @@
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="sm-navbar">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
-        aria-controls="navbarsExample03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <img src="favicon.ico" alt="Ana Kafuo" width="55px" height="" />
@@ -40,79 +37,93 @@
     <div class="d-flex align-items-center">
       <label class="switch me-3">
         <div class="theme-toggle">
-          <input
-            class="checkbox"
-            type="checkbox"
-            id="theme-switch"
-            #themeSwitch
-            (click)="toggleTheme()"
-          />
+          <input class="checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()" />
           <span class="slider"></span>
         </div>
       </label>
+      @if (isloggedIn) {
+      <div class="dropdown ">
+        <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="me-3 position-relative"><i class="fa fa-bell fs-3"></i>
+            @if (count > 0 ) {
+            <span
+              class="position-absolute top-0 start-100 translate-middle text-center text-white   bg-success border border-light rounded-circle"
+              style="width: 25px;height: 25px;">{{count}}</span>
+            }
+
+          </div>
+        </div>
+        <ul class="dropdown-menu  text-center" style="width: 400px; margin-left: -400px;">
+          <li>
+            @for (notification of notifications; track $index) {
+            <div class="d-flex mt-3 ">
+              @if(notification.data["userImage"] == null){
+                <div class="ms-1 me-2">
+                  <img src="default.png" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
+                </div>
+              }@else{
+                <div class="ms-1 me-2">
+                  <img src="http://127.0.0.1:8000/images/users/{{notification.data['userImage']}}"   alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
+                </div>
+              }
+             
+              <div class="">
+                @if (notification.read_at == null) {
+
+                <p (click)="onRead(notification.id)" class="fw-bold fs-6 text-info"> {{notification.data['message'] }}
+                </p>
+                }@else {
+
+                <p class="fw-bold fs-6 ">{{notification.data['message'] }} </p>
+                }
+
+                <div>
+                  <small class="notif-date">{{notification.data['created_at']}}</small>
+                </div>
+              </div>
+            </div>
+            
+            }
+          </li>
+
+          <hr />
+
+        </ul>
+      </div>
+      }
+
 
       @if(!isloggedIn) {
       <i class="fa-regular fa-circle-user mx-1"></i>
-      <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false"
-        >Login</a
-      >
-      <a
-        style="font-size: small"
-        routerLink="/studentSignup"
-        class="main-btn text-decoration-none ms-3"
-        >Register</a
-      >
+      <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false">Login</a>
+      <a style="font-size: small" routerLink="/studentSignup" class="main-btn text-decoration-none ms-3">Register</a>
       }@else {
       <div class="dropdown">
-        <div
-          class="dropdown-toggle d-flex align-items-center"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-        <span class="profile-username fw-bold">{{ name }}</span>
+        <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="profile-username fw-bold me-2">{{ name }}</span>
           <div class="avatar-sm me-2">
             @if(image == "http://127.0.0.1:8000/images/users"){
-            <img
-              src="default.png"
-              alt="..."
-              width="50px"
-              height="50px"
-              class="avatar-img rounded-circle"
-            />
+            <img src="default.png" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
             }@else{
-            <img
-              [src]="image"
-              alt="..."
-              width="50px"
-              height="50px"
-              class="avatar-img rounded-circle"
-            />
+            <img [src]="image" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
             }
           </div>
         </div>
-        <ul class="dropdown-menu text-center" style="width: 200px">
+        <ul class="dropdown-menu  text-center" style="width: 250px; margin-left: -150px;">
           @if (role_id === 2) {
           <li>
-            <a
-              class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
-              [routerLink]="['/teacherprofile', id]"
-              >View Profile</a
-            >
+            <a class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
+              [routerLink]="['/teacherprofile', id]">View Profile</a>
           </li>
           }@else if (role_id === 3) {
           <li>
-            <a
-              class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
-              [routerLink]="['/profile', id]"
-              >View Profile</a
-            >
+            <a class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
+              [routerLink]="['/profile', id]">View Profile</a>
           </li>
           }
           <hr />
           <li>
-            <a (click)="onLogout()" class="dropdown-item fw-bold fs-5"
-              ><i class="ms-3 fa fa-sign-out"></i>Logout</a
-            >
+            <a (click)="onLogout()" class="dropdown-item fw-bold fs-5"><i class="ms-3 fa fa-sign-out"></i>Logout</a>
           </li>
         </ul>
       </div>
