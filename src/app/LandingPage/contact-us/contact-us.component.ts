@@ -15,19 +15,27 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ContactUsComponent {
   subscriptionForm: FormGroup;
-  emails: string = '';
-  message: string = '';
-  submitted:boolean=false;
+  contactForm: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
+    // Initialize the forms
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
+
+    this.contactForm = this.fb.group({
+      contactEmail: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
+    });
   }
 
+  // Newsletter subscription method
   subscribe() {
     this.submitted = true;
     const email = this.subscriptionForm.get('email')?.value;
+
+    // Make POST request to Laravel API for subscribing
     this.http.post('http://localhost:8000/api/subscribe', { email })
       .subscribe({
         next: (response) => {
@@ -37,20 +45,25 @@ export class ContactUsComponent {
           console.error('Subscription failed:', error);
         }
       });
-
   }
+
+  // Contact form method
   sendContactMessage() {
     const contactData = {
-      email: this.emails,
-      message: this.message,
+      email: this.contactForm.get('contactEmail')?.value,
+      message: this.contactForm.get('message')?.value
     };
 
+    // Make POST request to Laravel API for sending contact message
     this.http.post('http://localhost:8000/api/contact', contactData)
-      .subscribe(response => {
-        console.log('Message sent successfully', response);
-      }, error => {
-        console.error('Error sending message', error);
+      .subscribe({
+        next: (response) => {
+          alert('Message sent successfully');
+        },
+        error: (error) => {
+          alert('Error sending message');
+          console.error('Message send failed:', error);
+        }
       });
   }
-
 }
