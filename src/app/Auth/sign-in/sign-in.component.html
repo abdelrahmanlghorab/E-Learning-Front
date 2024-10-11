@@ -1,10 +1,9 @@
 <section class="container d-flex justify-content-center mt-3 my-3 fw-bold" dir="ltr">
   <div class="col-md-8 px-5">
     <div class="text-center mt-5">
-      <h2 class="text-second mb-4" style="color: orange; font-weight: 700;">Login</h2>
-      <h6 class="mb-6 text-main font-24-bold">
-        Please enter your account
-      </h6>
+      <h2 class="text-second mb-4" style="color: rgb(255, 166, 0); font-weight: 700;">Welcome Back
+      </h2>
+     
     </div>
         @if (message) {
           <small >{{message}}</small>
@@ -14,7 +13,7 @@
       <div class="row mt-5">
         <div class="col">
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label   for="email">Email Address</label>
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-envelope"></i></span>
               <input type="email" [(ngModel)]="loginObj.email" name="email" formControlName="email" id="email"
@@ -53,11 +52,11 @@
 
       <div class="d-grid gap-3 text-center my-4">
         <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" (click)="Login()" type="submit">Login</button>
-        <p>Don't have an account?
-          <a routerLink="/studentSignup" class="text-second text-decoration-none" style="color: orange;">Create your account now</a>
+        <p class="text-muted">Don't have an account?
+          <a routerLink="/studentSignup" class="text-second text-decoration-none" style="color: orange;">Create new account</a>
         </p>
-        <p>Forgot your password?
-          <a routerLink="/forgetPassword" class="text-second text-decoration-none" style="color: orange;">Recover password</a>
+        <p class="text-muted">Forgot your password?
+          <a routerLink="/forgetPassword" class="text-second text-decoration-none" style="color: orange;">Reset password</a>
         </p>
       </div>
     </form>

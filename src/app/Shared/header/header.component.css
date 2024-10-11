@@ -10,7 +10,18 @@
   border-radius: 7.5em;
   font-size: 1em !important;
 }
+.bttn {
+  font-weight: bold;
+  scale: 1;
+  border: none;
+  background-color: white;
+  font-size: 1.3em !important;
+}
 
+nav{
+padding-bottom: 0 !important;
+padding-top: 0 !important;
+}
 .main-btn:hover {
   scale: 0.995;
   --x: 100%;
@@ -68,21 +79,19 @@ input:checked+.slider:before {
   box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 }
 
+
 .nav-item :hover {
   color: #007bff !important;
 }
 body.dark-mode .nav-item :hover {
   color: #ffab00 !important;
 }
-/* body.dark.mode .nav-item :hover {
-  color: #ffab00 ;
-} */
+
 .dropdown-toggle::after {
   display: none;
 }
 @media screen and (max-width: 576px) {
-  .sm-navbar{
-    /* margin-left: 0 !important; */
+  nav{
     display: flex;
     justify-content: space-between ;
     width: 100%;
