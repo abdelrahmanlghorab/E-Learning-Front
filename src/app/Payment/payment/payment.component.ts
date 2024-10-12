@@ -49,19 +49,14 @@ export class PaymentComponent implements OnInit {
         } else if (paymentIntent?.status === 'succeeded') {
           console.log(paymentIntent);
           this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
-            complete: () => {
-              console.log('Payment stored successfully');
-              // Redirect to course page
-            },
-            next: (data) => {
-              console.log(data);
+            next: () => {
               this.message = 'تم الدفع بنجاح';
               this.router.navigate(['/course', courseId]);
 
             },
-            error: () => this.error = 'Payment'
+            error: () => this.error = 'خطأ في عملية الدفع'
           });
-          // this.message = 'تم الدفع بنجاح';
+          this.message = 'تم الدفع بنجاح';
         } else {
           this.error = 'فشل في عملية الدفع';
         }
