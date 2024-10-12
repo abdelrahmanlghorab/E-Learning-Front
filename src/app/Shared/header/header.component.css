@@ -10,6 +10,7 @@
   border-radius: 7.5em;
   font-size: 1em !important;
 }
+
 .bttn {
   font-weight: bold;
   scale: 1;
@@ -18,11 +19,12 @@
   font-size: 1.3em !important;
 }
 
-nav{
-padding-bottom: 0 !important;
-padding-top: 0 !important;
-position: sticky !important;
+nav {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  position: sticky !important;
 }
+
 .main-btn:hover {
   scale: 0.995;
   --x: 100%;
@@ -84,6 +86,7 @@ input:checked+.slider:before {
 .nav-item :hover {
   color: #007bff !important;
 }
+
 body.dark-mode .nav-item :hover {
   color: #ffab00 !important;
 }
@@ -91,12 +94,18 @@ body.dark-mode .nav-item :hover {
 .dropdown-toggle::after {
   display: none;
 }
+
 @media screen and (max-width: 576px) {
-  nav{
+  nav {
     display: flex;
-    justify-content: space-between ;
+    justify-content: space-between;
     width: 100%;
   }
 
+
+}
+
+.notify {
+  background: linear-gradient(45deg, #02448b, #00ccff);
 
 }

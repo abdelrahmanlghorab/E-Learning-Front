@@ -16,7 +16,10 @@ export class HeaderComponent {
   image!: string;
   role_id!: any;
   id!: any;
+  notifications!: any;
   isloggedIn: boolean = false;
+  count!: number;
+  Id: any;
 
   ngOnInit() {
     this.data = localStorage.getItem('data');
@@ -36,8 +39,8 @@ export class HeaderComponent {
       if (this.data) {
         this.data = this.data;
         this.name = this.data.name;
-        this.id= this.data.id;
-        
+        this.id = this.data.id;
+
         this.image = this.data.image;
         this.role_id = this.data.role_id;
       }
@@ -60,10 +63,11 @@ export class HeaderComponent {
   constructor(private router: Router, private authservices: AuthService, private notificationService: NotificationsService) {
   }
 
-  userNotification(){
+  userNotification() {
     this.notificationService.getUserNotifications().subscribe((data: any) => {
-        console.log(data);
-        
+      this.notifications = data.Notifications
+      this.count = data.unReadNotificationsCount
+
     });
 
   }
@@ -77,6 +81,12 @@ export class HeaderComponent {
     this.authservices.setLoggedIn(false);
     this.router.navigateByUrl("signin");
   }
+  onRead(id: any) {
+    this.Id = { id: id }
+    this.notificationService.markNotificationAsRead(this.Id).subscribe();
+    console.log(id);
 
+
+  }
 
 }

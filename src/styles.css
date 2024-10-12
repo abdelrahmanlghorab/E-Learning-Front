@@ -61,7 +61,7 @@ body {
   background: linear-gradient(45deg, #0056b3, #00b2d6);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-  
+
 .disk {
   color: #333;
   font-size: 18px;
@@ -455,6 +455,9 @@ body.dark-mode .small-box {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
 }
+.body.dark-mode .position-absolute{
+  background: linear-gradient(45deg, #ff6f00, #ffcc00);
 
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
