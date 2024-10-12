@@ -14,6 +14,11 @@ import { PaymentService } from '../services/payment.service';
 })
 export class AdminDashboardComponent implements OnInit {
   isCollapsed = false;
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  id!: any;
   payments: any;
   dataSource!: MatTableDataSource<any>; // Data source for the table
   displayedColumns: string[] = ['id', 'amount', 'date', 'status']; // Define columns
@@ -25,6 +30,16 @@ export class AdminDashboardComponent implements OnInit {
     return payment.id;
   }
   ngOnInit() {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id;
+      this.id = this.data.id;
+      console.log(this.role_id);
+      
+    }
     this.paymentService.getPayments().subscribe(
       (response: any) => {
         this.payments = response.payments;

@@ -1,4 +1,4 @@
-<div class="container mt-5" dir="ltr">
+<div class="container mt-5" >
     <h4 class="mb-4 text-center text-dark fw-bold">{{title}}</h4>
 
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
@@ -8,9 +8,9 @@
                 <div class="card shadow-lg border-0 transition-card"
                     style="border-radius: 10px; background-color: #f8f9fa;">
                     <div class="card-header text-white fw-bold"
-                        style="border-radius: 10px 10px 0 0; background-color: #005ab9; padding: 0.3rem;">
-                        <h5 class="mb-0">
-                            <span class="badge bg-light text-primary me" >{{ $index + 1 }}</span>
+                        style="border-radius: 10px 10px 0 0; background-color: #025ec0; padding: 0.3rem;">
+                        <h5 class="mb-0" dir="ltr">
+                            <span class="badge bg-light text-primary me"  >{{ $index + 1 }}</span>
                             {{ question.question_text }}
                         </h5>
                     </div>
@@ -24,7 +24,7 @@
                                         (change)="getAnswer($event)" name="{{$index}}" id="option1_{{ $index }}"
                                         value="{{question.answers1.id }}" required />
                                     }
-                                    <label class="form-check-label" for="option1_{{ $index }}" style="font-size: 1rem;">
+                                    <label class="form-check-label" for="option1_{{ $index }}" style="font-size: 1rem;" >
                                         {{question.answers1.answer_text }}
                                     </label>
                                 </div>

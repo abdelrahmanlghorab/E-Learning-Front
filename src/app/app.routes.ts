@@ -159,7 +159,7 @@ export const routes: Routes = [
     path: 'admin/user-managment',
     component: UserManagmentComponent,
     title: 'User Managment',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
 
   },
   {

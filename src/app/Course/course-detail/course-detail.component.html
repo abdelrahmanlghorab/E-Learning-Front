@@ -165,12 +165,13 @@
             </div>
             <p>{{ comment.body }}</p>
           </div>
-          @if (role_id===4) {
-          <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm ms-auto">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        }
-        </div>
+        
+        @if (role_id===4) {
+        <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm my-auto me-auto">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      }
+    </div>
       </div>
     }
 

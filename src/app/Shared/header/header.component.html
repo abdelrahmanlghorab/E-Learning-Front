@@ -68,7 +68,7 @@
           aria-expanded="false"
         >
         <span class="profile-username fw-bold">{{ name }}</span>
-          <div class="avatar-sm me-2">
+          <div class="avatar-sm me-4">
             @if(image == "http://127.0.0.1:8000/images/users"){
             <img
               src="default.png"
@@ -88,7 +88,7 @@
             }
           </div>
         </div>
-        <ul class="dropdown-menu text-center" style="width: 200px">
+        <ul class="dropdown-menu text-center  " style="width: 100px">
           @if (role_id === 2) {
           <li>
             <a
