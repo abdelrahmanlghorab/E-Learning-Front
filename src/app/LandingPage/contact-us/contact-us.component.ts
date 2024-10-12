@@ -19,7 +19,6 @@ export class ContactUsComponent {
   submitted = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
-    // Initialize the forms
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -30,12 +29,10 @@ export class ContactUsComponent {
     });
   }
 
-  // Newsletter subscription method
   subscribe() {
     this.submitted = true;
     const email = this.subscriptionForm.get('email')?.value;
 
-    // Make POST request to Laravel API for subscribing
     this.http.post('http://localhost:8000/api/subscribe', { email })
       .subscribe({
         next: (response) => {
@@ -46,15 +43,12 @@ export class ContactUsComponent {
         }
       });
   }
-
-  // Contact form method
   sendContactMessage() {
     const contactData = {
       email: this.contactForm.get('contactEmail')?.value,
       message: this.contactForm.get('message')?.value
     };
 
-    // Make POST request to Laravel API for sending contact message
     this.http.post('http://localhost:8000/api/contact', contactData)
       .subscribe({
         next: (response) => {
