@@ -16,6 +16,7 @@ import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
   imports: [TruncatePipe, CustomDatePipe, RouterLink]
 })
 export class CourseSessionComponent implements OnInit {
+  
   id: any;
   videoId!: string;
   videoTitle!: string;

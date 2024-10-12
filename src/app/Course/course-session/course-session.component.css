@@ -1,7 +1,7 @@
 .title
 {
-
-  height: 7rem;
+margin-bottom: 20px !important;
+  /* height: 7rem; */
   /* background: linear-gradient(
       90deg,
       var(--wave1, #007bff),
