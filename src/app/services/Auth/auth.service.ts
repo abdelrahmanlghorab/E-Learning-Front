@@ -6,6 +6,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
+
+//   constructor(private http:HttpClient) {}
+//     onLogin(obj:any){
+//       return this.http.post("http://127.0.0.1:8000/api/login",obj)
+
+//     }
+//     onRegister(obj:any){
+//       return this.http.post("http://127.0.0.1:8000/api/register",obj)
+//     }
+
+   
+// }
   private loggedIn = new BehaviorSubject<boolean>(false);
   // public response = new BehaviorSubject<any>({});
 

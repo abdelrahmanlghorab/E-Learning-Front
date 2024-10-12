@@ -1,26 +1,47 @@
-
+<!-- <div class="container">
+  <div class="container mt-5 text-center">
+      <h4 class="text-warning">تعرف علي</h4>
+      <h1 class="fw-bold mb-3">المدرسين الموجودين بالأكاديمية</h1>
+  </div>
+  
+  <div class="container mt-5">
+      <div class="row">
+          @for (item of teachers; track item.id) {
+              <div class="col-md-3 mb-4">
+                  <div class="teacher-card" [routerLink]="['/teacherprofile', item.id]">
+                      <div class="card-image-container">
+                          <img [src]="item.image" alt="Teacher Image">
+                      </div>
+                      <div class="teacher-info">
+                          <h5>{{ item.name }}</h5>
+                          <p>{{ item.title }}</p>
+                      </div>
+                  </div>
+              </div>
+          }
+      </div>
+  </div>
+</div> -->
 <div class="container">
-    <div class="container mt-5">
-        <h4 class="text-center text-warning">تعرف علي</h4>
-        <h1 class="text-center fw-bold mb-3">المدرسين الموجودين بالأكاديمية</h1>
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            @for (item of teachers; track item.id) {
-  <div class="col-md-3 mb-4">
-    <div class="teacher-card" [routerLink]="['/teacherprofile', item.id]">
-      <div class="card-image-container">
-        <img [src]="item.image" alt="Teacher Image">
-      </div>
-      <div class="teacher-info">
-        <h5>{{ item.name }}</h5>
-        <p>{{ item.title }}</p>
-      </div>
+  <div class="container mt-5 text-center">
+  <h1 class="fw-bold mb-3 text-warning">  Platform Teachers</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      @for (item of teachers; track item.id) {
+      <div class="col containerr m-3" [routerLink]="['/teacherprofile', item.id]">
+        <div class="img-container">
+          <img
+            [src]="item.image"
+            alt="not found " width="50px">
+        </div>
+
+        <div class="user-info mb-3">
+          <h2>{{ item.name }}</h2>
+          <span>{{ item.title }}</span>
+        </div>
+
+      </div> }
     </div>
   </div>
-
-    }
-
-    </div>
-    </div>
 </div>

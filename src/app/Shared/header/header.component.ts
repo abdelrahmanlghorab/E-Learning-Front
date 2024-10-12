@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-header',
@@ -14,43 +15,36 @@ export class HeaderComponent {
   name!: string;
   image!: string;
   role_id!: any;
-  id!:any;
+  id!: any;
+  notifications!: any;
   isloggedIn: boolean = false;
+  count!: number;
+  Id: any;
 
   ngOnInit() {
-    // this.data = localStorage.getItem('data');
-
-    // this.authservices.response.subscribe(res=>{
-    //   if(res){
-    // this.data=res.data;
-    //   }
-
-
-    // })
-
-
-
-
-    ;
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id;
+      this.id = this.data.id;
+    }
 
     this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isloggedIn = isLoggedIn;
 
       this.data = JSON.parse(localStorage.getItem('data')!);
-      console.log(this.data);
 
       if (this.data) {
         this.data = this.data;
         this.name = this.data.name;
-        this.id= this.data.id;
-        console.log(this.data);
-        console.log(this.id);
+        this.id = this.data.id;
 
         this.image = this.data.image;
         this.role_id = this.data.role_id;
       }
-      // login = localStorage.getItem('Token');
-      // userData = localStorage.getItem('data');
+      this.userNotification()
 
     });
   }
@@ -66,18 +60,33 @@ export class HeaderComponent {
       themeIcon?.classList.replace('fa-moon', 'fa-sun');
     }
   }
-  constructor(private router: Router,private authservices: AuthService) {
+  constructor(private router: Router, private authservices: AuthService, private notificationService: NotificationsService) {
   }
 
+  userNotification() {
+    this.notificationService.getUserNotifications().subscribe((data: any) => {
+      this.notifications = data.Notifications
+      this.count = data.unReadNotificationsCount
 
+    });
+
+  }
 
 
   onLogout() {
     localStorage.removeItem('Token');
     localStorage.removeItem('data');
+    localStorage.removeItem('notifications');
+
     this.authservices.setLoggedIn(false);
     this.router.navigateByUrl("signin");
   }
+  onRead(id: any) {
+    this.Id = { id: id }
+    this.notificationService.markNotificationAsRead(this.Id).subscribe();
+    console.log(id);
 
+
+  }
 
 }

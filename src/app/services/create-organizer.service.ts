@@ -21,8 +21,8 @@ export class CreateOrganizerService {
     return this.http.post(this.url, data);
   }
   updateorganizer(id: number, data: FormData) {
-    console.log(data);
-    return this.http.put(`${this.url}/${id}`, data, { headers:this.HttpHeaders });
+    // console.log(data);
+    return this.http.put(`${this.url}/${id}`, data , { headers:this.HttpHeaders });
     
   }
   deleteorganizer(id:number) {

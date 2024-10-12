@@ -1,65 +1,58 @@
-/* Container for small box */
-.small-box {
-    position: relative;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Beautiful gradient */
-    color: white;
-    border-radius: 15px; /* Softer rounded corners */
-    padding: 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-}
 
-/* Hover effect for small box */
+
 .small-box:hover {
-    transform: scale(1.06); /* Larger scaling effect */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    transform: scale(1.06); 
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); 
 }
 
-/* Inner content */
 .small-box .inner {
-    font-family: 'Poppins', sans-serif; /* Modern, elegant font */
+    font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
-/* Heading (Number) Styling */
 .small-box .inner h3 {
-    font-size: 48px; /* Larger number for emphasis */
+    font-size: 48px; 
     font-weight: 700;
     margin: 0;
     padding: 10px 0;
 }
 
-/* Paragraph (Description) Styling */
 .small-box .inner p {
-    font-size: 18px; /* Slightly bigger text */
+    font-size: 18px; 
     margin: 0;
     font-weight: 500;
 }
 
-/* Icon Styling */
-.small-box .icon {
-    font-size: 60px; /* Larger icon for emphasis */
-    color: rgba(255, 255, 255, 0.4); /* Slightly transparent icon */
+ thead  {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 550;
+    background-color: rgb(41, 85, 167) !important; 
+    padding: 15px;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+  }
+  .small-box .icon {
+    font-size: 60px; 
+    color: rgba(255, 255, 255, 0.4); 
     position: absolute;
     top: -15px;
     right: 15px;
 }
 
-/* Footer Styling */
 .small-box-footer {
     display: block;
-    background: rgba(0, 0, 0, 0.1); /* Subtle background for footer */
+    background: rgba(0, 0, 0, 0.1); 
     color: white;
     text-align: center;
     padding: 12px 0;
     font-weight: 600;
-    border-radius: 0 0 15px 15px; /* Match box's rounded edges */
+    border-radius: 0 0 15px 15px; 
     transition: background-color 0.3s ease;
     text-decoration: none;
 }
 
-/* Footer hover effect */
 .small-box-footer:hover {
     background-color: rgba(0, 0, 0, 0.3); /* Darker background on hover */
     text-decoration: none; /* Ensure no underline */

@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+
 
 @Component({
   selector: 'app-contact-us',
@@ -13,33 +13,51 @@ import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent {
-  emailForm: FormGroup;
+  subscriptionForm: FormGroup;
+  contactForm: FormGroup;
+  submitted = false;
 
-  constructor(private fb: FormBuilder) {
-    this.emailForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required]]
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    this.subscriptionForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+
+    this.contactForm = this.fb.group({
+      contactEmail: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
-  onSubmit() {
-    if (this.emailForm.valid) {
-      const formData = this.emailForm.value;
-      console.log(formData);
-  
-     
-      emailjs.send('service_0d1nvvm', 'template_uzegrj7', {
-        from_name: formData.email, 
-        message: formData.message 
-      }, 'Rgd-zvajBrw3P6u5y')     
-      .then((response: EmailJSResponseStatus) => {
-        console.log(response.text);
-        alert('Message sent successfully!');
-      }, (error) => {
-        console.log(error.text);
-        alert('Failed to send message. Please try again.');
+  subscribe() {
+    this.submitted = true;
+    const email = this.subscriptionForm.get('email')?.value;
+
+    this.http.post('http://localhost:8000/api/subscribe', { email })
+      .subscribe({
+        next: (response) => {
+          alert('Subscription successful!');
+        },
+        error: (error) => {
+          console.error('Subscription failed:', error);
+        }
       });
-    }
+  }
+  sendContactMessage() {
+    const contactData = {
+      email: this.contactForm.get('contactEmail')?.value,
+      message: this.contactForm.get('message')?.value
+    };
+
+    this.http.post('http://localhost:8000/api/contact', contactData)
+      .subscribe({
+        next: (response) => {
+          alert('Message sent successfully');
+        },
+        error: (error) => {
+          alert('Error sending message');
+          console.error('Message send failed:', error);
+        }
+      });
   }
   
 }
