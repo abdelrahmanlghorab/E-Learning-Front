@@ -1,47 +1,32 @@
-<!-- <div class="container">
-  <div class="container mt-5 text-center">
-      <h4 class="text-warning">تعرف علي</h4>
-      <h1 class="fw-bold mb-3">المدرسين الموجودين بالأكاديمية</h1>
-  </div>
-  
-  <div class="container mt-5">
-      <div class="row">
+<section class="container">
+  <div class="row active-with-click">
+    <div class="container">
+      <div class="container mt-5 text-center">
+      <h1 class="fw-bold mb-3 text-warning">  Platform Teachers</h1>
+      </div>
+      <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
           @for (item of teachers; track item.id) {
-              <div class="col-md-3 mb-4">
-                  <div class="teacher-card" [routerLink]="['/teacherprofile', item.id]">
-                      <div class="card-image-container">
-                          <img [src]="item.image" alt="Teacher Image">
-                      </div>
-                      <div class="teacher-info">
-                          <h5>{{ item.name }}</h5>
-                          <p>{{ item.title }}</p>
-                      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+          <article class="material-card Teal" [routerLink]="['/teacherprofile', item.id]">
+              <h2 class="text-start ">
+                  <span class="text-dark ms-2">{{ item.name }}</span>
+                  <strong class="text-dark ms-2 d-flex justify-content-between">
+                    <i class="fa fa-fw fa-star"></i>
+                    <span>{{ item.title }}</span>
+                  </strong>
+              </h2>
+              <div class="mc-content">
+                  <div class="img-container">
+                      <img class="img-responsive" [src]="item.image">
                   </div>
               </div>
-          }
-      </div>
-  </div>
-</div> -->
-<div class="container">
-  <div class="container mt-5 text-center">
-  <h1 class="fw-bold mb-3 text-warning">  Platform Teachers</h1>
-  </div>
-  <div class="container mt-5">
-    <div class="row">
-      @for (item of teachers; track item.id) {
-      <div class="col containerr m-3" [routerLink]="['/teacherprofile', item.id]">
-        <div class="img-container">
-          <img
-            [src]="item.image"
-            alt="not found " width="50px">
-        </div>
+          </article>
 
-        <div class="user-info mb-3">
-          <h2>{{ item.name }}</h2>
-          <span>{{ item.title }}</span>
-        </div>
-
-      </div> }
-    </div>
   </div>
+}
 </div>
+</div>
+</div>
+

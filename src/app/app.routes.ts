@@ -114,7 +114,7 @@ export const routes: Routes = [
     path: 'courses',
     component: CourseListComponent,
     title: 'Our Courses',
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
   },
 
   {
@@ -152,14 +152,14 @@ export const routes: Routes = [
     path: 'admin/courses',
     component: CourseViewComponent,
     title: 'Courses',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
 
   },
   {
     path: 'admin/user-managment',
     component: UserManagmentComponent,
     title: 'User Managment',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
 
   },
   {
@@ -203,7 +203,7 @@ export const routes: Routes = [
     path: 'teachers',
     component: TeacherComponent,
     title: 'teachers',
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
   },
   {
     path: 'teacherprofile/:id',

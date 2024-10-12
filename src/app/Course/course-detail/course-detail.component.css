@@ -6,6 +6,10 @@
 .card {
   margin-bottom: 2rem;
 }
+.accordion {
+  padding: 0px !important;
+  margin: 0px !important;
+}
 
 .teacherimg {
   max-width: 100%;
