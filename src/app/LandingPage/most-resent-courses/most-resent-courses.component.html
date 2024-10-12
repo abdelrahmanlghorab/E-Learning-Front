@@ -6,10 +6,10 @@
   <div class="container-fostrap">
       <div class="content">
           <div class="container">
-              <div class="row">
+              <div class="row ">
                 @for (item of courses; track item.id) {
-                  <div class="col-xs-12 col-sm-4">
-                      <div class="card resent-card">
+                  <div class="col-xs-12 col-sm-6  " >
+                      <div class="card resent-card " >
                           <a class="img-card" >
                           <img [src]="item.thumbnail" />
                         </a>
@@ -17,9 +17,9 @@
                               <h4 class="card-title">
                                   <a>{{item.title}}</a>
                               </h4>
-                              <p class="">
+                              <!-- <p class="">
                                 {{truncate.transform(this.item.description, 110)}} 
-                              </p>
+                              </p> -->
                           </div>
                           <div class="card-read-more">
                               <a [routerLink]="['/course', item.id]" class="btn btn-link btn-block">

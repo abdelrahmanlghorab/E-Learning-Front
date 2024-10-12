@@ -10,7 +10,7 @@
     box-shadow: 0 0 10px rgba(11, 44, 228, 0.08);
 }
 .panel .panel-heading{
-    background: linear-gradient( to right, #007bff, #007bff );
+    background-color: rgb(41, 85, 167); 
     padding: 15px;
     border-radius: 0;
 }
@@ -44,11 +44,21 @@
     padding: 0;
     border-radius: 0;
 }
+.panel-body .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-radius: 25px 25px 0 0;
+    overflow: hidden;
+    
+  }
+  
 .panel .panel-body .table thead tr th{
     color: #fff;
-    background: #00a2ff;
+    background-color: rgb(41, 85, 167); 
     font-size: 17px;
     font-weight: 700;
+    text-align: center;
     padding: 12px;
     border-bottom: none;
 }
@@ -57,6 +67,7 @@
 .panel .panel-body .table tbody tr td{
     color: #555;
     background: #fff;
+    text-align: center;
     font-size: 15px;
     font-weight: 500;
     padding: 13px;

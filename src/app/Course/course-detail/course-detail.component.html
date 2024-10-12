@@ -63,7 +63,7 @@
         <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
           @if(courseVideos) {
           @for(video of courseVideos; track video.id) {
-          <div class="accordion  p-2" id="accordionPanelsStayOpenExample">
+          <div class="accordion  p-0" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="panelsStayOpen-heading-{{ video.id }}">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -140,7 +140,7 @@
       </div>
 
       <div class="card col-12 mt-4">
-        <h3 class="text-center text-warning">Leave a Feedback</h3>
+        <h6 class="text-center mt-2 text-warning fw-bold">Leave a Feedback</h6>
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="click()" class="comment-form">
             <div class="form-group">
@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      <h3 class="mt-5 mb-4 text-warning" dir="ltr">Feedbacks</h3>
+      <h6 class=" mb-4 text-warning fw-bold" dir="ltr">Feedbacks</h6>
         @for (comment of comments; track comment.id) {
       <div class="card mb-3 shadow-sm " dir="ltr">
         <div class="card-body d-flex">
@@ -160,7 +160,7 @@
             class="rounded-circle comment-img me-3" alt="{{ comment.user.name }}" />
           <div class="w-100">
             <div class="row">
-              <span class="fs-5 fw-bold">{{ comment.user.name }}</span>
+              <span class="fs-5 ">{{ comment.user.name }}</span>
               <small class="text-muted opacity-50">{{ comment.created_at | date }}</small>
             </div>
             <p>{{ comment.body }}</p>

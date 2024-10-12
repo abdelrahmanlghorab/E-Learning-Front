@@ -87,7 +87,7 @@ i {
   padding: 20px;
   transition: margin-left 0.3s ease;
   width: 100%;
-  height: calc(100vh -150px);
+  height: calc(100vh - 150px);
 } 
 
 .content {
