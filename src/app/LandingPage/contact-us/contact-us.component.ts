@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatFormField} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
+
 @Component({
   selector: 'app-contact-us',
   standalone: true,
@@ -13,27 +14,56 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './contact-us.component.css'
 })
 export class ContactUsComponent {
-  emailForm: FormGroup;
+  subscriptionForm: FormGroup;
+  contactForm: FormGroup;
+  submitted = false;
+
   constructor(private fb: FormBuilder, private http: HttpClient) {
-    this.emailForm = this.fb.group({
+    // Initialize the forms
+    this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
+
+    this.contactForm = this.fb.group({
+      contactEmail: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]]
+    });
   }
-  onSubmit() {
-    if (this.emailForm.valid) {
-      const formData = this.emailForm.value;
-      console.log(formData);
-      this.http.post('http://127.0.0.1:8000/api/subscribe', formData)
-        .subscribe({
-          next: (response) => {
-            // Handle successful response
-            alert('Subscription successful!');
-          },
-          error: (error) => {
-            // Handle error response
-            alert('Subscription failed. Please try again.');
-          }
-        });
-    }
+
+  // Newsletter subscription method
+  subscribe() {
+    this.submitted = true;
+    const email = this.subscriptionForm.get('email')?.value;
+
+    // Make POST request to Laravel API for subscribing
+    this.http.post('http://localhost:8000/api/subscribe', { email })
+      .subscribe({
+        next: (response) => {
+          alert('Subscription successful!');
+        },
+        error: (error) => {
+          console.error('Subscription failed:', error);
+        }
+      });
+  }
+
+  // Contact form method
+  sendContactMessage() {
+    const contactData = {
+      email: this.contactForm.get('contactEmail')?.value,
+      message: this.contactForm.get('message')?.value
+    };
+
+    // Make POST request to Laravel API for sending contact message
+    this.http.post('http://localhost:8000/api/contact', contactData)
+      .subscribe({
+        next: (response) => {
+          alert('Message sent successfully');
+        },
+        error: (error) => {
+          alert('Error sending message');
+          console.error('Message send failed:', error);
+        }
+      });
   }
 }

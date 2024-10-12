@@ -1,15 +1,15 @@
-<nav class="navbar navbar-expand-sm navbar-light d-flex fw-bold" aria-label="Third navbar example" dir="ltr">
+<nav class="navbar navbar-expand-sm navbar-light d-flex  fw-bold  position-relative" aria-label="Third navbar example" dir="ltr">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="sm-navbar">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
         aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <img src="favicon.ico" alt="Ana Kafuo" width="55px" height="" />
+      <img src="favicon.ico" style="padding: 0;" alt="Ana Kafuo" width="85px" height="" />
     </div>
 
-    <div class="collapse navbar-collapse mx-auto w-100" id="navbarsExample03">
-      <ul class="navbar-nav mx-auto mb-2 mb-sm-0 fw-bold">
+    <div class="collapse navbar-collapse  w-100 position-absolute top-0 start-0 " id="navbarsExample03">
+      <ul class="navbar-nav mx-auto my-4 mb-sm-0 fw-bold">
         @if(role_id === 1 || role_id === 4){
         <li class="nav-item">
           <a class="nav-link fw-bold" routerLink="admin">Home</a>
@@ -18,7 +18,7 @@
           <a class="nav-link fw-bold" routerLink="tests">Exams</a>
         </li>
         }@else {
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link fw-bold" routerLink="">Home</a>
         </li>
         <li class="nav-item">
@@ -44,10 +44,10 @@
       @if (isloggedIn) {
       <div class="dropdown ">
         <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-          <div class="me-3 position-relative"><i class="fa fa-bell fs-3"></i>
+          <div class="me-3 position-relative x"><i class="fa fa-bell fs-3"></i>
             @if (count > 0 ) {
             <span
-              class="position-absolute top-0 start-100 translate-middle text-center text-white   bg-success border border-light rounded-circle"
+              class="position-absolute notify top-0 start-100 translate-middle text-center text-white   bg-success border border-light rounded-circle"
               style="width: 25px;height: 25px;">{{count}}</span>
             }
 
@@ -94,9 +94,14 @@
 
 
       @if(!isloggedIn) {
-      <i class="fa-regular fa-circle-user mx-1"></i>
-      <a routerLink="/signin" class="nav-link" id="login" aria-expanded="false">Login</a>
-      <a style="font-size: small" routerLink="/studentSignup" class="main-btn text-decoration-none ms-3">Register</a>
+      <i class="fa-regular fa-circle-user fa-lg mx-1"></i>
+      <button routerLink="/signin"  class="bttn"
+        >Login</button>
+      <a
+        style="font-size: small"
+        routerLink="/studentSignup"
+        class="main-btn text-decoration-none ms-2"
+        >Register</a>
       }@else {
       <div class="dropdown">
         <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">

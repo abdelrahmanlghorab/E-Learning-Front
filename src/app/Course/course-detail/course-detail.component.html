@@ -1,11 +1,15 @@
+
 <div class="title">
   <h1 class="text-center mt-2 text-light">{{ courseTitle }}</h1>
 </div>
 <div class="col-10 mx-auto">
   <div class="row">
+
+
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
-        <img [src]="courseImage"  class="card-img p-5 img-fluid" style="height: 450px ; max-width:100% ;" alt="..." />
+        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;"
+          alt="Course Image" />
       </div>
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
@@ -13,195 +17,163 @@
             <div class="card-body">
               <h3 class="card-title ms-2">Course Description</h3>
               <p class="card-text ms-5 text-secondary col-11">
-                {{courseDescription}}
+                {{ courseDescription }}
               </p>
               <p class="card-text text-end text-secondary text-lighter">
-                <small class="text-muted opacity-50">Last updated: {{courseCreation}} </small>
+                <small class="text-muted opacity-50">Last updated: {{ courseCreation }} </small>
               </p>
             </div>
           </div>
         </div>
       </div>
+
+
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
           <div class="col-md-2 d-flex justify-content-center align-items-center text-center">
-            <img class="teacherimg" [src]="instructorImage"
-              class="col-12 text-center img-fluid rounded-pill w-50 border border-2 border-warning m-3"
+            <img class="teacherimg img-fluid rounded-pill w-75 border border-2 border-warning" [src]="instructorImage"
               alt="{{ courseInstructor }} image" />
           </div>
           <div class="col">
             <div class="card-body">
-              <span class="card-title me-auto fs-3">Mr.{{ courseInstructor }}</span>
+              <span class="card-title fs-2 mb-1">Mr. {{ courseInstructor }}</span>
               <p class="card-text text-secondary col-10">
-                {{instructorTitle}}
+                {{ instructorTitle }}
               </p>
-              <p class="card-text text-secondary ms-4 col-10">
-                {{instructorDescription}}
+              <p class="card-text text-secondary  col-10">
+                {{ instructorDescription }}
               </p>
               <p class="card-text text-end">
-                <small class="text-muted text-secondary text-lighter opacity-50 ">E-mail: {{instructourEmail}} </small>
+                <small class="text-muted text-secondary opacity-50">E-mail: {{ instructourEmail }}</small>
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="container col-10 mt-3 w-100" dir="ltr">
-        <div class="card">
-          <h2 class="card-header d-flex justify-content-between align-items-center">
-            <div>
-              <i class="fa-solid fa-list-alt"></i>
-              Course Outline
-            </div>
-            <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{ courseCreation }}</span>
-          </h2>
-          <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
-            @if(courseVideos) {
-            @for(video of courseVideos; track video.id) {
-            <div class="accordion mt-2 p-2" id="accordionPanelsStayOpenExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-heading-{{ video.id }}">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
-                    [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
-                    {{ video.title }}
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
-                  [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
-                  <div class="accordion-body">
-                    @if(enrollment==true) {
-                    {{ truncate.transform(this.video.description, 200) }}
-                    <div class="d-flex align-items-center text-start mt-2">
-                      <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
-                      <code class="ms-2 text-start text-secondary">
-                                  <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:green">Go to Session</a>
-                                </code>
-                    </div>
-                    } @else {
-                    <div>
-                      <span class="badge text-bg-danger">Restricted</span>
-                      <code class="opacity-50"> Not Available unless: You are a Student </code>
-                    </div>
-                    }
+
+
+      <div class="card mt-3" dir="ltr">
+        <h2 class="card-header d-flex justify-content-between align-items-center">
+          <div>
+            <i class="fa-solid fa-list-alt"></i>
+            Course Outline
+          </div>
+          <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{ courseCreation }}</span>
+        </h2>
+        <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
+          @if(courseVideos) {
+          @for(video of courseVideos; track video.id) {
+          <div class="accordion  p-2" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading-{{ video.id }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
+                  [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
+                  {{ video.title }}
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
+                <div class="accordion-body">
+                  @if(enrollment==true) {
+                  {{ truncate.transform(this.video.description, 200) }}
+                  <div class="d-flex align-items-center text-start mt-2">
+                    <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
+                    <code class="ms-2 text-start text-secondary">
+                     <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:green">Go to Session</a>
+                    </code>
                   </div>
+                  } @else {
+                  <div class="d-flex">
+                    <span class="badge text-bg-danger">Restricted</span>
+                    <code class="opacity-50"> Not Available unless: You are a Student </code>
+                  </div>
+                  }
                 </div>
               </div>
             </div>
-            } }
           </div>
+          } }
         </div>
       </div>
     </div>
+
+
     <div class="col-12 col-md-3 col-lg-3">
       <div class="row">
         <div class="card col-12">
-          <div class="card-body text-center d-block">
-            @if(coursePrice == 0) {
+          <div class="card-body text-center">
             <h5 class="card-title">
-              Now <span class="fs-2 fw-semibold mb-3">Free </span>
-              <span class="fs-6 text-secondary opacity-50">instead of
-                <span class="lineThrow">$500</span>
+              @if (coursePrice == 0) {
+              <span>Now <span class="fs-2 fw-semibold">Free</span>
+                <span class="fs-6 text-secondary opacity-50">instead of <span class="lineThrow">$500</span></span>
               </span>
-            </h5>
-            } @else {
-            <h5 class="card-title">
-              <span class="fs-2 fw-semibold mb-3">${{ coursePrice }}</span>
-            </h5>
+            }@else if(coursePrice != 0){
+              <span class="fs-2 fw-semibold">${{ coursePrice }}</span>
             }
-            @if(enrollment==false) {
-            <a [routerLink]="['/payment', courseID]" routerLinkActive="router-link-active"
-              class="btn col-10 flex-wrap text-center btn-outline-warning fs-5">
+            </h5>
+              @if (enrollment == false) {
+            <a [routerLink]="['/payment', courseID]" class="btn btn-outline-warning fs-5">
               Enroll Now
             </a>
-            } @else {
-            <button class="btn col-10 flex-wrap text-center btn-outline-success fs-5" disabled>
+          }@else {
+            <button class="btn btn-outline-success fs-5" disabled>
               Enrolled Successfully
             </button>
-            }
+          }
             <hr />
-            <div class="row d-block">
-              <span>
-                <i class="fa-solid fa-film"></i>
-              </span>
+
+            <div class="row">
+              <span><i class="fa-solid fa-film"></i></span>
               <span class="text-secondary opacity-50">Recorded Videos</span>
             </div>
-            <div class="row d-block">
-              <span>
-                <i class="fa-solid fa-video"></i>
-              </span>
+            <div class="row">
+              <span><i class="fa-solid fa-video"></i></span>
               <span class="text-secondary opacity-50">Practical Videos</span>
             </div>
-            <div class="row d-block">
-              <span>
-                <i class="fa-solid fa-certificate"></i>
-              </span>
+            <div class="row">
+              <span><i class="fa-solid fa-certificate"></i></span>
               <span class="text-secondary opacity-50">Completion Certificate</span>
             </div>
           </div>
         </div>
-        <div class="card col-12 mt-2" style="height: 400px ; width: 400px;">
-          <div class="card-body row text-center d-block">
-            <h5 class="card-title" dir="ltr">{{ courseVideosNum }} Sessions</h5>
-            <hr />
-            <h3 class="text-start text-warning">Feedbacks</h3>
-            <div class="card-body row text-center d-block" style="margin-top: -15px;">
-              <div class="container col-12  w-100" dir="rtl">
-                <form [formGroup]="form" (ngSubmit)="click()" class="comment-form w-100">
-                  <div class="form-group ">
-                    <label for="inputName" class="form-label fs-5">اترك تعليق</label>
-                    <textarea id="inputName" class=" form-control" formControlName="inputName" rows="4"
-                      placeholder="Write your comment here..."></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-outline-primary ">اضافه تعليق</button>
-                </form>
-              </div>
+      </div>
+
+      <div class="card col-12 mt-4">
+        <h3 class="text-center text-warning">Leave a Feedback</h3>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="click()" class="comment-form">
+            <div class="form-group">
+              <textarea id="inputName" class="form-control" formControlName="inputName" rows="4"
+                placeholder="Write your feedback here..." dir="ltr"></textarea>
             </div>
-
-            <div class="col-12 mt-3  " dir="ltr" tyle="width: 400px">
-              @for (comment of comments; track comment.id) {
-              <div class="row">
-                <div class="col-12">
-                  <div class="row">
-                    <div class="card mb-3 col-10 shadow-sm">
-                      <div class="card-body">
-                        <div class="  mb-2">
-                          <div class=" row">
-                            <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image" width="1px"
-                              class="rounded-circle col " alt="hh" />
-                            <div class="col">
-                              <div class="row mt-3">
-                                <small class=" ">{{ comment.user.name }}</small>
-                                <small class="text-muted  ">{{ comment.created_at | date }}</small>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-                        <p class=" ms-5 ">{{ comment.body }}</p>
-                      </div>
-
-                    </div>
-                    @if(role_id === 4){
-                      <div style="width: 50px;" class="my-auto col text-end">
-                        <button (click)="deleteComment(comment.id)" class="btn btn-danger mb-2 fs-5 btn-sm"><i
-                            class="fa-solid fa-trash"></i></button>
-                      </div>
-                    }
-                  </div>
-                  <hr>
-                </div>
-              </div>
-              }
-            </div>
-          </div>
-          
+            <button type="submit" class="btn custom-button w-100 mt-3">Submit Feedback</button>
+          </form>
         </div>
       </div>
+
+      <h3 class="mt-5 mb-4 text-warning" dir="ltr">Feedbacks</h3>
+        @for (comment of comments; track comment.id) {
+      <div class="card mb-3 shadow-sm " dir="ltr">
+        <div class="card-body d-flex">
+          <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image"
+            class="rounded-circle comment-img me-3" alt="{{ comment.user.name }}" />
+          <div class="w-100">
+            <div class="row">
+              <span class="fs-5 fw-bold">{{ comment.user.name }}</span>
+              <small class="text-muted opacity-50">{{ comment.created_at | date }}</small>
+            </div>
+            <p>{{ comment.body }}</p>
+          </div>
+          @if (role_id===4) {
+          <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm ms-auto">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        }
+        </div>
+      </div>
+    }
+
     </div>
-
-
-
-
-
   </div>
 </div>

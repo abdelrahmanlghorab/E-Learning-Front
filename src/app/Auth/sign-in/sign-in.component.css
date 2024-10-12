@@ -7,7 +7,8 @@ section.container > div {
   }
 
   label {
-    font-size: 22px;
+    font-size: 18px;
+    font-weight: 550;
   }
 
   input.form-control {
@@ -35,23 +36,9 @@ section.container > div {
     --x: 100%;
   }
 
-  h3 {
-    font-size: 28px;
-    color: black;
-  }
 
-  h6 {
-    font-size: 22px;
-    color: black;
-  }
-
-  p {
-    font-size: 20px;
-    color: black;
-  }
 
   p a {
-    font-size: 20px;
     color: orange;
   }
 
