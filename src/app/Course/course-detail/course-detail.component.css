@@ -1,6 +1,7 @@
 
 .title {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  
 }
 
 .card {
@@ -22,10 +23,15 @@
   border-radius: 5px;
   border: 1px solid #ced4da;
 }
+.enroll:hover{
+  color: white !important;
+}
+
 
 .comment-form .form-control:focus {
   border-color: #80bdff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 5px rg
+  (0, 123, 255, 0.25);
 }
 
 .comment-form .btn {

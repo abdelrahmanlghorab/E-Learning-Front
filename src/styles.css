@@ -172,6 +172,24 @@ body.dark-mode .teacher-card {
   text-align: center;
   padding: 20px;
 }
+body.dark-mode .exam-card {
+  border-radius: 10px 10px 0 0;
+    background: linear-gradient(90deg, #e47e01, #d89001) !important;
+}
+.exam-card {
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(
+      90deg,
+      var(--wave1, rgb(0 107 179)),
+      var(--wave1, rgb(38, 156, 235)),
+      var(--wave1, #007bff)
+    )
+    var(--x, 0) / 200%;
+  padding: 0.5rem;
+} 
+body.dark-mode .name-card {
+  color:white !important;
+}
 .title {
   height: 7rem;
   background: linear-gradient(90deg, var(--wave1, #007bff), var(--wave2, #00ccff) 51%, var(--wave1, rgb(0 107 179)))!important;

@@ -1,8 +1,8 @@
 <div class="title">
-  <h1 class="text-center mt-2 text-light">{{ courseTitle }}</h1>
+  <h3 class="text-center  text-light">{{ courseTitle }}</h3>
 </div>
 <div class="conatainer d-flex align-items-between" dir="ltr">
- <div class="col-lg-9 col-md-12 col-sm-12 container text-start  mt-4">
+ <div class="col-lg-9 col-md-12 col-sm-12 container text-start  ">
       <h3 class="text-start mt-2">{{videoTitle}}</h3>
     <iframe
       width="100%"
@@ -40,26 +40,26 @@
         <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{ courseCreation }}</span>
       </h5>
     <div
-      class="accordion"
+      class="accordion p-0 m-0"
       style="max-height:44rem; overflow-y: auto"
       id="accordionExample"
     >
       @if(courseVideos){ @for(video of courseVideos; track video.id){
-      <div class="accordion mt-2 p-2" id="accordionPanelsStayOpenExample">
+      <div class="accordion mt-2 mx-2" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2
-            class="accordion-header"
+            class="accordion-header my-1"
             id="panelsStayOpen-heading-{{ video.id }}"
           >
             <button
-              class="accordion-button collapsed"
+              class="accordion-button collapsed px-2 py-0 m-0"
               type="button"
               data-bs-toggle="collapse"
               [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id"
               aria-expanded="false"
               [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id"
             >
-              {{ video.title }}
+              {{ truncate.transform(video.title,50) }}
             </button>
           </h2>
           <div
@@ -75,10 +75,10 @@
       var(--wave2, #00ccff) 51%,
       var(--wave1, rgb(0 107 179))
     );0) }} -->
-              <div class="d-flex align-items-center text-start mt-2">
+              <div class="d-flex align-items-center  text-start p-0 my-0 ">
                 <i class="fa-regular fa-circle-play fs-4 text-danger"></i>
 
-                <code class="ms-2 text-start text-danger"><a [routerLink]="['/course-session',id,video.id]"
+                <code class="ms-2 text-start text-danger py-0 my-0"><a [routerLink]="['/course-session',id,video.id]"
                     (click)="changeVideo(video.video_id)"
 
                     style="text-decoration: none; color: black"

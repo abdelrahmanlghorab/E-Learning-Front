@@ -1,6 +1,6 @@
 
-<div class="title">
-  <h1 class="text-center mt-2 text-light">{{ courseTitle }}</h1>
+<div class="title " >
+  <h2 class="text-center mt-2 text-light">{{ courseTitle }}</h2>
 </div>
 <div class="col-10 mx-auto">
   <div class="row">
@@ -63,10 +63,10 @@
         <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
           @if(courseVideos) {
           @for(video of courseVideos; track video.id) {
-          <div class="accordion  p-0" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="panelsStayOpen-heading-{{ video.id }}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <div class="accordion  p-0 my-0" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item ">
+              <h2 class="accordion-header mb-1" id="panelsStayOpen-heading-{{ video.id }}">
+                <button class="accordion-button collapsed py-0 " type="button" data-bs-toggle="collapse"
                   [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
                   [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
                   {{ video.title }}
@@ -74,26 +74,27 @@
               </h2>
               <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
                 [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
-                <div class="accordion-body">
+                <div class="accordion-body ms-3" style="margin: 0; padding: 0;">
                   @if(enrollment==true) {
                   {{ truncate.transform(this.video.description, 200) }}
-                  <div class="d-flex align-items-center text-start mt-2">
+                  <div class="d-flex  align-items-center text-start mt-2">
                     <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
-                    <code class="ms-2 text-start text-secondary">
+                    <code class="ms-2 text-start fs-6 fw-bold text-secondary">
                      <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:green">Go to Session</a>
                     </code>
                   </div>
                   } @else {
-                  <div class="d-flex">
-                    <span class="badge text-bg-danger">Restricted</span>
-                    <code class="opacity-50"> Not Available unless: You are a Student </code>
+                  <div class="d-flex my-3 ">
+                    <span class=" text-bg-danger rounded-pill px-2 mx-3">Restricted</span>
+                    <code class="fs-6"> Not Available unless: You are a Student </code>
                   </div>
                   }
                 </div>
               </div>
             </div>
           </div>
-          } }
+          } 
+        }
         </div>
       </div>
     </div>
@@ -103,7 +104,8 @@
       <div class="row">
         <div class="card col-12">
           <div class="card-body text-center">
-            <h5 class="card-title">
+            @if (role_id === 3) {
+            <h5 class="card-title">     
               @if (coursePrice == 0) {
               <span>Now <span class="fs-2 fw-semibold">Free</span>
                 <span class="fs-6 text-secondary opacity-50">instead of <span class="lineThrow">$500</span></span>
@@ -113,7 +115,7 @@
             }
             </h5>
               @if (enrollment == false) {
-            <a [routerLink]="['/payment', courseID]" class="btn btn-outline-warning fs-5">
+            <a [routerLink]="['/payment', courseID]" class="btn btn-outline-warning enroll fs-5">
               Enroll Now
             </a>
           }@else {
@@ -121,6 +123,7 @@
               Enrolled Successfully
             </button>
           }
+              }
             <hr />
 
             <div class="row">
@@ -147,7 +150,7 @@
               <textarea id="inputName" class="form-control" formControlName="inputName" rows="4"
                 placeholder="Write your feedback here..." dir="ltr"></textarea>
             </div>
-            <button type="submit" class="btn custom-button w-100 mt-3">Submit Feedback</button>
+            <button type="submit" class="btn custom-button w-100 enroll mt-3">Submit Feedback</button>
           </form>
         </div>
       </div>
