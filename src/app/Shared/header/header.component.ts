@@ -79,6 +79,7 @@ export class HeaderComponent {
     localStorage.removeItem('notifications');
 
     this.authservices.setLoggedIn(false);
+    this.role_id = null;
     this.router.navigateByUrl("signin");
   }
   onRead(id: any) {
