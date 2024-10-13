@@ -1,24 +1,31 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotificationsService {
-  url = 'http://127.0.0.1:8000/api/user-notifications';
-  Url = 'http://127.0.0.1:8000/api/read-notifications';
-  private notification = new BehaviorSubject<any>({});
+  private url = 'http://127.0.0.1:8000/api/user-notifications';
+  private readUrl = 'http://127.0.0.1:8000/api/read-notifications';
+  private notification = new BehaviorSubject<any[]>([]);
   userNotifications = this.notification.asObservable();
-  http = inject(HttpClient)
-  constructor() { }
-  getUserNotifications() {
-    return this.http.get(this.url);
+  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+  constructor(private http: HttpClient) {
+    interval(3000)
+      .pipe(switchMap(() => this.getUserNotifications()))
+      .subscribe((notifications: any) => {
+        this.notification.next(notifications.Notifications);
+      });
   }
-  
-  HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+  getUserNotifications() {
+    return this.http.get<any>(this.url);
+  }
+
   markNotificationAsRead(id: any) {
-    
-    return this.http.post(this.Url, id, { headers:this.HttpHeaders });
+    return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
   }
 }
