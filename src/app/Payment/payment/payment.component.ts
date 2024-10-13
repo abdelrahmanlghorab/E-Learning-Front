@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Stripe, StripeCardElement,StripeElements,loadStripe } from '@stripe/stripe-js';
+import { Stripe, StripeCardElement, StripeElements, loadStripe } from '@stripe/stripe-js';
 import { PaymentService } from '../../services/payment.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 @Component({
@@ -14,10 +14,10 @@ export class PaymentComponent implements OnInit {
   private cardElement!: StripeCardElement;
   private elements!: StripeElements;
   message: string | undefined = '';
-  error:string | undefined = '';
-  id:any;
+  error: string | undefined = '';
+  id: any;
 
-  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
       this.cardElement = this.elements.create('card');
       this.cardElement.mount('#card-element');
     } else {
-      this.error = 'خطأ في عملية الدفع';
+      this.error = '';
     }
   }
   pay() {
@@ -45,28 +45,22 @@ export class PaymentComponent implements OnInit {
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
 
         if (error) {
-          this.error = "خطأ في عملية الدفع";
+          this.error = "payment error"
         } else if (paymentIntent?.status === 'succeeded') {
           console.log(paymentIntent);
-          this.paymentService.storePaymentIntent(paymentIntent,courseId).subscribe({
-            complete: () => {
-              console.log('Payment stored successfully');
-              // Redirect to course page
-            },
-            next: (data) => {
-              console.log(data);
-              this.message = 'تم الدفع بنجاح';
+          this.paymentService.storePaymentIntent(paymentIntent, courseId).subscribe({
+            next: () => {
+              this.message = 'payment successful';
               this.router.navigate(['/course', courseId]);
 
             },
-            error: () => this.error = 'Payment'
+            error: () => this.error = 'payment error'
           });
-          // this.message = 'تم الدفع بنجاح';
         } else {
-          this.error = 'فشل في عملية الدفع';
+          this.error = 'payment error';
         }
       },
-      error: () => this.error = 'خطأ في عملية الدفع'
+      error: () => this.error = 'payment error'
     });
   }
 }

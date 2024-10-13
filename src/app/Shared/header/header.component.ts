@@ -1,5 +1,5 @@
-import { Component, Pipe } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink ,CommonModule ,CustomDatePipe],
+  imports: [RouterLink,RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -83,6 +83,7 @@ export class HeaderComponent {
     localStorage.removeItem('notifications');
 
     this.authservices.setLoggedIn(false);
+    this.role_id = null;
     this.router.navigateByUrl("signin");
   }
   onRead(id: any) {

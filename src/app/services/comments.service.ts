@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class CommentsService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api/course';  
+  private apiUrl = 'http://127.0.0.1:8000/api/course';
 
   constructor(private http: HttpClient) {}
+
 
   getComments(courseId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${courseId}/comments`);
@@ -18,7 +19,7 @@ export class CommentsService {
   addComment(course_id:any,body: any): Observable<any> {
     console.log(course_id ,"commentservice");
     console.log(body ,"commentservice");
-    
+
 
     return this.http.post(`${this.apiUrl}/${course_id}`, body);
   }
