@@ -15,9 +15,15 @@
   font-weight: bold;
   scale: 1;
   border: none;
-  background-color: white;
+  background-color: inherit !important;
+
   font-size: 1.3em !important;
 }
+
+.bttn:focus {
+  outline: none;
+}
+
 
 nav {
   padding-bottom: 0 !important;
@@ -83,9 +89,6 @@ input:checked+.slider:before {
 }
 
 
-.nav-item :hover {
-  color: #007bff !important;
-}
 
 body.dark-mode .nav-item :hover {
   color: #ffab00 !important;
@@ -93,6 +96,9 @@ body.dark-mode .nav-item :hover {
 
 .dropdown-toggle::after {
   display: none;
+}
+.dropdown-item{
+  cursor: pointer;
 }
 
 @media screen and (max-width: 576px) {

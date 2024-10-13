@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

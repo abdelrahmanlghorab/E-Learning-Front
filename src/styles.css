@@ -186,7 +186,7 @@ body.dark-mode .exam-card {
     )
     var(--x, 0) / 200%;
   padding: 0.5rem;
-} 
+}
 body.dark-mode .name-card {
   color:white !important;
 }
@@ -273,6 +273,40 @@ body.dark-mode .header-icon:hover {
   /* background: rgba(0, 0, 0, 0.1); */
   border-radius: 50px;
   opacity: 1;
+}
+.active-route{
+  background: linear-gradient(90deg,
+      var(--wave1, #007bff),
+      var(--wave2, #00ccff) 51%,
+      var(--wave1, rgb(0 107 179))) var(--x, 0) / 200%;
+        -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: larger;
+
+}
+.nav-item :hover {
+   background: linear-gradient(90deg,
+      var(--wave1, #007bff),
+      var(--wave2, #00ccff) 51%,
+      var(--wave1, rgb(0 107 179))) var(--x, 0) / 200%;
+        -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-out;
+
+}
+body.dark-mode .active-route{
+   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+        -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: larger;
+
+}
+body.dark-mode .nav-item :hover {
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+         -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-out;
+
 }
 
 body.dark-mode {
@@ -366,10 +400,10 @@ body.dark-mode .resent-card:hover{
 }
 body.dark-mode .card-read-more a {
   color: #ffab00 !important;
-} 
+}
 .badge{
   position: absolute;
-  top: 0; 
+  top: 0;
   right: 0;
   z-index: 2;
   color:#007bff;
