@@ -110,6 +110,78 @@ body.dark-mode .nav-item :hover {
 
 
 }
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.fa-bell {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.fa-bell:hover {
+  color: #1772d4; /* Change color on hover for better visibility */
+}
+
+
+
+.dropdown-menu {
+  width: 200px;
+  margin-left: -400px;
+  padding: 0 5px;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 200px;
+  scrollbar-width: thin; 
+  scrollbar-color: #f8f9fa #f8f9fa;
+  
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+  padding: 10px 0;
+}
+
+.dropdown-menu hr {
+  margin: 8px 0;
+  border-color: #e0e0e0;
+}
+
+.dropdown-menu .d-flex {
+  align-items: center;
+}
+
+.dropdown-menu img {
+  border: 2px solid #ddd;
+}
+
+.dropdown-menu .avatar-img {
+  object-fit: cover;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu .text-primary {
+  font-weight: 600;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.dropdown-menu .notif-date {
+  color: #888;
+  font-size: 0.75rem;
+  margin-top: 5px;
+  display: block;
+}
+
 
 .notify {
   background: linear-gradient(45deg, #02448b, #00ccff);

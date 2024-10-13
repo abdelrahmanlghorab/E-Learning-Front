@@ -3,88 +3,94 @@
   margin: 0 auto;
   padding: 30px;
   direction: ltr;
+
 }
 
 .panel {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   padding: 0;
   border: none;
-  
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   overflow: hidden;
   background-color: #fff;
+  scrollbar-width: none;
+  position: relative !important; 
+
+
 }
 
-.panel-body {
-  padding: 20px;
-}
-
-.panel-body .table {
+.table {
   width: 100%;
   margin-bottom: 1rem;
   background-color: #fff;
-  border-radius: 10px;
   overflow: hidden;
   border-radius: 30px;
-  
+}
+.table thead {
+  position: sticky; 
+  top: 0; 
+  z-index: 10; 
 }
 
-.panel-body .table thead tr th {
+.table thead tr th {
   color: #fff;
   font-size: 16px;
   font-weight: 600;
-  background-color: rgb(41, 85, 167); 
+  background-color: rgb(38, 103, 224);
   padding: 15px;
   text-align: center;
   border: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.panel-body .table tbody tr td {
-  color: #333;
-  font-size: 14px;
-  padding: 15px;
-  text-align: center;
-  font-size: medium;
-  vertical-align: middle;
+ .table tbody tr td {
+  color: #3f3f3f;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px;
+  vertical-align: middle !important;
   border-color: #e7e7e7;
 }
 
-.panel-body .table tbody tr:nth-child(odd) {
+.table tbody tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-.panel-body .table tbody tr:hover {
+table tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-.panel-body .table tbody img {
+.table tbody img {
   border-radius: 50%;
   object-fit: cover;
 }
 
-.panel-body .table tbody .btn {
+.table tbody .btn {
   padding: 5px 10px;
   border-radius: 20px;
   font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
-.panel-body .table tbody .btn-danger {
+ .table tbody .btn-danger {
   background-color: #e74c3c;
   color: white;
 }
 
-.panel-body .table tbody .btn-danger:hover {
+.table tbody .btn-danger:hover {
   background-color: #c0392b;
 }
 
-.panel-body .table tbody .btn-primary {
+.table tbody .btn-primary {
   background-color: #007bff;
   color: white;
 }
 
-.panel-body .table tbody .btn-primary:hover {
+.table tbody .btn-primary:hover {
   background-color: #0056b3;
 }
 
@@ -148,6 +154,3 @@
   scale: 0.995;
   --x: 100%;
 }
-
-
-
