@@ -26,7 +26,6 @@ export class CourseDetailComponent {
   isloggedIn: boolean = false;
 
   @Input() courseId!: number;
-  commentForm!: FormGroup;
   comments: any[] = [];
   body:any ='';
   course: any;
@@ -122,8 +121,18 @@ export class CourseDetailComponent {
         (CommentData) => {
           console.log('Comment posted successfully:', CommentData);
           this.comments.push(CommentData);
-          this.commentForm.reset();
-          this.router.navigate(['/course', this.id]);
+          this.form.reset();
+          this.commentService.getComments(this.id).subscribe(
+            (data) => {
+              this.comments = data;
+              console.log(data, 'Comments');
+
+            },
+            (error) => {
+              console.error('Error fetching comments:', error);
+            }
+          );
+
         },
         (error) => {
           console.error('Error posting comment:', error);
