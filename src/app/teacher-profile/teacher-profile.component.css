@@ -124,8 +124,6 @@ p {
   padding: 25px;
   border-radius: 15px;
 }
-    @import url(https://fonts.googleapis.com/css?family=Raleway);
-@import url(http://weloveiconfonts.com/api/?family=entypo);
 
 
 a {
@@ -442,7 +440,7 @@ input {
 	-moz-transform-style: preserve-3d;
 	-ms-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 
 	-webkit-transition: all 200ms ease-in-out;
 	-moz-transition: all 200ms ease-in-out;

@@ -281,13 +281,11 @@ body {
   }
 }
 
-/* Opacity Mixin */
 .opacity {
   opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE */
+  filter: alpha(opacity=50); 
 }
 
-/* Transition */
 .mc-transition {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -296,12 +294,20 @@ body {
   transition: all 0.3s;
 }
 
-/* Materializer Function */
 .material-card {
   position: relative;
   height: 0;
   padding-bottom: calc(100% - 16px);
   margin-bottom: 6.6em;
+}
+.cardd{
+  transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+
+}
+
+.cardd:hover {
+  transform: translateY(-12px);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); */
 }
 
 .material-card h2 {

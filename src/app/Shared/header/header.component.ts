@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink ,CommonModule ,CustomDatePipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

@@ -70,15 +70,15 @@
               <div class="">
                 @if (notification.read_at == null) {
 
-                <p (click)="onRead(notification.id)" class="fw-bold fs-6 text-info"> {{notification.data['message'] }}
+                <p (click)="onRead(notification.id)" class=" fs-6 text-primary"> {{notification.data['message'] }}
                 </p>
                 }@else {
 
-                <p class="fw-bold fs-6 ">{{notification.data['message'] }} </p>
+                <p class=" fs-6 ">{{notification.data['message'] }} </p>
                 }
 
                 <div>
-                  <small class="notif-date">{{notification.data['created_at']}}</small>
+                  <small class="notif-date">{{notification.data['created_at'] | date:'short' }} </small>
                 </div>
               </div>
             </div>
