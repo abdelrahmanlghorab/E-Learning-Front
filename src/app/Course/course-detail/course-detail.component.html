@@ -8,8 +8,12 @@
 
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
-        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;"
-          alt="Course Image" />
+          @if (courseImage=="https://i.ytimg.com/img/no_thumbnail.jpg") {
+          <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
+
+          }@else {
+  <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;" alt="Course Image" />          }
+
       </div>
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
@@ -53,6 +57,8 @@
 
 
       <div class="card mt-3" dir="ltr">
+                  @if(courseVideosNum > 0){
+
         <h2 class="card-header d-flex justify-content-between align-items-center">
           <div>
             <i class="fa-solid fa-list-alt"></i>
@@ -93,9 +99,14 @@
               </div>
             </div>
           </div>
-          } 
+          }
         }
         </div>
+      }@else {
+        <div class="card-body text-center">
+          <h3 class="card-title text-warning">This Course Has No Sessions</h3>
+        </div>
+      }
       </div>
     </div>
 
@@ -105,7 +116,7 @@
         <div class="card col-12">
           <div class="card-body text-center">
             @if (role_id === 3) {
-            <h5 class="card-title">     
+            <h5 class="card-title">
               @if (coursePrice == 0) {
               <span>Now <span class="fs-2 fw-semibold">Free</span>
                 <span class="fs-6 text-secondary opacity-50">instead of <span class="lineThrow">$500</span></span>
@@ -154,7 +165,7 @@
           </form>
         </div>
       </div>
-
+      @if(comments.length > 0){
       <h6 class=" mb-4 text-warning fw-bold" dir="ltr">Feedbacks</h6>
         @for (comment of comments; track comment.id) {
       <div class="card mb-3 shadow-sm " dir="ltr">
@@ -168,7 +179,7 @@
             </div>
             <p>{{ comment.body }}</p>
           </div>
-        
+
         @if (role_id===4) {
         <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm my-auto me-auto">
           <i class="fa-solid fa-trash"></i>
@@ -177,7 +188,11 @@
     </div>
       </div>
     }
+  }@else {
+      <h6 class=" mb-4 text-warning text-center fw-bold" dir="ltr">There's No Feedbacks in this Course</h6>
 
+
+  }
     </div>
   </div>
 </div>
