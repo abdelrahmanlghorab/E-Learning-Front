@@ -12,13 +12,13 @@
           <article class="material-card Teal" [routerLink]="['/teacherprofile', item.id]">
               <h2 class="text-start ">
                   <span class="text-dark ms-2">{{ item.name }}</span>
-                  <strong class="text-dark ms-2 d-flex justify-content-between">
-                    <i class="fa fa-fw fa-star"></i>
+                  <strong class="text-dark ms-2 ">
+                    <!-- <i class="fa fa-fw fa-star"></i> -->
                     <span>{{ item.title }}</span>
                   </strong>
               </h2>
               <div class="mc-content">
-                  <div class="img-container">
+                  <div class="img-container w-100">
                       <img class="img-responsive" [src]="item.image">
                   </div>
               </div>

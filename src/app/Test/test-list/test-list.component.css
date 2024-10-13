@@ -58,7 +58,6 @@
     text-decoration: none; /* Ensure no underline */
 }
 
-/* Box responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .small-box {
         padding: 15px;
