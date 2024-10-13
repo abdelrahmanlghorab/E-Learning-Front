@@ -1,4 +1,5 @@
 
+
 .dashboard-container {
   display: flex;
   height:calc(100vh - 20px) !important;
@@ -8,7 +9,7 @@
   position: relative;
   margin-top: -25px;
   margin-bottom: 0 !important;
-  overflow-y: hidden !important;
+
 }
 
 .sidebar {

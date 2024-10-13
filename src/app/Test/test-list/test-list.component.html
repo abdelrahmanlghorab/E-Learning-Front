@@ -1,14 +1,13 @@
 @if(role_id === 1 ||role_id === 4){
 <div class="container mt-5" dir="ltr">
-    <div class="card  text-center text-white" style="border-radius: 20px  ;">
-        <div class="card-body">
-            <table class="table table-striped" style="background-color: rgb(41, 85, 167) ; ">
-                <thead>
-                    <tr>
-                        <td>title</td>
-                        <td>Description</td>
-                        <td>is_free</td>
-                        <td colspan="3">Action</td>
+        <div class="card-body" >
+            <table class="table table-striped" >
+                <thead  >
+                    <tr >
+                        <th style="border-radius: 30px 0 0 0;">title</th>
+                        <th>Description</th>
+                        <th>is_free</th>
+                        <th colspan="3" style="border-radius: 0  30px 0 0 ;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +27,6 @@
                 <button type="submit" routerLink="/test-create" class="btn main-btn rounded-5 ms-5 p-2  custom-button w-25">Add New Test </button>
               </div>
         </div>
-    </div>
 </div>
 }@else{
 <div class="container-fluid">
