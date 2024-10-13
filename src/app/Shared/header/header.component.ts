@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component,OnInit } from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
+
+import {DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,RouterLinkActive,DatePipe],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -80,7 +82,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('data');
     localStorage.removeItem('notifications');
     this.authservices.setLoggedIn(false);
-    this.router.navigateByUrl('signin');
+    this.role_id = null;
+    this.router.navigateByUrl("signin");
   }
 
   onRead(id: any) {

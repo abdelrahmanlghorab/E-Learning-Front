@@ -1,7 +1,7 @@
 
 .title {
   margin-bottom: 1.5rem;
-  
+
 }
 
 .card {
@@ -10,6 +10,9 @@
 .accordion {
   padding: 0px !important;
   margin: 0px !important;
+}
+img.card-img{
+height: 31rem;
 }
 
 .teacherimg {

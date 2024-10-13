@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from '../../services/courses.service';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms'; 
-import { ActivatedRoute } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-course-update',
   standalone: true,
@@ -13,11 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CourseUpdateComponent {
   courseForm!: FormGroup;
-  id: number = 0; 
+  id: number = 0;
   constructor(
     private fb: FormBuilder,
     private coursesService: CoursesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +57,10 @@ export class CourseUpdateComponent {
     if (this.courseForm.valid) {
       this.coursesService.updateCourse(this.id,this.courseForm.value).subscribe(
         (response) => {
+          this.router.navigate(['/courses']);
           alert('Course updated successfully');
+
+
         },
         (error) => {
           alert('Error updating course');
