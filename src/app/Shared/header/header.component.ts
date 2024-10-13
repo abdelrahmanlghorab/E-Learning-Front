@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component ,Pipe } from '@angular/core';
 import {Router, RouterLink, RouterLinkActive, } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink,RouterLinkActive ,DatePipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -26,6 +26,7 @@ export class HeaderComponent {
   Id: any;
 
   ngOnInit() {
+
     this.data = localStorage.getItem('data');
     if (this.data) {
       this.data = JSON.parse(this.data);
@@ -89,7 +90,7 @@ export class HeaderComponent {
   onRead(id: any) {
     this.Id = { id: id }
     this.notificationService.markNotificationAsRead(this.Id).subscribe();
-    console.log(id);
+    // console.log(id);
 
 
   }
