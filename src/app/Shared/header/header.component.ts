@@ -54,7 +54,15 @@ export class HeaderComponent implements OnInit {
 
     this.notificationService.userNotifications.subscribe((notifications) => {
       this.notifications = notifications; 
-      this.count = notifications.filter((notif: any) => !notif.read).length;
+      this.count = this.notifications.reduceRight(
+        (count, notification) => {
+          if (notification.read_at === null) {
+            return count + 1;
+          }
+          return count;
+        },
+        0
+      );
     });
   }
 
