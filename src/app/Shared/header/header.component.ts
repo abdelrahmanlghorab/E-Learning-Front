@@ -4,7 +4,6 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 import { DatePipe } from '@angular/common';
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -82,6 +81,8 @@ export class HeaderComponent implements OnInit {
     this.notificationService.getUserNotifications().subscribe((data: any) => {
       this.notifications = data.Notifications;
       this.count = data.unReadNotificationsCount;
+      this.notifications = data.Notifications;
+      this.count = data.unReadNotificationsCount;
     });
   }
 
@@ -97,6 +98,10 @@ export class HeaderComponent implements OnInit {
 
 
   onRead(id: any) {
+    this.Id = { id: id };
+    this.notificationService.markNotificationAsRead(this.Id).subscribe(() => {
+      this.userNotification();
+    });
     this.Id = { id: id };
     this.notificationService.markNotificationAsRead(this.Id).subscribe(() => {
       this.userNotification();

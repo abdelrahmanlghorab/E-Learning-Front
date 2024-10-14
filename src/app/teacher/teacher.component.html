@@ -7,8 +7,8 @@
       <div class="container mt-5">
         <div class="row d-flex justify-content-center">
           @for (item of teachers; track item.id) {
-
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      
+      <div class="col-md-3 col-sm-6 cardd col-xs-12">
           <article class="material-card Teal" [routerLink]="['/teacherprofile', item.id]">
               <h2 class="text-start ">
                   <span class="text-dark ms-2">{{ item.name }}</span>
@@ -23,7 +23,7 @@
                   </div>
               </div>
           </article>
-
+      
   </div>
 }
 </div>

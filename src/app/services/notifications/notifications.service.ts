@@ -21,11 +21,14 @@ export class NotificationsService {
       });
   }
 
+
   getUserNotifications() {
+    return this.http.get<any>(this.url);
     return this.http.get<any>(this.url);
   }
 
   markNotificationAsRead(id: any) {
+    return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
     return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
   }
 }

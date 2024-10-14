@@ -53,28 +53,28 @@
 
           </div>
         </div>
-        <ul class="dropdown-menu  text-center" style="width: 400px; margin-left: -400px;">
+        <ul class="dropdown-menu mt-2  text-center" style="width: 400px; margin-left: -220px;">
           <li>
             @for (notification of notifications; track $index) {
-            <div class="d-flex mt-3 ">
+            <div class="d-flex ">
               @if(notification.data["userImage"] == null){
                 <div class="ms-1 me-2">
                   <img src="default.png" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
                 </div>
               }@else{
-                <div class="ms-1 me-2">
-                  <img src="http://127.0.0.1:8000/images/users/{{notification.data['userImage']}}"   alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
+                <div class="ms-1  me-2">
+                  <img src="http://127.0.0.1:8000/images/users/{{notification.data['userImage']}}"   alt="..." width="50px"class="avatar-img rounded-circle" />
                 </div>
               }
 
-              <div class="">
+              <div class="mt-4">
                 @if (notification.read_at == null) {
 
-                <p (click)="onRead(notification.id)" class=" fs-6 text-primary"> {{notification.data['message'] }}
-                </p>
+                <small (click)="onRead(notification.id)" class=" text-primary"> {{notification.data['message'] }}
+                </small>
                 }@else {
 
-                <p class=" fs-6 ">{{notification.data['message'] }} </p>
+                <small class="">{{notification.data['message'] }} </small>
                 }
 
                 <div>
@@ -84,6 +84,7 @@
             </div>
           <hr />
 
+            <hr />
             }
 
           </li>
@@ -98,7 +99,6 @@
       <button routerLink="/signin" routerLinkActive="active-route" [routerLinkActiveOptions]="{ exact: true }"  class="bttn"
         >
       <i class="fa-regular fa-circle-user fa-lg fs-4 mx-1"></i>
-
         Login</button>
       <a
         style="font-size: small"
@@ -117,15 +117,15 @@
             }
           </div>
         </div>
-        <ul class="dropdown-menu  text-center" style="width: 250px; margin-left: -150px;">
+        <ul class="dropdown-menu text-center" style="width: 180px; margin-left: 0px;">
           @if (role_id === 2) {
           <li>
-            <a class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
+            <a class="dropdown-item btn main-btn fw-bold text-white w-50 mx-auto rounded-5"
               [routerLink]="['/teacherprofile', id]">View Profile</a>
           </li>
           }@else if (role_id === 3) {
           <li>
-            <a class="dropdown-item btn main-btn fw-bold text-white mt-2 w-75 mx-auto rounded-5"
+            <a class="dropdown-item btn main-btn fw-bold text-white  w-75 mx-auto rounded-5"
               [routerLink]="['/profile', id]">View Profile</a>
           </li>
           }
