@@ -50,12 +50,12 @@ export class TestCreateComponent {
 
       this.testService.createTest(formData).subscribe({
         next: (response) => {
-          console.log('Test created successfully', response);
-          this.toaster.success('تم انشاء الاختبار بنجاح');
+          // console.log('Test created successfully', response);
+          this.toaster.success('Test created successfully');
           this.router.navigateByUrl('tests');
         },
         error: (error) => {
-          console.log('Error creating test', error);
+          // console.log('Error creating test', error);
           if (error.error.success == false) {
             if (error.error.validation_errors.title) {
               this.toaster.error(error.error.validation_errors.title);

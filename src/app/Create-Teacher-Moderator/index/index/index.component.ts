@@ -18,7 +18,7 @@ constructor(private fb: FormBuilder,private router : Router,private Organizerser
   ngOnInit(){
     this.Organizerservece.getAllorganizer().subscribe((data: any) => {
       this.organizer = data.data;
-      console.log(data.data);
+      // console.log(data.data);
       
     });
   }
@@ -26,7 +26,7 @@ constructor(private fb: FormBuilder,private router : Router,private Organizerser
     if (confirm('Are you sure you want to delete this item?')) {
       this.Organizerservece.deleteorganizer(item.id).subscribe({
         next: (response) => {
-          console.log('Item deleted:', response);
+          // console.log('Item deleted:', response);
           this.items = this.items.filter(i => i !== item);
           this.router.navigateByUrl('/trashorganizer');
 

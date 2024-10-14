@@ -15,11 +15,10 @@ export class CourseListComponent {
   courses:any;
   teacher: any;
 
-  constructor(private playListService: CoursePlaylistService, private CoursesService: CoursesService) {
-  }
+  constructor(private playListService: CoursePlaylistService, private CoursesService: CoursesService) {}
   ngOnInit() {
     this.CoursesService.getAllCourses().subscribe((data: any) => {
-        console.log(this.courses = data);
+        console.log(this.courses = data); 
     });
 
   }

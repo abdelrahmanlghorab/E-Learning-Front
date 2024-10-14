@@ -124,10 +124,8 @@ body.dark-mode .nav-item :hover {
 }
 
 .fa-bell:hover {
-  color: #1772d4; /* Change color on hover for better visibility */
+  color: #1772d4; 
 }
-
-
 
 .dropdown-menu {
   width: 200px;
@@ -135,7 +133,7 @@ body.dark-mode .nav-item :hover {
   padding: 0 5px;
   background-color: #f8f9fa;
   border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   max-height: 200px;
   scrollbar-width: thin; 
