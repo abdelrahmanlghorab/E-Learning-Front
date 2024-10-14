@@ -68,18 +68,19 @@ export class CourseCreateComponent implements OnInit {
 
   createCourse() {
     this.submitted = true;
-    console.log(this.courseForm.errors)
-
     if (this.courseForm.valid) {
       this.submitted = false;
       this.coursesService.createCourse(this.courseForm.value).subscribe(
-        (response) => {
-          console.log('Course created successfully', response);
-          this.courseForm.reset();
-          this.router.navigate(['courses']);
-        },
-        (error) => {
-          console.error('Error creating course', error);
+        {
+          next: (response) => {
+            console.log('Course created successfully', response);
+            this.courseForm.reset();
+            this.router.navigate(['courses']);
+          },
+          error: (error) => {
+            console.error('Error creating course', error);
+          }
+
         }
       );
     } else {
