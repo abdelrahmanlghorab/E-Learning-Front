@@ -14,15 +14,23 @@ export class NotificationsService {
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {
-    interval(1000)
-      .pipe(switchMap(() => this.getUserNotifications()))
-      .subscribe((notifications: any) => {
-        this.notification.next(notifications.Notifications);
-      });
+    // interval(30000)
+    //   .pipe(switchMap(() => this.getUserNotifications()))
+    //   .subscribe((notifications: any) => {
+    //     this.notification.next(notifications.Notifications);
+    //   });
+    this.getUserNotifications().subscribe((notifications: any) => {
+      this.notification.next(notifications.Notifications);
+    });
   }
 
   getUserNotifications() {
     return this.http.get<any>(this.url);
+  }
+  refresh(){
+    this.getUserNotifications().subscribe((notifications: any) => {
+      this.notification.next(notifications.Notifications);
+    });
   }
 
   markNotificationAsRead(id: any) {
