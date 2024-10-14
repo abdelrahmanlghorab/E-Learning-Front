@@ -57,9 +57,10 @@ export class ContactUsComponent {
           alert('Message sent successfully');
         },
         error: (error) => {
-          alert('Error sending message');
-          console.error('Message send failed:', error);
+          alert('Error sending message' + error.error.message);
+          console.error('Message send failed:', error.error.message);
         }
       });
   }
+
 }
