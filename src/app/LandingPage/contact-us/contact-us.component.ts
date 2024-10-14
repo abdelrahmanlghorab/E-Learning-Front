@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css'
 })
+
 export class ContactUsComponent {
   subscriptionForm: FormGroup;
   contactForm: FormGroup;
