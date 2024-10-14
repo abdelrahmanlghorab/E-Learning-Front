@@ -25,6 +25,7 @@ export class NotificationsService {
     return this.http.get<any>(this.url);
   }
 
+
   markNotificationAsRead(id: any) {
     return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
   }
