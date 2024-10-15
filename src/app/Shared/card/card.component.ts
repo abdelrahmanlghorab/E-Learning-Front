@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -11,23 +12,47 @@ import { GetTeacherService } from '../../services/get-teacher.service';
 })
 export class CardComponent {
 
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  id!: any;
+  notifications: any[] = []; 
+  isloggedIn: boolean = false;
+  count!: number;
+  Id: any;
+
+
   @Input() course!: any;
   teacher!: any;
   teacherName!: any;
   teacherImage: any;
 
-  constructor(private teacherService:GetTeacherService) { }
+  constructor(private teacherService:GetTeacherService , private authservices :AuthService) { }
 
 
   ngOnInit(){
+    // console.log(this.course.instructor_id);
+    
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
          this.teacher = data.teacher
          this.teacherName=this.teacher.name;
         this.teacherImage = this.teacher.image;
 
-         console.log(this.course);
-         console.log(this.teacherName , "teacher name ");
+        //  console.log(this.course[0] = data);
+
+        //  console.log(this.teacherName , "teacher name ");
        });
+       this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
+        this.isloggedIn = isLoggedIn;
+        this.data = JSON.parse(localStorage.getItem('data')!);
+        if (this.data) {
+          this.name = this.data.name;
+          this.id = this.data.id;
+          this.image = this.data.image;
+          this.role_id = this.data.role_id;
+        }
+      });
       }
   handleMouseMove(event: MouseEvent) {
     const card = (event.target as HTMLElement).closest('.example-card') as HTMLElement;
