@@ -30,31 +30,45 @@
 </div>
 }@else{
 <div class="container-fluid">
+    <div class="text-center">
+        <h3 class="fw-bold text-muted mt-4 mx-auto">Exams</h3>
+    </div>
     <div class="row">
-        @for(i of testList ; track $index){
-        <div class="col-lg-4 col-6 mt-5 ">
-            <div class="small-box ">
-                <div class="inner">
-                    <h5>{{i.test.title}}<sup style="font-weight: bold"></sup></h5>
-                    <p>{{i.test.description}}</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                @if (i.score == null) {
+        <div class="col-4">
+            <img src="Exams.gif" height="650px" alt="">
+        </div>
+        <div class="col">
+            <div class="row">
 
-                <a routerLink="/test/{{i.test.id}}" class="small-box-footer"> <i
-                        class="fas fa-arrow-circle-right"></i></a>
-                }@else{
-                <a routerLink="/test-answer/{{i.test.id}}" class="small-box-footer"> <i
-                        class="fas fa-arrow-circle-right"></i></a>
-
-                }
+            @for(i of testList ; track $index){
+            <div class="col-lg-6 col-6 mt-5 ">
+                <div class="small-box ">
+                    <div class="inner">
+                        <h5>{{i.test.title}}<sup style="font-weight: bold"></sup></h5>
+                        <p>{{i.test.description}}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-marker mt-5 ms-2"></i>
+                        <i class="fas fa-clipboard"></i>
+                    </div>
+                    @if (i.score == null) {
+    
+                    <a routerLink="/test/{{i.test.id}}" class="small-box-footer"> <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                    }@else{
+                    <a routerLink="/test-answer/{{i.test.id}}" class="small-box-footer"> <i
+                            class="fas fa-arrow-circle-right"></i></a>
+    
+                    }
+                </div>
             </div>
+            
+    
+    
+            }
         </div>
 
-
-        }
+        </div>
     </div>
 </div>
 

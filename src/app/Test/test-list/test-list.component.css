@@ -61,8 +61,8 @@ th{
 }
 
 .small-box-footer:hover {
-    background-color: rgba(0, 0, 0, 0.3); /* Darker background on hover */
-    text-decoration: none; /* Ensure no underline */
+    background-color: rgba(0, 0, 0, 0.3); 
+    text-decoration: none; 
 }
 
 @media (max-width: 768px) {
