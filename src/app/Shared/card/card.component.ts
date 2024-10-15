@@ -35,9 +35,11 @@ export class CardComponent {
     // console.log(this.course.instructor_id);
     
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
-         this.teacher = data.teacher
-         this.teacherName=this.teacher.name;
-        this.teacherImage = this.teacher.image;
+         this.teacher = data.teacher[0];
+         console.log(data.Teacher);
+
+         this.teacherName=this.teacher.name[0];
+        this.teacherImage = this.teacher.image[0];
 
         //  console.log(this.course[0] = data);
 

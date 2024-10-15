@@ -54,6 +54,10 @@ export class CourseCreateComponent implements OnInit {
       instructor_id: ['', Validators.required],
       playlist_id: ['', Validators.required],
       thumbnail:[''],
+      course_type: ['', Validators.required],
+      live_platform : [''],
+      live_link : [''],
+      live_schedule : [''],
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
