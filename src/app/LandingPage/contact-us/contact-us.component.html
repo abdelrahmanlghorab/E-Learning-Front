@@ -47,7 +47,7 @@
               Kafou</span></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
           <form [formGroup]="contactForm" (ngSubmit)="sendContactMessage()">
             <div class="mb-3">
               <label for="contactEmail" class="col-form-label">Email:</label>
@@ -69,7 +69,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-close-white" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn" id="closeModalBtn" data-bs-dismiss="modal" aria-label="Close">Close</button>
               <button type="submit" class="btn custom-button" [disabled]="!contactForm.valid">Send message</button>
             </div>
           </form>

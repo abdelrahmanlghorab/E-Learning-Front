@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,8 +19,9 @@ export class ContactUsComponent {
   subscriptionForm: FormGroup;
   contactForm: FormGroup;
   submitted = false;
+  response:any;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toaster: ToastrService) {
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -36,12 +38,12 @@ export class ContactUsComponent {
 
     this.http.post('http://localhost:8000/api/subscribe', { email })
       .subscribe({
-        next: (response) => {
-          alert('Subscription successful!');
+        next: (data) => {
+          this.response=data;
+          this.toaster.success(this.response.message)
         },
         error: (error) => {
-          alert(error.error.message);
-          console.error('Subscription failed:', error);
+          this.toaster.error(error.error.message);
         }
       });
   }
@@ -53,14 +55,19 @@ export class ContactUsComponent {
 
     this.http.post('http://localhost:8000/api/contact', contactData)
       .subscribe({
-        next: (response) => {
-          alert('Message sent successfully');
+        next: (data) => {
+          this.response = data;
+          this.toaster.success(this.response.message)
+          this.contactForm.reset();
+          let modal = document.getElementById('exampleModal');
+          const closeModalBtn = document.getElementById('closeModalBtn');
+          closeModalBtn?.click();
         },
         error: (error) => {
-          alert('Error sending message' + error.error.message);
-          console.error('Message send failed:', error.error.message);
+          this.toaster.error(error.error.message);
         }
       });
+
   }
 
 }

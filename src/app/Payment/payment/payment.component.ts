@@ -3,6 +3,7 @@ import { Stripe, StripeCardElement, StripeElements, loadStripe } from '@stripe/s
 import { PaymentService } from '../../services/payment.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NotificationsService } from '../../services/notifications/notifications.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -18,7 +19,7 @@ export class PaymentComponent implements OnInit {
   error: string | undefined = '';
   id: any;
 
-  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute,private notificationService: NotificationsService) { }
+  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute,private notificationService: NotificationsService,private toaster: ToastrService) { }
 
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -42,21 +43,20 @@ export class PaymentComponent implements OnInit {
     this.paymentService.createPaymentIntent(courseId).subscribe({
       next: async (response: any) => {
         const clientSecret = response.clientSecret;
-        console.log(clientSecret);
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
-
         if (error) {
           this.error = "payment error"
         } else if (paymentIntent?.status === 'succeeded') {
-          console.log(paymentIntent);
           this.paymentService.storePaymentIntent(paymentIntent, courseId).subscribe({
             next: () => {
               this.message = 'payment successful';
               this.notificationService.refresh();
               this.router.navigate(['/course', courseId]);
-
+              this.toaster.success('Payment Successful', 'Course Purchased');
             },
-            error: () => this.error = 'payment error'
+            error: () =>{ this.error = 'payment error'
+              this.toaster.error('Course Purchase Failed');
+            }
           });
         } else {
           this.error = 'payment error';
