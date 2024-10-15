@@ -1,5 +1,5 @@
 <div class="container mt-5" dir="ltr">
-    <h2 class="mb-4 text-center fw-bold">{{title}}</h2>
+    <h2 class="mb-4 text-center fw-bold text-warning text-muted">{{title}}</h2>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card text-center shadow-lg border-0 mb-4" style="background-color: #f8f9fa;">
@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-check p-3 shadow-sm rounded transition-answer" [ngStyle]="{
-                                   'background-color': question.answers1.is_correct == 1 ? '#07ee2e' : 
+                                   'background-color': question.answers1.is_correct == 1 ? '#07ee2e' :
                                    (question.answers1.id == question.user_answer && question.answers1.is_correct == 0 ? '#fa0606' : '#e9ecef')
                                 }">
                                     <label class="form-check-label" for="option1_{{ $index }}" style="font-size: 1rem;">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check p-3 shadow-sm rounded transition-answer" [ngStyle]="{
-                                   'background-color': question.answers2.is_correct == 1 ? '#07ee2e' : 
+                                   'background-color': question.answers2.is_correct == 1 ? '#07ee2e' :
                                    (question.answers2.id == question.user_answer && question.answers2.is_correct == 0 ? '#fa0606' : '#e9ecef')
                                 }">
                                     <label class="form-check-label" for="option2_{{ $index }}" style="font-size: 1rem;">
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check p-3 shadow-sm rounded transition-answer" [ngStyle]="{
-                                    'background-color': question.answers3.is_correct == 1 ? '#07ee2e' : 
+                                    'background-color': question.answers3.is_correct == 1 ? '#07ee2e' :
                                     (question.answers3.id == question.user_answer && question.answers3.is_correct == 0 ? '#fa0606' : '#e9ecef')
                                  }">
                                     <label class="form-check-label" for="option2_{{ $index }}" style="font-size: 1rem;">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check p-3 shadow-sm rounded transition-answer" [ngStyle]="{
-                                    'background-color': question.answers4.is_correct == 1 ? '#07ee2e' : 
+                                    'background-color': question.answers4.is_correct == 1 ? '#07ee2e' :
                                     (question.answers4.id == question.user_answer && question.answers4.is_correct == 0 ? '#fa0606' : '#e9ecef')
                                  }">
                                     <label class="form-check-label" for="option2_{{ $index }}" style="font-size: 1rem;">

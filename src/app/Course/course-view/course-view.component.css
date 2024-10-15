@@ -11,8 +11,17 @@
 }
 .panel .panel-heading{
     background: linear-gradient( to right, #007bff, #007bff );
-    padding: 15px;
+    padding: 2px;
     border-radius: 0;
+    position: relative;
+}
+th{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+i {
+    border-radius: 50%;
 }
 .panel .panel-heading .btn{
     color: #333;
@@ -41,6 +50,9 @@
     border: none;
 }
 .panel .panel-body{
+    overflow: auto;
+    height: calc(100vh - 200px);
+    scrollbar-width: none;
     padding: 0;
     border-radius: 20px;
 }

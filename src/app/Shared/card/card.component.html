@@ -11,11 +11,14 @@
         <i class="material-icons header-icon"></i>
       </a>
     </div>
-    <div class="top-bottom-container">
-      <div class="top flex flex-column gap-2 profile">
-        <img class="rounded-picture" [src]="teacherImage" alt="Profile Picture">
-        <span class="name">{{teacherName}}</span>
-      </div>
+    <div class="top-bottom-container ">
+      <!-- @if(isloggedIn) { -->
+        <div class="top flex flex-column gap-2 profile">
+          <img class="rounded-picture" [src]="teacherImage" alt="Profile Picture">
+          <span class="name">{{teacherName}}</span>
+        </div>
+    
+      <!-- } -->
       <div class="bottom w-100 ">
         <h6 class="description">{{ course.title }}</h6>
         <div class="flex justify-content-between">

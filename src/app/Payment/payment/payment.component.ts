@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stripe, StripeCardElement, StripeElements, loadStripe } from '@stripe/stripe-js';
 import { PaymentService } from '../../services/payment.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -17,7 +18,7 @@ export class PaymentComponent implements OnInit {
   error: string | undefined = '';
   id: any;
 
-  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute,private notificationService: NotificationsService) { }
 
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -51,6 +52,7 @@ export class PaymentComponent implements OnInit {
           this.paymentService.storePaymentIntent(paymentIntent, courseId).subscribe({
             next: () => {
               this.message = 'payment successful';
+              this.notificationService.refresh();
               this.router.navigate(['/course', courseId]);
 
             },

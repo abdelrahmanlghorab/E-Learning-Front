@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -16,7 +17,7 @@ export class CardComponent {
   teacherName!: any;
   teacherImage: any;
 
-  constructor(private teacherService:GetTeacherService) { }
+  constructor(private teacherService:GetTeacherService , private authservices :AuthService) { }
 
 
   ngOnInit(){
