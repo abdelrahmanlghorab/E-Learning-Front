@@ -118,17 +118,23 @@
             @if (role_id === 3) {
             <h5 class="card-title">
               @if (coursePrice == 0) {
-              <span>Now <span class="fs-2 fw-semibold">Free</span>
-                <span class="fs-6 text-secondary opacity-50">instead of <span class="lineThrow">$500</span></span>
+              <span>Now <span class="fs-2 fw-semibold"> Free</span>
+                <span class="fs-6 text-secondary opacity-50 d-block">instead of <span class="lineThrow">$500</span></span>
               </span>
             }@else if(coursePrice != 0){
               <span class="fs-2 fw-semibold">${{ coursePrice }}</span>
             }
             </h5>
               @if (enrollment == false) {
+                @if (coursePrice==0) {
+                <a (click)="freeEnroll()" class="btn btn-outline-warning enroll fs-5">
+                  Enroll Now
+                </a>
+                }@else {
             <a [routerLink]="['/payment', courseID]" class="btn btn-outline-warning enroll fs-5">
               Enroll Now
             </a>
+          }
           }@else {
             <button class="btn btn-outline-success fs-5" disabled>
               Enrolled Successfully

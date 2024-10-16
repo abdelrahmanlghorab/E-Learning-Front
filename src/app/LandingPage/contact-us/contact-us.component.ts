@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ToastrService } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,9 +19,9 @@ export class ContactUsComponent {
   subscriptionForm: FormGroup;
   contactForm: FormGroup;
   submitted = false;
-  data:any;
+  response:any;
 
-  constructor(private fb: FormBuilder, private http: HttpClient , private toaster : ToastrService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private toaster: ToastrService) {
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -38,14 +38,12 @@ export class ContactUsComponent {
 
     this.http.post('http://localhost:8000/api/subscribe', { email })
       .subscribe({
-        next: (response) => {
-          this.data=response;
-          // alert('Subscription successful!');
-          this.toaster.success(this.data.message)
+        next: (data) => {
+          this.response=data;
+          this.toaster.success(this.response.message)
         },
         error: (error) => {
           this.toaster.error(error.error.message);
-          // console.error('Subscription failed:', error);
         }
       });
   }
@@ -57,17 +55,19 @@ export class ContactUsComponent {
 
     this.http.post('http://localhost:8000/api/contact', contactData)
       .subscribe({
-        next: (response) => {
-          this.data=response;
-          this.toaster.success('Message sent successfully');
-          // alert('Message sent successfully');
+        next: (data) => {
+          this.response = data;
+          this.toaster.success(this.response.message)
+          this.contactForm.reset();
+          let modal = document.getElementById('exampleModal');
+          const closeModalBtn = document.getElementById('closeModalBtn');
+          closeModalBtn?.click();
         },
         error: (error) => {
-
-          this.toaster.error( error.error.message);
-          // console.error('Message send failed:', error.error.message);
+          this.toaster.error(error.error.message);
         }
       });
+
   }
 
 }

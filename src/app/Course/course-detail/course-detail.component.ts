@@ -9,6 +9,8 @@ import { CustomDatePipe } from '../../Pipes/custom-date.pipe';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommentsService } from '../../services/comments.service';
 import { CommonModule } from '@angular/common';
+import { PaymentService } from '../../services/payment.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-detail',
@@ -57,7 +59,9 @@ export class CourseDetailComponent {
       private teacherService: GetTeacherService,
       private enrollmentService:EnrollmentService,
       private fb: FormBuilder,
-      private commentService: CommentsService
+      private commentService: CommentsService,
+      private paymentService: PaymentService,
+      private toaster: ToastrService
     ) {
 
   }
@@ -150,5 +154,17 @@ export class CourseDetailComponent {
         }
       });
     }
-
+    freeEnroll(){
+      this.paymentService.createPaymentIntent(this.courseID).subscribe({
+        next: (response) => {
+            // this.router.navigate(['/course/'+ this.course.id]);
+            console.log('PaymentIntent created successfully:', response);
+            this.enrollment = true;
+          this.toaster.success('Enrolled successfully');
+        },
+        error: (error) => {
+          this.toaster.error('Error creating payment intent:', error);
+        }
+      })
+    }
 }
