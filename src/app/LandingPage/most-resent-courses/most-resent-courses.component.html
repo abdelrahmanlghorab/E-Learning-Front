@@ -8,7 +8,7 @@
         <div class="container">
           <div class="row  mt-3">
             @for (item of courses; track item.id) {
-            <div class="col-xs-12 col-sm-6  col-lg-6 " style="height: 450px;">
+            <div class="col-xs-12 col-sm-6  col-lg-6 " style="height: 380px;">
               <div class="card resent-card ">
                 <a class="img-card">
                   @if (item.thumbnail=="https://i.ytimg.com/img/no_thumbnail.jpg") {
@@ -39,7 +39,7 @@
       </div>
     </div>
   </section>
-  <button routerLink="/courses" class="button bbb-ttt mx-auto mt-3">
+  <button routerLink="/courses" class="button bbb-ttt mx-auto mb-5 mt-3">
     All Courses
     <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
       <path clip-rule="evenodd"

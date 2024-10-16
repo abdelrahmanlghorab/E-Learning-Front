@@ -107,8 +107,8 @@
         class="main-btn text-decoration-none ms-2"
         >Register</a>
       }@else {
-      <div class="dropdown">
-        <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class="dropdown ">
+        <div class="dropdown-toggle d-flex align-items-center " data-bs-toggle="dropdown" aria-expanded="false">
           <span class="profile-username active-route fw-bold me-2">{{ name }}</span>
           <div class="avatar-sm me-2">
             @if(image == "http://127.0.0.1:8000/images/users"){
@@ -118,10 +118,10 @@
             }
           </div>
         </div>
-        <ul class="dropdown-menu text-center" style="width: 180px; margin-left: 0px;">
+        <ul class="dropdown-menu text-center me-5 " style="width: 120px; margin-left: 0px;">
           @if (role_id === 2) {
           <li>
-            <a class="dropdown-item btn main-btn fw-bold text-white w-50 mx-auto rounded-5"
+            <a class="dropdown-item btn main-btn fw-bold text-white w-75  mx-auto rounded-5"
               [routerLink]="['/teacherprofile', id]">View Profile</a>
           </li>
           }@else if (role_id === 3) {
