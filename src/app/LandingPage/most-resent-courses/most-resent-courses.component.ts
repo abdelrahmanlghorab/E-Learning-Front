@@ -25,15 +25,13 @@ export class MostResentCoursesComponent {
       this.courses = this.courses.slice(2, 4);
 
       this.courses.forEach((course: any) => {
-        // console.log(course.instructor_id);
         this.teacherService.getTeacher(course.instructor_id).subscribe((teacherData: any) => {
           course.teacherName = teacherData.teacher.name;
-          course.teacherImage = teacherData.teacher.image;                    
-          // console.log(course.teacherName);
+          course.teacherImage = teacherData.teacher.image;
         });
       });
     });
-    
+
   }
 
 

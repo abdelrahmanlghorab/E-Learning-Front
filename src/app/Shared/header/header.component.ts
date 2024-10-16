@@ -1,14 +1,13 @@
-import { Component,OnInit } from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, } from '@angular/router';
+
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/Auth/auth.service';
 import { NotificationsService } from '../../services/notifications/notifications.service';
-
-import {DatePipe } from '@angular/common';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive,DatePipe],
+  imports: [RouterLink,DatePipe,RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -18,7 +17,7 @@ export class HeaderComponent implements OnInit {
   image!: string;
   role_id!: any;
   id!: any;
-  notifications: any[] = []; 
+  notifications: any[] = [];
   isloggedIn: boolean = false;
   count!: number;
   Id: any;
@@ -26,8 +25,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private authservices: AuthService,
-    private notificationService: NotificationsService
-  ) {}
+    private notificationService: NotificationsService,
+  ) { }
 
   ngOnInit() {
     this.data = localStorage.getItem('data');
@@ -38,6 +37,8 @@ export class HeaderComponent implements OnInit {
       this.role_id = this.data.role_id;
       this.id = this.data.id;
     }
+
+
     this.authservices.isLoggedIn$.subscribe((isLoggedIn) => {
       this.isloggedIn = isLoggedIn;
       this.data = JSON.parse(localStorage.getItem('data')!);
@@ -49,8 +50,9 @@ export class HeaderComponent implements OnInit {
       }
       this.userNotification();
     });
+
     this.notificationService.userNotifications.subscribe((notifications) => {
-      this.notifications = notifications; 
+      this.notifications = notifications;
       this.count = this.notifications.reduceRight(
         (count, notification) => {
           if (notification.read_at === null) {
@@ -79,6 +81,8 @@ export class HeaderComponent implements OnInit {
     this.notificationService.getUserNotifications().subscribe((data: any) => {
       this.notifications = data.Notifications;
       this.count = data.unReadNotificationsCount;
+      this.notifications = data.Notifications;
+      this.count = data.unReadNotificationsCount;
     });
   }
 
@@ -87,11 +91,17 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('data');
     localStorage.removeItem('notifications');
     this.authservices.setLoggedIn(false);
+    this.router.navigateByUrl('signin');
     this.role_id = null;
-    this.router.navigateByUrl("signin");
+
   }
 
+
   onRead(id: any) {
+    this.Id = { id: id };
+    this.notificationService.markNotificationAsRead(this.Id).subscribe(() => {
+      this.userNotification();
+    });
     this.Id = { id: id };
     this.notificationService.markNotificationAsRead(this.Id).subscribe(() => {
       this.userNotification();

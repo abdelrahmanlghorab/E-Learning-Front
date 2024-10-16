@@ -18,8 +18,7 @@ export class CourseListComponent {
   constructor(private playListService: CoursePlaylistService, private CoursesService: CoursesService) {}
   ngOnInit() {
     this.CoursesService.getAllCourses().subscribe((data: any) => {
-      this.courses = data;
-        // console.log(this.courses = data); 
+        this.courses = data
     });
 
   }

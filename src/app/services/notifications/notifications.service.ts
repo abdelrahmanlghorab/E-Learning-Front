@@ -14,11 +14,6 @@ export class NotificationsService {
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {
-    // interval(30000)
-    //   .pipe(switchMap(() => this.getUserNotifications()))
-    //   .subscribe((notifications: any) => {
-    //     this.notification.next(notifications.Notifications);
-    //   });
     this.getUserNotifications().subscribe((notifications: any) => {
       this.notification.next(notifications.Notifications);
     });
@@ -26,14 +21,15 @@ export class NotificationsService {
 
   getUserNotifications() {
     return this.http.get<any>(this.url);
+    return this.http.get<any>(this.url);
   }
   refresh(){
     this.getUserNotifications().subscribe((notifications: any) => {
       this.notification.next(notifications.Notifications);
     });
   }
-
   markNotificationAsRead(id: any) {
+    return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
     return this.http.post(this.readUrl, id, { headers: this.httpHeaders });
   }
 }

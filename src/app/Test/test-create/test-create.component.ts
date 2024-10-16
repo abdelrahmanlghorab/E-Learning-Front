@@ -50,7 +50,6 @@ export class TestCreateComponent {
 
       this.testService.createTest(formData).subscribe({
         next: (response) => {
-          // console.log('Test created successfully', response);
           this.toaster.success('Test created successfully');
           this.router.navigateByUrl('tests');
         },

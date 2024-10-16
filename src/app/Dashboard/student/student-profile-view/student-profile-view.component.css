@@ -2,7 +2,9 @@
         font-family: Arial, sans-serif;
         background-color: #f5f5f5; 
       }
-      
+      .cardd{
+        margin-top: 100px !important;
+      }
       .pro-tip-card {
         border-radius: 10px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);

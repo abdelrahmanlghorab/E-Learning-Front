@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-sm navbar-light d-flex  fw-bold  position-relative" aria-label="Third navbar example" dir="ltr">
+
+<nav class="navbar navbar-expand-sm navbar-light d-flex  fw-bold " aria-label="Third navbar example" dir="ltr">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="sm-navbar">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
@@ -82,9 +83,11 @@
                 </div>
               </div>
             </div>
+          <hr />
 
             <hr />
             }
+
           </li>
 
 
@@ -123,13 +126,13 @@
           </li>
           }@else if (role_id === 3) {
           <li>
-            <a class="dropdown-item btn main-btn fw-bold text-white  w-75 mx-auto rounded-5"
+            <a class="dropdown-item btn main-btn fw-bold text-white fs-6  w-75 mx-auto rounded-5"
               [routerLink]="['/profile', id]">View Profile</a>
           </li>
           }
           <hr />
-          <li>
-            <a (click)="onLogout()" class="dropdown-item fw-bold fs-5"><i class="ms-3 fa fa-sign-out"></i>Logout</a>
+          <li style="margin-top: -25px;">
+            <a (click)="onLogout()" class="dropdown-item fw-bold fs-6"><i class="ms-3 fa fa-sign-out"></i>Logout</a>
           </li>
         </ul>
       </div>
