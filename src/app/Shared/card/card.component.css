@@ -88,3 +88,12 @@ a {
   all: unset;
 
 }
+.badge {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: unset;
+  color:#007bff !important;
+  box-shadow: black;
+}

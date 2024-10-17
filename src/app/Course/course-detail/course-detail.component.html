@@ -60,7 +60,7 @@
         </div>
       </div>
 
-
+      @if(course.course_type == 'video') {
       <div class="card mt-3" dir="ltr">
                   @if(courseVideosNum > 0){
 
@@ -113,6 +113,26 @@
         </div>
       }
       </div>
+    }@else {
+      @if(enrollment==true) {
+      <div class ="card mt-3" dir="ltr">
+        <div class="card-body text-center">
+          <h3 class="card-title text-warning">Recorded Sessions</h3>
+          <p class="card-text text-end">
+            <small class="text-muted text-secondary opacity-50">schedule : {{ courseCreation }}</small>
+          </p>
+          <span>Link Course :<a [href]="course.live_link" target="_blank" class=" mx-1 btn btn-warning">Go To session</a></span>
+        </div>
+      </div>
+    }
+    @else {
+      <div class="card mt-3" dir="ltr">
+        <div class="card-body text-center">
+          <h3 class="card-title text-danger">Please enroll to see the sessions</h3>
+          </div>
+          </div>
+    }
+    }
     </div>
 
 

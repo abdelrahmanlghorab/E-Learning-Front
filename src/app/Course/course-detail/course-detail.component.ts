@@ -79,7 +79,8 @@ export class CourseDetailComponent {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.courseService.getCourse(this.id).subscribe((data: any) => {
 
-    this.course = data
+    this.course = data;
+    console.log(this.course);
     this.courseID=data.id;
     this.courseCreation = new CustomDatePipe().transform(this.course.created_at);
     this.courseTitle = this.course.title;
