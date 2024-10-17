@@ -8,7 +8,7 @@
 
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
-          @if (courseImage=="https://i.ytimg.com/img/no_thumbnail.jpg") {
+          @if (courseImage=='null') {
           <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
 
           }@else {
@@ -40,7 +40,12 @@
           </div>
           <div class="col">
             <div class="card-body">
+              @if(teacherGender=="Male"){
               <span class="card-title fs-2 mb-1">Mr. {{ courseInstructor }}</span>
+              }
+              @else {
+                <span class="card-title fs-2 mb-1">Ms. {{ courseInstructor }}</span>
+              }
               <p class="card-text text-secondary col-10">
                 {{ instructorTitle }}
               </p>
@@ -83,10 +88,10 @@
                 <div class="accordion-body ms-3" style="margin: 0; padding: 0;">
                   @if(enrollment==true) {
                   {{ truncate.transform(this.video.description, 200) }}
-                  <div class="d-flex  align-items-center text-start mt-2">
+                  <div class="d-flex  align-items-center text-start mt-2 mb-2">
                     <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
                     <code class="ms-2 text-start fs-6 fw-bold text-secondary">
-                     <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:green">Go to Session</a>
+                     <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:olivedrab;">Go to Session</a>
                     </code>
                   </div>
                   } @else {
@@ -117,14 +122,19 @@
           <div class="card-body text-center">
             @if (role_id === 3) {
             <h5 class="card-title">
+              @if (enrollment == false){
               @if (coursePrice == 0) {
               <span>Now <span class="fs-2 fw-semibold"> Free</span>
                 <span class="fs-6 text-secondary opacity-50 d-block">instead of <span class="lineThrow">$500</span></span>
               </span>
-            }@else if(coursePrice != 0){
-              <span class="fs-2 fw-semibold">${{ coursePrice }}</span>
             }
-            </h5>
+
+          @else if(coursePrice != 0){
+              <span class="fs-2 fw-semibold text-secondary">
+                <span class="text-success">$ </span>{{ coursePrice }}</span>
+            }
+                          }
+                                    </h5>
               @if (enrollment == false) {
                 @if (coursePrice==0) {
                 <a (click)="freeEnroll()" class="btn btn-outline-warning enroll fs-5">

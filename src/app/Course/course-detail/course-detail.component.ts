@@ -50,6 +50,7 @@ export class CourseDetailComponent {
   instructorDescription: string = "description";
   instructorImage: string="";
   instructourEmail: string="email";
+  teacherGender: string="gender";
   truncate= new TruncatePipe();
   enrollment:boolean=false;
   constructor(private playList:CoursePlaylistService,
@@ -88,6 +89,7 @@ export class CourseDetailComponent {
 
     this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
     this.teacher = data.teacher
+    this.teacherGender=this.teacher.gender
     this.courseInstructor = this.teacher.name;
     this.instructorTitle = this.teacher.title;
     this.instructorDescription = this.teacher.description;

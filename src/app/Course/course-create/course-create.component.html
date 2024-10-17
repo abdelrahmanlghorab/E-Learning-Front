@@ -1,5 +1,5 @@
 <section class="container d-flex justify-content-center mt-5 my-3" dir="ltr">
-    <div class="col-md-8 px-5 ">
+    <div class="col-md-8 px-5 " dir="ltr">
       <div class="text-center mt-5">
         <h3 class="text-second mb-4" style="color: orange; font-weight: 700;">Add Course</h3>
       </div>
@@ -17,7 +17,7 @@
                   </mat-select>
                 </mat-form-field>
                 <div *ngIf="courseForm.get('playlist_id')?.invalid && submitted" class="invalid-feedback">
-                  معرف قائمة التشغيل مطلوب.
+                  Course is Required
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@
                        placeholder="enter title" [class.is-invalid]="courseForm.get('title')?.invalid && courseForm.get('title')?.touched">
               </div>
               <div *ngIf="courseForm.get('title')?.invalid && submitted" class="invalid-feedback">
-                عنوان الدورة مطلوب ويجب أن يكون أكثر من 3 أحرف.
+                  Title Have to be more than 3 characters
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
                        placeholder="enter description" [class.is-invalid]="courseForm.get('description')?.invalid && courseForm.get('description')?.touched">
               </div>
               <div *ngIf="courseForm.get('description')?.invalid && submitted" class="invalid-feedback">
-                تفاصيل الدورة مطلوبة ويجب أن تكون أكثر من 10 أحرف.
+                    Descritption havw to more than 10 characters
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
           <label class="form-check-label fs-4 " for="isFree">Free</label>
           <input formControlName="is_free" type="checkbox" class="form-check-input" id="isFree">
         </div>
-        
+
 
         <div class="row mt-3" *ngIf="!courseForm.get('is_free')?.value">
           <div class="col">
@@ -70,7 +70,7 @@
                        placeholder="enter price" [class.is-invalid]="courseForm.get('price')?.invalid && courseForm.get('price')?.touched">
               </div>
               <div *ngIf="courseForm.get('price')?.invalid && submitted" class="invalid-feedback">
-                يرجى إدخال سعر صالح للدورة.
+                  Please Enter a valid price!
               </div>
             </div>
           </div>
@@ -90,8 +90,8 @@
                 </mat-select>
               </mat-form-field>
                 <div *ngIf="courseForm.get('instructor_id')?.invalid && submitted" class="invalid-feedback">
-                معرف المعلم مطلوب.
-              </div>
+                  Instructor required.
+                </div>
             </div>
           </div>
         </div>
