@@ -16,18 +16,27 @@ import { Toast, ToastrService } from 'ngx-toastr';
 })
 
 export class ContactUsComponent {
+  email!: string;
+  data!: any;
   subscriptionForm: FormGroup;
   contactForm: FormGroup;
   submitted = false;
   response:any;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private toaster: ToastrService) {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.email = this.data.email;
+      console.log(this.email);
+      
+    }
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
 
     this.contactForm = this.fb.group({
-      contactEmail: ['', [Validators.required, Validators.email]],
+      contactEmail: [this.email, [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }

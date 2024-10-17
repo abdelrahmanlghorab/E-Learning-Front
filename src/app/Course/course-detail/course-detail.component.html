@@ -1,5 +1,5 @@
 
-<div class="title mt-5" >
+<div class="title mt-5" dir="ltr">
   <h2 class="text-center mt-5 text-light">{{ courseTitle }}</h2>
 </div>
 <div class="col-10 mx-auto">
@@ -9,10 +9,10 @@
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
           @if (courseImage=="https://i.ytimg.com/img/no_thumbnail.jpg") {
-          <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
+          <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image" width="90%">
 
           }@else {
-  <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;" alt="Course Image" />          }
+  <img [src]="courseImage" class="card-img p-2 img-fluid mx-auto" style=" max-width: 88%;" alt="Course Image" />          }
 
       </div>
       <div class="card mt-3" dir="ltr">

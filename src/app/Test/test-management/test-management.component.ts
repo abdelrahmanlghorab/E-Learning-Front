@@ -104,7 +104,7 @@ export class TestManagementComponent {
     const unansweredQuestions = this.questions.filter(question => !question.studentAnswer);
 
     if (unansweredQuestions.length > 0) {
-      this.toaster.error('من فضلك جاوب علي كل الاسئله');
+      this.toaster.error('Please answer all questions');
 
       return;
     }
@@ -131,7 +131,7 @@ export class TestManagementComponent {
 
     this.testService.storeTestScore(testScore).subscribe((res: any) => {
       if (res.status) {
-        this.toaster.success("تم الانتهاء من الامتحان و تسجيل النتيجه بنجاح")
+        this.toaster.success("submit success")
         this.router.navigateByUrl("test-answer/" + this.testId);
       }
     });

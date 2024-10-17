@@ -54,7 +54,6 @@ export class TestCreateComponent {
           this.router.navigateByUrl('tests');
         },
         error: (error) => {
-          // console.log('Error creating test', error);
           if (error.error.success == false) {
             if (error.error.validation_errors.title) {
               this.toaster.error(error.error.validation_errors.title);
