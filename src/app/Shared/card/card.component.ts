@@ -23,6 +23,7 @@ export class CardComponent {
   ngOnInit(){
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
          this.teacher = data.teacher
+         console.log(this.teacher);
          this.teacherName=this.teacher.name;
         this.teacherImage = this.teacher.image;
        });

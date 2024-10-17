@@ -157,7 +157,6 @@ export class CourseDetailComponent {
     freeEnroll(){
       this.paymentService.createPaymentIntent(this.courseID).subscribe({
         next: (response) => {
-            // this.router.navigate(['/course/'+ this.course.id]);
             console.log('PaymentIntent created successfully:', response);
             this.enrollment = true;
           this.toaster.success('Enrolled successfully');
