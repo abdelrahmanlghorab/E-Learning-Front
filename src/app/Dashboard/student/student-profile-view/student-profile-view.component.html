@@ -39,7 +39,8 @@
           @for(teacher of user_teacher ; track teacher.id){
             @if(teacher.id == user_course.instructor_id){
             <div class="card resent-card">
-              <span class="badge ms-1 px-3 py-1 bg-success text-white" >Enrolled</span>
+              <span class="badge ms-1 px-3 py-1 text-white" >Enrolled</span>
+              <span class="badge badge1 me-1 px-3 py-1 text-white" >{{user_course.course_type}}</span>
                 <a class="img-card"><img [src]="user_course.thumbnail"/></a>
                 <p class=" mt-2 d-flex ms-3 fs-5">{{user_course.title}}</p>
                 <div class="card-content">

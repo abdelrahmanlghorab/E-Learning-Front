@@ -123,8 +123,22 @@
         top: 0; 
         right: 0;
         z-index: 2;
-        color:#007bff;
-        background-color: #fff;
+        color:#007bff !important;
+        box-shadow: black
+      }
+      span.badge1{
+        position: absolute;
+        display: inline;
+        width: 15%;
+        height: 15%;
+        border-radius: 50%;
+        text-align: center;
+        justify-self: center;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        color:#ff1717 !important;
+        background-color: #d4d4d400 !important;
         box-shadow: black
       }
 

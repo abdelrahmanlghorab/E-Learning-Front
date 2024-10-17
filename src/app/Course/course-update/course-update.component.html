@@ -36,7 +36,7 @@
             please select course type
           </div>
         </div>
-      <!-- <div *ngIf="courseForm.get('course_type')?.value == 'video'"> -->
+      <div *ngIf="courseForm.get('course_type')?.value == 'video'">
         <div class="row mt-3">
           <div class="col">
             <div class="form-group" style="width: 100%; height: 10%">
@@ -49,7 +49,7 @@
                     setCourseValue(courseForm.get('playlist_id')?.value)
                   "
                 >
-                  @for (course of courses; track course.id) {
+                  @for (course of playlist; track course.id) {
                   <mat-option
                     id="description"
                     class="form-control bg-light text-dark"
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-      <!-- </div> -->
+      </div>
         <div class="row mt-2">
           <div class="col">
             <div class="form-group">

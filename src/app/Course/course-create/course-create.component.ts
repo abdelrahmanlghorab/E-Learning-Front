@@ -52,12 +52,13 @@ export class CourseCreateComponent implements OnInit {
       price: [{ value: '', disabled: false }, [Validators.required, Validators.min(0)]],
       is_free: [false],
       instructor_id: ['', Validators.required],
-      playlist_id: ['', Validators.required],
-      thumbnail:[''],
+      playlist_id: [''],
+      thumbnail:[this.thumbnail()],
       course_type: ['', Validators.required],
       live_platform : [''],
       live_link : [''],
       live_schedule : [''],
+      live_details : [''],
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
@@ -72,7 +73,7 @@ export class CourseCreateComponent implements OnInit {
 
   createCourse() {
     this.submitted = true;
-    console.log(this.courseForm.errors)
+    console.log(this.courseForm.value);
 
     if (this.courseForm.valid) {
       this.submitted = false;
