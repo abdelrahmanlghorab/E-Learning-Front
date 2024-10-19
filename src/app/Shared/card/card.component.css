@@ -89,11 +89,12 @@ a {
 
 }
 .badge {
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  width: 100%;
-  background-color: unset;
+  /* position: absolute; */
+  /* top: 0; */
+  /* z-index: 2; */
+  /* width: 100%; */
+
   color:#007bff !important;
-  box-shadow: black;
+   box-shadow: black 0.2px 0.5px;
 }
+

@@ -25,7 +25,9 @@ export class ProfileViewComponent {
     this.userService.getUser(Number(this.user_data.id)).subscribe(
       (data: any) => {
         this.user = data.data;
-      }
+        console.log(this.user.image
+);
+ }
     );
     this.userService.getUserScore(Number(this.user_data.id)).subscribe(
       (data: any) => {

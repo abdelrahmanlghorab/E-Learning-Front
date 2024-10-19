@@ -1,5 +1,4 @@
-
-<div class="title " >
+<div class="title ">
   <h2 class="text-center text-light">{{ courseTitle }}</h2>
 </div>
 <div class="col-10 mx-auto">
@@ -8,11 +7,13 @@
 
     <div class="container col-12 col-md-9 col-lg-9">
       <div class="card">
-          @if (courseImage=='null') {
-          <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
+        @if (courseType=='video' &&
+        courseImage=='https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg' ) {
+        <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
 
-          }@else {
-  <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;" alt="Course Image" />          }
+        }@else {
+        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;"
+          alt="Course Image" /> }
 
       </div>
       <div class="card mt-3" dir="ltr">
@@ -44,7 +45,7 @@
               <span class="card-title fs-2 mb-1">Mr. {{ courseInstructor }}</span>
               }
               @else {
-                <span class="card-title fs-2 mb-1">Ms. {{ courseInstructor }}</span>
+              <span class="card-title fs-2 mb-1">Ms. {{ courseInstructor }}</span>
               }
               <p class="card-text text-secondary col-10">
                 {{ instructorTitle }}
@@ -62,7 +63,7 @@
 
       @if(course.course_type == 'video') {
       <div class="card mt-3" dir="ltr">
-                  @if(courseVideosNum > 0){
+        @if(courseVideosNum > 0){
 
         <h2 class="card-header d-flex justify-content-between align-items-center">
           <div>
@@ -105,34 +106,49 @@
             </div>
           </div>
           }
-        }
+          }
         </div>
-      }@else {
+        }@else {
         <div class="card-body text-center">
           <h3 class="card-title text-warning">This Course Has No Sessions</h3>
         </div>
-      }
+        }
       </div>
-    }@else {
+      }@else {
       @if(enrollment==true) {
-      <div class ="card mt-3" dir="ltr">
+      <div class="card mt-3" dir="ltr">
         <div class="card-body text-center">
           <h3 class="card-title text-warning">Recorded Sessions</h3>
-          <p class="card-text text-end">
-            <small class="text-muted text-secondary opacity-50">schedule : {{ courseCreation }}</small>
-          </p>
-          <span>Link Course :<a [href]="course.live_link" target="_blank" class=" mx-1 btn btn-warning">Go To session</a></span>
+          <div class="row">
+            <div class="col-6">
+              <p class="mb-3 fs-4 ms-0 mt-0 text-secondary text-start ">
+                <span class="fs-4 fw-bold text-secondary">Course Details :</span> {{courseDetails}}
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="card-text text-end">
+                <small class="text-muted text-secondary fs-5 opacity-50">schedule : {{ courseSchedule }}</small>
+              </p>
+            </div>
+          </div>
+          @if (courseSchedule!=courseDateConfirm) {
+              <span class="fs-4 fw-bold text-secondary text-end">Session Link : <span class="text-warning fs-5">{{remainingSessionsDays}} Days to Start</span></span>
+          }@else {
+                <span class="fs-4 fw-bold text-secondary text-end">Session Link :<a [href]="course.live_link" target="_blank"
+                    class=" text-decoration-none text-light fs-6 custom-button">{{coursePlatform}}</a></span>
+          }
+
         </div>
       </div>
-    }
-    @else {
+      }
+      @else {
       <div class="card mt-3" dir="ltr">
         <div class="card-body text-center">
           <h3 class="card-title text-danger">Please enroll to see the sessions</h3>
-          </div>
-          </div>
-    }
-    }
+        </div>
+      </div>
+      }
+      }
     </div>
 
 
@@ -145,32 +161,33 @@
               @if (enrollment == false){
               @if (coursePrice == 0) {
               <span>Now <span class="fs-2 fw-semibold"> Free</span>
-                <span class="fs-6 text-secondary opacity-50 d-block">instead of <span class="lineThrow">$500</span></span>
+                <span class="fs-6 text-secondary opacity-50 d-block">instead of <span
+                    class="lineThrow">$500</span></span>
               </span>
-            }
+              }
 
-          @else if(coursePrice != 0){
+              @else if(coursePrice != 0){
               <span class="fs-2 fw-semibold text-secondary">
                 <span class="text-success">$ </span>{{ coursePrice }}</span>
-            }
-                          }
-                                    </h5>
-              @if (enrollment == false) {
-                @if (coursePrice==0) {
-                <a (click)="freeEnroll()" class="btn btn-outline-warning enroll fs-5">
-                  Enroll Now
-                </a>
-                }@else {
+              }
+              }
+            </h5>
+            @if (enrollment == false) {
+            @if (coursePrice==0) {
+            <a (click)="freeEnroll()" class="btn btn-outline-warning enroll fs-5">
+              Enroll Now
+            </a>
+            }@else {
             <a [routerLink]="['/payment', courseID]" class="btn btn-outline-warning enroll fs-5">
               Enroll Now
             </a>
-          }
-          }@else {
+            }
+            }@else {
             <button class="btn btn-outline-success fs-5" disabled>
               Enrolled Successfully
             </button>
-          }
-              }
+            }
+            }
             <hr />
 
             <div class="row">
@@ -191,44 +208,57 @@
 
       <div class="card col-12 mt-4">
         <h6 class="text-center mt-2 text-warning fw-bold">Leave a Feedback</h6>
-        <div class="card-body">
+        @if(enrollment){
+        <div class="card-body ">
           <form [formGroup]="form" (ngSubmit)="click()" class="comment-form">
             <div class="form-group">
               <textarea id="inputName" class="form-control" formControlName="inputName" rows="4"
                 placeholder="Write your feedback here..." dir="ltr"></textarea>
             </div>
-            <button type="submit" class="btn custom-button w-100 enroll mt-3">Submit Feedback</button>
+            <div class="text-center me-4">
+            <button type="submit" class="btn custom-button w-100 enroll mt-3 text-center ">Submit Feedback</button>
+          </div>
           </form>
         </div>
+      }
+      @else {
+      <div class="card-body text-center">
+        <h5 class="card-title text-secondary">Please Enroll to leave a Feedback</h5>
       </div>
+      }
+      </div>
+
       @if(comments.length > 0){
       <h6 class=" mb-4 text-warning fw-bold" dir="ltr">Feedbacks</h6>
-        @for (comment of comments; track comment.id) {
+      @for (comment of comments; track comment.id) {
       <div class="card mb-3 shadow-sm " dir="ltr">
         <div class="card-body d-flex">
+          @if(comment.user.image==null){
+          <img src="default.png" class="rounded-circle comment-img me-3" alt="{{ comment.user.name }}" />
+          }@else{
           <img [src]="'http://127.0.0.1:8000/images/users/' + comment.user.image"
             class="rounded-circle comment-img me-3" alt="{{ comment.user.name }}" />
+          }
           <div class="w-100">
             <div class="row">
               <span class="fs-5 ">{{ comment.user.name }}</span>
               <small class="text-muted opacity-50">{{ comment.created_at | date }}</small>
             </div>
-            <p>{{ comment.body }}</p>
+            <p class="text-secondary">{{ comment.body }}</p>
           </div>
 
-        @if (role_id===4) {
-        <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm my-auto me-auto">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      }
-    </div>
+          @if (role_id===4) {
+          <button (click)="deleteComment(comment.id)" class="btn btn-danger btn-sm my-auto me-auto">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          }
+        </div>
       </div>
-    }
-  }@else {
+      }
+      }@else {
       <h6 class=" mb-4 text-warning text-center fw-bold" dir="ltr">There's No Feedbacks in this Course</h6>
+      }
 
-
-  }
     </div>
   </div>
 </div>

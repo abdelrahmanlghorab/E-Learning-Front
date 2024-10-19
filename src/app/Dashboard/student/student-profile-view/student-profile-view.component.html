@@ -5,11 +5,20 @@
 
         <div class="card-body col d-flex align-items-center">
           <div class="avatar-xxl avatar-indicators avatar-online me-2 position-relative">
+            @if(user.image=='http://localhost:8000/images/users'){
+              <img
+                src="default.png"
+                class="avatar-xxl rounded-circle border border-2"
+                alt="Image"
+              />
+
+            }@else {
             <img
               [src]="user.image"
               class="avatar-xxl rounded-circle border border-2"
-              alt="Image" 
+              alt="Image"
             />
+            }
           </div>
           <div class="ms-3">
             <h5 class="card-title">Welcome back, {{user.name}}</h5>
@@ -20,17 +29,17 @@
             <p class="card-text">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 {{user.phone}}
-            </p>   
+            </p>
             <a routerLink="/edit-profile" class="card-link text-purple">Edit Profile</a>
           </div>
 
         </div>
-        
+
       </div>
     </div>
   </div>
 
-   
+
   <div class="py-6 mt-3">
     <h3 class="mb-4 fw-bold"><i class="fa-solid fa-book-open"></i> All Courses</h3>
     <div class="row">
@@ -39,8 +48,7 @@
           @for(teacher of user_teacher ; track teacher.id){
             @if(teacher.id == user_course.instructor_id){
             <div class="card resent-card">
-              <span class="badge ms-1 px-3 py-1 text-white" >Enrolled</span>
-              <span class="badge badge1 me-1 px-3 py-1 text-white" >{{user_course.course_type}}</span>
+              <span class="badge ms-1 px-3 py-1 me-2 mt-2 text-white" >{{user_course.course_type}}</span>
                 <a class="img-card"><img [src]="user_course.thumbnail"/></a>
                 <p class=" mt-2 d-flex ms-3 fs-5">{{user_course.title}}</p>
                 <div class="card-content">
@@ -61,6 +69,6 @@
         </div>
       }
     </div>
- 
+
   </div>
 </div>
