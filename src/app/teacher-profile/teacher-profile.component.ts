@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { GetTeacherService } from '../services/get-teacher.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { TruncatePipe } from '../Pipes/truncate.pipe';
 
 @Component({
   selector: 'app-teacher-profile',
@@ -23,8 +22,6 @@ export class TeacherProfileComponent {
   teacherCourses: any;
   coursesCount: any;
   courseStudentCount: number=0;
-  truncate = new TruncatePipe();
-
 
 constructor( private getteacher :GetTeacherService , public router: Router, private activatedRoute: ActivatedRoute){
   this.id = this.activatedRoute.snapshot.params['id'];
@@ -41,7 +38,6 @@ constructor( private getteacher :GetTeacherService , public router: Router, priv
     this.coursesCount = this.api.courses_count;
 
       this.teacherCourses = this.api.courses;
-      console.log(this.teacherCourses);
 
       for(let course of this.teacherCourses){
         this.courseStudentCount += Number(course.Student_count);

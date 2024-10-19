@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { MatFormField} from '@angular/material/form-field';
+import { MatFormField } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-contact-us',
   standalone: true,
-  imports: [MatFormField,MatIconModule,ReactiveFormsModule,CommonModule],
+  imports: [MatFormField, MatIconModule, ReactiveFormsModule, CommonModule],
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.css'
+  styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent {
   subscriptionForm: FormGroup;
@@ -19,6 +18,7 @@ export class ContactUsComponent {
   submitted = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
+    // Initialize the forms
     this.subscriptionForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -29,10 +29,12 @@ export class ContactUsComponent {
     });
   }
 
+  // Newsletter subscription method
   subscribe() {
     this.submitted = true;
     const email = this.subscriptionForm.get('email')?.value;
 
+    // Make POST request to Laravel API for subscribing
     this.http.post('http://localhost:8000/api/subscribe', { email })
       .subscribe({
         next: (response) => {
@@ -43,12 +45,15 @@ export class ContactUsComponent {
         }
       });
   }
+
+  // Contact form method
   sendContactMessage() {
     const contactData = {
       email: this.contactForm.get('contactEmail')?.value,
       message: this.contactForm.get('message')?.value
     };
 
+    // Make POST request to Laravel API for sending contact message
     this.http.post('http://localhost:8000/api/contact', contactData)
       .subscribe({
         next: (response) => {
@@ -60,4 +65,5 @@ export class ContactUsComponent {
         }
       });
   }
+  
 }
