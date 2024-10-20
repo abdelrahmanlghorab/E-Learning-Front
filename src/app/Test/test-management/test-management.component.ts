@@ -4,28 +4,40 @@ import { TestService } from '../../services/test.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-test-management',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './test-management.component.html',
-  styleUrls: ['./test-management.component.css'] 
+  styleUrls: ['./test-management.component.css']
 })
 export class TestManagementComponent {
+  data: any;
+  name!: string;
+  image!: string;
+  role_id!: any;
+  id!: any;
+  isloggedIn: boolean = false;
+  title!: string;
+
+
   test: any[] = [];
   questions: any[] = [];
-  questionsAnswers: { question_id: string; answer_id: number }[] = []; 
-  
+  questionsAnswers: { question_id: string; answer_id: number }[] = [];
+
   score: number = 0;
   testForm: FormGroup;
 
   testId!: any;
   http = inject(HttpClient);
-  constructor(private route: ActivatedRoute, private tf: FormBuilder,private router: Router) {
+  toaster = inject(ToastrService);
+
+  constructor(private route: ActivatedRoute, private tf: FormBuilder, private router: Router) {
     this.testForm = this.tf.group({
-      question_id: [''],
-      answer_id: [''],
+      question_id: ['', Validators.required],
+      answer_id: ['', Validators.required],
     });
   }
 
@@ -36,16 +48,27 @@ export class TestManagementComponent {
   testService = inject(TestService);
 
   ngOnInit() {
+    this.data = localStorage.getItem('data');
+    if (this.data) {
+      this.data = JSON.parse(this.data);
+      this.name = this.data.name;
+      this.image = this.data.image;
+      this.role_id = this.data.role_id;
+      this.id = this.data.id;
+    }
+
     this.testId = this.route.snapshot.paramMap.get('id');
     this.testService.getTest(this.testId).subscribe((res: any) => {
       this.test = res.test;
+      this.title = res.test.title;
+
       this.questions = res.questions;
     });
   }
 
   getAnswer(event: any) {
-    const value = event.target.value; 
-    const questionIndex = event.target.name; 
+    const value = event.target.value;
+    const questionIndex = event.target.name;
 
     this.questions[questionIndex].studentAnswer = value;
 
@@ -59,10 +82,10 @@ export class TestManagementComponent {
     if (existingAnswer) {
       existingAnswer.answer_id = answerId;
     } else {
-      this.questionsAnswers.push({ question_id: questionId, answer_id: answerId }); 
+      this.questionsAnswers.push({ question_id: questionId, answer_id: answerId });
     }
 
-    console.log(this.questionsAnswers); 
+    console.log(this.questionsAnswers);
   }
 
   getResults() {
@@ -78,6 +101,14 @@ export class TestManagementComponent {
   }
 
   onSubmit() {
+    const unansweredQuestions = this.questions.filter(question => !question.studentAnswer);
+
+    if (unansweredQuestions.length > 0) {
+      this.toaster.error('من فضلك جاوب علي كل الاسئله');
+
+      return;
+    }
+
     if (this.questionsAnswers.length > 0) {
       const questionIds = this.questionsAnswers.map(qa => qa.question_id);
       const answerIds = this.questionsAnswers.map(qa => qa.answer_id);
@@ -86,25 +117,24 @@ export class TestManagementComponent {
         question_id: questionIds,
         answer_id: answerIds
       };
+
       this.testService.CreateuserAnswer(payload).subscribe((res: any) => {
         if (res.status) {
-          alert('Answer submitted successfully');
-        } 
+        }
       });
-    } else {
-      alert('Please answer the questions before submitting.');
     }
-    const testScore ={
+
+    const testScore = {
       test_id: this.testId,
       score: this.score,
-    }
-    console.log(testScore);
-  
-    this.testService.storeTestScore(testScore).subscribe((res: any) =>{
+    };
+
+    this.testService.storeTestScore(testScore).subscribe((res: any) => {
       if (res.status) {
-        alert('Answer submitted successfully');
-        this.router.navigateByUrl("tests");
-      } 
+        this.toaster.success("تم الانتهاء من الامتحان و تسجيل النتيجه بنجاح")
+        this.router.navigateByUrl("test-answer/" + this.testId);
+      }
     });
   }
+
 }

@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
 import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-create',
@@ -34,6 +35,7 @@ export class CourseCreateComponent implements OnInit {
     private teachersService: GetTeacherService,
     private coursesService: CoursesService,
     private router: Router,
+    private toaster:ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +54,13 @@ export class CourseCreateComponent implements OnInit {
       price: [{ value: '', disabled: false }, [Validators.required, Validators.min(0)]],
       is_free: [false],
       instructor_id: ['', Validators.required],
-      playlist_id: ['', Validators.required],
-      thumbnail:[''],
+      playlist_id: [''],
+      thumbnail:[this.thumbnail()],
+      course_type: ['', Validators.required],
+      live_platform : [''],
+      live_link : [''],
+      live_schedule : [''],
+      live_details : [''],
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
@@ -68,24 +75,27 @@ export class CourseCreateComponent implements OnInit {
 
   createCourse() {
     this.submitted = true;
-    console.log(this.courseForm.errors)
-
-
-
-
-    console.log(this.courseForm.value);
     if (this.courseForm.valid) {
+      this.submitted = false;
       this.coursesService.createCourse(this.courseForm.value).subscribe(
-        (response) => {
-          console.log('Course created successfully', response);
-          this.router.navigate(['courses']);
-        },
-        (error) => {
-          console.error('Error creating course', error);
+        {
+          next: (response) => {
+            console.log('Course created successfully', response);
+            this.courseForm.reset();
+            this.router.navigate(['courses']);
+            this.toaster.success('Course created successfully');
+
+          },
+          error: (error) => {
+            console.error('Error creating course', error);
+            this.toaster.error('Error creating course');
+          }
+
         }
       );
     } else {
       console.log('Form is invalid');
+      this.toaster.warning('Form is invalid');
       return;
     }
   }

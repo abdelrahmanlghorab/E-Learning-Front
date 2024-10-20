@@ -13,7 +13,6 @@ export class GetTeacherService {
     return this.http.get(this.url);
    }
    getTeacher(id: any) {
-    console.log(id);
     return this.http.get(`${this.url}/${id}`);
    }
 }

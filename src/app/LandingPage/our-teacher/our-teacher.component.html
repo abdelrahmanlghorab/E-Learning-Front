@@ -1,28 +1,31 @@
-
 <div class="container">
-    <div class="container mt-5">
-        <h4 class="text-center text-warning">تعرف علي</h4>
-        <h1 class="text-center fw-bold mb-3">المدرسين الموجودين بالأكاديمية</h1>
-    </div>
-    <div class="container mt-5">
-        <div class="row">
-            @for (item of teachers; track item.id) { 
-        <div [routerLink]="['/teacherprofile', item.id]" class="col-md-6 col-lg-3 col-xm-12  mb-5  position-relative ">
-            <div class="card  mx-auto ">
-                <div class="card-image  ">
-                    <img class="mx-auto" [src]="item.image" width="155px" height="175px" alt="not">
-                </div>
-                <div class="cont">
-                    <div class="category fs-5  mt-3"> {{item.name}} </div>
-                <div class="heading"> {{item.title}}  
-                </div>
-                <div class="author position-absolute bottom-0 start-0 mb-3 ms-3 fw-bold"> {{item.phone}}</div>
-                <div class="author position-absolute bottom-0 end-0 mb-3 me-3 fw-bold "> {{item.address}}</div>
-                </div>
-            </div>
+  <div class="container mt-5">
+    <h4 class="text-center fw-bold  text-warning">Learn about</h4>
+    <h3 class="text-center fw-bold  mb-3">Platform Teachers</h3>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      @for (item of teachers; track item.id) {
+      <div [routerLink]="['/teacherprofile', item.id]" class="col-md-3 mb-4 ">
+        <div class="teacherLanding-card">
+          <img [src]="item.image" alt="Teacher Image" />
+          <div class="teacher-info">
+            <h5 class="fw-bold">{{ item.name }}</h5>
+            <p>{{ item.title }}</p>
+          </div>
         </div>
-    }
-       
+      </div>
+      }
     </div>
-    </div>
+  </div>
+  <button routerLink="/teachers" class="button mx-auto mt-3">
+    All Teachers
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+      <path
+        clip-rule="evenodd"
+        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+  </button>
 </div>

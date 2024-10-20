@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update',
   standalone: true,
@@ -37,7 +38,8 @@ export class UpdateComponent {
     private fb: FormBuilder,
     private Organizerservece: CreateOrganizerService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public toaster :ToastrService
   ) {
     this.updateForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-يs]+$')]],
@@ -82,7 +84,7 @@ export class UpdateComponent {
         }
 
         this.currentImageUrl = data.data.image;
-        console.log(this.updateForm.value);
+        // console.log(this.updateForm.value);
       }
     );
   }
@@ -90,7 +92,7 @@ export class UpdateComponent {
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      console.log('Selected file:', file);
+      // console.log('Selected file:', file);
       this.updateForm.patchValue({
         image: file,
       });
@@ -116,7 +118,7 @@ export class UpdateComponent {
 
   onSubmit() {
     if (this.updateForm.invalid) {
-      console.log('Form is invalid');
+      // console.log('Form is invalid');
       return;
     }
     this.Organizerservece.updateorganizer(
@@ -124,13 +126,17 @@ export class UpdateComponent {
       this.updateForm.value
     ).subscribe(
       (response: any) => {
-        console.log('Organizer updated successfully', response);
-        alert('Organizer updated successfully!');
+        // console.log('Organizer updated successfully', response);
         this.router.navigateByUrl('/allorganizer');
       },
-      (error: any) => {
-        console.error('Error updating organizer', error);
-        alert('Error updating organizer.');
+      (error) => {
+        console.log( error.error.validation_errors.email,'Error updating')
+        alert('Error updating organizer');
+        if(error.error.validation_errors.email){
+          this.toaster.error(error.error.validation_errors.email);
+        }else if (error.error.validation_errors.national_id){
+          this.toaster.error(error.error.validation_errors.national_id);
+        }
       }
     );
   }

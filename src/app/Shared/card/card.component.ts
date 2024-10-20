@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -12,23 +13,24 @@ import { GetTeacherService } from '../../services/get-teacher.service';
 export class CardComponent {
 
   @Input() course!: any;
+
   teacher!: any;
   teacherName!: any;
   teacherImage: any;
 
-  constructor(private teacherService:GetTeacherService) { }
+  constructor(private teacherService:GetTeacherService , private authservices :AuthService) { }
 
 
   ngOnInit(){
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
          this.teacher = data.teacher
-         this.teacherName=this.teacher[0].name;
-        this.teacherImage = this.teacher[0].image;
+         console.log(this.teacher);
+         this.teacherName=this.teacher.name;
+        this.teacherImage = this.teacher.image;
 
-         console.log(this.course);
-         console.log(this.teacherName , "teacher name ");
        });
       }
+
   handleMouseMove(event: MouseEvent) {
     const card = (event.target as HTMLElement).closest('.example-card') as HTMLElement;
     if (card) {

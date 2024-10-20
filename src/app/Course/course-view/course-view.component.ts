@@ -15,6 +15,8 @@ constructor(private courseService: CoursesService) {}
 ngOnInit(): void {
   this.courseService.getAllCourses().subscribe(
     (response) => {
+      console.log(response , "from course");
+
       this.courses = response;
     },
     (error) => {
@@ -29,7 +31,7 @@ removeCourse(id: number) {
   }
   this.courseService.deleteCourse(id).subscribe(
     (response) => {
-      alert('Course deleted successfully');
+      
       this.courses = this.courses.filter((course: any) => course.id !== id);
     },
     (error) => {

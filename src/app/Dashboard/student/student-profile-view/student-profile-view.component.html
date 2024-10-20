@@ -1,76 +1,74 @@
-<div class="container" dir="rtl">
-  <div class="row align-items-center">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-12 mt-5">
-      <div class="card rounded-bottom smooth-shadow-sm">
-        <div class="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
-          <div class="d-flex align-items-center">
-            <div
-              class="avatar-xxl avatar-indicators avatar-online me-2 position-relative d-flex justify-content-end align-items-end mt-n10">
-              <img [src]="user.image" class="avatar-xxl rounded-circle border border-2" alt="Image" />
-            </div>
-            <div class="lh-1">
-              <h2 class="mb-0">
-                {{user.name}}
-                <a href="#!" class="text-decoration-none"> </a>
-              </h2>
-              <p class="mb-0 d-block">{{user.email}}</p>
-            </div>
+<div class="container cardd mt-5" dir="ltr">
+  <div class="card pro-tip-card mt-5">
+    <div class="row g-0 ">
+      <div class="col-md-12 d-flex justify-content-between  card1 row flex-column justify-content-center p-4">
+
+        <div class="card-body col d-flex align-items-center">
+          <div class="avatar-xxl avatar-indicators avatar-online me-2 position-relative">
+            @if(user.image=='http://localhost:8000/images/users'){
+              <img
+                src="default.png"
+                class="avatar-xxl rounded-circle border border-2"
+                alt="Image"
+              />
+
+            }@else {
+            <img
+              [src]="user.image"
+              class="avatar-xxl rounded-circle border border-2"
+              alt="Image"
+            />
+            }
           </div>
-          <div>
-            <a routerLink="/edit-profile" class="btn main-btn d-none d-md-block">تعديل الملف الشخصى</a>
+          <div class="ms-3">
+            <h5 class="card-title">Welcome back, {{user.name}}</h5>
+            <p class="card-text">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              {{user.email}}
+            </p>
+            <p class="card-text">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                {{user.phone}}
+            </p>
+            <a routerLink="/edit-profile" class="card-link text-purple">Edit Profile</a>
           </div>
+
         </div>
+
       </div>
     </div>
   </div>
-  <div class="py-6">
+
+
+  <div class="py-6 mt-3">
+    <h3 class="mb-4 fw-bold"><i class="fa-solid fa-book-open"></i> All Courses</h3>
     <div class="row">
       @for(user_course of user_courses; track user_course.id){
-      <div class="col-lg-4 col-12">
-        <!-- card -->
-        @for(teacher of user_teacher ; track teacher.id){
-        @if(teacher.id == user_course.instructor_id){
-        <div class="card mb-5 rounded-3">
-          <div>
-            <img [src]="user_course.thumbnail" alt="Image" class="img-fluid rounded-top" />
-          </div>
-          <!-- avatar -->
-          <div class="avatar avatar-xl mt-n7 ms-4 d-f self mx-3">
-            <img [src]="teacher.image" alt="Image" class="rounded-circle border-4 border-white-color-40" />
-          </div>
-          <!-- card body -->
-          <div class="card-body">
-            <!-- Title -->
-            <h4 class="mb-1">Mr {{teacher.name}}</h4>
-            <br>
-            <p>{{user_course.title}}</p>
-            <div>
-              <!-- Dropdown -->
-              <div class="d-flex justify-content-between align-items-center">
-                <a [routerLink]="'/course/'+user_course.id" class="btn main-btn">تفاصيل الكورس</a>
-              </div>
+        <div class="col-xs-12 col-sm-4">
+          @for(teacher of user_teacher ; track teacher.id){
+            @if(teacher.id == user_course.instructor_id){
+            <div class="card resent-card">
+              <span class="badge ms-1 px-3 py-1 me-2 mt-2 text-white" >{{user_course.course_type}}</span>
+                <a class="img-card"><img [src]="user_course.thumbnail"/></a>
+                <p class=" mt-2 d-flex ms-3 fs-5">{{user_course.title}}</p>
+                <div class="card-content">
+                  <div class="avatar avatar-xl  d-f self  d-flex align-items-center ">
+                    <img [src]="teacher.image" alt="Image" class="rounded-circle border-4 " />
+                    <p class="ms-2 mt-4">Mr.{{teacher.name}}</p>
+                  </div>
+
+                </div>
+                <div class="card-read-more d-flex justify-content-center">
+                    <a [routerLink]="['/course', user_course.id]" class="btn btn-link  ">
+                      Details
+                    </a>
+                </div>
             </div>
-          </div>
+          }
+            }
         </div>
-        }
-        }
-      </div>
       }
     </div>
 
-  </div>
-  <div class="py-6">
-    <h3 class="mb-4">الاختبارات المجتازة</h3>
-    <div class="row d-flex justify-content-center mt-5">
-      <div class="col-8">
-        <!-- card -->
-        <div class="card mb-5 rounded-3">
-          <div class="card-body d-flex justify-content-between align-items-center">
-            <h4 class="mb-1">الاختبار الاول</h4>
-            <a href="#!" class="btn main-btn">النتيجة الكليه ١٠/١٠</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 import { HeaderComponent } from '../../../Shared/header/header.component';
+import { AuthService } from '../../../services/Auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink ,HeaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, HeaderComponent],
   templateUrl: './student-sign-up.component.html',
   styleUrls: ['./student-sign-up.component.css']
 })
@@ -20,7 +21,7 @@ export class StudentSignUPComponent implements OnInit {
   eyeIcon: string = 'fas fa-eye';
   confirmEyeIcon: string = 'fas fa-eye';
 
-  constructor(private fb: FormBuilder ,private authservices: AuthService,private router:Router) {
+  constructor(private fb: FormBuilder, private authservices: AuthService, private router: Router ,private toaster : ToastrService) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -35,12 +36,10 @@ export class StudentSignUPComponent implements OnInit {
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
       image: ['', Validators.required]
-        //  Validators.pattern( "^[^\s]+\.(jpg|jpeg|png|gif|bmp)$")],
-
     }, { validators: this.passwordMatchValidator });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password')?.value === formGroup.get('password_confirmation')?.value
       ? null : { passwordMismatch: true };
@@ -65,40 +64,49 @@ export class StudentSignUPComponent implements OnInit {
     }
   }
 
-onSubmit() {
-  if (this.registerForm.valid) {
-    const formData = new FormData();
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const formData = new FormData();
 
-    formData.append('name', this.registerForm.get('name')?.value);
-    formData.append('email', this.registerForm.get('email')?.value);
-    formData.append('password', this.registerForm.get('password')?.value);
-    formData.append('password_confirmation', this.registerForm.get('password_confirmation')?.value);
-    formData.append('national_id', this.registerForm.get('national_id')?.value);
-    formData.append('gender', this.registerForm.get('gender')?.value);
-    formData.append('address', this.registerForm.get('address')?.value);
-    formData.append('phone', this.registerForm.get('phone')?.value);
+      formData.append('name', this.registerForm.get('name')?.value);
+      formData.append('email', this.registerForm.get('email')?.value);
+      formData.append('password', this.registerForm.get('password')?.value);
+      formData.append('password_confirmation', this.registerForm.get('password_confirmation')?.value);
+      formData.append('national_id', this.registerForm.get('national_id')?.value);
+      formData.append('gender', this.registerForm.get('gender')?.value);
+      formData.append('address', this.registerForm.get('address')?.value);
+      formData.append('phone', this.registerForm.get('phone')?.value);
 
-    const imageFile = this.registerForm.get('image')?.value as File;
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
-
-    console.log("Form Submitted", this.registerForm.value);
-
-    this.authservices.register(formData).subscribe(
-      (response) => {
-        console.log('Registration successful', response);
-        this.registerForm.reset();
-        this.router.navigate(['/signin']);
-      },
-      (error) => {
-        console.error('Registration failed', error);
+      const imageFile = this.registerForm.get('image')?.value as File;
+      if (imageFile) {
+        formData.append('image', imageFile);
       }
-    );
-  } else {
-    this.registerForm.markAllAsTouched();
+
+      console.log("Form Submitted", this.registerForm.value);
+
+      this.authservices.onRegister(formData).subscribe(
+        {
+          next: (response) => {
+            this.registerForm.reset();
+            this.router.navigate(['/signin']);
+            this.toaster.success('Registered successfully.');
+          },
+          error: (error) => {
+              if (error.error.validation_errors.email) {
+                this.toaster.error(error.error.validation_errors.email);
+              } else if (error.error.validation_errors.national_id) {
+                this.toaster.error(error.error.validation_errors.national_id);
+              }
+             else if (error.ok == false) {
+              this.toaster.error(error.error.error);
+          }
+        }
+        }
+      );
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
   }
-}
 
 
   get f() {

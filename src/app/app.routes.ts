@@ -32,12 +32,20 @@ import { isAdminGuard } from './Guard/is-admin.guard';
 import { isModeratorGuard } from './Guard/is-moderator.guard';
 import { RestoreUserComponent } from './Dashboard/admin/user-management/restore-user/restore-user.component';
 import { CourseSessionComponent } from './Course/course-session/course-session.component';
+import { TestDetailComponent } from './Test/test-detail/test-detail.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SearchResultComponent } from './Course/search-result/search-result.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Ana Kafuo ',
+  },
+  {
+    path: 'AdminDashboardComponent',
+    component: AdminDashboardComponent,
+    title: 'AdminDashboardComponent ',
   },
   {
     path: 'signin',
@@ -53,22 +61,28 @@ export const routes: Routes = [
     path: 'tests',
     component: TestListComponent,
     title: 'All Tests',
+    canActivate: [authGuard]
   },
   {
     path: 'test-create',
     component: TestCreateComponent,
     title: 'Create Tests',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
   },
   {
     path: 'test/:id/update',
     component: TestUpdateComponent,
     title: 'Update Tests',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
   }, {
     path: 'test/:id',
     component: TestManagementComponent,
     title: 'Exam',
+    canActivate: [authGuard]
+  },{
+    path: 'test-answer/:id',
+    component: TestDetailComponent,
+    title: 'Exam  Answer',
     canActivate: [authGuard]
   },
   {
@@ -101,7 +115,12 @@ export const routes: Routes = [
     path: 'courses',
     component: CourseListComponent,
     title: 'Our Courses',
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
+  },
+  {
+    path: 'searchresult',
+    component: SearchResultComponent,
+    title: 'Search Result',
   },
 
   {
@@ -131,7 +150,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: AdminDashboardComponent,
     title: 'Admin',
     canActivate: [isModeratorGuard, authGuard]
   },
@@ -139,35 +158,39 @@ export const routes: Routes = [
     path: 'admin/courses',
     component: CourseViewComponent,
     title: 'Courses',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
 
   },
   {
     path: 'admin/user-managment',
     component: UserManagmentComponent,
     title: 'User Managment',
-    canActivate: [isAdminGuard, authGuard]
+    canActivate: [isModeratorGuard, authGuard]
 
   },
   {
     path: 'admin/payment',
     component: PaymentMangementComponent,
     title: 'Payments',
+        canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'createorganizer',
     component: CreateComponent,
     title: 'Create Organizer',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'updateorganizer/:id',
     component: UpdateComponent,
     title: 'Update Organizer',
+        canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: 'trashorganizer',
@@ -186,7 +209,7 @@ export const routes: Routes = [
     path: 'teachers',
     component: TeacherComponent,
     title: 'teachers',
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
   },
   {
     path: 'teacherprofile/:id',
@@ -195,7 +218,7 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileViewComponent,
     title: 'Profile View',
     canActivate: [authGuard]
@@ -217,6 +240,7 @@ export const routes: Routes = [
     path:'admin/restoreuser',
     component: RestoreUserComponent,
     title: 'Restore User',
+    canActivate: [isAdminGuard, authGuard]
   },
   {
     path: '**',

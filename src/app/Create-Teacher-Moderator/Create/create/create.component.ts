@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -21,9 +22,12 @@ export class CreateComponent  implements OnInit {
   submitted :boolean = false;
 
 
-  constructor(private fb: FormBuilder ,private router :Router , private CreateOrganizer : CreateOrganizerService) {
-    this.createForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern('^[a-zA-Zأ-ي\s]+$')]],
+  constructor(private fb: FormBuilder ,private router :Router ,
+     private CreateOrganizer : CreateOrganizerService,
+    public toaster :ToastrService) {
+    
+      this.createForm = this.fb.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
@@ -36,7 +40,8 @@ export class CreateComponent  implements OnInit {
       role_id: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
-      image: ['', Validators.required],
+      image: ['', Validators.required ],
+
       title: [''],
       description: [''] 
 
@@ -74,18 +79,23 @@ export class CreateComponent  implements OnInit {
   }
 
   onFileChange(event: any) {
+
+    
     const file = event.target.files[0];
+    // console.log(file.name);
     if (file) {
       this.createForm.patchValue({
         image: file
+        
       });
     }
   }
   onSubmit() {
     this.submitted = true;
     if (this.createForm.valid) {
+      // console.log(this.createForm, "rrrrrrrrrrrrrrrrrrrrrrrr");
       const formData = new FormData();
-
+      
       formData.append('name', this.createForm.get('name')?.value);
       formData.append('email', this.createForm.get('email')?.value);
       formData.append('password', this.createForm.get('password')?.value);
@@ -97,19 +107,25 @@ export class CreateComponent  implements OnInit {
       formData.append('phone', this.createForm.get('phone')?.value);
       formData.append('title', this.createForm.get('title')?.value);
       formData.append('description', this.createForm.get('description')?.value);
-
+      
       const imageFile = this.createForm.get('image')?.value as File;
+      // console.log(imageFile ,"imageFile");
       if (imageFile) {
         formData.append('image', imageFile);
+        
       }
+      // console.log(formData); 
       this.CreateOrganizer.createorganizer(formData).subscribe((response) => {
-        console.log('Organizer created successfully', response);
-        console.log("تم إنشاء بنجاح", this.createForm.value);
+        // alert("response")
         this.router.navigateByUrl('/allorganizer');
-
+        
 
       }, (error) => {
-        console.error('Error creating organizer', error);
+        if(error.error.validation_errors.email){
+          this.toaster.error(error.error.validation_errors.email);
+        }else if (error.error.validation_errors.national_id){
+          this.toaster.error(error.error.validation_errors.national_id);
+        }
       });
 
     } else {

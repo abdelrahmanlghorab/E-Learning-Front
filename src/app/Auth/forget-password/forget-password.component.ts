@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/Auth/auth.service';
 
 
 @Component({
@@ -13,15 +14,28 @@ import { RouterLink } from '@angular/router';
 })
 export class ForgetPasswordComponent {
   signInForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
+  error = '';
+  success = '';
+  constructor(private fb: FormBuilder,private authService: AuthService) {
     this.signInForm = this.fb.group({
-      studentEmail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirmation: ['', [Validators.required, Validators.minLength(6)]],
+      national_id: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
     });
   }
   onSubmit() {
+    this.error='';
+    this.success='';
     if (this.signInForm.valid) {
-      console.log('Form Submitted', this.signInForm.value);
+      this.authService.forrgetPassword(this.signInForm.value).subscribe(
+        (response: any) => {
+          this.success = response.message;
+        },
+        (error) => {
+          this.error = error.error.message;
+        }
+      );
     } else {
       this.signInForm.markAllAsTouched();
     }

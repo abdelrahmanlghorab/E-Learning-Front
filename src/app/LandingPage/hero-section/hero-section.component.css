@@ -2,7 +2,7 @@
   min-height: calc(85dvh);
 }
 .main-btn {
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 0.5rem;
   color: var(--bg);
   background: linear-gradient(
       90deg,
@@ -19,17 +19,20 @@
   --x: 100%;
 }
 .lh-base {
-  text-align: justify;
+  text-align: end;
   text-justify: inter-word;
 }
 button {
   display: inline-flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   text-decoration: none;
   border: none;
   color: white !important;
+  position: absolute;
+  left: 0;
 }
+
 button span:first-child {
   display: inline-block;
   width: 30px;
@@ -42,10 +45,10 @@ button span:first-child {
   margin-right: 5px;
   box-shadow: 3px 3px 6px var(--border1);
 }
-button span svg {
+button div svg {
   position: absolute;
   top: 50%;
-  left: 50%;
+  right: 3%;
   transform: translate(-50%, -50%);
   background-color: whitesmoke;
   border-radius:50%;
@@ -126,12 +129,33 @@ button span svg {
   }
 
  .shape2{
-   opacity: 0;
+display: none;
+  }
+}
+@media (max-width: 767px) {
+  .flex {
+    flex-direction: column;
+  }
+
+ .shape2{
+display: none;
+  }
+   button{
+    max-width: 200px !important;
   }
 }
 @media (max-width: 476) {
   .img-fluid {
  display: none;
+  }
+  button{
+    max-width: 50px !important;
+  }
+  .insmall{
+    width: 100% !important;
+  }
+  .shape3{
+    display: none !important;
   }
 
 }

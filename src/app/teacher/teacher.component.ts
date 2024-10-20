@@ -14,9 +14,10 @@ export class TeacherComponent {
 
   constructor(private teacher : GetTeacherService){
     this.teacher.getAllTeachers().subscribe(data => {
-      console.log((data as any).data);
+      // console.log((data as any).data);
       this.teachers = (data as any).data;
-    }); 
+      // console.log(this.teachers);
+    });
   }
 
 }

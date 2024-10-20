@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TestService } from '../../services/test.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-test-create',
@@ -12,7 +13,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './test-create.component.css'
 })
 export class TestCreateComponent {
-  CreateForm: FormGroup;
+  CreateForm!: FormGroup;
+  toaster = inject(ToastrService);
+
   constructor(private fb: FormBuilder, private testService: TestService, private router: Router) {
     this.CreateForm = this.fb.group({
       title: ['', Validators.required],
@@ -44,17 +47,27 @@ export class TestCreateComponent {
         formData.append('excel_file', csvFile);
       }
 
-      formData.append('excel_file', this.CreateForm.get('excel_file')?.value);
-      console.log(formData);
-      
-      this.testService.createTest(formData).subscribe(
-        (response) => {
-          console.log('Create successful', response);
-          this.router.navigateByUrl('/tests');
+
+      this.testService.createTest(formData).subscribe({
+        next: (response) => {
+          this.toaster.success('Test created successfully');
+          this.router.navigateByUrl('tests');
         },
-        (error) => {
-          console.error('Create failed', error);
+        error: (error) => {
+          // console.log('Error creating test', error);
+          if (error.error.success == false) {
+            if (error.error.validation_errors.title) {
+              this.toaster.error(error.error.validation_errors.title);
+            } else if (error.error.validation_errors.description) {
+              this.toaster.error(error.error.validation_errors.description);
+            } else if (error.error.validation_errors.excel_file) {
+              this.toaster.error(error.error.validation_errors.excel_file);
+            }
+          }else if (error.ok == false) {
+            this.toaster.error( error.error.error);
+          }
         }
+      }
       );
     } else {
       this.CreateForm.markAllAsTouched();
