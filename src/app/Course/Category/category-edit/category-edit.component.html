@@ -1,0 +1,40 @@
+<h1 class="text-center mt-5 title-text">Update Category</h1>
+
+<div class="update-category-container">
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" class="text-dark">Category Name:</label>
+      <input type="text" id="name" formControlName="name" class="form-control input-field"
+        placeholder="Enter category name" />
+        @if(categoryForm.controls['name'].invalid && categoryForm.controls['name'].touched){
+      <div>
+        <small class="error" *ngIf="categoryForm.controls['name'].errors?.['required']">
+          Category name is required.
+        </small>
+        <small class="error" *ngIf="categoryForm.controls['name'].errors?.['minlength']">
+          Name must be at least 3 characters long.
+        </small>
+        <small class="error" *ngIf="categoryForm.controls['name'].errors?.['maxlength']">
+          Name cannot exceed 20 characters.
+        </small>
+      </div>
+        }
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="text-dark">Description:</label>
+      <textarea id="description" formControlName="description" class="form-control input-field"
+        placeholder="Enter category description"></textarea>
+        @if(categoryForm.controls['description'].invalid && categoryForm.controls['description'].touched){
+      <div>
+        <small class="error" *ngIf="categoryForm.controls['description'].errors?.['minlength']">
+          Description must be at least 10 characters long.
+        </small>
+      </div>
+    }
+    </div>
+    <div class="text-center">
+      <button type="submit" class="custom-button main-btn" [disabled]="categoryForm.invalid">Update Category</button>
+    </div>
+  </form>
+</div>

@@ -9,20 +9,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-update',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, MatOptionModule],
   templateUrl: './course-update.component.html',
-  styleUrls: ['./course-update.component.css'] 
+  styleUrls: ['./course-update.component.css']
 })
 export class CourseUpdateComponent implements OnInit {
   courseForm!: FormGroup;
   id: number = 0;
   submitted: boolean = false;
   courses: any[] = [];
-  instructors: any[] = []; 
+  instructors: any[] = [];
   playlist: any;
   title = signal("");
   description = signal("");
@@ -37,6 +38,7 @@ export class CourseUpdateComponent implements OnInit {
     private router: Router,
     private teachersService: GetTeacherService,
     private playList: CoursePlaylistService,
+    private toaster: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -45,10 +47,10 @@ export class CourseUpdateComponent implements OnInit {
     this.courseForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      price: [{ value: '', disabled: false }, [Validators.required, Validators.min(0)]],
+      price: [{ value: ''}, [Validators.required, Validators.min(0)]],
       is_free: [false],
       instructor_id: ['', Validators.required],
-      playlist_id: ['', Validators.required],
+      playlist_id: [''],
       thumbnail: [''],
       course_type: ['', Validators.required],
       live_platform: [''],
@@ -56,7 +58,7 @@ export class CourseUpdateComponent implements OnInit {
       live_schedule: [''],
       live_details: [''],
     });
-      
+
     this.playList.getAllPlayLists().subscribe(courseData => {
       this.playlist = courseData;
     });
@@ -89,18 +91,18 @@ export class CourseUpdateComponent implements OnInit {
 
     if (this.courseForm.valid) {
       this.coursesService.updateCourse(this.id, this.courseForm.value).subscribe(
-        () => {
-          this.router.navigate(['/courses']);
-          alert('Course updated successfully');
-        },
-        () => {
-          alert('Error updating course');
+        {
+          next: (response) => {
+            this.router.navigate(['/courses']);
+            this.toaster.success('Course updated successfully');
+          },
+          error: (error) => {
+            this.toaster.error('Error updating course');
+          }
         }
-      );
-    } else {
-      alert('Please fill in all required fields');
+      )};
     }
-  }
+
 
   setCourseValue(id: any) {
     const selectedCourse = this.courses.find(course => course.id === id);
@@ -124,5 +126,5 @@ export class CourseUpdateComponent implements OnInit {
       });
     }
   }
-  
+
 }

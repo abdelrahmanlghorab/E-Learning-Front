@@ -34,6 +34,10 @@ import { RestoreUserComponent } from './Dashboard/admin/user-management/restore-
 import { CourseSessionComponent } from './Course/course-session/course-session.component';
 import { TestDetailComponent } from './Test/test-detail/test-detail.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CategoriesComponent } from './Course/Category/categories/categories.component';
+import { CategoryCreateComponent } from './Course/Category/category-create/category-create.component';
+import { CategoryEditComponent } from './Course/Category/category-edit/category-edit.component';
+import { CategoryDetailsComponent } from './Course/Category/category-details/category-details.component';
 
 export const routes: Routes = [
   {
@@ -107,6 +111,32 @@ export const routes: Routes = [
     path: 'allorganizer',
     component: IndexComponent,
     title: 'All Organizer',
+    canActivate: [isAdminGuard, authGuard]
+
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    title: 'Categories',
+    canActivate: [isAdminGuard, authGuard]
+  },
+  {
+    path: 'createCategory',
+    component: CategoryCreateComponent,
+    title: 'Create Category',
+    canActivate: [isAdminGuard, authGuard]
+  },
+  {
+    path:'editCategory/:id',
+    component:CategoryEditComponent,
+    title: 'Edit Category',
+    canActivate: [isAdminGuard, authGuard]
+  }
+  ,
+  {
+    path: 'category/:id',
+    component: CategoryDetailsComponent,
+    title: 'Category Details',
     canActivate: [isAdminGuard, authGuard]
 
   },
