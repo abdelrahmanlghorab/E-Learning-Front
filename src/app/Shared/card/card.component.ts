@@ -2,32 +2,41 @@ import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { AuthService } from '../../services/Auth/auth.service';
-
+import { RatingService } from '../../services/rating.service';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,NgbRatingModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
 export class CardComponent {
 
   @Input() course!: any;
-
+  rating: any;
+  ratingAverage: any;
   teacher!: any;
   teacherName!: any;
   teacherImage: any;
 
-  constructor(private teacherService:GetTeacherService , private authservices :AuthService) { }
+  constructor(private teacherService:GetTeacherService , private authservices :AuthService,private rateservice:RatingService) {
+  }
 
 
   ngOnInit(){
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
          this.teacher = data.teacher
-         console.log(this.teacher);
          this.teacherName=this.teacher.name;
         this.teacherImage = this.teacher.image;
 
+       });
+       this.rateservice.getcourseRating(this.course.id).subscribe((data: any) => {
+        this.rating = data;
+        if(this.rating.length == 0){
+          this.ratingAverage = 0;
+        }
+        this.ratingAverage = this.rating.reduce((sum: any, rating: any) => sum + rating.rating, 0) / this.rating.length;
        });
       }
 

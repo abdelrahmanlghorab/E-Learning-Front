@@ -97,4 +97,10 @@ a {
   color:#007bff !important;
    box-shadow: black 0.2px 0.5px;
 }
-
+.rate{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  font-weight: lighter;
+}
