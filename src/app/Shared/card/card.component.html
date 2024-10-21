@@ -1,9 +1,6 @@
 <a [routerLink]="['/course', course.id]" class="card-link" >
   <div class="card example-card position-relative " (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
     <span class="badge badge-pill badge-info mt-2 me-2">{{course.course_type=='video'?'Recorded':'Online'}}</span>
-    <span class="rate">
-      <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
-    </span>
       @if ( course.course_type=='video' && course.thumbnail=='https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg') {
       <img class="thumbnail card-img" src="courseImage.png" alt="Course Image">
       }@else {
@@ -21,6 +18,9 @@
         </div>
       <div class="bottom w-100 ">
         <h6 class="description">{{ course.title }}</h6>
+          <span class="rate">
+            <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
+          </span>
         <div class="flex justify-content-between">
             <div class="flex gap-1 mb-3 ms-3 position-absolute bottom-0 start-0">
               <img src="boy.5g.svg" class="ms-4" alt="boy">
