@@ -25,9 +25,9 @@ export class CourseCreateComponent implements OnInit {
   courseForm!: FormGroup;
   submitted: boolean = false;
   courses: any;
+  categories: any;
   instructors: any;
   categoryName:any;
-  categories:any;
   title=signal("");
   description=signal("");
   thumbnail=signal("");
@@ -82,6 +82,10 @@ export class CourseCreateComponent implements OnInit {
       } else {
         this.courseForm.get('price')?.enable();
       }
+    });
+    this.category.getAllCategories().subscribe(categoryData => {
+      this.categories = categoryData;
+      // this.categories = this.categories.data;
     });
   }
 
