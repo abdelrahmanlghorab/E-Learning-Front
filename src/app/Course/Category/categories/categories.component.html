@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="ag-courses_title">All Categories</h2>
+
+  <div class="ag-format-container">
+    <div class="ag-courses_box">
+      @for(category of allCategories; track category.id){
+      <div class="ag-courses_item">
+        <a class="text-decoration-none ag-courses-item_link">
+          <div class="ag-courses-item_bg" [ngStyle]="{
+              'background-color': getBackgroundColor(category.id)
+            }"></div>
+          <div class="ag-courses-item_title" [routerLink]="['/editCategory',category.id]">
+            {{ category.name }}
+          </div>
+          <div class="ag-courses-item_date-box w-100">
+            Created:
+            <span class="ag-courses-item_date">
+              {{ category.created_at | date: 'dd.MM.yyyy' }}
+            </span>
+            <i class="fa-solid fa-trash delete-icon" (click)="confirmDelete(category.id)"
+              style="color: #fff;"></i>
+
+          </div>
+        </a>
+
+      </div>
+      }
+    </div>
+  </div>
+</div>
