@@ -28,4 +28,7 @@ export class RatingService {
       };
       return this.http.post(this.apiUrl + `teacher/${id}/rate`,ratingData);
     }
+    checkTeacherCourses(teacher_id:any,user_id:any){
+      return this.http.get(this.apiUrl + `check-enrollment-teacher`,{params:{teacher_id:teacher_id,user_id:user_id}});
+    }
 }

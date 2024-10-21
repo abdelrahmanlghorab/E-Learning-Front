@@ -219,6 +219,21 @@ export class CourseDetailComponent {
     this.rateService.setCourseRating(this.id, this.selected).subscribe({
       next: (response) => {
         console.log('Rating submitted successfully:', response);
+        this.rateService.getcourseRating(this.id).subscribe(
+          (data) => {
+            this.rating = data;
+            this.selected = this.rating.find((item: any) => item.user_id === this.user_id).rating;
+            if(this.selected>0){
+              this.disabled = true;
+            }
+            this.ratingAverage = this.rating.reduce((acc: any, item: any) => acc + item.rating, 0) / this.rating.length;
+            console.log(this.ratingAverage);
+            console.log(this.rating);
+        },
+        (error) => {
+            console.error('Error fetching comments:', error);
+          }
+        );
       },
       error: (error) => {
         console.error('Error submitting rating:', error);
