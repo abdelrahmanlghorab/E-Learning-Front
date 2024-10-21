@@ -11,6 +11,7 @@ import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-course-create',
@@ -23,12 +24,14 @@ export class CourseCreateComponent implements OnInit {
   courseForm!: FormGroup;
   submitted: boolean = false;
   courses: any;
+  categories: any;
   instructors: any;
   title=signal("");
   description=signal("");
   thumbnail=signal("");
   instructor_id=signal("");
   playlistId=signal("");
+  category_id = signal("");
   constructor(
     private fb: FormBuilder,
     private playList: CoursePlaylistService,
@@ -36,6 +39,7 @@ export class CourseCreateComponent implements OnInit {
     private coursesService: CoursesService,
     private router: Router,
     private toaster:ToastrService,
+    private category: CategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -61,6 +65,7 @@ export class CourseCreateComponent implements OnInit {
       live_link : [''],
       live_schedule : [''],
       live_details : [''],
+      category_id: ['', Validators.required],
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
@@ -70,6 +75,10 @@ export class CourseCreateComponent implements OnInit {
       } else {
         this.courseForm.get('price')?.enable();
       }
+    });
+    this.category.getAllCategories().subscribe(categoryData => {
+      this.categories = categoryData;
+      // this.categories = this.categories.data;
     });
   }
 
@@ -120,6 +129,7 @@ export class CourseCreateComponent implements OnInit {
         this.instructor_id.set(instructor.id);
         this.courseForm.patchValue({
           instructor_id: this.instructor_id(),
+          category_id: this.category_id()
         });
         break;
       };

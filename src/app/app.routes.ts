@@ -38,6 +38,7 @@ import { CategoriesComponent } from './Course/Category/categories/categories.com
 import { CategoryCreateComponent } from './Course/Category/category-create/category-create.component';
 import { CategoryEditComponent } from './Course/Category/category-edit/category-edit.component';
 import { CategoryDetailsComponent } from './Course/Category/category-details/category-details.component';
+import { SearchResultComponent } from './Course/search-result/search-result.component';
 
 export const routes: Routes = [
   {
@@ -145,6 +146,11 @@ export const routes: Routes = [
     component: CourseListComponent,
     title: 'Our Courses',
     // canActivate: [authGuard]
+  },
+  {
+    path: 'searchresult',
+    component: SearchResultComponent,
+    title: 'Search Result',
   },
 
   {
