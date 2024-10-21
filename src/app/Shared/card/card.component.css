@@ -99,8 +99,6 @@ a {
 }
 .rate{
   position: absolute;
-  top: 10px;
-  left: 10px;
   z-index: 1;
   font-weight: lighter;
 }

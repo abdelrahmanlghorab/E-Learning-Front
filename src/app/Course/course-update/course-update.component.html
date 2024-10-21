@@ -99,7 +99,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="row mt-3">
           <div class="col">
             <div class="form-group">
@@ -127,7 +127,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="form-check my-3 custom-checkbox">
           <label class="form-check-label fs-4" for="isFree">Free</label>
           <input
@@ -137,7 +137,7 @@
             id="isFree"
           />
         </div>
-  
+
         <div class="row mt-3" *ngIf="!courseForm.get('is_free')?.value">
           <div class="col">
             <div class="form-group">
@@ -179,7 +179,7 @@
                   <div *ngIf="courseForm.get('live_schedule')?.invalid && submitted" class="invalid-feedback">
                     please select start date
                   </div>
-              </div>      
+              </div>
             </div>
           </div>
           <div class="row mt-3">
@@ -198,13 +198,13 @@
                       </mat-option>
                       <mat-option id="description" class="form-control bg-light text-dark" value="microsoft">
                         Microsoft Teams
-                      </mat-option> 
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
           <div class="row mt-3">
             <div class="col">
               <div class="form-group">
@@ -214,9 +214,9 @@
                   <input type="text" formControlName="live_link" class="form-control" />
                 </div>
               </div>
-            </div>       
-          </div>         
-        </div>  
+            </div>
+          </div>
+        </div>
         <div class="row mt-3">
           <div class="col">
             <div class="form-group">
@@ -251,9 +251,8 @@
         </div>
         <!-- Submit Button -->
         <div class="d-grid gap-3 text-center my-4">
-          <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" type="submit" [disabled]="courseForm.invalid">Update Course</button>
+          <button class="btn main-btn rounded-5 custom-button" style="color: #ffff;" type="submit">Update Course</button>
         </div>
       </form>
     </div>
   </section>
-  
