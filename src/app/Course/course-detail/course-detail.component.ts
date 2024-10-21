@@ -11,15 +11,22 @@ import { CommentsService } from '../../services/comments.service';
 import { CommonModule } from '@angular/common';
 import { PaymentService } from '../../services/payment.service';
 import { ToastrService } from 'ngx-toastr';
+import { RatingService } from '../../services/rating.service';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [RouterLink, TruncatePipe, CustomDatePipe, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink, TruncatePipe, CustomDatePipe, ReactiveFormsModule, CommonModule,NgbRatingModule],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
 export class CourseDetailComponent {
+  disabled = false;
+  selected = 0;
+	hovered = 0;
+  user_id!: any;
+  ratingAverage =0;
   data: any;
   name!: string;
   image!: string;
@@ -59,6 +66,7 @@ export class CourseDetailComponent {
   enrollment: boolean = false;
   courseDetails!: string;
   coursePlatform!: string;
+  rating: any;
   constructor(private playList: CoursePlaylistService,
     private courseService: CoursesService,
     public router: Router,
@@ -68,7 +76,8 @@ export class CourseDetailComponent {
     private fb: FormBuilder,
     private commentService: CommentsService,
     private paymentService: PaymentService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private rateService: RatingService
   ) {
 
   }
@@ -80,6 +89,7 @@ export class CourseDetailComponent {
       this.image = this.data.image;
       this.role_id = this.data.role_id;
       this.id = this.data.id;
+      this.user_id = this.data.id;
     }
 
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -111,14 +121,14 @@ export class CourseDetailComponent {
         this.instructorImage = this.teacher.image;
         this.instructourEmail = this.teacher.email;
       })
+      if(this.course.playlist_id){
       this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) => (
         this.courseVideos = data[0].videos,
         this.courseVideosNum = data[0].videos.length
       ));
+    }
       this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
         this.enrollment = data.enrolled;
-        console.log(this.enrollment, 'eeeee');
-        console.log(this.enrollment, 'fdmfmdfnde');
       });
     });
 
@@ -132,11 +142,30 @@ export class CourseDetailComponent {
         console.error('Error fetching comments:', error);
       }
     );
+    this.rateService.getcourseRating(this.id).subscribe(
+      (data) => {
+        this.rating = data;
+        this.selected = this.rating.find((item: any) => item.user_id === this.user_id).rating;
+        if(this.selected>0){
+          this.disabled = true;
+        }
+        this.ratingAverage = this.rating.reduce((acc: any, item: any) => acc + item.rating, 0) / this.rating.length;
+        console.log(this.ratingAverage);
+        console.log(this.rating);
+    },
+    (error) => {
+        console.error('Error fetching comments:', error);
+      }
+    );
   }
   click(): void {
     const control = this.form.get('inputName');
     const CommentData: any = {
       body: control?.value
+    }
+    if(!control?.value){
+      this.toaster.error('Please Enter Your Comment')
+      return
     }
     this.commentService.addComment(this.id, CommentData).subscribe(
       (CommentData) => {
@@ -180,6 +209,19 @@ export class CourseDetailComponent {
       },
       error: (error) => {
         this.toaster.error('Error creating payment intent:', error);
+      }
+    })
+  }
+  submitRate() {
+    if (!this.selected) {
+      return;
+    }
+    this.rateService.setCourseRating(this.id, this.selected).subscribe({
+      next: (response) => {
+        console.log('Rating submitted successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error submitting rating:', error);
       }
     })
   }

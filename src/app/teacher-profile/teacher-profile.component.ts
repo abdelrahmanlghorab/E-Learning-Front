@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { GetTeacherService } from '../services/get-teacher.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TruncatePipe } from '../Pipes/truncate.pipe';
+import { RatingService } from '../services/rating.service';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-teacher-profile',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,NgbRatingModule],
   templateUrl: './teacher-profile.component.html',
   styleUrl: './teacher-profile.component.css'
 })
@@ -24,10 +26,17 @@ export class TeacherProfileComponent {
   coursesCount: any;
   courseStudentCount: number=0;
   truncate = new TruncatePipe();
+  rating:any;
+  teacherRate:any;
+  disabled = false;
+  selected = 0;
+	hovered = 0;
+  user_id :any;
 
-
-constructor( private getteacher :GetTeacherService , public router: Router, private activatedRoute: ActivatedRoute){
+constructor( private getteacher :GetTeacherService , public router: Router, private activatedRoute: ActivatedRoute,private ratingService: RatingService) {
   this.id = this.activatedRoute.snapshot.params['id'];
+  this.user_id = JSON.parse(localStorage.getItem('data')!).id;
+  console.log(this.user_id);
   this.getteacher.getTeacher(this.id).subscribe((data) => {
       this.api = data,
 
@@ -41,15 +50,45 @@ constructor( private getteacher :GetTeacherService , public router: Router, priv
     this.coursesCount = this.api.courses_count;
 
       this.teacherCourses = this.api.courses;
-      console.log(this.teacherCourses);
-
+      
       for(let course of this.teacherCourses){
         this.courseStudentCount += Number(course.Student_count);
-        console.log( this.courseStudentCount, "dddddddddddddddd");
         }
 
 
 
   });
+}
+ngOnInit() {
+  this.ratingService.getteacherRating(this.id).subscribe((data: any) => {
+    this.rating = data;
+    this.selected = this.rating.find((rating: any) => rating.user_id === this.user_id).rating;
+    console.log(this.selected);
+    this.rating = this.getRatingAverage(this.rating);
+    if (this.selected) {
+      this.disabled = true;
+    }
+  });
+}
+getRatingAverage(ratings: any[]): number {
+  if (ratings.length === 0) {
+    return 0;
+  }
+  const sum = ratings.reduce((total, rating) => total + rating.rating, 0);
+  return sum / ratings.length;
+}
+submitRate() {
+  if (!this.selected) {
+    return;
+  }
+  this.ratingService.setTeacherRating(this.id, this.selected).subscribe({
+    next: (response) => {
+      this.teacherRate = this.selected;
+      console.log('Rating submitted successfully:', response);
+    },
+    error: (error) => {
+      console.error('Error submitting rating:', error);
+    }
+  })
 }
 }

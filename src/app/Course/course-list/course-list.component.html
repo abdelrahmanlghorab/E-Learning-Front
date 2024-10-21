@@ -1,13 +1,14 @@
 <div class="w-100 d-flex flex-column align-items-center parent fw-bold gap-3">
-  <h1 class="font-24-bold text-center">All Courses</h1>
-  
-  <div class="search-container">
+  <div class="d-flex justify-content-between w-100">
+  <h1 class="font-24-bold text-center ">All Courses</h1>
+
+  <div class="search-container h-75 ">
     <input type="text" [formControl]="searchControl" placeholder="Enter title or price" class="search-input" />
     <button (click)="searchCourses(searchControl.value)" class="search-button">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>
   </div>
-
+</div>
   <div class="card-container">
     <div class="d-flex flex-wrap justify-content-center gap-3">
       <ng-container *ngIf="courses && courses.length > 0; else noCourses">

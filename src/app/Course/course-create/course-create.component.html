@@ -163,20 +163,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row mt-3">
-        <div class="col">
-          <div class="form-group">
-            <label for="image">Image</label>
-            <div class="input-group">
-              <span class="input-group-text" ><i class="fas fa-image"></i></span>
-              <input type="file" formControlName="thumbnail" [value]="thumbnail()" class="form-control" />
-              </div>
-              <div *ngIf="courseForm.get('thumbnail')?.invalid && submitted" class="invalid-feedback">
-                please select image
-                </div>
-                </div>
-                </div>
-        </div> -->
       <div *ngIf="courseForm.get('course_type')?.value == 'live'">
         <div class="row mt-3">
           <div class="col">
@@ -273,6 +259,15 @@
           </div>
         </div>
       </div>
+      <label for="category_id" class="mb-2"> Category:</label>
+      <select formControlName="category_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+        (ngModelChange)="setInstructorValue(courseForm.get('category_id')?.value)" name="category_id" id="category_id">
+        <option value="" disabled selected>Select Category</option>
+        @for (category of categories; track category.id) {
+        <option name="category_id" [value]="category.id">{{category.name}}</option>
+        }
+
+      </select>
       <div class="d-flex justify-content-between mt-3">
         <button
           type="submit"
@@ -287,6 +282,7 @@
           Back
         </button>
       </div>
+
     </form>
   </div>
 </section>

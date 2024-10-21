@@ -202,13 +202,29 @@
               <span><i class="fa-solid fa-certificate"></i></span>
               <span class="text-secondary opacity-50">Completion Certificate</span>
             </div>
+            <div class="row">
+              <span><i class="fa-solid fa-user-group"></i></span>
+              <span class="text-secondary opacity-50">
+                <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 2.6rem; color: gold; " [readonly]="true" />
+              </span>
           </div>
         </div>
       </div>
 
+
       <div class="card col-12 mt-4">
         <h6 class="text-center mt-2 text-warning fw-bold">Leave a Feedback</h6>
         @if(enrollment){
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+                <ngb-rating [(rate)]="selected" (rateChange)="submitRate()" (hover)="hovered = $event" (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
+                @if(selected>0){
+                  <span class="text-warning fs-5">rated successfully</span>
+                }
+              </div>
+            </div>
+          </div>
         <div class="card-body ">
           <form [formGroup]="form" (ngSubmit)="click()" class="comment-form">
             <div class="form-group">

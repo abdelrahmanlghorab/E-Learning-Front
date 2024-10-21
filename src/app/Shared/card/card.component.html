@@ -18,6 +18,9 @@
         </div>
       <div class="bottom w-100 ">
         <h6 class="description">{{ course.title }}</h6>
+          <span class="rate">
+            <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
+          </span>
         <div class="flex justify-content-between">
             <div class="flex gap-1 mb-3 ms-3 position-absolute bottom-0 start-0">
               <img src="boy.5g.svg" class="ms-4" alt="boy">
