@@ -13,13 +13,16 @@
         <a href="https://wa.me/{{teacherPhone}}" target="_blank" class="btn main-btn custom-button btn-gradient contact-btn">
           Contact Now
         </a>
-        <hr>
+        @if(isenrolled){
+                  <hr>
         <div class="col-12 d-flex justify-content-center flex-column align-items-center">
           <ngb-rating [(rate)]="selected" (rateChange)="submitRate()" (hover)="hovered = $event" (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
           @if(selected>0){
             <span class="text-warning fs-5">rated successfully</span>
           }
         </div>
+        }
+
       </div>
     </div>
 

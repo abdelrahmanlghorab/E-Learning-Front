@@ -3,7 +3,7 @@
   <h1 class="font-24-bold text-center ">All Courses</h1>
 
   <div class="search-container h-75 ">
-    <input type="text" [formControl]="searchControl" placeholder="Enter title or price" class="search-input" />
+    <input type="text" (ngModelChange)="searchCourses(searchControl.value)" [formControl]="searchControl" placeholder="Enter title or price" class="search-input" />
     <button (click)="searchCourses(searchControl.value)" class="search-button">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>

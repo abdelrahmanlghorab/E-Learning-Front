@@ -97,4 +97,6 @@ a {
   z-index: 1;
   bottom: 35px !important;
   font-weight: lighter;
+  top: 10px;
+  left: 10px;
 }

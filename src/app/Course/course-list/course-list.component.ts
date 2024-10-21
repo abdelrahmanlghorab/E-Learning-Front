@@ -39,14 +39,11 @@ export class CourseListComponent {
   }
 
   searchCourses(keyword: string) {
-    this.router.navigate(['/searchresult'], { queryParams: { keyword } });
+    this.CoursesService.searchCourses(keyword).subscribe((data: any) => {
+      this.courses = data;
+    });
   }
-  searchCategory(id:any){
-    this.router.navigate(['/searchresult'], { queryParams: { id } });
-  }
-  toggleSearchResults() {
-    this.showSearchResults = !this.showSearchResults;
-  }
+
   onCategoryChange(event: any) {
     const selectedCategoryId = event.target.value;
     console.log('Selected Category ID:', selectedCategoryId);

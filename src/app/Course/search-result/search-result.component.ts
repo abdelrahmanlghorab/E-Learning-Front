@@ -15,14 +15,19 @@ export class SearchResultComponent {
   keyword: string = '';
   constructor(private router: Router, private courseservises: CoursesService) { }
   ngOnInit() {
+    console.log('SearchResultComponent Initialized');
     const queryParams = this.router.parseUrl(this.router.url).queryParams;
     this.keyword = queryParams['keyword'] || '';
+  
     if (queryParams && queryParams['keyword']) {
       const keyword = queryParams['keyword'];
+      console.log('Calling searchCourses() with keyword:', keyword);
+  
       this.courseservises.searchCourses(keyword).subscribe((data: any) => {
         this.results = data;
-        console.log(this.results);
+        console.log('Search Results:', this.results);
       });
     }
   }
+  
 }
