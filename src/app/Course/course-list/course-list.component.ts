@@ -18,7 +18,6 @@ import { ToastrService } from 'ngx-toastr';
 export class CourseListComponent {
   courses: any[] = [];
   searchControl: FormControl = new FormControl('');
-  showSearchResults = false;
   categories:any;
   searchcategory:any;
   categoryControl: FormControl = new FormControl('');
@@ -33,7 +32,6 @@ export class CourseListComponent {
       this.courses = data;
       this.category.getAllCategories().subscribe((data: any) => {
         this.categories = data;
-        console.log(this.categories);
       });
     });
   }
@@ -43,10 +41,17 @@ export class CourseListComponent {
       this.courses = data;
     });
   }
-
   onCategoryChange(event: any) {
     const selectedCategoryId = event.target.value;
-    console.log('Selected Category ID:', selectedCategoryId);
+    if(selectedCategoryId ==''){
+      this.CoursesService.getAllCourses().subscribe((data: any) => {
+        this.courses = data;
+      });
+      return;
+    }
+    this.category.searchCategory(selectedCategoryId).subscribe((data: any) => {
+      this.courses = data;
+    });
     }
 
 }

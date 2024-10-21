@@ -49,7 +49,7 @@ constructor( private getteacher :GetTeacherService , public router: Router, priv
     this.coursesCount = this.api.courses_count;
 
       this.teacherCourses = this.api.courses;
-      
+
       for(let course of this.teacherCourses){
         this.courseStudentCount += Number(course.Student_count);
         }
@@ -88,26 +88,21 @@ submitRate() {
   if (!this.selected) {
     return;
   }
-  
-  // Submit the user's rating
+
   this.ratingService.setTeacherRating(this.id, this.selected).subscribe({
     next: (response) => {
       this.teacherRate = this.selected;
       console.log('Rating submitted successfully:', response);
       this.disabled = true;
 
-      // Fetch the updated ratings and recalculate the average
       this.ratingService.getteacherRating(this.id).subscribe((data: any) => {
         this.rating = data;
 
-        // Update the selected rating for the current user
         this.selected = this.rating.find((rating: any) => rating.user_id === this.user_id).rating;
-        
-        // Recalculate the average rating
+
         this.rating = this.getRatingAverage(this.rating);
         console.log(this.rating);
 
-        // If the user has already rated, disable the input
         if (this.selected) {
           this.disabled = true;
         }

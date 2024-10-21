@@ -18,7 +18,7 @@
         <div class="col-12 d-flex justify-content-center flex-column align-items-center">
           <ngb-rating [(rate)]="selected" (rateChange)="submitRate()" (hover)="hovered = $event" (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
           @if(selected>0){
-            <span class="text-warning fs-5">rated successfully</span>
+            <span class="text-warning mt-2 fs-5">({{this.selected}}/5)</span>
           }
         </div>
         }
@@ -58,7 +58,7 @@
     </div>
 
     <div class="row">
-      @for(course of teacherCourses;track course.id){
+      @for(course of teacherCourses;track $index){
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <a [routerLink]="['/course', course[0].id]">
           <div class="card bg-transparent border-primary rounded-0 h-100">

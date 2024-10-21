@@ -6,27 +6,12 @@
       </div>
       <div class="container mt-5">
         <div class="row d-flex justify-content-center">
+
 @for (item of teachers; track item.id) {
-      
-      <!-- <div class="col-md-3 col-sm-6 cardd col-xs-12" >
-          <article class="material-card Teal" [routerLink]="['/teacherprofile', item.id]">
-              <h2 class="text-start ">
-                  <span class="text-dark ms-2">{{ item.name }}</span>
-                  <strong class="text-dark ms-2 ">
-                    <i class="fa fa-fw fa-star"></i> -->
-                    <!-- <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
-                    <span>{{ item.title }}</span>
-                  </strong>
-              </h2>
-              <div class="mc-content">
-                  <div class="img-container w-100">
-                      <img class="img-responsive" [src]="item.image">
-                  </div>
-              </div>
-          </article>
-      
-  </div> -->
+  <div class="col-md-3 col-sm-6 cardd col-xs-12">
   <app-teacher-card [teacher]="item"></app-teacher-card>
+</div>
+
 }
 </div>
 </div>

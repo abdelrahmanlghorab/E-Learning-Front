@@ -11,7 +11,8 @@
   <div>
     <select  [formControl]="categoryControl" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
     (change)="onCategoryChange($event)">
-      <option value="" disabled selected>Select Category</option>
+      <option name="category_id" value="" selected>All Categories</option>
+      <hr>
       @for (category of categories; track category.id) {
       <option name="category_id" [value]="category.id" >{{category.name}}</option>
       }
