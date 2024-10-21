@@ -101,4 +101,6 @@ a {
   position: absolute;
   z-index: 1;
   font-weight: lighter;
+  top: 10px;
+  left: 10px;
 }

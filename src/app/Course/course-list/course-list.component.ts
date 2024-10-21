@@ -27,14 +27,10 @@ export class CourseListComponent {
   }
 
   searchCourses(keyword: string) { 
-    // this.CoursesService.searchCourses(keyword).subscribe((data: any) => {
-    //   this.courses = data;
-    //   this.toggleSearchResults();
-    // });
-    this.router.navigate(['/searchresult'], { queryParams: { keyword } });
-  }
-  toggleSearchResults() {
-    this.showSearchResults = !this.showSearchResults;
+    // this.router.navigate(['/searchresult'], { queryParams: { keyword } });
+    this.CoursesService.searchCourses(keyword).subscribe((data: any) => {
+      this.courses = data;
+    });
   }
 
 }
