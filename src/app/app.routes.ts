@@ -121,7 +121,7 @@ export const routes: Routes = [
     canActivate: [isAdminGuard, authGuard]
   },
   {
-    path: 'createCategory',
+    path: 'createcategory',
     component: CategoryCreateComponent,
     title: 'Create Category',
     canActivate: [isAdminGuard, authGuard]

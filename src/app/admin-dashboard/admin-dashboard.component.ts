@@ -10,7 +10,7 @@ import { PaymentService } from '../services/payment.service';
   standalone: true,
   imports: [CommonModule, RouterLink ,MatPaginatorModule,MatTableModule],
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css'], // Ensure the correct property name 'styleUrls'
+  styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
   isCollapsed = false;
@@ -20,9 +20,9 @@ export class AdminDashboardComponent implements OnInit {
   role_id!: any;
   id!: any;
   payments: any;
-  dataSource!: MatTableDataSource<any>; // Data source for the table
-  displayedColumns: string[] = ['id', 'amount', 'date', 'status']; // Define columns
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // Reference to the paginator
+  dataSource!: MatTableDataSource<any>; 
+  displayedColumns: string[] = ['id', 'amount', 'date', 'status']; 
+  @ViewChild(MatPaginator) paginator!: MatPaginator; 
   
   constructor(private paymentService: PaymentService) {}
 
@@ -44,8 +44,8 @@ export class AdminDashboardComponent implements OnInit {
       (response: any) => {
         this.payments = response.payments;
         console.log(this.payments);
-        this.dataSource = new MatTableDataSource(this.payments); // Assign data to dataSource
-        this.dataSource.paginator = this.paginator; // Attach the paginator
+        this.dataSource = new MatTableDataSource(this.payments); 
+        this.dataSource.paginator = this.paginator; 
       },
       (error: any) => {
         console.error('Error fetching payments', error);

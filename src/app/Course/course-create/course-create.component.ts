@@ -11,6 +11,8 @@ import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CategoriesService } from '../../services/categories.service';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-course-create',
@@ -24,11 +26,14 @@ export class CourseCreateComponent implements OnInit {
   submitted: boolean = false;
   courses: any;
   instructors: any;
+  categoryName:any;
+  categories:any;
   title=signal("");
   description=signal("");
   thumbnail=signal("");
   instructor_id=signal("");
   playlistId=signal("");
+  category_id=signal("");
   constructor(
     private fb: FormBuilder,
     private playList: CoursePlaylistService,
@@ -36,6 +41,7 @@ export class CourseCreateComponent implements OnInit {
     private coursesService: CoursesService,
     private router: Router,
     private toaster:ToastrService,
+    private category :CategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +53,11 @@ export class CourseCreateComponent implements OnInit {
       this.instructors = teacherData;
       this.instructors = this.instructors.data;
     });
+    this.category.getAllCategories().subscribe((categories: any) => {
+      this.categories = categories;
+      // console.log(categories[0].name);
+    });
+    
 
     this.courseForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
@@ -61,6 +72,7 @@ export class CourseCreateComponent implements OnInit {
       live_link : [''],
       live_schedule : [''],
       live_details : [''],
+      category_id : ['', Validators.required]
     });
 
     this.courseForm.get('is_free')?.valueChanges.subscribe((isFree) => {
@@ -80,28 +92,32 @@ export class CourseCreateComponent implements OnInit {
       this.coursesService.createCourse(this.courseForm.value).subscribe(
         {
           next: (response) => {
-            console.log('Course created successfully', response);
+            // console.log('Course created successfully', response);
             this.courseForm.reset();
             this.router.navigate(['courses']);
             this.toaster.success('Course created successfully');
 
           },
           error: (error) => {
-            console.error('Error creating course', error);
+            // console.error('Error creating course', error);
             this.toaster.error('Error creating course');
+
           }
 
         }
       );
     } else {
-      console.log('Form is invalid');
+      // console.log(this.courseForm.value);
+      // console.log('Form is invalid');
       this.toaster.warning('Form is invalid');
       return;
     }
   }
   setCourseValue(id: any){
     for(let course of this.courses){
-      if(course.id === id){
+      console.log(id);
+      // console.log(course.id);
+      if(course.id == id){             
         this.title.set(course.title);
         this.description.set(course.description);
         this.thumbnail.set(course.thumbnail);
@@ -110,7 +126,6 @@ export class CourseCreateComponent implements OnInit {
           description: this.description(),
           thumbnail:this.thumbnail(),
         });
-        break;
       };
     }
   }
@@ -120,6 +135,7 @@ export class CourseCreateComponent implements OnInit {
         this.instructor_id.set(instructor.id);
         this.courseForm.patchValue({
           instructor_id: this.instructor_id(),
+          category_id: this.category_id()
         });
         break;
       };
