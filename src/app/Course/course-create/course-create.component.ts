@@ -110,7 +110,7 @@ export class CourseCreateComponent implements OnInit {
   }
   setCourseValue(id: any){
     for(let course of this.courses){
-      if(course.id === id){
+      if(course.id == id){
         this.title.set(course.title);
         this.description.set(course.description);
         this.thumbnail.set(course.thumbnail);

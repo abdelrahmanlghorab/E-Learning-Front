@@ -89,16 +89,12 @@ a {
 
 }
 .badge {
-  /* position: absolute; */
-  /* top: 0; */
-  /* z-index: 2; */
-  /* width: 100%; */
-
   color:#007bff !important;
    box-shadow: black 0.2px 0.5px;
 }
 .rate{
   position: absolute;
   z-index: 1;
+  bottom: 35px !important;
   font-weight: lighter;
 }
