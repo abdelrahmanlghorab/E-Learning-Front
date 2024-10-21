@@ -2,9 +2,15 @@
   min-height: calc(85dvh);
 }
 .main-btn {
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 0.5rem;
   color: var(--bg);
-  background: linear-gradient(45deg, #02448b, #00ccff);
+  background: linear-gradient(
+      90deg,
+      var(--wave1, #007bff ),
+      var(--wave2,#00ccff ) 51%,
+      var(--wave1,  rgb(0 107 179))
+    )
+    var(--x, 0) / 200%;
   scale: 1;
   transition: 0.4s;
 }
@@ -26,6 +32,7 @@ button {
   position: absolute;
   left: 0;
 }
+
 button span:first-child {
   display: inline-block;
   width: 30px;
@@ -123,6 +130,18 @@ button div svg {
 
  .shape2{
 display: none;
+  }
+}
+@media (max-width: 767px) {
+  .flex {
+    flex-direction: column;
+  }
+
+ .shape2{
+display: none;
+  }
+   button{
+    max-width: 200px !important;
   }
 }
 @media (max-width: 476) {

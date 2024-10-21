@@ -13,6 +13,7 @@ import { AuthService } from '../../services/Auth/auth.service';
 export class CardComponent {
 
   @Input() course!: any;
+
   teacher!: any;
   teacherName!: any;
   teacherImage: any;
@@ -23,10 +24,13 @@ export class CardComponent {
   ngOnInit(){
   this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
          this.teacher = data.teacher
+         console.log(this.teacher);
          this.teacherName=this.teacher.name;
         this.teacherImage = this.teacher.image;
+
        });
       }
+
   handleMouseMove(event: MouseEvent) {
     const card = (event.target as HTMLElement).closest('.example-card') as HTMLElement;
     if (card) {

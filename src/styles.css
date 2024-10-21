@@ -334,7 +334,14 @@ body.dark-mode .custom-button:hover {
 body.dark-mode .disk {
   color: #f8f9fa;
 }
-
+body.dark-mode .title-text {
+   font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff8c00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
 body.dark-mode .theme-toggle {
   background-color: #333;
 }

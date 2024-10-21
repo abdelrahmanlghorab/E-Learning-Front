@@ -6,10 +6,10 @@ section.container > div {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
   custom-select .mat-form-field-flex {
-  background-color: #007bff; 
-  color: white; 
-  border-radius: 5px; 
-  padding: 8px; 
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
 }
 .custom-checkbox {
   display: flex;
@@ -29,7 +29,7 @@ section.container > div {
 .custom-checkbox input[type="checkbox"] {
   width: 25px;
   height: 25px;
-  accent-color: #007bff; 
+  accent-color: #007bff;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px rgba(57, 58, 59, 0.5);
@@ -39,7 +39,7 @@ section.container > div {
 
 .custom-checkbox input[type="checkbox"]:hover {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .mt-3 {

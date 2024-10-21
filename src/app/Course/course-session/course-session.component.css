@@ -1,17 +1,19 @@
-.title
-{
-margin-bottom: 20px !important;
-  /* height: 7rem; */
-  /* background: linear-gradient(
-      90deg,
-      var(--wave1, #007bff),
-      var(--wave2, #00ccff) 51%,
-      var(--wave1, rgb(0 107 179))
-    ); */
-      background: linear-gradient(45deg, #e65c00, #ffab00);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* opacity: 50%; */
+.title {
+  margin-bottom: 20px !important;
+  height: 7rem;
+}
+
+.video-frame {
+  width: 100%;
+  height: 56vh;
+}
+
+.card {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .video-frame {
+    height: 50vh; 
+  }
 }
