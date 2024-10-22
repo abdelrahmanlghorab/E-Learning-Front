@@ -1,7 +1,7 @@
 .example-card {
-  width: 325px;
-  height: 405px;
-  border-radius: 10px;
+  width: 350px;
+  height: 470px;
+  border-radius: 20px;
   box-shadow:rgba(63, 63, 70, 0.12) 0px 0px 0px 1px;
   background-color:#FBFBFB;
   transition: transform 0.5s, box-shadow 0.5s;
@@ -23,23 +23,7 @@ position: absolute;
   width: 100%;
 }
 
-.header-icon {
-position: absolute;
-  font-size: 54px;
-  text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6abcea;
-  color: #6abcea ;
-  opacity: 0.85;
-  transition: all 0.3s ease-in-out;
-}
 
-.header-icon:hover {
-
-  font-size: 74px;
-  text-shadow: 0px 0px 20px #6abcea, 0px 5px 30px #6abcea;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
-  opacity: 1;
-}
 .top-bottom-container {
   display: flex;
   flex-direction: column;
@@ -85,8 +69,10 @@ position: absolute;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
+  opacity: 0.75;
+  margin-top: -1px;
 }
 .category {
   opacity: 0.75;
@@ -100,4 +86,18 @@ position: absolute;
 
 a {
   all: unset;
+
 }
+.badge {
+  color:#007bff !important;
+   box-shadow: black 0.2px 0.5px;
+}
+.rate{
+  position: absolute;
+  z-index: 1;
+  bottom: 40px !important;
+  font-weight:normal;
+  left: 100px;
+
+}
+

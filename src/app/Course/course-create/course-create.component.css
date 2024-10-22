@@ -5,6 +5,47 @@ section.container > div {
     padding: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
+  custom-select .mat-form-field-flex {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 8px;
+}
+.custom-checkbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.custom-checkbox label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  margin-left: -20px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+  accent-color: #007bff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(57, 58, 59, 0.5);
+  margin-top: 10px;
+
+}
+
+.custom-checkbox input[type="checkbox"]:hover {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
 
   label {
     font-size: 22px;
@@ -57,6 +98,11 @@ section.container > div {
 
   p a:hover {
     text-decoration: underline !important;
+  }
+  hr{
+    width:50%;
+    text-align:left;
+    margin-left:0
   }
 
   @media (max-width: 768px) {

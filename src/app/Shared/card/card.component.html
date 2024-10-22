@@ -1,30 +1,37 @@
-<a [routerLink]="['/course', course.id]" class="card-link">
-  <div class="card example-card h-100" (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
-    <img [src]="course.thumbnail" alt="Sample Image" class="thumbnail card-img">
+<a [routerLink]="['/course', course.id]" class="card-link " >
+  <div class="card example-card position-relative " (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
+    <span class="badge badge-pill badge-info mt-2 me-2">{{course.course_type=='video'?'Recorded':'Online'}}</span>
+      @if ( course.course_type=='video' && course.thumbnail=='https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg') {
+      <img class="thumbnail card-img" src="courseImage.png" alt="Course Image">
+      }@else {
+    <img [src]="course.thumbnail" alt="Sample Image" class="card-img object-fit-contain">
+      }
     <div class="header-icon-container">
       <a [routerLink]="['/course', course.id]">
         <i class="material-icons header-icon"></i>
       </a>
     </div>
-    <div class="top-bottom-container">
-      <div class="top flex flex-column gap-2 profile">
-        <img class="rounded-picture" src="9829626.jpg" alt="Profile Picture">
-        <span class="name">Ahmed Mohamed</span>
-      </div>
+    <div class="top-bottom-container ">
+        <div class="top flex flex-column gap-2 profile">
+          <img class="rounded-picture" [src]="teacherImage" alt="Profile Picture">
+          <span class="name">{{teacherName}}</span>
+        </div>
       <div class="bottom w-100 ">
         <h6 class="description">{{ course.title }}</h6>
+          <div class="rate mb-5">
+            <ngb-rating [(rate)]="ratingAverage" [max]="5" class="stars" style="font-size: 1.6rem; " [readonly]="true" />
+          </div>
         <div class="flex justify-content-between">
-      <div class="row">
-            <div class="flex gap-1 col-6">
+            <div class="flex gap-1 mb-3 ms-3 position-absolute bottom-0 start-0">
               <img src="boy.5g.svg" class="ms-4" alt="boy">
               <span class="category">Entry Level</span>
             </div>
-            <div class="flex gap-2 col-6 text-end">
-              <img src="money.svg" class="me-2" alt="MoneyBadge">
-              <span class="price ">$100</span>
+            <div class="d-flex flex-column align-items-center  gap-2 mb-3 me-2 position-absolute bottom-0 end-0" dir="rtl">
+              <img src="money.svg" class="me-1" alt="MoneyBadge">
+              <span class="price fs-6 text-secondary opacity-50"> {{ course.price == 0 ? 'Free' : '$ ' + course.price }}
+              </span>
             </div>
       </div>
-        </div>
       </div>
     </div>
   </div>

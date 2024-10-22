@@ -1,0 +1,19 @@
+@if (results.length > 0) {
+<div class="container my-3">
+    <h2 class="fw-bold text-black">Search Results For <span style="color: rgb(255, 183, 0);">{{keyword}}</span></h2>
+    <ul>
+        <li>
+            <app-card *ngFor="let course of results" [course]="course"></app-card>
+        </li>
+    </ul>
+</div>
+}@else{
+    <div class="container" >
+        <h2 class="fw-bold text-black mt-5">Search Results For <span style="color: rgb(255, 183, 0);">{{keyword}}</span></h2>
+
+        <div class="d-flex justify-content-center align-items-center w-100">
+            <img src="noResult.gif" alt="" class="img-fluid" style="width: 50%;">
+            <p class="fs-1 fw-bold   text-center">No results found</p>
+        </div>
+    </div>
+}

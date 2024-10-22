@@ -1,116 +1,50 @@
-<div class="container mt-5">
-    <h4 class="text-center text-warning ">تعرف علي</h4>
-    <h1 class="text-center fw-bold mb-4">أحدث الكورسات </h1>
+<div class="container mt-5 fw-bold">
+  <h4 class="text-center  fw-bold mb-4">Most Recent Courses</h4>
 </div>
-<section class="pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 ">
-                <div class="image-flip">
-                    <div class="mainflip flip-0">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid"
-                                            src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-4.png"
-                                            alt="card image"></p>
-                                    <h4 class="card-title fw-bold">اسم الكورس </h4>
-                                    <div class="d-flex justify-content-around my-3">
-                                        <p class="card-text fw-bold fs-3"> $ السعر</p>
-                                        <p class="card-text fw-bold fs-3"> المعلم </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="position-relative card-body text-center mt-4">
-                                    <h4 class="card-title fs-3 fw-bold mt-3">نبذة</h4>
-                                    <p class="card-text fs-6">تُعتَبَرُ اللغَةِ العربيّة مِنَ اللغاتِ السّامِيَة (وَهِيَ لغاتِ حَضارَةِ الهلال الخَصيب القديمة) وَمِن إحدى أكثَرِ اللغاتِ انتشاراً حَولَ العالم وَهِيَ اللغَةِ الحضارية الأولى فِي العالم وأقدمها، فيتحَدّثُ بها حَوالي 423 مَليون شَخص، ويتوزّعونَ فِي مناطِقٍ مُحَدّدة فِي الوطن العربي وأيضاً فِي (تركيا، وتشاد، وإرتيريا، ومالي، والسنغال، وإثيوبيا، وإيران)، وَهِيَ لُغَةٍ شَعائِرِيّة لدى العديد مِنَ الكنائس المَسيحِيّة فِي الوطن العربي وكُتِبَت بِها الكثير مِنَ الأعمال الفكريّة والدينية لليهود فِي العُصورِ الوسطى تحديداً.
-                                     <div class="cont position-absolute  start-50 translate-middle-x ">
-                                         <button class="learn-more ">اشتري الأن </button>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip">
-                    <div class="mainflip flip-0">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid"
-                                            src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-4.png"
-                                            alt="card image"></p>
-                                    <h4 class="card-title fw-bold">اسم الكورس </h4>
-                                    <div class="d-flex justify-content-around my-3">
-                                        <p class="card-text fw-bold fs-3"> $ السعر</p>
-                                        <p class="card-text fw-bold fs-3"> المعلم </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="position-relative card-body text-center mt-4">
-                                    <h4 class="card-title fs-3 fw-bold mt-3">نبذة</h4>
-                                    <p class="card-text fs-6">تُعتَبَرُ اللغَةِ العربيّة مِنَ اللغاتِ السّامِيَة (وَهِيَ لغاتِ حَضارَةِ الهلال الخَصيب القديمة) وَمِن إحدى أكثَرِ اللغاتِ انتشاراً حَولَ العالم وَهِيَ اللغَةِ الحضارية الأولى فِي العالم وأقدمها، فيتحَدّثُ بها حَوالي 423 مَليون شَخص، ويتوزّعونَ فِي مناطِقٍ مُحَدّدة فِي الوطن العربي وأيضاً فِي (تركيا، وتشاد، وإرتيريا، ومالي، والسنغال، وإثيوبيا، وإيران)، وَهِيَ لُغَةٍ شَعائِرِيّة لدى العديد مِنَ الكنائس المَسيحِيّة فِي الوطن العربي وكُتِبَت بِها الكثير مِنَ الأعمال الفكريّة والدينية لليهود فِي العُصورِ الوسطى تحديداً.
-                                     <div class="cont position-absolute  start-50 translate-middle-x ">
-                                         <button class="learn-more ">اشتري الأن </button>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+  <section class="wrapper">
+    <div class="container-fostrap">
+      <div class="content">
+        <div class="container">
+          <div class="row  mt-3">
+            @for (item of courses; track item.id) {
+            <div class="col-xs-12 col-sm-6  col-lg-6 " style="height: 380px;">
+              <div class="card resent-card ">
+                <a class="img-card">
+                  @if (item.thumbnail=="https://i.ytimg.com/img/no_thumbnail.jpg") {
+                  <img class="card-img-top rounded-0" src="courseImage.png" alt="Course Image">
 
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip">
-                    <div class="mainflip flip-0">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid"
-                                            src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-4.png"
-                                            alt="card image"></p>
-                                    <h4 class="card-title fw-bold">اسم الكورس </h4>
-                                    <div class="d-flex justify-content-around my-3">
-                                        <p class="card-text fw-bold fs-3"> $ السعر</p>
-                                        <p class="card-text fw-bold fs-3"> المعلم </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="position-relative card-body text-center mt-4">
-                                    <h4 class="card-title fs-3 fw-bold mt-3">نبذة</h4>
-                                    <p class="card-text fs-6">تُعتَبَرُ اللغَةِ العربيّة مِنَ اللغاتِ السّامِيَة (وَهِيَ لغاتِ حَضارَةِ الهلال الخَصيب القديمة) وَمِن إحدى أكثَرِ اللغاتِ انتشاراً حَولَ العالم وَهِيَ اللغَةِ الحضارية الأولى فِي العالم وأقدمها، فيتحَدّثُ بها حَوالي 423 مَليون شَخص، ويتوزّعونَ فِي مناطِقٍ مُحَدّدة فِي الوطن العربي وأيضاً فِي (تركيا، وتشاد، وإرتيريا، ومالي، والسنغال، وإثيوبيا، وإيران)، وَهِيَ لُغَةٍ شَعائِرِيّة لدى العديد مِنَ الكنائس المَسيحِيّة فِي الوطن العربي وكُتِبَت بِها الكثير مِنَ الأعمال الفكريّة والدينية لليهود فِي العُصورِ الوسطى تحديداً.
-                                     <div class="cont position-absolute  start-50 translate-middle-x ">
-                                         <button class="learn-more ">اشتري الأن </button>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  }@else {
+                  <img [src]="item.thumbnail" />
+                  }
+                </a>
+                <div class="card-content" >
+                  <h4 class="card-title">
+                    <a>{{item.title}}</a>
+                  </h4>
+                  <!-- <p class="">
+                                {{truncate.transform(this.item.description, 110)}}
+                              </p> -->
                 </div>
+                <div class="card-read-more">
+                  <a [routerLink]="['/course', item.id]" class="btn btn-link btn-block">
+                    Read More
+                  </a>
+                </div>
+              </div>
             </div>
-        </div>  
+            }
+          </div>
+        </div>
+      </div>
     </div>
-        <button class="button mx-auto mt-3">
-            مشاهدة الكورسات
-            <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
-              <path
-                clip-rule="evenodd"
-                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                fill-rule="evenodd"
-              ></path>
-            </svg>
-          </button>      
-</section>
-
+  </section>
+  <button routerLink="/courses" class="button bbb-ttt mx-auto mb-5 mt-3">
+    All Courses
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+      <path clip-rule="evenodd"
+        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+        fill-rule="evenodd"></path>
+    </svg>
+  </button>
+</div>

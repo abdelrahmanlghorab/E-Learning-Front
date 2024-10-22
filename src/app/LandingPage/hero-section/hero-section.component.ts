@@ -9,5 +9,13 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero-section.component.css'
 })
 export class HeroSectionComponent {
+  data: any;
+  isLoggedIn: boolean=false;
 
+  ngOnInit() {
+    this.data = localStorage.getItem('Token');
+    if (this.data){
+      this.isLoggedIn = true;
+    }
+  }
 }
