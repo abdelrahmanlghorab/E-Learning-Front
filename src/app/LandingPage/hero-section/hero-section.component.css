@@ -29,8 +29,6 @@ button {
   text-decoration: none;
   border: none;
   color: white !important;
-  position: absolute;
-  left: 0;
 }
 
 button span:first-child {

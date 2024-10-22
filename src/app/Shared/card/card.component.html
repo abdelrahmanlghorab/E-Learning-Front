@@ -4,7 +4,7 @@
       @if ( course.course_type=='video' && course.thumbnail=='https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg') {
       <img class="thumbnail card-img" src="courseImage.png" alt="Course Image">
       }@else {
-    <img [src]="course.thumbnail" alt="Sample Image" class="img-fluid card-img">
+    <img [src]="course.thumbnail" alt="Sample Image" class="card-img object-fit-contain">
       }
     <div class="header-icon-container">
       <a [routerLink]="['/course', course.id]">
@@ -19,7 +19,7 @@
       <div class="bottom w-100 ">
         <h6 class="description">{{ course.title }}</h6>
           <div class="rate mb-5">
-            <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
+            <ngb-rating [(rate)]="ratingAverage" [max]="5" class="stars" style="font-size: 1.6rem; " [readonly]="true" />
           </div>
         <div class="flex justify-content-between">
             <div class="flex gap-1 mb-3 ms-3 position-absolute bottom-0 start-0">

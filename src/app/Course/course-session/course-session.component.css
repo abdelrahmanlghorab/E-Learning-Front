@@ -5,15 +5,14 @@
 
 .video-frame {
   width: 100%;
-  height: 56vh;
+  height: 63vh;
 }
 
 .card {
   height: 100%;
 }
-
 @media (max-width: 768px) {
   .video-frame {
-    height: 50vh; 
+    height: 50vh;
   }
 }

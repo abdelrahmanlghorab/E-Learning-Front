@@ -129,13 +129,11 @@ body.dark-mode .nav-item :hover {
 
 .dropdown-menu {
   width: 200px;
-  margin-left: -400px;
   padding: 0 5px;
   background-color: #f8f9fa;
-  border-radius: 15px;
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   overflow-y: auto;
-  max-height: 200px;
+  max-height: 270px;
   scrollbar-width: thin;
   scrollbar-color: #f8f9fa #f8f9fa;
 
@@ -147,8 +145,8 @@ body.dark-mode .nav-item :hover {
 }
 
 .dropdown-menu hr {
-  margin: 8px 0;
-  border-color: #e0e0e0;
+  margin: 6px 0;
+  border-color: #a7a7a7;
 }
 
 .dropdown-menu .d-flex {
@@ -182,6 +180,16 @@ body.dark-mode .nav-item :hover {
 
 
 .notify {
-  background: linear-gradient(45deg, #02448b, #00ccff);
+  background:linear-gradient(40deg, #ff0080, #ff8c00 70%);
+}
 
+.text-unread{
+  color: #ffab00;
+  font-weight: bolder;
+
+}
+.text-read {
+  color: #555;
+  font-weight: normal;
+  font-size: small;
 }

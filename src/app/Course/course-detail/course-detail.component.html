@@ -12,7 +12,7 @@
         <img class="card-img p-5 img-fluid" src="courseImage.png" alt="Course Image">
 
         }@else {
-        <img [src]="courseImage" class="card-img p-5 img-fluid" style="height: 450px; max-width: 100%;"
+        <img [src]="courseImage" class="card-img p-4 " style="height: 450px; max-width: 100%; object-fit:cover;"
           alt="Course Image" /> }
 
       </div>
@@ -36,7 +36,7 @@
       <div class="card mt-3" dir="ltr">
         <div class="row g-0">
           <div class="col-md-2 d-flex justify-content-center align-items-center text-center">
-            <img class="teacherimg img-fluid rounded-pill w-75 border border-2 border-warning" [src]="instructorImage"
+            <img class="teacherimg img-fluid rounded-pill w-75 border border-2 text-mode" [src]="instructorImage"
               alt="{{ courseInstructor }} image" />
           </div>
           <div class="col">
@@ -90,15 +90,15 @@
                   @if(enrollment==true) {
                   {{ truncate.transform(this.video.description, 200) }}
                   <div class="d-flex  align-items-center text-start mt-2 mb-2">
-                    <i class="fa-regular fa-circle-play fs-4 text-danger "></i>
+                    <i class="fa-regular fa-circle-play fs-4 text-mode "></i>
                     <code class="ms-2 text-start fs-6 fw-bold text-secondary">
-                     <a [routerLink]="['/course-session', id,video.id]" style="text-decoration: none; color:olivedrab;">Go to Session</a>
+                     <a [routerLink]="['/course-session', id,video.id]" class="text-mode">Go to Session</a>
                     </code>
                   </div>
                   } @else {
                   <div class="d-flex my-3 ">
                     <span class=" text-bg-danger rounded-pill px-2 mx-3">Restricted</span>
-                    <code class="fs-6"> Not Available unless: You are a Student </code>
+                    <span class=" text-danger fs-5"> Not Available unless: You are a Student </span>
                   </div>
                   }
                 </div>
@@ -118,7 +118,7 @@
       @if(enrollment==true) {
       <div class="card mt-3" dir="ltr">
         <div class="card-body text-center">
-          <h3 class="card-title text-warning">Recorded Sessions</h3>
+          <h3 class="card-title text-warning">Online Sessions</h3>
           <div class="row">
             <div class="col-6">
               <p class="mb-3 fs-4 ms-0 mt-0 text-secondary text-start ">
@@ -144,7 +144,7 @@
       @else {
       <div class="card mt-3" dir="ltr">
         <div class="card-body text-center">
-          <h3 class="card-title text-danger">Please enroll to see the sessions</h3>
+          <h3 class="card-title text-warning">Please enroll to see the sessions</h3>
         </div>
       </div>
       }
@@ -168,7 +168,7 @@
 
               @else if(coursePrice != 0){
               <span class="fs-2 fw-semibold text-secondary">
-                <span class="text-success">$ </span>{{ coursePrice }}</span>
+                {{ coursePrice }} <span class="text-mode"> USD</span></span>
               }
               }
             </h5>
@@ -205,7 +205,7 @@
             <div class="row">
               <span><i class="fa-solid fa-user-group"></i></span>
               <span class="text-secondary opacity-50 mt-3">
-                <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 2.6rem; color: gold; " [readonly]="true" />
+                <ngb-rating [(rate)]="ratingAverage" [max]="5"  class="stars fs-2" [readonly]="true" />
               </span>
           </div>
         </div>
@@ -213,18 +213,8 @@
 
 
       <div class="card col-12 mt-4">
-        <h6 class="text-center mt-2 text-warning fw-bold">Leave a Feedback</h6>
+        <h6 class="text-center mt-2 text-warning fw-bold text-mode">Leave a Feedback</h6>
         @if(enrollment){
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12 d-flex justify-content-center flex-column align-items-center">
-                <ngb-rating [(rate)]="selected" (rateChange)="submitRate()" (hover)="hovered = $event" (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
-                @if(selected>0){
-                  <span class="text-warning fs-5">rated successfully</span>
-                }
-              </div>
-            </div>
-          </div>
         <div class="card-body ">
           <form [formGroup]="form" (ngSubmit)="click()" class="comment-form">
             <div class="form-group">
@@ -239,13 +229,25 @@
       }
       @else {
       <div class="card-body text-center">
-        <h5 class="card-title text-secondary">Please Enroll to leave a Feedback</h5>
+        <h5 class="card-title text-warning">Please Enroll to leave a Feedback</h5>
       </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+              <ngb-rating [(rate)]="selected" class="stars fs-2" (rateChange)="submitRate()" (hover)="hovered = $event"
+                (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
+              @if(selected>0){
+              <span class="text-mode fs-5">rated successfully</span>
+              }
+            </div>
+          </div>
+        </div>
       }
+
       </div>
 
       @if(comments.length > 0){
-      <h6 class=" mb-4 text-warning fw-bold" dir="ltr">Feedbacks</h6>
+      <h6 class=" mb-4 text-mode fw-bold" dir="ltr">Feedbacks</h6>
       @for (comment of comments; track comment.id) {
       <div class="card mb-3 shadow-sm " dir="ltr">
         <div class="card-body d-flex">
@@ -272,7 +274,7 @@
       </div>
       }
       }@else {
-      <h6 class=" mb-4 text-warning text-center fw-bold" dir="ltr">There's No Feedbacks in this Course</h6>
+      <h6 class=" mb-4 text-mode text-center fw-bold" dir="ltr">There's No Feedbacks in this Course</h6>
       }
 
     </div>

@@ -35,7 +35,7 @@
       </ul>
     </div>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center fs-6">
       <label class="switch me-3">
         <div class="theme-toggle">
           <input class="checkbox" type="checkbox" id="theme-switch" #themeSwitch (click)="toggleTheme()" />
@@ -45,19 +45,19 @@
       @if (isloggedIn) {
       <div class="dropdown ">
         <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-          <div class="me-3 position-relative x"><i class="fa fa-bell active-route fs-3"></i>
+          <div class="mx-3 position-relative"><i class="fa fa-bell active-route fs-3"></i>
             @if (count > 0 ) {
-            <span
-              class="position-absolute notify top-0 start-100 translate-middle text-center text-white   bg-success border border-light rounded-circle"
-              style="width: 25px;height: 25px;">{{count}}</span>
+            <div
+              class="position-absolute notify top-0 start-100 translate-middle text-center align-content-center align-items-center justify-content-center text-wrap text-white rounded-circle"
+              style="width: 24px;height: 24px;"> {{count}}</div>
             }
 
           </div>
         </div>
-        <ul class="dropdown-menu mt-2  text-center" style="width: 400px; margin-left: -220px;">
+        <ul class="dropdown-menu mt-2 rounded-2 text-center" style="width: fit-content; margin-left: -360px;">
           <li>
             @for (notification of notifications; track $index) {
-            <div class="d-flex ">
+            <div class="d-flex w-100 col-12">
               @if(notification.data["userImage"] == null){
                 <div class="ms-1 me-2">
                   <img src="default.png" alt="..." width="50px" height="50px" class="avatar-img rounded-circle" />
@@ -68,22 +68,21 @@
                 </div>
               }
 
-              <div class="mt-4">
+              <div (click)="onRead(notification.id)" class="mt-4 w-100 text-start" style="cursor: pointer;">
                 @if (notification.read_at == null) {
 
-                <small (click)="onRead(notification.id)" class=" text-primary"> {{notification.data['message'] }}
+                <small  class=" text-unread"> {{notification.data['message'] }}
                 </small>
                 }@else {
 
-                <small class="">{{notification.data['message'] }} </small>
+                <small class="text-start text-read ">{{notification.data['message'] }} </small>
                 }
 
-                <div>
+                <div class=" text-end">
                   <small class="notif-date">{{notification.data['created_at'] | date:'short' }} </small>
                 </div>
               </div>
             </div>
-          <hr />
 
             <hr />
             }
