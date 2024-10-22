@@ -18,6 +18,7 @@ export class PaymentComponent implements OnInit {
   message: string | undefined = '';
   error: string | undefined = '';
   id: any;
+  isloading: boolean = false;
 
   constructor(private paymentService: PaymentService, private router: Router, private activatedRoute: ActivatedRoute,private notificationService: NotificationsService,private toaster: ToastrService) { }
 
@@ -39,14 +40,17 @@ export class PaymentComponent implements OnInit {
     this.error = '';
     this.message = '';
     const courseId = this.id;
-    console.log(courseId);
+    this.isloading = true;
     this.paymentService.createPaymentIntent(courseId).subscribe({
       next: async (response: any) => {
         const clientSecret = response.clientSecret;
         const { paymentIntent, error } = await this.paymentService.confirmPayment(clientSecret, this.cardElement, this.stripe);
         if (error) {
-          this.error = "payment error"
+          this.error = "payment error";
+          this.toaster.error('Payment Failed');
+          this.isloading = false;
         } else if (paymentIntent?.status === 'succeeded') {
+          this.isloading = false;
           this.paymentService.storePaymentIntent(paymentIntent, courseId).subscribe({
             next: () => {
               this.message = 'payment successful';
