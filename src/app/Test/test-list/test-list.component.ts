@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { TestService } from '../../services/test.service';
 import { RouterLink } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-test-list',
   standalone: true,
@@ -38,10 +38,22 @@ export class TestListComponent {
     });
   }
   onDelete(id: number) {
-    if (confirm('Are you sure you want to delete this test?')) {
-      this.testServices.deleteTest(id).subscribe((res: any) => {
-        this.index();
-      });
-    }
+    Swal.fire({
+      title: 'Confirm Action',
+      text: 'Do you want to proceed?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, go ahead',
+      cancelButtonText: 'No, cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Confirmed', 'Your action has been confirmed!', 'success');
+        this.testServices.deleteTest(id).subscribe((res: any) => {
+          this.index();
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your action has been cancelled', 'error');
+      }
+    });
   }
 }
