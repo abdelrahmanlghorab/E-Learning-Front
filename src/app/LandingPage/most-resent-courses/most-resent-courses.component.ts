@@ -22,7 +22,7 @@ export class MostResentCoursesComponent {
   constructor(private course : CoursesService ,private teacherService:GetTeacherService ,private router : Router){
     this.course.getAllCourses().subscribe(data => {
       this.courses = data as any[];
-      this.courses = this.courses.slice(0, 3);
+      this.courses = this.courses.slice(1, 3);
 
       this.courses.forEach((course: any) => {
         this.teacherService.getTeacher(course.instructor_id).subscribe((teacherData: any) => {

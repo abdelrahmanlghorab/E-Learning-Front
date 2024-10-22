@@ -1,4 +1,4 @@
-<a [routerLink]="['/course', course.id]" class="card-link" >
+<a [routerLink]="['/course', course.id]" class="card-link " >
   <div class="card example-card position-relative " (mousemove)="handleMouseMove($event)" (mouseleave)="handleMouseLeave($event)" dir="ltr">
     <span class="badge badge-pill badge-info mt-2 me-2">{{course.course_type=='video'?'Recorded':'Online'}}</span>
       @if ( course.course_type=='video' && course.thumbnail=='https://campustechnology.com/-/media/EDU/CampusTechnology/2019-Images/20191209online.jpg') {

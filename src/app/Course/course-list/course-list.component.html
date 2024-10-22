@@ -1,27 +1,29 @@
 <div class="w-100 d-flex flex-column align-items-center parent fw-bold gap-3">
-  <div class="d-flex justify-content-between w-100">
-  <h1 class="font-24-bold text-center ">All Courses</h1>
+  <div class="d-flex justify-content-between child">
 
-  <div class="search-container h-75 ">
-    <input type="text" (ngModelChange)="searchCourses(searchControl.value)" [formControl]="searchControl" placeholder="Enter title or price" class="search-input" />
-    <button (click)="searchCourses(searchControl.value)" class="search-button">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-  </div>
-  <div>
-    <select  [formControl]="categoryControl" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-    (change)="onCategoryChange($event)">
-      <option name="category_id" value="" selected>All Categories</option>
-      <hr>
-      @for (category of categories; track category.id) {
-      <option name="category_id" [value]="category.id" >{{category.name}}</option>
-      }
-    </select>
+    <div class="search-container h-75 ">
+      <input type="text" (ngModelChange)="searchCourses(searchControl.value)" [formControl]="searchControl"
+        placeholder="Enter title or price" class="search-input" />
+      <button (click)="searchCourses(searchControl.value)" class="search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+    <h1 class="font-24-bold text-center ">All Courses</h1>
+
+    <div >
+      <select [formControl]="categoryControl" class="form-select  form-select-lg mb-3 childd"
+        aria-label=".form-select-lg example" (change)="onCategoryChange($event)">
+        <option name="category_id"  class="childoption" value="" selected>All Categories</option>
+        @for (category of categories; track category.id) {
+        <option name="category_id" [value]="category.id">{{category.name}}</option>
+
+        }
+      </select>
 
   </div>
-</div>
-  <div class="card-container">
-    <div class="d-flex flex-wrap justify-content-center gap-3">
+  </div>
+
+    <div class="d-flex  flex-wrap justify-content-center gap-3 ">
       <ng-container *ngIf="courses && courses.length > 0; else noCourses">
         <app-card *ngFor="let course of courses" [course]="course"></app-card>
       </ng-container>
@@ -31,5 +33,5 @@
         </div>
       </ng-template>
     </div>
-  </div>
+    
 </div>

@@ -13,7 +13,7 @@ section.container > div {
 }
 .custom-checkbox {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-family: 'Arial', sans-serif;
 }
@@ -98,6 +98,11 @@ section.container > div {
 
   p a:hover {
     text-decoration: underline !important;
+  }
+  hr{
+    width:50%;
+    text-align:left;
+    margin-left:0
   }
 
   @media (max-width: 768px) {

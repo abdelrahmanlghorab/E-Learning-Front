@@ -51,7 +51,7 @@
           <form [formGroup]="contactForm" (ngSubmit)="sendContactMessage()">
             <div class="mb-3">
               <label for="contactEmail" class="col-form-label">Email:</label>
-              <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail">
+              <input type="email" [disabled]="false" class="form-control" id="contactEmail" formControlName="contactEmail">
               <div *ngIf="contactForm.get('contactEmail')?.invalid && contactForm.get('contactEmail')?.touched"
                 class="text-danger">
                 <small *ngIf="contactForm.get('contactEmail')?.errors?.['required']">Email is required.</small>

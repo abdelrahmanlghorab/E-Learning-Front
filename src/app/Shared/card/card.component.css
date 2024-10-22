@@ -1,7 +1,7 @@
 .example-card {
-  width: 325px;
+  width: 350px;
   height: 470px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow:rgba(63, 63, 70, 0.12) 0px 0px 0px 1px;
   background-color:#FBFBFB;
   transition: transform 0.5s, box-shadow 0.5s;

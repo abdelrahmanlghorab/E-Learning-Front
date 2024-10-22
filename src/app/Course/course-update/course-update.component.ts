@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GetTeacherService } from '../../services/get-teacher.service';
 import { CoursePlaylistService } from '../../services/course-playlist.service';
 import { ToastrService } from 'ngx-toastr';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-course-update',
@@ -25,11 +26,14 @@ export class CourseUpdateComponent implements OnInit {
   courses: any[] = [];
   instructors: any[] = [];
   playlist: any;
+  category_id: any;
   title = signal("");
   description = signal("");
   thumbnail = signal("");
   instructor_id = signal("");
   playlistId = signal("");
+  course_type:any;
+  categories:any;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +42,9 @@ export class CourseUpdateComponent implements OnInit {
     private router: Router,
     private teachersService: GetTeacherService,
     private playList: CoursePlaylistService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private category :CategoriesService
+
   ) { }
 
   ngOnInit(): void {
@@ -61,6 +67,10 @@ export class CourseUpdateComponent implements OnInit {
 
     this.playList.getAllPlayLists().subscribe(courseData => {
       this.playlist = courseData;
+    });
+    this.category.getAllCategories().subscribe((categories: any) => {
+      this.categories = categories;
+      // console.log(categories[0].name);
     });
 
     this.coursesService.getCourse(this.id).subscribe(
@@ -88,7 +98,6 @@ export class CourseUpdateComponent implements OnInit {
 
   updateCourse() {
     this.submitted = true;
-
     if (this.courseForm.valid) {
       this.coursesService.updateCourse(this.id, this.courseForm.value).subscribe(
         {
@@ -106,7 +115,13 @@ export class CourseUpdateComponent implements OnInit {
 
   setCourseValue(id: any) {
     const selectedCourse = this.courses.find(course => course.id === id);
+    
+
     if (selectedCourse) {
+      this.playlistId.set(selectedCourse.playlist_id);
+      this.category_id.set(selectedCourse.category_id);
+      this.instructor_id.set(selectedCourse.instructor_id);
+      this.course_type.set(selectedCourse.course_type)
       this.title.set(selectedCourse.title);
       this.description.set(selectedCourse.description);
       this.thumbnail.set(selectedCourse.thumbnail);
@@ -114,7 +129,12 @@ export class CourseUpdateComponent implements OnInit {
         title: this.title(),
         description: this.description(),
         thumbnail: this.thumbnail(),
+        course_type: this.course_type(),
+        instructor_id: this.instructor_id(),
+        playlist_id: this.playlistId(),
+        category_id: this.category_id(),
       });
+      
     }
   }
 
