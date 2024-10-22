@@ -1,7 +1,7 @@
 .example-card {
-  width: 325px;
+  width: 350px;
   height: 470px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow:rgba(63, 63, 70, 0.12) 0px 0px 0px 1px;
   background-color:#FBFBFB;
   transition: transform 0.5s, box-shadow 0.5s;
@@ -89,16 +89,14 @@ a {
 
 }
 .badge {
-  /* position: absolute; */
-  /* top: 0; */
-  /* z-index: 2; */
-  /* width: 100%; */
-
   color:#007bff !important;
    box-shadow: black 0.2px 0.5px;
 }
 .rate{
   position: absolute;
   z-index: 1;
-  font-weight: lighter;
+  bottom: 40px !important;
+  font-weight:normal;
+  left: 100px;
+
 }

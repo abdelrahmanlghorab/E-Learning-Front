@@ -32,11 +32,10 @@ export class TeacherProfileComponent {
   selected = 0;
 	hovered = 0;
   user_id :any;
-
+  isenrolled=false;
 constructor( private getteacher :GetTeacherService , public router: Router, private activatedRoute: ActivatedRoute,private ratingService: RatingService) {
   this.id = this.activatedRoute.snapshot.params['id'];
   this.user_id = JSON.parse(localStorage.getItem('data')!).id;
-  console.log(this.user_id);
   this.getteacher.getTeacher(this.id).subscribe((data) => {
       this.api = data,
 
@@ -50,7 +49,7 @@ constructor( private getteacher :GetTeacherService , public router: Router, priv
     this.coursesCount = this.api.courses_count;
 
       this.teacherCourses = this.api.courses;
-      
+
       for(let course of this.teacherCourses){
         this.courseStudentCount += Number(course.Student_count);
         }
@@ -60,6 +59,12 @@ constructor( private getteacher :GetTeacherService , public router: Router, priv
   });
 }
 ngOnInit() {
+  console.log(Number(this.id),this.user_id);
+  this.ratingService.checkTeacherCourses(Number(this.id),Number(this.user_id)).subscribe((data: any) => {
+    console.log(data);
+    this.isenrolled = data.enrolled;
+    console.log(this.isenrolled);
+  });
   this.ratingService.getteacherRating(this.id).subscribe((data: any) => {
     this.rating = data;
     this.selected = this.rating.find((rating: any) => rating.user_id === this.user_id).rating;
@@ -74,21 +79,39 @@ getRatingAverage(ratings: any[]): number {
   if (ratings.length === 0) {
     return 0;
   }
-  const sum = ratings.reduce((total, rating) => total + rating.rating, 0);
-  return sum / ratings.length;
+
+  const totalRating = ratings.reduce((total, rating) => total + rating.rating, 0);
+  return totalRating / ratings.length;
 }
+
 submitRate() {
   if (!this.selected) {
     return;
   }
+
   this.ratingService.setTeacherRating(this.id, this.selected).subscribe({
     next: (response) => {
       this.teacherRate = this.selected;
       console.log('Rating submitted successfully:', response);
+      this.disabled = true;
+
+      this.ratingService.getteacherRating(this.id).subscribe((data: any) => {
+        this.rating = data;
+
+        this.selected = this.rating.find((rating: any) => rating.user_id === this.user_id).rating;
+
+        this.rating = this.getRatingAverage(this.rating);
+        console.log(this.rating);
+
+        if (this.selected) {
+          this.disabled = true;
+        }
+      });
     },
     error: (error) => {
       console.error('Error submitting rating:', error);
     }
-  })
+  });
 }
+
 }
