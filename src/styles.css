@@ -8,15 +8,6 @@
 
 
 }
-
-
-body {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: #ffff;
-  color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 .navbar {
   background-color: white;
   padding: 0.8rem 1.5rem;
@@ -239,7 +230,7 @@ position: absolute;
   font-size: 54px;
   text-shadow: 0px 0px 20px #02448b, 0px 5px 20px #007bff;
   background: linear-gradient(45deg, #02448b, #00ccff);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;    border-radius: 50px;
   opacity: 0.85;
   transition: all 0.3s ease-in-out;
@@ -259,7 +250,7 @@ position: absolute;
   font-size: 54px;
   text-shadow: 0px 0px 20px #ffab00, 0px 5px 20px #e65c00;
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
     border-radius: 50px;
   opacity: 0.85;
@@ -270,7 +261,7 @@ body.dark-mode .header-icon:hover {
 
   font-size: 74px;
     background: linear-gradient(40deg, #ff000d, #ff3300 70%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
     border-radius: 50px;
   /* background: rgba(0, 0, 0, 0.1); */
@@ -282,7 +273,7 @@ body.dark-mode .header-icon:hover {
       var(--wave1, #007bff),
       var(--wave2, #00ccff) 51%,
       var(--wave1, rgb(0 107 179))) var(--x, 0) / 200%;
-        -webkit-background-clip: text;
+      background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: larger;
 
@@ -292,21 +283,21 @@ body.dark-mode .header-icon:hover {
       var(--wave1, #007bff),
       var(--wave2, #00ccff) 51%,
       var(--wave1, rgb(0 107 179))) var(--x, 0) / 200%;
-        -webkit-background-clip: text;
+      background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease-out;
 
 }
 body.dark-mode .active-route{
    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-        -webkit-background-clip: text;
+   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: larger;
 
 }
 body.dark-mode .nav-item :hover {
     background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-         -webkit-background-clip: text;
+    background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease-out;
 
@@ -535,7 +526,7 @@ body.dark-mode .search-container {
 }
 body.dark-mode .search-button {
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   border: none;
   padding: 10px 15px;
@@ -545,7 +536,7 @@ body.dark-mode .search-button {
 }
 body.dark-mode h1 {
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
    font-weight: bold;
   margin-bottom: 20px;
@@ -569,22 +560,29 @@ color: rgb(0 107 179);
 body.dark-mode .stars{
   font-size: 72px;
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .stars{
   font-size: 72px ;
   background: linear-gradient(45deg, #02448b, #00ccff);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .text-mode{
   background: linear-gradient(45deg, #02448b, #00ccff);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 body.dark-mode .text-mode{
-   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);;
-  -webkit-background-clip: text;
+   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+   }
+body.dark-mode .pagi{
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
 }

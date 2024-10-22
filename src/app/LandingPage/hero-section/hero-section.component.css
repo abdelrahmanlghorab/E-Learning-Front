@@ -6,7 +6,7 @@
   color: var(--bg);
   background: linear-gradient(
       90deg,
-      var(--wave1, #007bff ),
+      var(--wave1, #02448b ),
       var(--wave2,#00ccff ) 51%,
       var(--wave1,  rgb(0 107 179))
     )
