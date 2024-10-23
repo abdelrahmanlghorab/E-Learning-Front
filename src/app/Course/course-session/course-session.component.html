@@ -1,12 +1,12 @@
-<div class="title mt-auto">
-  <h3 class="text-center text-light">{{ courseTitle }}</h3>
+<div class="title ">
+  <h3 class="text-center text-light ">{{ courseTitle }}</h3>
 </div>
 <div class="container-fluid d-flex flex-column flex-md-row align-items-start" dir="ltr">
   <div class="col-lg-8 col-md-12 col-sm-12 container text-start">
     <iframe class="video-frame mt-3 mb-3" [src]="sanitizedUrl" title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>
-          <span class="text-start fs-1  h1 ps-1 my-5" style="margin: 10px!;">{{ videoTitle }}</span>
+    <span class="text-start fs-3  h1 ps-1 my-5" style="margin: 10px!;">{{ videoTitle }}</span>
 
     <div class="card mt-5 mb-4 border-2">
       <div class="card-body">
@@ -27,36 +27,36 @@
         </div>
         <span class="ms-auto fs-6 text-secondary fw-lighter">Created At: {{ courseCreation }}</span>
       </h5>
-<div class="accordion p-0 m-0 mb-4" style="max-height:50rem; overflow-y: auto" id="accordionExample">
-  @if(courseVideos){ @for(video of courseVideos; track video.id){
-  <div class="accordion mt-2 mx-2" id="accordionPanelsStayOpenExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header my-1" id="panelsStayOpen-heading-{{ video.id }}">
-        <button class="accordion-button collapsed px-2 py-0 m-0" type="button" data-bs-toggle="collapse"
-          [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
-          [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
-          {{ truncate.transform(video.title,50) }}
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
-        [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
-        <div class="accordion-body">
-          @if(enrollment==true){
-          <div class="d-flex align-items-center  text-start p-0 my-0 ">
-            <i class="fa-regular fa-circle-play fs-4 text-danger"></i>
-            <code class="ms-2 text-start text-danger py-0 my-0"><a [routerLink]="['/course-session',id,video.id]"
+      <div class="accordion p-0 m-0 mb-4" style="max-height:50rem; overflow-y: auto" id="accordionExample">
+        @if(courseVideos){ @for(video of courseVideos; track video.id){
+        <div class="accordion mt-2 mx-2" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header my-1" id="panelsStayOpen-heading-{{ video.id }}">
+              <button class="accordion-button collapsed px-2 py-3 m-0" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
+                [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
+                {{ truncate.transform(video.title,70) }}
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapse-{{ video.id }}" class="accordion-collapse collapse"
+              [attr.aria-labelledby]="'panelsStayOpen-heading-' + video.id">
+              <div class="accordion-body">
+                @if(enrollment==true){
+                <div class="d-flex align-items-center  text-start p-0 my-0 ">
+                  <i class="fa-regular fa-circle-play fs-4 text-danger"></i>
+                  <code class="ms-2 text-start text-danger py-0 my-0"><a [routerLink]="['/course-session',id,video.id]"
                     (click)="changeVideo(video.video_id)"
                     style="text-decoration: none; color: black"
                     >Watch Now</a>
                 </code>
+                </div>
+                }
+              </div>
+            </div>
           </div>
-          }
         </div>
+        } }
       </div>
-    </div>
-  </div>
-  } }
-</div>
 
     </div>
   </div>

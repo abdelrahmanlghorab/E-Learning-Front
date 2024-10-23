@@ -75,10 +75,10 @@
         <div class="accordion" style="max-height: 44rem; overflow-y: auto" id="accordionExample">
           @if(courseVideos) {
           @for(video of courseVideos; track video.id) {
-          <div class="accordion  p-0 my-0" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item ">
-              <h2 class="accordion-header mb-1" id="panelsStayOpen-heading-{{ video.id }}">
-                <button class="accordion-button collapsed py-0 " type="button" data-bs-toggle="collapse"
+          <div class="accordion   p-0 my-0" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item mt-2 ">
+              <h2 class="accordion-header  py-1" id="panelsStayOpen-heading-{{ video.id }}">
+                <button class="accordion-button collapsed py-3 " type="button" data-bs-toggle="collapse"
                   [attr.data-bs-target]="'#panelsStayOpen-collapse-' + video.id" aria-expanded="false"
                   [attr.aria-controls]="'panelsStayOpen-collapse-' + video.id">
                   {{ video.title }}

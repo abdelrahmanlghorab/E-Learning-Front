@@ -9,14 +9,12 @@
       </button>
     </div>
     <h1 class="font-24-bold text-center ">All Courses</h1>
-
     <div>
       <select [formControl]="categoryControl" class="form-select  form-select-lg mb-3 childd"
         aria-label=".form-select-lg example" (change)="onCategoryChange($event)">
-        <option name="category_id" class="childoption" value="" selected>All Categories</option>
+        <option name="category_id" class="childoption text-muted" value="" selected>All Categories</option>
         @for (category of categories; track category.id) {
         <option name="category_id" [value]="category.id">{{category.name}}</option>
-
         }
       </select>
     </div>
@@ -31,6 +29,7 @@
       </div>
     </ng-template>
   </div>
-  <mat-paginator class="fs-6  mt-3 pagi  rounded rounded-2" [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
+  <mat-paginator class="fs-5 text-white mt-3 pagi  rounded rounded-pill px-3" style="position: fixed; bottom: 15px;"
+   [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
   </mat-paginator>
 </div>
