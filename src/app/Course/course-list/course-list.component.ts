@@ -42,6 +42,8 @@ export class CourseListComponent {
     this.CoursesService.getAllCourses().subscribe((data: any) => {
       this.courses = data;
       this.totalItems = this.courses.length;
+      console.log(this.totalItems);
+      
       this.items = this.getData(this.currentPage, this.pageSize);
       this.category.getAllCategories().subscribe((data: any) => {
         this.categories = data;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-course-view',
   standalone: true,
@@ -25,18 +25,30 @@ ngOnInit(): void {
   );
 }
 removeCourse(id: number) {
-  const issure =confirm('Are you sure you want to delete this course?');
-  if (!issure) {
-    return;
-  }
-  this.courseService.deleteCourse(id).subscribe(
-    (response) => {
-      
-      this.courses = this.courses.filter((course: any) => course.id !== id);
-    },
-    (error) => {
-      alert('Error deleting course');
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This action cannot be undone!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, proceed!',
+    cancelButtonText: 'Cancel',
+  }).then((result)=>{
+    if (result.isConfirmed) {
+      Swal.fire('Confirmed!', 'You have confirmed the action.', 'success');
+      this.courseService.deleteCourse(id).subscribe(
+        (response) => {
+          
+          this.courses = this.courses.filter((course: any) => course.id !== id);
+        },
+        (error) => {
+          alert('Error deleting course');
+        }
+      );
+    } else if (result.isDismissed) {
+      Swal.fire('Cancelled', 'The action was canceled.', 'error');
+      return ;
     }
-  );
+  })
+  
 }
 }

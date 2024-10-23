@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CreateOrganizerService } from '../../../services/create-organizer.service';
 import { Router, RouterLink } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-trashed',
   standalone: true,
@@ -22,17 +22,29 @@ ngOnInit(){
   });
 }
   restoreItem(item: any) {
-    if (confirm('Are you sure you want to restore this item?')) {
-      this.Organizerservece.restoreorganizer(item.id).subscribe(
-        (response) => {
-          console.log('Item restored successfully', response);
-        },
-        (error) => {
-          console.error('Error restoring item', error);
-        }
-      );
-    }
-    this.router.navigateByUrl('/allorganizer');
+    Swal.fire({
+      title: 'Confirm Action',
+      text: 'Do you want to proceed?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, go ahead',
+      cancelButtonText: 'No, cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Confirmed', 'Your action has been confirmed!', 'success');
+        this.Organizerservece.restoreorganizer(item.id).subscribe(
+          (response) => {
+            this.router.navigateByUrl('/allorganizer');
+            console.log('Item restored successfully', response);
+          },
+          (error) => {
+            console.error('Error restoring item', error);
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your action has been cancelled', 'error');
+      }
+    });
 
   }
 }

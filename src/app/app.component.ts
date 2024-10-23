@@ -35,6 +35,12 @@ export class AppComponent {
   image!: string;
   role_id!: any;
   ngOnInit() {
+    setTimeout(() => {
+      const overlay = document.getElementById('welcome-overlay');
+      if (overlay) {
+        overlay.classList.add('hidden');
+      }
+    }, 3000);
     if (this.data) {
       this.data = JSON.parse(this.data);
       this.name = this.data.name;
@@ -42,6 +48,5 @@ export class AppComponent {
       this.role_id = this.data.role_id
     }
   }
-
 
 }

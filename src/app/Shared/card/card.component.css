@@ -92,6 +92,10 @@ a {
   color:#007bff !important;
    box-shadow: black 0.2px 0.5px;
 }
+body.dark-mode span.badge.badge-pill {
+  background-color: #fefefe !important;
+  color: #f5a623 !important;
+}
 .rate{
   position: absolute;
   z-index: 1;

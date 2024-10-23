@@ -1,8 +1,7 @@
-
 <div class="dashboard-container">
-  <div class="sidebar  mt-4" >
+  <div class="sidebar  mt-4">
     <!-- <img class="sidebar-text mx-auto  fs-3" src="favicon.ico" alt="Ana Kafuo" width="90px" height="" /> -->
-    <span class="sidebar-text text-center my-3 fs-3 text-dark fw-bold">E-Learning</span>
+    <span class="sidebar-text text-center fs-2 text-mode fw-bold">E-Learning</span>
     <!-- <span class="sidebar-text text-center my-3 fs-3 text-dark fw-bold">( أنا كفو ) </span> -->
 
     <ul>
@@ -67,43 +66,43 @@
   </div>
 
   <div class="main-content mt-4">
- 
+
     <div class="content">
-      <div class="">
+      <div>
         <div class="row">
-        <div class="col-md-3 text-dark">
-          <div class="card-counter primary">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span class="count-numbers">12</span>
-            <span class="count-name text-dark">Students</span>
+          <div class="col-md-3 cardd">
+            <div class="card-counter primary">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span class="count-numbers">{{userCount}}</span>
+              <span class="count-name ">Students</span>
+            </div>
           </div>
-        </div>
-    
-        <div class="col-md-3">
-          <div class="card-counter danger">
-            <i class="fa fa-ticket"></i>
-            <span class="count-numbers">599</span>
-            <span class="count-name">Instances</span>
+
+          <div class="col-md-3 cardd">
+            <div class="card-counter danger">
+              <i class="fa fa-ticket"></i>
+              <span class="count-numbers">{{courseCount}}</span>
+              <span class="count-name">Courses</span>
+            </div>
           </div>
-        </div>
-    
-        <div class="col-md-3">
-          <div class="card-counter success">
-            <i class="fa fa-database"></i>
-            <span class="count-numbers">6875</span>
-            <span class="count-name">Data</span>
+
+          <div class="col-md-3 cardd">
+            <div class="card-counter success">
+              <i class="fa-regular fa-money-bill-1"></i>
+              <span class="count-numbers">{{paymentCount}}</span>
+              <span class="count-name">Payments</span>
+            </div>
           </div>
-        </div>
-    
-        <div class="col-md-3">
-          <div class="card-counter info">
-            <i class="fa fa-users"></i>
-            <span class="count-numbers">35</span>
-            <span class="count-name">Users</span>
+
+          <div class="col-md-3 cardd">
+            <div class="card-counter info">
+              <i class="fa fa-users"></i>
+              <span class="count-numbers ">{{teacherCount}}</span>
+              <span class="count-name">Teachers</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <div class="card-container">
         <div class="card1 " routerLink="/admin/user-managment">
           <h3>Student</h3>
@@ -125,7 +124,7 @@
         <div class="row">
           <div class="col-md-12 mx-auto " style="overflow: auto; height: 500px; scrollbar-width: none;">
             <table class="table table-hover  table-striped table-fixed">
-              <thead class="thead-dark mx-auto mt-0 " style=" position: sticky;top: 0; z-index: 1 ; "> 
+              <thead class="thead-dark mx-auto mt-0 " style=" position: sticky;top: 0; z-index: 1 ; ">
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
