@@ -17,7 +17,7 @@ export class UserManagmentComponent {
     this.userService.getAllStudent().subscribe(
       (response) => {
         this.users = response;
-        console.log(this.users,"users");
+        console.log(this.users.length,"users");
       },
       (error) => {
         console.error('Error fetching Users', error);

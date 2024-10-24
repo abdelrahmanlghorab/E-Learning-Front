@@ -12,10 +12,9 @@
     <div>
       <select [formControl]="categoryControl" class="form-select  form-select-lg mb-3 me-3 childd"
         aria-label=".form-select-lg example" (change)="onCategoryChange($event)">
-        <option name="category_id" class="childoption" value="" selected>All Categories</option>
+        <option name="category_id" class="childoption text-muted" value="" selected>All Categories</option>
         @for (category of categories; track category.id) {
         <option name="category_id" [value]="category.id">{{category.name}}</option>
-
         }
       </select>
     </div>
@@ -30,6 +29,6 @@
       </div>
     </ng-template>
   </div>
-  <mat-paginator class="fs-6  mt-5 pagi text-white  rounded rounded-2" [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
+  <mat-paginator class="fs-6  mt-5 pagi text-white  rounded rounded-pill px-3" [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
   </mat-paginator>
 </div>
