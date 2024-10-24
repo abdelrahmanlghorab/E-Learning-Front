@@ -200,7 +200,7 @@ body {
 
 .opacity {
   opacity: 0.5;
-  filter: alpha(opacity=50); 
+  filter: alpha(opacity=50);
 }
 
 .mc-transition {
