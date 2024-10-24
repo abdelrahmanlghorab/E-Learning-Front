@@ -1,10 +1,10 @@
     <article class="material-card Teal" [routerLink]="['/teacherprofile', teacher.id]">
-        <h2 class="text-start ">
-            <span class="text-dark ms-2">{{ teacher.name }}</span>
-            <strong class="text-dark ms-2 ">
+        <h2 class="text-start title-text1">
+            <span class="ms-2 title-text1">{{ teacher.name }}</span>
+            <strong class="text-text1 ms-2 ">
               <!-- <i class="fa fa-fw fa-star"></i> -->
               <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
-              <span>{{ teacher.title }}</span>
+              <span class="title-text1">{{ teacher.title }}</span>
             </strong>
         </h2>
         <div class="mc-content">

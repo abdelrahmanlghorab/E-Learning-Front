@@ -51,6 +51,7 @@
 .custom-button:hover {
   background: linear-gradient(45deg, #0056b3, #00b2d6);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #fefefe !important;
 }
 
 .disk {
@@ -418,7 +419,13 @@ body.dark-mode .badge{
 body.dark-mode .teacherLanding-card:hover {
   box-shadow: inset 0 0 0 2px #ffab00 ;
 }
-
+body.dark-mode .card-input-section {
+  background-color: #333 !important;
+  color: #fff;
+}
+body.dark-mode .section-title {
+  color: #f8f9fa !important;
+}
 
 /* For tablets (max-width: 768px) */
 @media (max-width: 768px) {
@@ -578,10 +585,37 @@ body.dark-mode .text-mode{
    background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+body.dark-mode .sidebar {
+  background: linear-gradient(40deg, #ff9900c4, #ff8c00 70%) !important;
+}
+body.dark-mode .thead-dark th {
+  background: linear-gradient(45deg, #e65c00, #ffab00)!important;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
    }
 body.dark-mode .pagi{
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+}
+body.dark-mode .title-text1 {
+  color: #fff !important;
+}
+body.dark-mode .dashboard-container{
+  background-color: #222;
+  color: #f0f0f0;
+}
+body.dark-mode .content-area {
+  background-color: #333;
+  color: #f0f0f0;
+}
+body.dark-mode .sidebar {
+  background-color: #333;
+  color: #f0f0f0;
+}
+body.dark-mode i{
+  color: #ff8c00 !important;
 }

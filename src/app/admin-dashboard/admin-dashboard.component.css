@@ -2,7 +2,6 @@
   transition: all 0.3s ease;
   padding: 10px 0 20px 0 ;
 }
-
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
@@ -106,13 +105,13 @@
   width: 80px;
   background: linear-gradient(
     to bottom,
-    white,
-    #adb1ee,
-    #8fa2d6,
-    #638ebd,
+    #046acf,
+    #046acf,
     #5c9de4,
-    #1772d4,
-    #046acf
+    #638ebd,
+    #8fa2d6,
+    #8fa2d6,
+    white
   );
   color: white;
   padding: 20px 10px;
@@ -135,20 +134,21 @@ i {
   margin-left: 10px !important;
   margin-top: 0px !important;
   padding: 0 !important;
+  color: #046acf;
 }
-
 .sidebar ul li {
   padding: 15px 10px;
   margin: 25px 0;
-  background-color: #09529b;
+  background-color: #fefefe;
   text-align: left;
   border-radius: 55px !important;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .sidebar ul li:hover {
-  background-color: #002c58;
+  background-color: #eee;
+  transform: scale(1.05);
 }
 
 .sidebar ul li a {
