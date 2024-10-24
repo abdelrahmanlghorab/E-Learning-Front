@@ -68,7 +68,7 @@
   <div class="main-content mt-4">
 
     <div class="content">
-      <div>
+      <!-- <div>
         <div class="row">
           <div class="col-md-3 cardd">
             <div class="card-counter primary">
@@ -99,6 +99,65 @@
               <i class="fa fa-users"></i>
               <span class="count-numbers ">{{teacherCount}}</span>
               <span class="count-name">Teachers</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="pt-1">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <div class="col">
+            <div class="card h-75 text-center shadow">
+              <div class="card-body d-flex justify-content-around">
+                <div class="display-3 text-primary">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div>
+                  <h2 class="card-title my-1">{{userCount}}</h2>
+                  <p class="card-text text-muted fw-bold ">Students</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card h-75 text-center shadow">
+              <div class="card-body d-flex justify-content-around">
+                <div class="display-3 text-success mb-2">
+                  <i class="bi bi-graph-up text-primary "></i>
+                </div>
+                <div>
+                  <h2 class="card-title my-1">{{paymentCount}}</h2>
+                  <p class="card-text text-muted fw-bold" >Payments</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card h-75 text-center shadow">
+              <div class="card-body d-flex justify-content-around">
+                <div class="display-3 text-warning mb-2">
+                  <i class="bi bi-briefcase text-primary "></i>
+                </div>
+                <div>
+                  <h2 class="card-title my-1">{{courseCount}}</h2>
+                  <p class="card-text text-muted fw-bold">Courses</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card h-75 text-center shadow">
+              <div class="card-body  d-flex justify-content-around">
+                <div class="display-3 text-danger mb-2">
+                  <i class="fas fa-users stat-icon text-primary "></i>
+                </div>
+                <div>
+                  <h2 class="card-title my-1">{{teacherCount}}</h2>
+                  <p class="card-text text-muted fw-bold">Teachers</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
