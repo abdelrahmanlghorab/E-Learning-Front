@@ -36,10 +36,6 @@
     transition: background-color 0.5s;
   }
   
-  .card-input-section:hover {
-    background-color: #fff;
-  }
-  
   .contact-img {
     max-width: 50%;
     margin-right: 2rem;

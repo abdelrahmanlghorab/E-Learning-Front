@@ -51,7 +51,6 @@ body {
 .containerr:hover > .img-container > img {
   opacity: 0.5;
 }
-
 .social-media {
   display: flex;
   position: absolute;
@@ -251,16 +250,16 @@ body {
   font-size: 0.8em;
 }
 
-.material-card h2:before,
+/* .material-card h2:before,
 .material-card h2:after {
-  content: ' ';
+  content: '';
   position: absolute;
   left: 0;
   top: -16px;
   width: 0;
   border: 8px solid;
   transition: all 0.3s;
-}
+} */
 
 .material-card h2:after {
   top: auto;
@@ -323,4 +322,9 @@ body {
   overflow: hidden;
   opacity: 0;
   transition: all 1.2s;
+}
+.title-text1 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
 }

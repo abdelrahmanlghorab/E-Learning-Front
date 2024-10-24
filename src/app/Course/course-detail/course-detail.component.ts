@@ -54,6 +54,9 @@ export class CourseDetailComponent {
   form = new FormGroup({
     inputName: new FormControl(''),
   });
+  Linkform = new FormGroup({
+    link: new FormControl(''),
+  })
 
   teacher: any;
   courseInstructor: string = "Instructor";
@@ -67,6 +70,7 @@ export class CourseDetailComponent {
   courseDetails!: string;
   coursePlatform!: string;
   rating: any;
+  teacherID: any;
   constructor(private playList: CoursePlaylistService,
     private courseService: CoursesService,
     public router: Router,
@@ -109,6 +113,9 @@ export class CourseDetailComponent {
       this.courseSchedule = new CustomDatePipe().transform( this.course.live_schedule);
       this.courseDateConfirm = new CustomDatePipe().transform(Date.now());
       this.remainingSessionsDays = Math.floor((Date.parse(this.courseSchedule) - Date.now()) / (1000 * 60 * 60 * 24));
+      this.Linkform.patchValue({
+        link: this.course.live_link
+      })
       console.log(this.courseDateConfirm);
 
 
@@ -117,6 +124,7 @@ export class CourseDetailComponent {
         this.teacherGender = this.teacher.gender
         this.courseInstructor = this.teacher.name;
         this.instructorTitle = this.teacher.title;
+        this.teacherID = this.teacher.id;
         this.instructorDescription = this.teacher.description;
         this.instructorImage = this.teacher.image;
         this.instructourEmail = this.teacher.email;
@@ -237,6 +245,18 @@ export class CourseDetailComponent {
       },
       error: (error) => {
         console.error('Error submitting rating:', error);
+      }
+    })
+  }
+  UpdateLink(){
+    const live_link = this.Linkform.value.link;
+    this.courseService.updateCourse(this.id, {live_link}).subscribe({
+      next: (response) => {
+        console.log('Link updated successfully:', response);
+        this.toaster.success('Link updated successfully');
+      },
+      error: (error) => {
+        this.toaster.error('Error updating link:', error);
       }
     })
   }
