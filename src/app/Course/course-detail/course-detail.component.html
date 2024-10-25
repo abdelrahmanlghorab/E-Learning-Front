@@ -210,7 +210,7 @@
           </div>
         </div>
       </div>
-        @if(course.instructor_id==user_id&&role_id==2){
+        @if(course.instructor_id==user_id&&role_id==2&&course.course_type=="live"){
           <button type="button" class="btn custom-button  eroll w-75 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update Meeting Link</button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -220,13 +220,23 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div class="card-body text-center">
-                    <h5 class="card-title">Modify meeting Link</h5>
+                  <div class="card-body">
                     <form [formGroup]="Linkform" (ngSubmit)="UpdateLink()" class="comment-form">
-                      <div class="form-group">
-                        <input id="inputName" class="form-control w-75 mx-auto" formControlName="link"
+                      <div class="form-group mt-3">
+                        <label for="inputName" class="form-label ms-5 ps-2">Meeting Link</label>
+                        <input id="inputName" class="form-control w-75 mx-auto" formControlName="live_link"
                         placeholder="handel the meeting link" dir="ltr" />
                       </div>
+                      <div class="form-group mt-3">
+                        <label for="inputName" class="form-label ms-5 ps-2">Meeting Date</label>
+                        <input type="datetime-local" id="inputName" class="form-control w-75 mx-auto" formControlName="live_schedule"
+                        placeholder="handel the meeting date" dir="ltr" />
+                        </div>
+                        <div class="form-group mt-3">
+                          <label for="inputName" class="form-label ms-5 ps-2">Meeting Details</label>
+                          <input id="inputName" class="form-control w-75 mx-auto" formControlName="live_details"
+                          placeholder="handel the meeting details" dir="ltr" />
+                          </div>
                       <div class="text-center">
                         <button type="submit" class="btn custom-button enroll mt-3 mx-auto" style="width: 76%;" data-bs-dismiss="modal" aria-label="Close">Update</button>
                       </div>

@@ -7,7 +7,7 @@
     font-family: 'Raleway', sans-serif;
     padding: 0;
     border: none;
-    box-shadow: 0 0 10px rgba(11, 44, 228, 0.08);
+    box-shadow: 0 0 10px rgba(152, 164, 236, 0.08);
 }
 .panel .panel-heading{
     background-color: rgb(41, 85, 167); 
@@ -48,7 +48,7 @@
     width: 100%;
     margin-bottom: 1rem;
     background-color: #fff;
-    border-radius: 25px 25px 0 0;
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
     
   }
@@ -56,7 +56,7 @@
   
 .panel .panel-body .table thead tr th{
     color: #fff;
-    background-color: rgb(41, 85, 167); 
+    background-color: rgb(82, 141, 250); 
     font-size: 17px;
     font-weight: 700;
     text-align: center;
