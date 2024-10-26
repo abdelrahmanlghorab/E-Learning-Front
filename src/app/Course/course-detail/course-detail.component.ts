@@ -55,7 +55,9 @@ export class CourseDetailComponent {
     inputName: new FormControl(''),
   });
   Linkform = new FormGroup({
-    link: new FormControl(''),
+    live_link: new FormControl(''),
+    live_schedule: new FormControl(''),
+    live_details: new FormControl(''),
   })
 
   teacher: any;
@@ -114,7 +116,9 @@ export class CourseDetailComponent {
       this.courseDateConfirm = new CustomDatePipe().transform(Date.now());
       this.remainingSessionsDays = Math.floor((Date.parse(this.courseSchedule) - Date.now()) / (1000 * 60 * 60 * 24));
       this.Linkform.patchValue({
-        link: this.course.live_link
+        live_link: this.course.live_link,
+        live_schedule: this.course.live_schedule,
+        live_details: this.course.live_details
       })
       console.log(this.courseDateConfirm);
 
@@ -249,8 +253,15 @@ export class CourseDetailComponent {
     })
   }
   UpdateLink(){
-    const live_link = this.Linkform.value.link;
-    this.courseService.updateCourse(this.id, {live_link}).subscribe({
+    const live_link = this.Linkform.value.live_link;
+    const  live_details = this.Linkform.value.live_details;
+    const live_schedule = this.Linkform.value.live_schedule;
+    const object = {
+      live_link,
+      live_details,
+      live_schedule
+    }
+    this.courseService.updateCourse(this.id, object).subscribe({
       next: (response) => {
         console.log('Link updated successfully:', response);
         this.toaster.success('Link updated successfully');

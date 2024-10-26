@@ -331,15 +331,28 @@ mat-paginator {
 
 .thead-dark th {
   background: linear-gradient(to top, #67aaf3, #3892f1);
-  border-radius: 15px;
+  /* border-radius: 10px 10px 0 0; */
   color: white;
   padding: 10px;
   text-align: center;
 }
+.thead-dark th:first-child {
+  border-top-left-radius: 8px;
+}
+.thead-dark th:last-child {
+  border-top-right-radius: 8px;
+}
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.table-responsive thead {
+  background-color: #f8f9fa;
+}
 
 tbody td {
   padding: 10px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 
   vertical-align: middle;
   text-align: center;
