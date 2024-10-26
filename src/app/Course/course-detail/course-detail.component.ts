@@ -102,7 +102,7 @@ export class CourseDetailComponent {
     this.courseService.getCourse(this.id).subscribe((data: any) => {
 
       this.course = data;
-      console.log(this.course);
+      // console.log(this.course);
       this.courseID = data.id;
       this.courseCreation = new CustomDatePipe().transform(this.course.created_at);
       this.courseTitle = this.course.title;
@@ -120,7 +120,7 @@ export class CourseDetailComponent {
         live_schedule: this.course.live_schedule,
         live_details: this.course.live_details
       })
-      console.log(this.courseDateConfirm);
+      // console.log(this.courseDateConfirm);
 
 
       this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
@@ -265,10 +265,56 @@ export class CourseDetailComponent {
       next: (response) => {
         console.log('Link updated successfully:', response);
         this.toaster.success('Link updated successfully');
+        this.id = this.activatedRoute.snapshot.params['id'];
+    this.courseService.getCourse(this.id).subscribe((data: any) => {
+
+      this.course = data;
+      // console.log(this.course);
+      this.courseID = data.id;
+      this.courseCreation = new CustomDatePipe().transform(this.course.created_at);
+      this.courseTitle = this.course.title;
+      this.courseType = this.course.course_type;
+      this.courseImage = this.course.thumbnail;
+      this.courseDescription = new TruncatePipe().transform(this.course.description, 750);
+      this.coursePrice = this.course.price;
+      this.courseDetails = this.course.live_details
+      this.coursePlatform = this.course.live_platform
+      this.courseSchedule = new CustomDatePipe().transform( this.course.live_schedule);
+      this.courseDateConfirm = new CustomDatePipe().transform(Date.now());
+      this.remainingSessionsDays = Math.floor((Date.parse(this.courseSchedule) - Date.now()) / (1000 * 60 * 60 * 24));
+      this.Linkform.patchValue({
+        live_link: this.course.live_link,
+        live_schedule: this.course.live_schedule,
+        live_details: this.course.live_details
+      })
+      // console.log(this.courseDateConfirm);
+
+
+      this.teacherService.getTeacher(this.course.instructor_id).subscribe((data: any) => {
+        this.teacher = data.teacher
+        this.teacherGender = this.teacher.gender
+        this.courseInstructor = this.teacher.name;
+        this.instructorTitle = this.teacher.title;
+        this.teacherID = this.teacher.id;
+        this.instructorDescription = this.teacher.description;
+        this.instructorImage = this.teacher.image;
+        this.instructourEmail = this.teacher.email;
+      })
+      if(this.course.playlist_id){
+      this.playList.getpPlayList(this.course.playlist_id).subscribe((data: any) => (
+        this.courseVideos = data[0].videos,
+        this.courseVideosNum = data[0].videos.length
+      ));
+    }
+      this.enrollmentService.getEnrollmentById(this.id).subscribe((data: any) => {
+        this.enrollment = data.enrolled;
+      });
+    });
       },
       error: (error) => {
         this.toaster.error('Error updating link:', error);
       }
     })
+
   }
 }
