@@ -15,11 +15,33 @@ export class TeacherComponent {
   teachers :any;
   rating:any;
   ratingAverage:any;
-  constructor(private teacher : GetTeacherService,private rateservice:RatingService){
+  teach:any;
+  constructor(private teacher : GetTeacherService,
+    private rateservice:RatingService,
+    private ratingService: RatingService){
     this.teacher.getAllTeachers().subscribe(data => {
       // console.log((data as any).data);
       this.teachers = (data as any).data;
       // console.log(this.teachers);
     });
+  }
+  ngOnInit() {
+    
+    this.ratingService.getteacherRating(this.teach.id).subscribe(
+      (ratings: any) => {
+        this.rating = ratings;
+        this.ratingAverage = this.getRatingAverage(ratings);
+      },
+      (error) => {
+        console.error('Error fetching ratings:', error);
+      }
+    );
+  }
+  getRatingAverage(ratings: any[]): number {
+    if (ratings.length === 0) {
+      return 0;
+    }
+    const sum = ratings.reduce((total, rating) => total + rating.rating, 0);
+    return sum / ratings.length;
   }
 }

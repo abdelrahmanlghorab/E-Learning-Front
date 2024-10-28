@@ -17,6 +17,8 @@ export class TeacherCardComponent {
   ratingAverage: any;
   constructor(private router: Router, private ratingService: RatingService) { }
   ngOnInit() {
+    console.log(this.teacher.name);
+    
     this.ratingService.getteacherRating(this.teacher.id).subscribe(
       (ratings: any) => {
         this.rating = ratings;

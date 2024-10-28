@@ -206,6 +206,10 @@
   margin-bottom: 6.6em;
 }
 .cardd{
+  text-decoration: none;
+  width: 280px;
+  height: 450px;
+  margin-left: 50px;
   transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
 
 }
