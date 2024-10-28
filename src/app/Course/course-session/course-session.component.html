@@ -1,14 +1,12 @@
 <div class="title ">
-  <h3 class="text-center text-light ">{{ courseTitle }}</h3>
+  <h2 class="text-center text-light ">{{ courseTitle }}</h2>
 </div>
 <div class="container-fluid d-flex flex-column flex-md-row align-items-start" dir="ltr">
   <div class="col-lg-8 col-md-12 col-sm-12 container text-start">
     <iframe class="video-frame mt-3 mb-3" [src]="sanitizedUrl" title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>
-    <span class="text-start fs-3  h1 ps-1 my-5" style="margin: 10px!;">{{ videoTitle }}</span>
     <span class="text-start fs-1  h1 ps-1 my-5" style="margin: 10px!;">{{ videoTitle }}</span>
-
     <div class="card mt-5 mb-4 border-2">
       <div class="card-body">
         <h3 class="card-title fw-normal fs-2">Session Description</h3>
@@ -44,10 +42,10 @@
               <div class="accordion-body">
                 @if(enrollment==true){
                 <div class="d-flex align-items-center  text-start p-0 my-0 ">
-                  <i class="fa-regular fa-circle-play fs-4 text-danger"></i>
+                  <i class="fa-regular fa-circle-play fs-4 text-mode text-danger"></i>
                   <code class="ms-2 text-start text-danger py-0 my-0"><a [routerLink]="['/course-session',id,video.id]"
                     (click)="changeVideo(video.video_id)"
-                    style="text-decoration: none; color: black"
+                    style="text-decoration: none;" class="text-mode"
                     >Watch Now</a>
                 </code>
                 </div>

@@ -28,6 +28,8 @@ export class CourseListComponent {
   categories: any;
   categoryControl: FormControl = new FormControl('');
   category_id = signal("");
+  selectedSortOrder: string = 'asc';
+
 
   constructor(
     private fb: FormBuilder,
@@ -42,8 +44,6 @@ export class CourseListComponent {
     this.CoursesService.getAllCourses().subscribe((data: any) => {
       this.courses = data;
       this.totalItems = this.courses.length;
-      console.log(this.totalItems);
-      
       this.items = this.getData(this.currentPage, this.pageSize);
       this.category.getAllCategories().subscribe((data: any) => {
         this.categories = data;
@@ -61,10 +61,17 @@ export class CourseListComponent {
     this.CoursesService.searchCourses(keyword).subscribe((data: any) => {
       this.courses = data;
       this.totalItems = this.courses.length;
-      this.items = this.getData(this.currentPage, this.pageSize); // Reset items after search
+      this.items = this.getData(this.currentPage, this.pageSize);
     });
   }
-
+//  fetchCourses() {
+//     this.CoursesService.getAllCourses().subscribe((data: any) => {
+//       this.courses = data;
+//       this.totalItems = this.courses.length;
+//       this.sortCourses(this.selectedSortOrder); // Apply initial sort
+//       this.items = this.getData(this.currentPage, this.pageSize);
+//     });
+//   }
   onCategoryChange(event: any) {
     const selectedCategoryId = event.target.value;
     if (selectedCategoryId === '') {
@@ -79,7 +86,11 @@ export class CourseListComponent {
       this.items = this.getData(this.currentPage, this.pageSize);
     });
   }
-
+  sortCourses(order: string) {
+    this.selectedSortOrder = order;
+    this.courses.sort((a, b) => order === 'asc' ? a.price - b.price : b.price - a.price);
+    this.items = this.getData(this.currentPage, this.pageSize);
+  }
   pageChanged(event: PageEvent) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;

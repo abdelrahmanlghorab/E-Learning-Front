@@ -312,3 +312,8 @@
   opacity: 0;
   transition: all 1.2s;
 }
+.pagi {
+  margin: auto;
+  width: 400px;
+  background: linear-gradient(45deg, #02448b, #00ccff);
+}

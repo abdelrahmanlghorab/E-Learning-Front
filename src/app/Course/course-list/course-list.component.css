@@ -1,33 +1,38 @@
 .parent {
   padding: 20px;
-  /* max-width: 1200px; */
   margin: auto;
 }
+
 .child {
   width: calc(100% - 300px);
   text-align: center;
 }
+
 .childd {
   border-radius: 25px;
   color: #333;
   font-weight: bold;
   border: 2px solid #00ccff;
+  transition: all 0.3s ease;
 }
+
 .childd:hover {
   background-color: #00ccff;
   color: #fff;
   cursor: pointer;
 }
+
 body.dark-mode .childd {
   background-color: #333;
   color: #fff;
   border-color: #f5a623;
 }
+
 body.dark-mode .childd:hover {
   background-color: #f5a623;
   color: #fff;
-  border-color: #f5a623;
 }
+
 .childd::after {
   content: "▼";
   font-size: 14px;
@@ -36,50 +41,48 @@ body.dark-mode .childd:hover {
   right: 20px;
   transform: translateY(-50%);
   pointer-events: none;
-  color: #ffffff;
-}
-select option {
-background-color: #f0f0f0;
-color: #333;
-border-radius: 50px !important;
+  color: #fff;
 }
 
-hr{
+select option {
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 50px;
+}
+
+hr {
   opacity: 50%;
 }
+
 h1 {
   color: #f5a623;
   font-weight: bold;
   margin-bottom: 20px;
   background: linear-gradient(45deg, #02448b, #00ccff);
   background-clip: text;
-  -webkit-text-fill-color: transparent;  font-weight: bold;
-  margin-bottom: 20px;
+  -webkit-text-fill-color: transparent;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  border: 2px solid #00ccff ;
+  border: 2px solid #00ccff;
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
-  max-width: 400px;
-  width: 100%;
   transition: all 0.3s ease;
 }
-.search-container:hover {
-  scale: 1.05;
-}
 
+.search-container:hover {
+  transform: scale(1.05);
+}
 
 .search-input {
   border: none;
   padding: 10px 15px;
   font-size: 16px;
-  width: 100%;
   width: 100%;
   outline: none;
   transition: border-color 0.3s;
@@ -87,8 +90,8 @@ h1 {
 
 .search-input::placeholder {
   color: #aaa;
-  color: #aaa;
 }
+
 .search-button {
   background: linear-gradient(45deg, #02448b, #00ccff);
   background-clip: text;
@@ -100,20 +103,20 @@ h1 {
   transition: background-color 0.3s;
 }
 
-
 .search-button:hover {
   background-color: #d4931e;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
 }
 
 .card-container {
   width: 100%;
-  min-height: calc(405px + 405px + 1rem);
-  margin-top: 20px;
+  min-height: calc(2 * 405px + 1rem);
   margin-top: 20px;
 }
-.pagi{
-  margin-left: auto;
-  margin-right: auto;
+
+.pagi {
+  margin: auto;
   width: 400px;
   background: linear-gradient(45deg, #02448b, #00ccff);
 }
@@ -121,7 +124,6 @@ h1 {
 @media (max-width: 920px) {
   .parent {
     flex-direction: column;
-    margin-top: 20px !important;
     margin-top: 20px !important;
   }
 }
