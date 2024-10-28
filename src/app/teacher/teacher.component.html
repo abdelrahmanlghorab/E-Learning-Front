@@ -20,8 +20,11 @@
         </div>
       </div>
     </div>
-    <mat-paginator class="fs-6  mt-5 pagi text-white w-50  text-center  rounded rounded-pill px-3" [length]="totalItems"
-      [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
+    <mat-paginator class="fs-6  mt-5 pagi text-white w-50  text-center  rounded rounded-pill px-3"
+     [length]="totalItems"
+      [pageSize]="pageSize"
+       [pageIndex]="currentPage"
+       (page)="pageChanged($event)">
     </mat-paginator>
   </div>
 
