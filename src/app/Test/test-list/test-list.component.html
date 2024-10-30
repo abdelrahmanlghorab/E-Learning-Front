@@ -1,33 +1,44 @@
 @if(role_id === 1 ||role_id === 4){
-<div class="container mt-5 cardd" dir="ltr">
-        <div class="card-body " >
-            <table class="table table-striped" >
-                <thead  >
-                    <tr >
-                        <th style="border-radius: 30px 0 0 0;">title</th>
+    <div class="container mt-5 cardd" dir="ltr">
+        <div class="card-body">
+            <table class="table table-striped rounded-2 text-center table-responsive-md">
+                <thead>
+                    <tr>
+                        <th style="border-radius: 10px 0 0 0;">Title</th>
                         <th>Description</th>
-                        <th>is_free</th>
-                        <th colspan="3" style="border-radius: 0  30px 0 0 ;">Action</th>
+                        <th>Is Free</th>
+                        <th colspan="2" style="border-radius: 0 10px 0 0;" >Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for(item of testList ; track $index){
-                    <tr class="text-center">
+                    @for(item of testList; track $index) {
+                    <tr class="table-row">
                         <td>{{item.test.title}}</td>
                         <td>{{item.test.description}}</td>
                         <td>{{item.test.is_free}}</td>
-                        <td><a class="btn btn-danger" (click)="onDelete(item.test.id)">Delete</a></td>
-                        <td><a class="btn btn-primary" routerLink="/test/{{item.test.id}}">Show</a></td>
+                        <td>
+                            <a class="btn btn-danger btn-sm" (click)="onDelete(item.test.id)">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" routerLink="/test/{{item.test.id}}">
+                                <i class="fa fa-eye"></i> Show
+                            </a>
+                        </td>
                     </tr>
                     }
                 </tbody>
-
-            </table>    
+            </table>
             <div class="d-flex justify-content-between mt-3">
-                <button type="submit" routerLink="/test-create" class="btn main-btn rounded-5 ms-5 p-2  custom-button w-25">Add New Test </button>
-              </div>
+                <button type="submit" routerLink="/test-create" class="btn btn-success p-2 w-25 w-md-25">
+                    <i class="fa-solid fa-plus"></i> Add New Test
+                </button>
+            </div>
         </div>
-</div>
+    </div>
+    
+    
 }@else{
 <div class="container-fluid cardd">
     <div class="text-center">

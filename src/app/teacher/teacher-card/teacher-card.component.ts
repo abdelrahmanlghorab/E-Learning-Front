@@ -2,15 +2,17 @@ import { Component, Input } from '@angular/core';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingService } from '../../services/rating.service';
 import { Router, RouterLink } from '@angular/router';
+import { TruncatePipe } from '../../Pipes/truncate.pipe';
 @Component({
   selector: 'app-teacher-card',
   standalone: true,
-  imports: [NgbRatingModule,RouterLink],
+  imports: [NgbRatingModule,TruncatePipe,RouterLink],
   templateUrl: './teacher-card.component.html',
   styleUrl: './teacher-card.component.css'
 })
 export class TeacherCardComponent {
   @Input() teacher: any;
+  truncate= new TruncatePipe;
   rating: any;
   ratingAverage: any;
   constructor(private router: Router, private ratingService: RatingService) { }
@@ -26,7 +28,7 @@ export class TeacherCardComponent {
     );
   }
 
-  
+
   getRatingAverage(ratings: any[]): number {
     if (ratings.length === 0) {
       return 0;

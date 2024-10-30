@@ -1,10 +1,10 @@
 <div class="container">
   <div class="container mt-5">
     <h4 class="text-center fw-bold  text-warning">Learn about</h4>
-    <h3 class="text-center fw-bold  mb-3">Platform Teachers {{teacherCount}}</h3>
+    <h3 class="text-center fw-bold text-mode mb-3">Platform Teachers </h3>
   </div>
   <div class="container mt-5">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
       @for (item of teachers; track item.id) {
       <div [routerLink]="['/teacherprofile', item.id]" class="col-md-3 mb-4 ">
         <div class="teacherLanding-card">
@@ -18,7 +18,7 @@
       }
     </div>
   </div>
-  <button routerLink="/teachers" class="button mx-auto mt-3">
+  <button routerLink="/teachers" class="button custom-button mx-auto mt-3">
     All Teachers
     <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
       <path

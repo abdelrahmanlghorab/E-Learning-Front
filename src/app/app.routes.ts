@@ -21,7 +21,7 @@ import { PaymentComponent } from './Payment/payment/payment.component';
 import { PaymentMangementComponent } from './Dashboard/admin/payment-mangement/payment-mangement.component';
 import { TrashedComponent } from './Create-Teacher-Moderator/trashed/trashed/trashed.component';
 import { TeacherComponent } from './teacher/teacher.component';
-import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { TeacherProfileComponent } from './teacher/teacher-profile/teacher-profile.component';
 import { TestCreateComponent } from './Test/test-create/test-create.component';
 import { TestUpdateComponent } from './Test/test-update/test-update.component';
 import { TestManagementComponent } from './Test/test-management/test-management.component';

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class CategoriesService {
   apiUrl ='http://localhost:8000/api/categories';
   searchUrl ='http://localhost:8000/api/searchcategory';
+  sortUrl ='http://localhost:8000/api/pricesort';
   constructor(private http:HttpClient) { }
   getAllCategories(): Observable<any[]>  {
     return this.http.get<any[]>(this.apiUrl);

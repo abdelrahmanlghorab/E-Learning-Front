@@ -17,9 +17,9 @@
         <hr>
         <div class="col-12 d-flex justify-content-center flex-column align-items-center">
           <ngb-rating [(rate)]="selected" (rateChange)="submitRate()" (hover)="hovered = $event" (leave)="hovered = 0"
-            [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
+            [max]="5" style="font-size: 2.4rem;" class="text-mode" [readonly]="disabled" />
           @if(selected>0){
-          <span class="text-warning mt-2 fs-5">({{this.selected}}/5)</span>
+          <span class="text-mode mt-2 fs-5">({{this.selected}}/5)</span>
           }
         </div>
         }
@@ -36,7 +36,7 @@
           </div>
           <div>
             <span class="text-secondary opacity-50">
-              <ngb-rating [(rate)]="rating" [max]="5" style="font-size: 2.6rem; color: gold;  " [readonly]="true" />
+              <ngb-rating [(rate)]="rating" [max]="5" style="font-size: 2.6rem;" class="text-mode" [readonly]="true" />
             </span>
           </div>
         </div>
@@ -60,7 +60,7 @@
     <div class="row justify-content-md-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-7">
         <h3 class="fs-6  text-secondary text-center ">What We Do?</h3>
-        <p class="  fw-bold fs-3 mb-4 mb-md-5 text-black text-muted text-center">We are giving you perfect solutions
+        <p class="  fw-bold fs-2 text-mode mb-4 mb-md-5 text-muted text-center">We are giving you perfect solutions
           with our proficient Courses.
         </p>
         <hr class="w-50 mx-auto mb-1 mb-xl-9 border-dark-subtle">

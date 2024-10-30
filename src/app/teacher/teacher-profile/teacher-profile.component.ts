@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { GetTeacherService } from '../services/get-teacher.service';
+import { GetTeacherService } from '../../services/get-teacher.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { TruncatePipe } from '../Pipes/truncate.pipe';
-import { RatingService } from '../services/rating.service';
+import { TruncatePipe } from '../../Pipes/truncate.pipe';
+import { RatingService } from '../../services/rating.service';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

@@ -1,11 +1,11 @@
   <div class="main " >
     <div class="row mt-4">
         <div class=" col-md-12 mx-auto ">
-            <div class="panel" style="overflow: auto; height: calc(100vh - 210px);">
+            <div class="panel">
                     <table class="table">
                         <thead class="main-btn ">
                             <tr>
-                              <th scope="col"> Name </th>
+                              <th scope="col" style="border-radius: 10px 0 0 0;"> Name </th>
                               <th scope="col"> Email </th>
                               <th scope="col"> National ID </th>
                               <th scope="col">Gender</th>
@@ -14,7 +14,7 @@
                               <th scope="col">Role  </th>
                               <th scope="col">Image</th>
                               <th scope="col">Delete</th>
-                              <th scope="col">Update</th>
+                              <th scope="col" style="border-radius: 0 10px 0 0 ;">Update</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,12 +44,16 @@
                             </tr>
                         }
                         </tbody>
-                    </table>
-                      
-                </div>
-                <div class="d-flex justify-content-between mt-4">
-                  <button type="submit" routerLink="/createorganizer" class="btn main-btn rounded-5 ms-5 custom-button w-25">Add </button>
-                  <button routerLink="/trashorganizer" class="btn main-btn rounded-5 me-5 custom-button w-25">Trashed  </button>
+                    </table> 
+                    <div class="d-flex justify-content-between mt-4">
+                      <button type="submit" routerLink="/createorganizer" class="btn btn-success ms-5 w-25">Add
+                        <span class="ms-2 fa fa-plus"></span>
+                      </button>
+                      <button routerLink="/trashorganizer" class="btn btn-warning me-5 w-25">
+                        Trashed 
+                         <span class="ms-2 fa fa-trash"></span>
+                      </button>
+                    </div>  
                 </div>
             </div>
         </div>

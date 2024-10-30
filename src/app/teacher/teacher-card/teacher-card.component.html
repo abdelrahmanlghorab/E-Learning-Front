@@ -1,16 +1,35 @@
-    <article class="material-card Teal" [routerLink]="['/teacherprofile', teacher.id]">
-        <h2 class="text-start ">
-            <span class="text-dark ms-2">{{ teacher.name }}</span>
-            <strong class="text-dark ms-2 ">
-              <!-- <i class="fa fa-fw fa-star"></i> -->
-              <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem; color: gold; " [readonly]="true" />
-              <span>{{ teacher.title }}</span>
-            </strong>
-        </h2>
-        <div class="mc-content">
-            <div class="img-container w-100">
-                <img class="img-responsive" [src]="teacher.image">
+<div class="card border-1 w-100 " style="height:100%; max-width: max-content;background-color: rgba(255, 255, 255, 0.459);" [routerLink]="['/teacherprofile', teacher.id]">
+  <div class=" py-3 pe-3 ">
+    <div class="d-lg-flex flex-column">
+      <div class="row d-flex flex-lg-wrap align-items-center">
+        <div class="col-4 offset-1">
+        <img [src]="teacher.image" style="max-height: 100px; " alt="" class="rounded-circle
+                avatar-xl mb-3 mb-lg-0 ">
+                </div>
+        <!-- <a href="#" class="position-absolute mt-2 ms-n3" data-bs-toggle="tooltip" data-placement="top"
+            title="Verifed">
+            <img src="../assets/images/svg/checked-mark.svg" alt="" height="30" width="30">
+          </a> -->
+          <div class="col-6 offset-1">
+              <h4 class="mb-0 text-start">{{ teacher.name }}</h4>
+              <p class="mb-0 fs-6 text-secondary">{{ teacher.title }}</p>
+      </div>
             </div>
-        </div>
-    </article>
-
+      <div class="ms-lg-4">
+        <p class="fs-6 mb-1 d-flex align-items-center">
+          <ngb-rating [(rate)]="ratingAverage" [max]="5" style="font-size: 1.6rem;" class="text-mode text-center"
+            [readonly]="true" />
+        </p>
+        <!-- <p class="fs-6 "><span class="me-2"><span class="text-dark fw-medium">42</span> Courses
+          </span><span class="ms-2"><span class="text-dark fw-medium">1,10,124
+            </span> Students
+          </span>
+        </p> -->
+        <p class="text-start text-wrap ">{{truncate.transform(teacher.description,45)}}</p>
+        <a [routerLink]="['/teacherprofile', teacher.id]" class="btn text-white text-center fs-6 main-btn btn-sm">
+          View Details
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

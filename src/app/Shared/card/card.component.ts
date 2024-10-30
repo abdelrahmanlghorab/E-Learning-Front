@@ -4,6 +4,7 @@ import { GetTeacherService } from '../../services/get-teacher.service';
 import { AuthService } from '../../services/Auth/auth.service';
 import { RatingService } from '../../services/rating.service';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { CategoriesService } from '../../services/categories.service';
 @Component({
   selector: 'app-card',
   standalone: true,
@@ -19,8 +20,11 @@ export class CardComponent {
   teacher!: any;
   teacherName!: any;
   teacherImage: any;
+  categories: any;
+  categoryName!: any;
+  
 
-  constructor(private teacherService:GetTeacherService , private authservices :AuthService,private rateservice:RatingService) {
+  constructor(private teacherService:GetTeacherService , private authservices :AuthService,private rateservice:RatingService,private category:CategoriesService) {
   }
 
 
@@ -38,6 +42,10 @@ export class CardComponent {
         }
         this.ratingAverage = this.rating.reduce((sum: any, rating: any) => sum + rating.rating, 0) / this.rating.length;
        });
+    this.category.getAllCategories().subscribe((data: any) => {
+      this.categories = data;
+     this.categoryName = this.categories.find((item: any) => item.id === this.course.category_id).name;
+    });
       }
 
   handleMouseMove(event: MouseEvent) {

@@ -11,7 +11,19 @@
      
       <div id="card-element" class="form-control mb-3" style="height: 2.5rem;"></div>
 
-      <button class="main-btn btn-block" (click)="pay()" style="width: 100%;">Pay</button>
+      <button class="main-btn btn-block" (click)="pay()" style="width: 100%;">
+        @if(isloading){
+          Processing...
+        }
+          @else{
+          Pay Now
+        }
+      </button>
+      @if(isloading){
+        <div class="spinner-overlay">
+          <div class="modern-spinner"></div>
+        </div>
+      }
 
       @if(message){
       <div class="alert alert-success mt-3" role="alert">

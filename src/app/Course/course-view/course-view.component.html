@@ -1,11 +1,11 @@
-<div class="main " dir="rtl">
+<div class="main">
     <div class="row">
-        <div class=" col-md-12 mx-auto ">
+        <div class="col-md-12 mx-auto">
             <div class="panel">
-                <div class="panel-body mt-3 table-responsive" >
-                    <table class="table ">
-                        <thead class="main-btn">
-                            <tr class="text-center">   
+                <div class="panel-body mt-3 table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>   
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
@@ -13,7 +13,7 @@
                                 <th>Free</th>
                                 <th>Teacher</th>
                                 <th>Course</th>
-                                <th>Course Type</th>
+                                <th>Type</th>
                                 <th>Details</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -22,7 +22,6 @@
                         <tbody>
                            @for (course of courses; track course.id) { 
                             <tr>
-                               
                                 <td>{{course.id}}</td>
                                 <td>{{course.title}}</td>
                                 <td>{{course.description}}</td>
@@ -31,16 +30,30 @@
                                 <td>{{course.instructor_id}}</td>
                                 <td>{{course.playlist_id}}</td>
                                 <td>{{course.course_type}}</td>
-                                <td><button routerLink="/course/{{course.id}}" class="btn  btn-success"><i class="fa-solid fa-eye "></i></button></td>
-                                <td><button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary "><i class="fa fa-pencil-alt"></i></button></td>
-                                <td><button class="btn btn-danger" (click)="removeCourse(course.id)"><i class="fa fa-trash"></i></button></td>
+                                <td>
+                                    <button routerLink="/course/{{course.id}}" class="btn btn-info btn-sm">
+                                        <i class="fa-solid fa-eye"></i> View
+                                    </button>
+                                </td>
+                                <td>
+                                    <button routerLink="/courseupdate/{{course.id}}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-pencil-alt"></i> Edit
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" (click)="removeCourse(course.id)">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </td>
                             </tr>
                         }
                         </tbody>
                     </table>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <button type="submit" routerLink="/coursecreate" class="btn main-btn rounded-5 me-auto custom-button w-25">Add Course </button>
+                    <button type="submit" routerLink="/coursecreate" class="btn btn-success rounded-3 w-25">
+                        <i class="fa-solid fa-plus"></i> Add Course
+                    </button>
                 </div> 
             </div>
         </div>
