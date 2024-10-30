@@ -245,7 +245,7 @@
                       </div>
                       </div>
                       </div>
-                      
+
           </div>
          }@else{
           <div class="card col-12 mt-4">
@@ -266,7 +266,7 @@
           <div class="row">
             <div class="col-12 d-flex justify-content-center flex-column align-items-center">
               <ngb-rating [(rate)]="selected" class="stars fs-2" (rateChange)="submitRate()" (hover)="hovered = $event"
-                (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem; color: gold;" [readonly]="disabled" />
+                (leave)="hovered = 0" [max]="5" style="font-size: 2.4rem;" [readonly]="disabled" />
               @if(selected>0){
               <span class="text-mode fs-5">rated successfully</span>
               }
@@ -281,7 +281,7 @@
 
       }</div>
     }
-      
+
 
       @if(comments.length > 0){
       <h6 class=" mb-4 text-mode fw-bold" dir="ltr">Feedbacks</h6>
